@@ -2,7 +2,7 @@ package com.autofood.clientes;
 
 public class Cliente {
 
-	private String nome;
+	private String nomee;
 	private String cpf;
 	private String dataNascimento;
 	private String sexo;
