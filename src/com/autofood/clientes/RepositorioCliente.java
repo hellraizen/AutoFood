@@ -4,15 +4,17 @@ import java.util.ArrayList;
 
 public class RepositorioCliente implements IRepositorioCliente{
 
+	
+	
 	@Override
 	public void cadastrar(Cliente cliente) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void atualizar(Cliente cliente) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

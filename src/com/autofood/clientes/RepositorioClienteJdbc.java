@@ -1,25 +1,63 @@
 package com.autofood.clientes;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
+import DAL.ConectaBd;
 
 public class RepositorioClienteJdbc implements IRepositorioCliente {
 
+	Connection conn;
+
+	public RepositorioClienteJdbc() throws ClassNotFoundException {
+		this.conn = ConectaBd.conectabd();
+	}
+
 	@Override
-	public void cadastrar(Cliente cliente) {
-		// TODO Auto-generated method stub
+	public void cadastrar(Cliente cliente) throws SQLException {
+		// Criando a String SQL
+		String sql = "insert into clientetest (nome, cpf, dataNascimento, sexo, email, telefone, rua, bairro, numero, cep) values (?, ?, ?)";
+
+		// Criar o PreparedStatement, objeto para executar a query
+		PreparedStatement preStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+		// Atualizando o primeiro parametro
+		preStatement.setString(1, "Mauricio Manoel");
+		preStatement.setString(2, "91376081779");
+		preStatement.setString(3, "Bradesco");
+		preStatement.execute();
 		
+		// Retorna um ResultSet com todas as chaves geradas
+		ResultSet resultSet = preStatement.getGeneratedKeys();
+		Integer clienteId = 0;
+		
+		// Pegando o identificador gerado a partir do último insert
+		while (resultSet.next()) {
+			clienteId = resultSet.getInt(1);
+		}
+		System.out.println("ID do Insert no Banco " + clienteId);
+
+		// Fechando conexões
+		conn.close();
+		preStatement.close();
+		resultSet.close();
+
 	}
 
 	@Override
 	public void atualizar(Cliente cliente) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void remover(String cpf) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

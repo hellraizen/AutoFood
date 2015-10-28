@@ -1,5 +1,6 @@
 package com.autofood.clientes;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ControladorCliente {
@@ -9,7 +10,7 @@ public class ControladorCliente {
 		repositorioCliente= new RepositorioCliente();
 	}
 
-	public void cadastrar(Cliente cliente) {
+	public void cadastrar(Cliente cliente) throws SQLException {
 		repositorioCliente.cadastrar(cliente);
 	}
 

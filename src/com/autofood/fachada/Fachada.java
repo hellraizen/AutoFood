@@ -1,5 +1,6 @@
 package com.autofood.fachada;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.autofood.clientes.Cliente;
@@ -21,7 +22,7 @@ public class Fachada {
 		return Fachada.instance;
 	}
 
-	public void cadastrarCliente(Cliente cliente) {
+	public void cadastrarCliente(Cliente cliente) throws SQLException {
 		controladorCliente.cadastrar(cliente);
 
 	}
