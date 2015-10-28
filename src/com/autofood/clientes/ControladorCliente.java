@@ -10,33 +10,32 @@ public class ControladorCliente {
 	}
 
 	public void cadastrar(Cliente cliente) {
-		// TODO Auto-generated method stub
-
+		repositorioCliente.cadastrar(cliente);
 	}
 
 	public void atualizar(Cliente cliente) {
-		// TODO Auto-generated method stub
+		repositorioCliente.atualizar(cliente);
 
 	}
 
 	public void remover(String cpf) {
-		// TODO Auto-generated method stub
+		repositorioCliente.remover(cpf);
 
 	}
 
 	public Cliente procurar(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
+  
+		return repositorioCliente.procurar(cpf);
 	}
 
 	public boolean existe(String cpf) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return repositorioCliente.existe(cpf);
 	}
 
 	public ArrayList<Cliente> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return repositorioCliente.listar();
 	}
 
 }
