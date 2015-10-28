@@ -22,32 +22,32 @@ public class Fachada {
 	}
 
 	public void cadastrarCliente(Cliente cliente) {
-		// TODO Auto-generated method stub
+		controladorCliente.cadastrar(cliente);
 
 	}
 
 	public void atualizarCliente(Cliente cliente) {
-		// TODO Auto-generated method stub
+		controladorCliente.atualizar(cliente);
 
 	}
 
 	public void removerCliente(String cpf) {
-		// TODO Auto-generated method stub
+		controladorCliente.remover(cpf);
 
 	}
 
 	public Cliente procurarCliente(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return controladorCliente.procurar(cpf);
 	}
 
 	public boolean existeCliente(String cpf) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return controladorCliente.existe(cpf);
 	}
 
 	public ArrayList<Cliente> listarCliente() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return controladorCliente.listar();
 	}
 }

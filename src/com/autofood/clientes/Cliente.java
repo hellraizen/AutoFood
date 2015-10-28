@@ -1,8 +1,7 @@
 package com.autofood.clientes;
 
 public class Cliente {
-	//dyegoooooo
-
+	
 	private String nome;
 	private String cpf;
 	private String dataNascimento;
