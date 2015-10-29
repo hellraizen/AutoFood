@@ -10,12 +10,12 @@ public class Fachada {
 	private static Fachada instance;
 	private ControladorCliente controladorCliente;
 
-	private Fachada() {
+	private Fachada() throws ClassNotFoundException {
 		this.controladorCliente = new ControladorCliente();
 
 	}
 
-	public static Fachada getInstance() {
+	public static Fachada getInstance() throws ClassNotFoundException {
 		if (Fachada.instance == null) {
 			Fachada.instance = new Fachada();
 		}

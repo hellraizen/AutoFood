@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class ControladorCliente {
 	private IRepositorioCliente repositorioCliente;
 	
-	public ControladorCliente(){
-		repositorioCliente= new RepositorioCliente();
+	public ControladorCliente() throws ClassNotFoundException{
+		repositorioCliente= new RepositorioClienteJdbc();
 	}
 
 	public void cadastrar(Cliente cliente) throws SQLException {

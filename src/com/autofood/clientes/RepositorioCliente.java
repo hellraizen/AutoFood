@@ -3,12 +3,20 @@ package com.autofood.clientes;
 import java.util.ArrayList;
 
 public class RepositorioCliente implements IRepositorioCliente{
-
+	
+	ArrayList<Cliente> arrayListCliente;
+	int index;
+	public RepositorioCliente(){
+		arrayListCliente = new <Cliente> ArrayList();
+		index=1;
+	}
 	
 	
 	@Override
 	public void cadastrar(Cliente cliente) {
-		
+		cliente.setCodigo(index);
+		arrayListCliente.add(cliente);
+		index++;
 		
 	}
 
@@ -38,8 +46,11 @@ public class RepositorioCliente implements IRepositorioCliente{
 
 	@Override
 	public ArrayList<Cliente> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		for (Cliente cliente : arrayListCliente) {
+			System.out.println(cliente.toString());
+		}
+		
+		return arrayListCliente;
 	}
 
 }
