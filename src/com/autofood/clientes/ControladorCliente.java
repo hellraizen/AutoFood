@@ -14,7 +14,7 @@ public class ControladorCliente {
 		repositorioCliente.cadastrar(cliente);
 	}
 
-	public void atualizar(Cliente cliente) {
+	public void atualizar(Cliente cliente) throws SQLException {
 		repositorioCliente.atualizar(cliente);
 
 	}
@@ -34,7 +34,7 @@ public class ControladorCliente {
 		return repositorioCliente.existe(cpf);
 	}
 
-	public ArrayList<Cliente> listar() {
+	public ArrayList<Cliente> listar() throws SQLException {
 		
 		return repositorioCliente.listar();
 	}

@@ -1,36 +1,32 @@
 package com.autofood.telas;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.FlowLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.Font;
-import java.awt.Panel;
-import java.awt.ScrollPane;
-import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.border.CompoundBorder;
-import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 
 import com.autofood.clientes.Cliente;
 import com.autofood.fachada.Fachada;
-
-import java.awt.SystemColor;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class JFCliente extends JFrame {
 
@@ -45,7 +41,12 @@ public class JFCliente extends JFrame {
 	private JTextField txtBairro;
 	private JTextField txtNumero;
 	private JTextField txtCidade;
-
+	private JRadioButton rdbtnMasculino= null;
+	private JRadioButton rdbtnFeminino= null;
+	private ButtonGroup bg = new ButtonGroup();
+	
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -96,7 +97,7 @@ public class JFCliente extends JFrame {
 				String nome = txtNomeCliente.getText();
 				String cpf = txtCpfCliente.getText();
 				String dataN = txtDataCliente.getText();
-				String sexo = "Masculino";// n esta pegando o radioboton
+				String sexo = "Masculina";
 				String email = txtEmailCliente.getText();
 				String telefone = txtTelefoneCliente.getText();
 
@@ -122,34 +123,40 @@ public class JFCliente extends JFrame {
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(22)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
-								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
-						.addContainerGap())
-				.addGroup(Alignment.TRAILING,
-						gl_contentPane.createSequentialGroup().addContainerGap(270, Short.MAX_VALUE)
-								.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-								.addGap(29))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(187).addComponent(lblNewLabel)
-						.addContainerGap(196, Short.MAX_VALUE)));
-		gl_contentPane
-				.setVerticalGroup(
-						gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(7).addComponent(lblNewLabel)
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addComponent(panel, GroupLayout.PREFERRED_SIZE, 165,
-												GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(22)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
+					.addContainerGap())
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(270, Short.MAX_VALUE)
+					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+					.addGap(29))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(187)
+					.addComponent(lblNewLabel)
+					.addContainerGap(196, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(7)
+					.addComponent(lblNewLabel)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnCadastrar, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
 						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
-				.addContainerGap()));
+					.addContainerGap())
+		);
 		panel_1.setLayout(null);
 
 		txtRua = new JTextField();
@@ -235,7 +242,7 @@ public class JFCliente extends JFrame {
 		panel.add(txtTelefoneCliente);
 
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(10, 122, 27, 14);
+		lblEmail.setBounds(10, 122, 71, 14);
 		panel.add(lblEmail);
 
 		txtEmailCliente = new JTextField();
@@ -248,12 +255,27 @@ public class JFCliente extends JFrame {
 		panel.add(lblSexo);
 
 		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
-		rdbtnMasculino.setBounds(329, 90, 71, 23);
+		rdbtnMasculino.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+			
+			
+			}
+		});
+		bg.add(rdbtnMasculino);
+		rdbtnMasculino.setBounds(329, 90, 83, 23);
 		panel.add(rdbtnMasculino);
 
-		JRadioButton rdbtfeminino = new JRadioButton("Feminino");
-		rdbtfeminino.setBounds(402, 90, 71, 23);
-		panel.add(rdbtfeminino);
+		JRadioButton rdbtFeminino = new JRadioButton("Feminino");
+		rdbtFeminino.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				
+				
+			}
+		});
+		bg.add(rdbtFeminino);
+		rdbtFeminino.setBounds(414, 90, 81, 23);
+		panel.add(rdbtFeminino);
 		contentPane.setLayout(gl_contentPane);
 	}
 }
+

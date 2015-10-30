@@ -11,7 +11,7 @@ public class ConectaBd {
 	       
         try{
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres","0000");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Autofood","postgres","0000");
             System.out.println("Conectado com Sucesso");
             return con;
         }

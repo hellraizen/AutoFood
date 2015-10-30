@@ -27,7 +27,7 @@ public class Fachada {
 
 	}
 
-	public void atualizarCliente(Cliente cliente) {
+	public void atualizarCliente(Cliente cliente) throws SQLException {
 		controladorCliente.atualizar(cliente);
 
 	}
@@ -47,7 +47,7 @@ public class Fachada {
 		return controladorCliente.existe(cpf);
 	}
 
-	public ArrayList<Cliente> listarCliente() {
+	public ArrayList<Cliente> listarCliente() throws SQLException {
 		
 		return controladorCliente.listar();
 	}
