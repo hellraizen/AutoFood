@@ -27,9 +27,9 @@ public class ControladorProduto {
 		
 	}
 
-	public Boolean remover(Integer idProduto) {
+	public void remover(Integer idProduto) {
 		
-		return repositorioProduto.remover(idProduto);
+		repositorioProduto.remover(idProduto);
 		
 	}
 

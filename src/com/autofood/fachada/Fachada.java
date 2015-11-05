@@ -73,9 +73,9 @@ public class Fachada {
 
 	}
 
-	public Boolean remover(Integer idProduto) {
+	public void remover(Integer idProduto) {
 
-		return controladorProduto.remover(idProduto);
+		controladorProduto.remover(idProduto);
 
 	}
 

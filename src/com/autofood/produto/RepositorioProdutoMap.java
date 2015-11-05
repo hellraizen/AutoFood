@@ -17,9 +17,8 @@ public class RepositorioProdutoMap implements IRepositorioProduto{
 	}
 
 	@Override
-	public Boolean remover(Integer idProduto) {
-		// TODO Auto-generated method stub
-		return null;
+	public void remover(Integer idProduto) {
+		
 	}
 
 	@Override

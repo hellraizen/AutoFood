@@ -8,7 +8,7 @@ public interface IRepositorioProduto {
 
 	public void atualizar(Produto produto);
 
-	public Boolean remover(Integer idProduto);
+	public void remover(Integer idProduto);
 
 	public Produto procurar(Integer idProduto);
 

@@ -25,14 +25,18 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	}
 
-	public Boolean remover(Integer idProduto) {
-
-		return null;
+	public void remover(Integer idProduto) {
+		int i = getId(idProduto);
+		if(i == -1)System.out.println("colocar exception");
+		
+		arrayListProduto.remove(i);
 	}
 
 	public Produto procurar(Integer idProduto) {
-
-		return null;
+		
+		int i = getId(idProduto);
+		if(i == -1)System.out.println("colocar exception");
+		return arrayListProduto.get(i);
 	}
 
 	public Boolean existi(Integer idPrdotudo) {
@@ -47,6 +51,18 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 		}
 
 		return arrayListProduto;
+	}
+	
+	private int getId(Integer idProduto) {
+		int resposta = -1;
+		boolean achou = false;
+		for (int i = 0; !achou && (i < index); i = i + 1) {
+			if (arrayListProduto.get(i).equals(idProduto)) {
+				resposta = i;
+				achou = true;
+			}
+		}
+		return resposta;
 	}
 
 }
