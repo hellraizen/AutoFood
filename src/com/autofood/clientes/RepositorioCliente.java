@@ -8,7 +8,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 	int index;
 
 	public RepositorioCliente() {
-		arrayListCliente = new<Cliente> ArrayList();
+		arrayListCliente = new ArrayList<Cliente> ();
 		index = 1;
 	}
 

@@ -3,8 +3,10 @@ package com.autofood.fachada;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import com.autofood.clientes.Cliente;
 import com.autofood.clientes.ControladorCliente;
+import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.produto.ControladorProduto;
 import com.autofood.produto.Produto;
 
@@ -61,7 +63,7 @@ public class Fachada {
 
 	// -------------------------------------------------------------------PRODUTO------------------------------------------------------------------
 
-	public void cadastra(Produto produto) {
+	public void cadastra(Produto produto) throws ProdutoJáCadastradoException {
 
 		controladorProduto.cadastra(produto);
 

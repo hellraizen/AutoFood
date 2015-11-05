@@ -2,6 +2,8 @@ package com.autofood.produto;
 
 import java.util.ArrayList;
 
+import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
+
 public class ControladorProduto {
 
 	private IRepositorioProduto repositorioProduto;
@@ -15,7 +17,7 @@ public class ControladorProduto {
 
 	}
 
-	public void cadastra(Produto produto) {
+	public void cadastra(Produto produto) throws ProdutoJáCadastradoException {
 		
 		repositorioProduto.cadastra(produto);
 

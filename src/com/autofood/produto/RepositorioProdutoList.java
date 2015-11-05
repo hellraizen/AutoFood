@@ -2,6 +2,8 @@ package com.autofood.produto;
 
 import java.util.ArrayList;
 
+import com.autofood.exceÁıesProduto.ProdutoJ·CadastradoException;
+
 public class RepositorioProdutoList implements IRepositorioProduto {
 
 	private ArrayList<Produto> arrayListProduto;
@@ -14,7 +16,10 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	}
 
-	public void cadastra(Produto produto) {
+	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException {
+		if (existi(produto.getIdProduto()))
+			throw new ProdutoJ·CadastradoException();
+
 		produto.setIdProduto(index);
 		arrayListProduto.add(produto);
 		index++;
@@ -23,25 +28,43 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	public void atualizar(Produto produto) {
 
+		int i = getId(produto.getIdProduto());
+		if (i == -1)
+			System.out.println("Colocar Exception");
+
+		arrayListProduto.add(i, produto);
 	}
 
 	public void remover(Integer idProduto) {
 		int i = getId(idProduto);
-		if(i == -1)System.out.println("colocar exception");
-		
+		if (i == -1)
+			System.out.println("colocar exception");
+
 		arrayListProduto.remove(i);
 	}
 
 	public Produto procurar(Integer idProduto) {
-		
+
 		int i = getId(idProduto);
-		if(i == -1)System.out.println("colocar exception");
+		if (i == -1)
+			System.out.println("colocar exception");
 		return arrayListProduto.get(i);
 	}
 
-	public Boolean existi(Integer idPrdotudo) {
+	public Boolean existi(Integer idProduto) {
 
-		return null;
+		Boolean verificador = false;
+
+		for (Produto produto : arrayListProduto) {
+			if (idProduto.equals(produto.getIdProduto())) {
+
+				verificador = true;
+				return verificador;
+
+			}
+		}
+
+		return verificador;
 	}
 
 	public ArrayList<Produto> listar() {
@@ -52,7 +75,7 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 		return arrayListProduto;
 	}
-	
+
 	private int getId(Integer idProduto) {
 		int resposta = -1;
 		boolean achou = false;
@@ -64,5 +87,4 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 		}
 		return resposta;
 	}
-
 }
