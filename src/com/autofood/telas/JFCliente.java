@@ -41,8 +41,8 @@ public class JFCliente extends JFrame {
 	private JTextField txtBairro;
 	private JTextField txtNumero;
 	private JTextField txtCidade;
-	private JRadioButton rdbtnMasculino= null;
-	private JRadioButton rdbtnFeminino= null;
+	private JRadioButton rdbtnMasculino;
+	private JRadioButton rdbtnFeminino;
 	private ButtonGroup bg = new ButtonGroup();
 	
 	
@@ -92,30 +92,9 @@ public class JFCliente extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				// Entrada de dados Pessoais
-				String nome = txtNomeCliente.getText();
-				String cpf = txtCpfCliente.getText();
-				String dataN = txtDataCliente.getText();
-				String sexo = "Masculina";
-				String email = txtEmailCliente.getText();
-				String telefone = txtTelefoneCliente.getText();
-
-				// Entrada de Endereço
-				String rua = txtRua.getText();
-				String bairro = txtBairro.getText();
-				String cep = txtCep.getText();
-				String numero = txtNumero.getText();
-				String cidade = txtCidade.getText();
-
-				Cliente cliente = new Cliente(nome, cpf, dataN, sexo, email, telefone);
-				try {
-					Fachada.getInstance().cadastrarCliente(cliente);
-					
-				} catch (SQLException | ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				cadastrar();
+				limpar();
+			
 			}
 		});
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -276,6 +255,50 @@ public class JFCliente extends JFrame {
 		rdbtFeminino.setBounds(414, 90, 81, 23);
 		panel.add(rdbtFeminino);
 		contentPane.setLayout(gl_contentPane);
+	}
+	
+	private void cadastrar(){
+		// Entrada de dados Pessoais
+		String nome = txtNomeCliente.getText();
+		String cpf = txtCpfCliente.getText();
+		String dataN = txtDataCliente.getText();
+		String sexo = "Masculina";
+		String email = txtEmailCliente.getText();
+		String telefone = txtTelefoneCliente.getText();
+
+		// Entrada de Endereço
+		String rua = txtRua.getText();
+		String bairro = txtBairro.getText();
+		String cep = txtCep.getText();
+		String numero = txtNumero.getText();
+		String cidade = txtCidade.getText();
+
+		Cliente cliente = new Cliente(nome, cpf, dataN, sexo, email, telefone);
+		try {
+			Fachada.getInstance().cadastrarCliente(cliente);
+			
+		} catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	private void limpar(){
+		//campos dados cliente
+		
+		txtNomeCliente.setText(" ");
+		txtCpfCliente.setText(" ");
+		txtDataCliente.setText(" ");
+		txtEmailCliente.setText(" ");
+		txtTelefoneCliente.setText(" ");
+		
+		//campos endereco
+		
+		txtRua.setText("");
+		txtBairro.setText("");
+		txtCep.setText("");
+		txtNumero.setText("");
+		txtCidade.setText("");
+		
 	}
 }
 

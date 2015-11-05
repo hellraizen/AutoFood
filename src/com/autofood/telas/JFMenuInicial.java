@@ -15,6 +15,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class JFMenuInicial extends JFrame {
 
@@ -40,8 +43,39 @@ public class JFMenuInicial extends JFrame {
 	 * Create the frame.
 	 */
 	public JFMenuInicial() {
+		setTitle("Autofood");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 621, 359);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnArquivo = new JMenu("Arquivo");
+		menuBar.add(mnArquivo);
+		
+		JMenu mnNewMenu = new JMenu("Menu");
+		mnArquivo.add(mnNewMenu);
+		
+		JMenuItem mntmAtendimento = new JMenuItem("Atendimento");
+		mnNewMenu.add(mntmAtendimento);
+		
+		JMenuItem mntmFuncionario = new JMenuItem("Funcion\u00E1rio");
+		mnNewMenu.add(mntmFuncionario);
+		
+		JMenuItem mntmAdministrador = new JMenuItem("Administrador");
+		mnNewMenu.add(mntmAdministrador);
+		
+		JMenuItem mntmLogoff = new JMenuItem("Logoff");
+		mnArquivo.add(mntmLogoff);
+		
+		JMenuItem mntmSair = new JMenuItem("Sair");
+		mnArquivo.add(mntmSair);
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		
+		JMenuItem mntmVerso = new JMenuItem("Vers\u00E3o");
+		mnHelp.add(mntmVerso);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -84,6 +118,10 @@ public class JFMenuInicial extends JFrame {
 		btnFuncionrio.setFont(new Font("Javanese Text", Font.PLAIN, 20));
 		btnFuncionrio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				JFFuncionario telaFuncinario = new JFFuncionario();
+				
+				telaFuncinario.setVisible(true);
+				
 			}
 		});
 		
