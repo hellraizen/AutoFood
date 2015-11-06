@@ -45,11 +45,6 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 		}
 		System.out.println("ID do Insert no Banco " + clienteId);
 
-		// Fechando conexões
-		conn.close();
-		preStatement.close();
-		resultSet.close();
-
 	}
 
 	@Override
@@ -66,10 +61,6 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 		preStatement.setInt(2, 1);
 		// Executando o select
 		preStatement.executeUpdate();
-
-		// Fechando a Conexão
-		preStatement.close();
-		conn.close();
 
 	}
 
@@ -111,21 +102,16 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 		// Verifica se retornou dados na consulta
 		while (resultSet.next()) {
 			// Pegando as colunas do registro
-
+			int codigo = resultSet.getInt(1);
 			String nome = resultSet.getString(2);
 			String cpf = resultSet.getString(3);
 			String dataN = resultSet.getString(4);
 			String sexo = resultSet.getString(5);
-			int codigo = resultSet.getInt(1);
 			String email = resultSet.getString(6);
 			String telefone = resultSet.getString(7);
 			Cliente cliente = new Cliente(nome, cpf, dataN, sexo, codigo, email, telefone);
 			arrayListCliente.add(cliente);
 		}
-		// Fechando a Conexão
-		preStatement.close();
-		resultSet.close();
-		conn.close();
 
 		return arrayListCliente;
 	}
