@@ -1,8 +1,8 @@
 package com.autofood.produto;
-
 import java.util.ArrayList;
-
+import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
+import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
 
 public class RepositorioProdutoList implements IRepositorioProduto {
 
@@ -16,9 +16,11 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	}
 
-	public void cadastra(Produto produto) throws ProdutoJáCadastradoException {
+	public void cadastra(Produto produto) throws ProdutoJáCadastradoException,NomeVazioException {
 		if (existi(produto.getIdProduto()))
 			throw new ProdutoJáCadastradoException();
+		if (produto.getNomeProduto().equals(null))
+			throw new NomeVazioException();
 
 		produto.setIdProduto(index);
 		arrayListProduto.add(produto);
@@ -26,28 +28,28 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	}
 
-	public void atualizar(Produto produto) {
-
+	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
 		int i = getId(produto.getIdProduto());
 		if (i == -1)
-			System.out.println("Colocar Exception");
+			throw new ProdutoNaoEncontradoException();
 
 		arrayListProduto.add(i, produto);
 	}
 
-	public void remover(Integer idProduto) {
+	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
 		int i = getId(idProduto);
 		if (i == -1)
-			System.out.println("colocar exception");
+			throw new ProdutoNaoEncontradoException();
 
 		arrayListProduto.remove(i);
 	}
 
-	public Produto procurar(Integer idProduto) {
+	public Produto procurar(Integer idProduto)
+			throws ProdutoNaoEncontradoException {
 
 		int i = getId(idProduto);
 		if (i == -1)
-			System.out.println("colocar exception");
+			throw new ProdutoNaoEncontradoException();
 		return arrayListProduto.get(i);
 	}
 

@@ -1,8 +1,8 @@
 package com.autofood.produto;
-
 import java.util.ArrayList;
-
+import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
+import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
 
 public class ControladorProduto {
 
@@ -17,25 +17,25 @@ public class ControladorProduto {
 
 	}
 
-	public void cadastra(Produto produto) throws ProdutoJáCadastradoException {
+	public void cadastra(Produto produto) throws ProdutoJáCadastradoException, NomeVazioException {
 		
 		repositorioProduto.cadastra(produto);
 
 	}
 
-	public void atualizar(Produto produto) {
+	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
 		
 		repositorioProduto.atualizar(produto);
 		
 	}
 
-	public void remover(Integer idProduto) {
+	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
 		
 		repositorioProduto.remover(idProduto);
 		
 	}
 
-	public Produto procurar(Integer idProduto) {
+	public Produto procurar(Integer idProduto) throws ProdutoNaoEncontradoException {
 		
 		return repositorioProduto.procurar(idProduto);
 		
