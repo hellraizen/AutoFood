@@ -24,6 +24,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 	}
 
 	public void remover(String cpf) {
+		
 
 	}
 

@@ -51,22 +51,32 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 	public void atualizar(Cliente cliente) throws SQLException {
 
 		// Criando a String SQL
-		String sql = "update cliente set nome = ? where cliente_id = ?";
+		String sql = "update clientetest set nome = ? where codigo = ?";
 		// Criar o PreparedStatement, objeto para executar a query
 		PreparedStatement preStatement;
 
 		preStatement = conn.prepareStatement(sql);
 
-		preStatement.setString(1, "Pedro");
-		preStatement.setInt(2, 1);
+		preStatement.setString(1, cliente.getNome());
+		preStatement.setInt(2, cliente.getCodigo());
 		// Executando o select
 		preStatement.executeUpdate();
 
 	}
 
 	@Override
-	public void remover(String cpf) {
-		// TODO Auto-generated method stub
+	public void remover(String cpf) throws SQLException {
+	
+	        // Criando a String SQL
+	        String sql ="delete from clientetest where cliente_id = ?";
+	        
+	        // Criar o PreparedStatement, objeto para executar a query
+	        PreparedStatement preStatement = conn.prepareStatement(sql);
+	        Cliente cliente;
+	        
+	        preStatement.setInt(1,1);
+	        // Executando o select
+	        preStatement.executeUpdate();
 
 	}
 
@@ -95,10 +105,7 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 
 		ResultSet resultSet = preStatement.executeQuery();
 
-		/*
-		 * Exemplo de Select
-		 */
-
+		
 		// Verifica se retornou dados na consulta
 		while (resultSet.next()) {
 			// Pegando as colunas do registro

@@ -19,7 +19,7 @@ public class ControladorCliente {
 
 	}
 
-	public void remover(String cpf) {
+	public void remover(String cpf) throws SQLException {
 		repositorioCliente.remover(cpf);
 
 	}
