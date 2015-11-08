@@ -1,22 +1,22 @@
 package com.autofood.produto;
 
-import java.util.Date;
+
 
 public class Produto {
 
 	private Integer idProduto;
 	private String nomeProduto;
 	private Integer quantidadeProduto;
-	private double precoProduto;
+	private Double precoProduto;
 	private String validadeProduto;
-	private Date dataFabricacaoProduto;
+	private String dataFabricacaoProduto;
 
-	public Produto(Integer idProduto, String nomeProduto,
-			Integer quantidadeProduto, double precoProduto,
-			String validadeProduto, Date dataFabricacaoProduto) {
+	public Produto(Integer idProduto, String produto,
+			Integer quantidadeProduto, Double precoProduto,
+			String validadeProduto, String dataFabricacaoProduto) {
 
 		setIdProduto(idProduto);
-		setNomeProduto(nomeProduto);
+		setNomeProduto(produto);
 		setQuantidadeProduto(quantidadeProduto);
 		setPrecoProduto(precoProduto);
 		setValidadeProduto(validadeProduto);
@@ -25,8 +25,8 @@ public class Produto {
 	}
 
 	public Produto(String nomeProduto, Integer quantidadeProduto,
-			double precoProduto, String validadeProduto,
-			Date dataFabricacaoProduto) {
+			Double precoProduto, String validadeProduto,
+			String dataFabricacaoProduto) {
 
 		setNomeProduto(nomeProduto);
 		setQuantidadeProduto(quantidadeProduto);
@@ -37,7 +37,7 @@ public class Produto {
 	}
 
 	public Produto(Integer idProduto, String nomeProduto,
-			Integer quantidadeProduto, double precoProduto) {
+			Integer quantidadeProduto, Double precoProduto) {
 
 		setIdProduto(idProduto);
 		setNomeProduto(nomeProduto);
@@ -47,7 +47,7 @@ public class Produto {
 	}
 
 	public Produto(String nomeProduto, Integer quantidadeProduto,
-			double precoProduto) {
+			Double precoProduto) {
 
 		setNomeProduto(nomeProduto);
 		setQuantidadeProduto(quantidadeProduto);
@@ -79,11 +79,11 @@ public class Produto {
 		this.quantidadeProduto = quantidadeProduto;
 	}
 
-	public double getPrecoProduto() {
+	public Double getPrecoProduto() {
 		return precoProduto;
 	}
 
-	public void setPrecoProduto(double precoProduto) {
+	public void setPrecoProduto(Double precoProduto) {
 		this.precoProduto = precoProduto;
 	}
 
@@ -95,11 +95,11 @@ public class Produto {
 		this.validadeProduto = validadeProduto;
 	}
 
-	public Date getDataFabricacaoProduto() {
+	public String getDataFabricacaoProduto() {
 		return dataFabricacaoProduto;
 	}
 
-	public void setDataFabricacaoProduto(Date dataFabricacaoProduto) {
+	public void setDataFabricacaoProduto(String dataFabricacaoProduto) {
 		this.dataFabricacaoProduto = dataFabricacaoProduto;
 	}
 
