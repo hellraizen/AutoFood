@@ -41,7 +41,7 @@ public class Fachada {
 
 	}
 
-	public void removerCliente(String cpf) {
+	public void removerCliente(String cpf) throws SQLException {
 		controladorCliente.remover(cpf);
 
 	}

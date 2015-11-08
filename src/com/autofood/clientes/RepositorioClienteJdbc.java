@@ -74,7 +74,7 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 	        PreparedStatement preStatement = conn.prepareStatement(sql);
 	        Cliente cliente;
 	        
-	        preStatement.setInt(1,1);
+	        preStatement.setInt(1,2);
 	        // Executando o select
 	        preStatement.executeUpdate();
 
