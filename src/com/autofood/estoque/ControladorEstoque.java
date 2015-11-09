@@ -2,6 +2,10 @@ package com.autofood.estoque;
 
 import java.util.ArrayList;
 
+import com.autofood.exceçõesEstoque.NomeVazioException;
+import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
+import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
+
 public class ControladorEstoque {
 	
 	private IRepositorioEstoque repositorioEstoque;
@@ -15,25 +19,25 @@ public class ControladorEstoque {
 		
 	}
 	
-	public void cadastra(Estoque estoque) {
+	public void cadastra(Estoque estoque) throws NomeVazioException, ProdutoJaCadastradoEstoqueException {
 		
 		repositorioEstoque.cadastra(estoque);
 
 	}
 
-	public void atualizar(Estoque estoque) {
+	public void atualizar(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException {
 		
 		repositorioEstoque.atualizar(estoque);
 		
 	}
 
-	public void remover(Integer idEstoqueProduto) {
+	public void remover(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException {
 		
 		repositorioEstoque.remover(idEstoqueProduto);
 		
 	}
 
-	public Estoque procurar(Integer idEstoqueProduto) {
+	public Estoque procurar(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException {
 
 		return repositorioEstoque.procurar(idEstoqueProduto);
 		

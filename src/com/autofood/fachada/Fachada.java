@@ -6,6 +6,8 @@ import com.autofood.clientes.Cliente;
 import com.autofood.clientes.ControladorCliente;
 import com.autofood.estoque.ControladorEstoque;
 import com.autofood.estoque.Estoque;
+import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
+import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -107,25 +109,25 @@ public class Fachada {
 	// -------------------------------------------------------------------ESTOQUE------------------------------------------------------------------
 
 
-	public void cadastraEstoque(Estoque estoque) {
+	public void cadastraEstoque(Estoque estoque) throws com.autofood.exceçõesEstoque.NomeVazioException, ProdutoJaCadastradoEstoqueException {
 		
 		controladorEstoque.cadastra(estoque);
 
 	}
 
-	public void atualizarEstoque(Estoque estoque) {
+	public void atualizarEstoque(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException {
 		
 		controladorEstoque.atualizar(estoque);
 
 	}
 
-	public void removerEstoque(Integer idEstoqueProduto) {
+	public void removerEstoque(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException {
 		
 		controladorEstoque.remover(idEstoqueProduto);
 		
 	}
 
-	public Estoque procurarEstoque(Integer idEstoqueProduto) {
+	public Estoque procurarEstoque(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException {
 
 		return controladorEstoque.procurar(idEstoqueProduto);
 	}
