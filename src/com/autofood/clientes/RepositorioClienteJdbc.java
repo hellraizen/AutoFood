@@ -32,6 +32,7 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 		preStatement.setString(4, cliente.getSexo());
 		preStatement.setString(5, cliente.getEmail());
 		preStatement.setString(6, cliente.getTelefone());
+		
 
 		preStatement.execute();
 
@@ -97,9 +98,15 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 	}
 
 	@Override
-	public boolean existe(String cpf) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean existe(String cpf) throws SQLException {
+		
+		String sql = "select * from clientetest where cpf= ?";
+
+		PreparedStatement preStatement = conn.prepareStatement(sql);
+
+		preStatement.setString(1, cpf);
+		ResultSet resultSet = preStatement.executeQuery();
+		return true;
 	}
 
 	@Override

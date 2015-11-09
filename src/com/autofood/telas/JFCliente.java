@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import com.autofood.clientes.Cliente;
+import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
 import com.autofood.fachada.Fachada;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -266,7 +267,7 @@ public class JFCliente extends JFrame {
 		try {
 			Fachada.getInstance().cadastrarCliente(cliente);
 
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException | ClienteJaCadastradoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
