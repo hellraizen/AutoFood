@@ -144,7 +144,7 @@ public class JFClienteListar extends JFrame {
 				GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE));
 
 		tableListaCliente = new JTable();
-		String colunaTabelaCliente[] = new String[] {"Codigo", "Nome", "CPF", "Data de Nascimanto", "Telefone", "New column", "New column"};
+		String colunaTabelaCliente[] = new String[] {"Codigo", "Nome", "CPF", "Data de Nascimanto", "Telefone", "Sexo", "Email"};
 		defaultTableModelCliente = new DefaultTableModel(new Object[] []{ }, colunaTabelaCliente){
 			public boolean isCellEditable(int row, int col) {
 				return false;

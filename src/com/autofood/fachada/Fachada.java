@@ -44,7 +44,7 @@ public class Fachada {
 
 	}
 
-	public Cliente procurarCliente(String cpf) {
+	public Cliente procurarCliente(String cpf) throws SQLException {
 
 		return controladorCliente.procurar(cpf);
 	}

@@ -24,7 +24,7 @@ public class ControladorCliente {
 
 	}
 
-	public Cliente procurar(String cpf) {
+	public Cliente procurar(String cpf) throws SQLException {
   
 		return repositorioCliente.procurar(cpf);
 	}

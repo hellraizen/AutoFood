@@ -66,24 +66,34 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 
 	@Override
 	public void remover(String cpf) throws SQLException {
-	
-	        // Criando a String SQL
-	        String sql ="delete from clientetest where cliente_id = ?";
-	        
-	        // Criar o PreparedStatement, objeto para executar a query
-	        PreparedStatement preStatement = conn.prepareStatement(sql);
-	        Cliente cliente;
-	        
-	        preStatement.setInt(1,2);
-	        // Executando o select
-	        preStatement.executeUpdate();
+
+		// Criando a String SQL
+		String sql = "delete from clientetest where CPF = ?";
+
+		// Criar o PreparedStatement, objeto para executar a query
+		PreparedStatement preStatement = conn.prepareStatement(sql);
+
+		preStatement.setString(1, cpf);
+
+		// Executando o select
+		preStatement.executeUpdate();
 
 	}
 
 	@Override
-	public Cliente procurar(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
+	public Cliente procurar(String cpf) throws SQLException {
+
+		String sql = "select * from clientetest where cpf= ?";
+
+		PreparedStatement preStatement = conn.prepareStatement(sql);
+
+		preStatement.setString(1, cpf);
+		ResultSet resultSet = preStatement.executeQuery();
+		
+		
+		Cliente cliente = new Cliente(resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
+		
+		return cliente;
 	}
 
 	@Override
@@ -105,7 +115,6 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 
 		ResultSet resultSet = preStatement.executeQuery();
 
-		
 		// Verifica se retornou dados na consulta
 		while (resultSet.next()) {
 			// Pegando as colunas do registro
