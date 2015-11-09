@@ -8,7 +8,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 	int index;
 
 	public RepositorioCliente() {
-		arrayListCliente = new ArrayList<Cliente> ();
+		arrayListCliente = new ArrayList<Cliente>();
 		index = 1;
 	}
 
@@ -24,24 +24,29 @@ public class RepositorioCliente implements IRepositorioCliente {
 	}
 
 	public void remover(String cpf) {
-		
 
 	}
 
 	public Cliente procurar(String cpf) {
-
+		for (Cliente cliente : arrayListCliente) {
+			if (cpf.equals(cliente.getCpf())) {
+				return cliente;
+			}
+		}
 		return null;
 	}
 
 	public boolean existe(String cpf) {
+		for (Cliente cliente : arrayListCliente) {
+			if (cpf.equals(cliente.getCpf())) {
+				return true;
+			}
 
+		}
 		return false;
 	}
 
 	public ArrayList<Cliente> listar() {
-		for (Cliente cliente : arrayListCliente) {
-			System.out.println(cliente.toString());
-		}
 
 		return arrayListCliente;
 	}
