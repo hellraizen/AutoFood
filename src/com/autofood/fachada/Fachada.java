@@ -1,8 +1,11 @@
 package com.autofood.fachada;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import com.autofood.clientes.Cliente;
 import com.autofood.clientes.ControladorCliente;
+import com.autofood.estoque.ControladorEstoque;
+import com.autofood.estoque.Estoque;
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -13,10 +16,12 @@ public class Fachada {
 	private static Fachada instance;
 	private ControladorCliente controladorCliente;
 	private ControladorProduto controladorProduto;
+	private ControladorEstoque controladorEstoque;
 
 	private Fachada() throws ClassNotFoundException {
 		this.controladorCliente = new ControladorCliente();
 		this.controladorProduto = new ControladorProduto();
+		this.controladorEstoque = new ControladorEstoque();
 
 	}
 
@@ -61,41 +66,78 @@ public class Fachada {
 
 	// -------------------------------------------------------------------PRODUTO------------------------------------------------------------------
 
-	public void cadastra(Produto produto) throws ProdutoJáCadastradoException,
+	public void cadastraProduto(Produto produto) throws ProdutoJáCadastradoException,
 			NomeVazioException {
 
 		controladorProduto.cadastra(produto);
 
 	}
 
-	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
+	public void atualizarProduto(Produto produto) throws ProdutoNaoEncontradoException {
 
 		controladorProduto.atualizar(produto);
 
 	}
 
-	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
+	public void removerProduto(Integer idProduto) throws ProdutoNaoEncontradoException {
 
 		controladorProduto.remover(idProduto);
 
 	}
 
-	public Produto procurar(Integer idProduto)
+	public Produto procurarProduto(Integer idProduto)
 			throws ProdutoNaoEncontradoException {
 
 		return controladorProduto.procurar(idProduto);
 
 	}
 
-	public Boolean existi(Integer idPrdotudo) {
+	public Boolean existiProduto(Integer idPrdotudo) {
 
 		return controladorProduto.existi(idPrdotudo);
 
 	}
 
-	public ArrayList<Produto> listar() {
+	public ArrayList<Produto> listarProduto() {
 
 		return controladorProduto.listar();
 
 	}
+	
+	// -------------------------------------------------------------------ESTOQUE------------------------------------------------------------------
+
+
+	public void cadastraEstoque(Estoque estoque) {
+		
+		controladorEstoque.cadastra(estoque);
+
+	}
+
+	public void atualizarEstoque(Estoque estoque) {
+		
+		controladorEstoque.atualizar(estoque);
+
+	}
+
+	public void removerEstoque(Integer idEstoqueProduto) {
+		
+		controladorEstoque.remover(idEstoqueProduto);
+		
+	}
+
+	public Estoque procurarEstoque(Integer idEstoqueProduto) {
+
+		return controladorEstoque.procurar(idEstoqueProduto);
+	}
+
+	public Boolean existiEstoque(Integer idEstoqueProduto) {
+
+		return controladorEstoque.existi(idEstoqueProduto);
+	}
+
+	public ArrayList<Estoque> listarEstoque() {
+
+		return controladorEstoque.listar();
+	}
+	
 }
