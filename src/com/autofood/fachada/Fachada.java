@@ -70,7 +70,7 @@ public class Fachada {
 	// -------------------------------------------------------------------PRODUTO------------------------------------------------------------------
 
 	public void cadastraProduto(Produto produto) throws ProdutoJ·CadastradoException,
-			NomeVazioException {
+			NomeVazioException, SQLException {
 
 		controladorProduto.cadastra(produto);
 

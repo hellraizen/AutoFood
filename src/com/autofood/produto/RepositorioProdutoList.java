@@ -1,4 +1,5 @@
 package com.autofood.produto;
+
 import java.util.ArrayList;
 import com.autofood.exceÁıesProduto.NomeVazioException;
 import com.autofood.exceÁıesProduto.ProdutoJ·CadastradoException;
@@ -16,9 +17,10 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	}
 
-	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,NomeVazioException {
+	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,
+			NomeVazioException {
 		//if (existi(produto.getIdProduto()))
-			//throw new ProdutoJ·CadastradoException();
+		//throw new ProdutoJ·CadastradoException();
 		if (produto.getNomeProduto().equals(null))
 			throw new NomeVazioException();
 
@@ -29,44 +31,61 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 	}
 
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
-		int i = getId(produto.getIdProduto());
-		if (i == -1)
-			throw new ProdutoNaoEncontradoException();
+		for (Produto produto1 : arrayListProduto) {
+			if (produto.getIdProduto().equals(produto1.getIdProduto())) {
 
-		arrayListProduto.add(i, produto);
+				arrayListProduto.add(produto);
+
+			} else {
+
+				throw new ProdutoNaoEncontradoException();
+			}
+		}
+
 	}
 
 	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
-		int i = getId(idProduto);
-		if (i == -1)
-			throw new ProdutoNaoEncontradoException();
+		for (Produto produto : arrayListProduto) {
+			if (idProduto.equals(produto.getIdProduto())) {
 
-		arrayListProduto.remove(i);
+				arrayListProduto.remove(produto);
+
+			} else {
+
+				throw new ProdutoNaoEncontradoException();
+			}
+		}
 	}
 
 	public Produto procurar(Integer idProduto)
 			throws ProdutoNaoEncontradoException {
 
-		int i = getId(idProduto);
-		if (i == -1)
-			throw new ProdutoNaoEncontradoException();
-		return arrayListProduto.get(i);
+		for (Produto produto : arrayListProduto) {
+			if (idProduto.equals(produto.getIdProduto())) {
+
+				return produto;
+
+			} else {
+
+				throw new ProdutoNaoEncontradoException();
+			}
+		}
+		return null;
 	}
 
 	public Boolean existi(Integer idProduto) {
 
-		Boolean verificador = false;
 
 		for (Produto produto : arrayListProduto) {
 			if (idProduto.equals(produto.getIdProduto())) {
 
-				verificador = true;
-				return verificador;
+			
+				return true;
 
 			}
 		}
 
-		return verificador;
+		return false;
 	}
 
 	public ArrayList<Produto> listar() {
@@ -76,17 +95,5 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 		}
 
 		return arrayListProduto;
-	}
-
-	private int getId(Integer idProduto) {
-		int resposta = -1;
-		boolean achou = false;
-		for (int i = 0; !achou && (i < index); i = i + 1) {
-			if (arrayListProduto.get(i).equals(idProduto)) {
-				resposta = i;
-				achou = true;
-			}
-		}
-		return resposta;
 	}
 }
