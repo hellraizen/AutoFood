@@ -1,6 +1,9 @@
 package com.autofood.produto;
 
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -19,14 +22,16 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	public void cadastra(Produto produto) throws ProdutoJáCadastradoException,
 			NomeVazioException {
-		//if (existi(produto.getIdProduto()))
-		//throw new ProdutoJáCadastradoException();
+
+		produto.setIdProduto(index);
+		if (existi(produto.getIdProduto()))
+			throw new ProdutoJáCadastradoException();
 		if (produto.getNomeProduto().equals(null))
 			throw new NomeVazioException();
 
-		produto.setIdProduto(index);
 		arrayListProduto.add(produto);
 		index++;
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 
 	}
 
@@ -46,15 +51,18 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
 		for (Produto produto : arrayListProduto) {
-			if (idProduto.equals(produto.getIdProduto())) {
+			System.out.println(produto.getIdProduto());
+			System.out.println(idProduto);
+			if (produto.getIdProduto() == idProduto) {
 
 				arrayListProduto.remove(produto);
 
-			} else {
-
-				throw new ProdutoNaoEncontradoException();
 			}
+		System.out.println(produto.getIdProduto());
+		System.out.println(idProduto);
+
 		}
+		throw new ProdutoNaoEncontradoException();
 	}
 
 	public Produto procurar(Integer idProduto)
@@ -75,11 +83,9 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	public Boolean existi(Integer idProduto) {
 
-
 		for (Produto produto : arrayListProduto) {
 			if (idProduto.equals(produto.getIdProduto())) {
 
-			
 				return true;
 
 			}

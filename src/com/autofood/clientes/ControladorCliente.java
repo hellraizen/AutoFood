@@ -10,8 +10,8 @@ public class ControladorCliente {
 	private IRepositorioCliente repositorioCliente;
 	
 	public ControladorCliente() throws ClassNotFoundException{
-		repositorioCliente= new RepositorioClienteJdbc();
-		//repositorioCliente= new RepositorioCliente();
+		//repositorioCliente= new RepositorioClienteJdbc();
+		repositorioCliente= new RepositorioCliente();
 	}
 
 	public void cadastrar(Cliente cliente) throws SQLException, ClienteJaCadastradoException {

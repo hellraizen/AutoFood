@@ -25,19 +25,19 @@ public class ControladorProduto {
 
 	}
 
-	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
+	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException, SQLException {
 		
 		repositorioProduto.atualizar(produto);
 		
 	}
 
-	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
+	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException {
 		
 		repositorioProduto.remover(idProduto);
 		
 	}
 
-	public Produto procurar(Integer idProduto) throws ProdutoNaoEncontradoException {
+	public Produto procurar(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException {
 		
 		return repositorioProduto.procurar(idProduto);
 		
@@ -49,7 +49,7 @@ public class ControladorProduto {
 		
 	}
 
-	public ArrayList<Produto> listar() {
+	public ArrayList<Produto> listar() throws SQLException {
 		
 		return repositorioProduto.listar();
 		

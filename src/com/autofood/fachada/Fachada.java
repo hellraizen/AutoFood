@@ -77,20 +77,20 @@ public class Fachada {
 
 	}
 
-	public void atualizarProduto(Produto produto) throws ProdutoNaoEncontradoException {
+	public void atualizarProduto(Produto produto) throws ProdutoNaoEncontradoException, SQLException {
 
 		controladorProduto.atualizar(produto);
 
 	}
 
-	public void removerProduto(Integer idProduto) throws ProdutoNaoEncontradoException {
+	public void removerProduto(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException {
 
 		controladorProduto.remover(idProduto);
 
 	}
 
 	public Produto procurarProduto(Integer idProduto)
-			throws ProdutoNaoEncontradoException {
+			throws ProdutoNaoEncontradoException, SQLException {
 
 		return controladorProduto.procurar(idProduto);
 
@@ -102,7 +102,7 @@ public class Fachada {
 
 	}
 
-	public ArrayList<Produto> listarProduto() {
+	public ArrayList<Produto> listarProduto() throws SQLException {
 
 		return controladorProduto.listar();
 

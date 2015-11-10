@@ -278,10 +278,12 @@ public class JFProduto extends JFrame {
 	
 	private void remover(){
 		
+		Integer id = Integer.parseInt( txtidProduto.getText());
+		
 		try {
-			Fachada.getInstance().removerProduto(Integer.parseInt(txtidProduto.getText()));
+			Fachada.getInstance().removerProduto(id);
 		} catch (NumberFormatException | ClassNotFoundException
-				| ProdutoNaoEncontradoException e) {
+				| ProdutoNaoEncontradoException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
