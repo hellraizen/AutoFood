@@ -19,8 +19,8 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,
 			NomeVazioException {
-		// if (existi(produto.getIdProduto()))
-		// throw new ProdutoJ·CadastradoException();
+		//if (existi(produto.getIdProduto()))
+		//throw new ProdutoJ·CadastradoException();
 		if (produto.getNomeProduto().equals(null))
 			throw new NomeVazioException();
 
@@ -75,18 +75,17 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	public Boolean existi(Integer idProduto) {
 
-		Boolean verificador = false;
 
 		for (Produto produto : arrayListProduto) {
 			if (idProduto.equals(produto.getIdProduto())) {
 
-				verificador = true;
-				return verificador;
+			
+				return true;
 
 			}
 		}
 
-		return verificador;
+		return false;
 	}
 
 	public ArrayList<Produto> listar() {
