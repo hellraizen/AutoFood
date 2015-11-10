@@ -14,6 +14,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -25,6 +26,7 @@ import javax.swing.border.TitledBorder;
 
 import com.autofood.clientes.Cliente;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
+import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 import com.autofood.fachada.Fachada;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -32,11 +34,11 @@ import java.awt.event.ItemEvent;
 public class JFCliente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtNomeCliente;
-	private JTextField txtCpfCliente;
-	private JTextField txtDataCliente;
-	private JTextField txtTelefoneCliente;
-	private JTextField txtEmailCliente;
+	public JTextField txtNomeCliente;
+	public JTextField txtCpfCliente;
+	public JTextField txtDataCliente;
+	public JTextField txtTelefoneCliente;
+	public JTextField txtEmailCliente;
 	private JTextField txtRua;
 	private JTextField txtCep;
 	private JTextField txtBairro;
@@ -67,7 +69,7 @@ public class JFCliente extends JFrame {
 	 */
 
 	public JFCliente() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 559, 465);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -99,19 +101,42 @@ public class JFCliente extends JFrame {
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 17));
+
+		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				atualizar();
+				limpar();
+				
+
+			}
+		});
+		btnAtualizar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(22)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
-								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
-						.addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap(270, Short.MAX_VALUE)
-						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-						.addGap(29))
+		gl_contentPane
+				.setHorizontalGroup(
+						gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(
+										gl_contentPane.createSequentialGroup().addGap(22)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 501,
+																Short.MAX_VALUE)
+												.addComponent(panel, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
+						.addContainerGap()).addGroup(
+								gl_contentPane.createSequentialGroup().addContainerGap(146, Short.MAX_VALUE)
+										.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 114,
+												GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+								.addGap(29))
 				.addGroup(gl_contentPane.createSequentialGroup().addGap(187).addComponent(lblNewLabel)
 						.addContainerGap(196, Short.MAX_VALUE)));
 		gl_contentPane
@@ -126,7 +151,8 @@ public class JFCliente extends JFrame {
 				.addPreferredGap(ComponentPlacement.UNRELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnCadastrar, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
 				.addContainerGap()));
 		panel_1.setLayout(null);
 
@@ -268,7 +294,7 @@ public class JFCliente extends JFrame {
 			Fachada.getInstance().cadastrarCliente(cliente);
 
 		} catch (SQLException | ClassNotFoundException | ClienteJaCadastradoException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 	}
@@ -300,5 +326,36 @@ public class JFCliente extends JFrame {
 			sexo = "Masculino";
 
 		return sexo;
+	}
+
+	private void atualizar() {
+		// danos cliente
+		String nome = txtNomeCliente.getText();
+		String cpf = txtCpfCliente.getText();
+		String dataN = txtDataCliente.getText();
+		String sexo = selecaoSexo();
+		String email = txtEmailCliente.getText();
+		String telefone = txtTelefoneCliente.getText();
+
+		// Entrada de Endereço
+		String rua = txtRua.getText();
+		String bairro = txtBairro.getText();
+		String cep = txtCep.getText();
+		String numero = txtNumero.getText();
+		String cidade = txtCidade.getText();
+
+		Cliente cliente = new Cliente(nome, cpf, dataN, sexo, email, telefone);
+		
+		
+		try {
+			Fachada.getInstance().atualizarCliente(cliente);
+			
+			
+		} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException e) {
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+		
+
 	}
 }

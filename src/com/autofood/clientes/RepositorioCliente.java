@@ -2,7 +2,10 @@ package com.autofood.clientes;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
+import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 
 public class RepositorioCliente implements IRepositorioCliente {
 
@@ -15,28 +18,47 @@ public class RepositorioCliente implements IRepositorioCliente {
 	}
 
 	public void cadastrar(Cliente cliente) throws ClienteJaCadastradoException {
-		if(existe(cliente.getCpf())) throw new ClienteJaCadastradoException();
+		if (existe(cliente.getCpf()))
+			throw new ClienteJaCadastradoException();
 		cliente.setCodigo(index);
 		arrayListCliente.add(cliente);
 		index++;
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 
 	}
 
-	public void atualizar(Cliente cliente) {
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException {
+		if (!(existe(cliente.getCpf())))
+			throw new ClienteNaoEncontradoException();
+		arrayListCliente.add(cliente.getCodigo(), cliente);
+		JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso");
 
 	}
 
-	public void remover(String cpf) {
-
-	}
-
-	public Cliente procurar(String cpf) {
+	public void remover(String cpf) throws ClienteNaoEncontradoException {
 		for (Cliente cliente : arrayListCliente) {
-			if (cpf.equals(cliente.getCpf())) {
-				return cliente;
-			}
+
+			if (cliente.getCpf().equals(cpf)) {
+				arrayListCliente.remove(cliente);
+				JOptionPane.showMessageDialog(null, "Cliente Removido com Sucesso");
+			} 
+				
+
 		}
-		return null;
+		throw new ClienteNaoEncontradoException();
+	}
+
+	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {
+		for (Cliente cliente : arrayListCliente) {
+		
+			
+			if (cpf.equals(cliente.getCpf())) {
+
+				return cliente;
+			} 
+			
+		}
+		throw new ClienteNaoEncontradoException();
 	}
 
 	public boolean existe(String cpf) {
