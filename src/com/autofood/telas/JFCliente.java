@@ -14,6 +14,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -25,6 +26,7 @@ import javax.swing.border.TitledBorder;
 
 import com.autofood.clientes.Cliente;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
+import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 import com.autofood.fachada.Fachada;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -292,7 +294,7 @@ public class JFCliente extends JFrame {
 			Fachada.getInstance().cadastrarCliente(cliente);
 
 		} catch (SQLException | ClassNotFoundException | ClienteJaCadastradoException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 	}
@@ -349,8 +351,8 @@ public class JFCliente extends JFrame {
 			Fachada.getInstance().atualizarCliente(cliente);
 			
 			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException e) {
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 		

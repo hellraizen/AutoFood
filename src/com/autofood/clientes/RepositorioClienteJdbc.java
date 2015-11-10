@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import DAL.ConectaBd;
 
 public class RepositorioClienteJdbc implements IRepositorioCliente {
@@ -19,6 +21,7 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 
 	@Override
 	public void cadastrar(Cliente cliente) throws SQLException {
+		
 		// Criando a String SQL
 		String sql = "insert into clientetest (nome, cpf, dataNascimento, sexo, email, telefone) values (?,?,?,?,?,?)";
 
@@ -45,7 +48,7 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 			clienteId = resultSet.getInt(1);
 		}
 		System.out.println("ID do Insert no Banco " + clienteId);
-
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 	}
 
 	@Override
@@ -70,7 +73,7 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 		preStatement.executeUpdate();
 		
 		System.out.println("Atualizado Com Sucesso");
-
+		JOptionPane.showMessageDialog(null, "Atualizado Com Sucesso");
 	}
 
 	@Override
@@ -88,7 +91,8 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 		preStatement.executeUpdate();
 		
 		System.out.println("REMOVIDO COM SUCESSO");
-
+		JOptionPane.showMessageDialog(null, "REMOVIDO COM SUCESSO");
+		
 	}
 
 	@Override

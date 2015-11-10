@@ -13,6 +13,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import com.autofood.clientes.Cliente;
+import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 import com.autofood.fachada.Fachada;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -77,7 +79,7 @@ public class JFClienteListar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Fachada.getInstance().removerCliente(cpfControle);
-				} catch (ClassNotFoundException | SQLException e1) {
+				} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -126,7 +128,7 @@ public class JFClienteListar extends JFrame {
 					txtProcurar.setText("");
 					
 					
-				} catch (ClassNotFoundException | SQLException e1) {
+				} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -278,8 +280,8 @@ public class JFClienteListar extends JFrame {
 			
 			
 			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException e) {
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 		

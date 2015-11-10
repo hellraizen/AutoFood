@@ -7,6 +7,7 @@ import com.autofood.clientes.ControladorCliente;
 import com.autofood.estoque.ControladorEstoque;
 import com.autofood.estoque.Estoque;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
+import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 import com.autofood.exceçõesProduto.NomeVazioException;
@@ -42,17 +43,17 @@ public class Fachada {
 
 	}
 
-	public void atualizarCliente(Cliente cliente) throws SQLException {
+	public void atualizarCliente(Cliente cliente) throws SQLException, ClienteNaoEncontradoException {
 		controladorCliente.atualizar(cliente);
 
 	}
 
-	public void removerCliente(String cpf) throws SQLException {
+	public void removerCliente(String cpf) throws SQLException, ClienteNaoEncontradoException {
 		controladorCliente.remover(cpf);
 
 	}
 
-	public Cliente procurarCliente(String cpf) throws SQLException {
+	public Cliente procurarCliente(String cpf) throws SQLException, ClienteNaoEncontradoException {
 
 		return controladorCliente.procurar(cpf);
 	}
