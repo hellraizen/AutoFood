@@ -24,8 +24,13 @@ import javax.swing.table.DefaultTableModel;
 
 import com.autofood.clientes.Cliente;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
+import com.autofood.exceçõesProduto.NomeVazioException;
+import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.fachada.Fachada;
 import com.autofood.produto.Produto;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFProduto extends JFrame {
 
@@ -159,8 +164,27 @@ public class JFProduto extends JFrame {
 		JPanel panelListaProdudos = new JPanel();
 
 		JButton btnListar = new JButton("Listar");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listar();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 
-		JButton btnNewButton_1 = new JButton("New button");
+		JButton btnNewButton_1 = new JButton("Cadastrar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cadastrar();
+				limpar();
+			}
+		});
 
 		JButton button = new JButton("New button");
 
@@ -233,6 +257,7 @@ public class JFProduto extends JFrame {
 		ArrayList<Produto> produtos = Fachada.getInstance().listarProduto();
 		for (Produto produto : produtos ) {
 			Vector vector = new Vector();
+			vector.add(produto.getIdProduto());
 			vector.add(produto.getNomeProduto());
 			vector.add(produto.getQuantidadeProduto());
 			vector.add(produto.getPrecoProduto());
@@ -248,20 +273,20 @@ public class JFProduto extends JFrame {
 	}
 	private void cadastrar() {
 		// Entrada de dados Pessoais
-		String nome = txtNomeCliente.getText();
-		String cpf = txtCpfCliente.getText();
-		String dataN = txtDataCliente.getText();
-		String sexo = selecaoSexo();
-		String email = txtEmailCliente.getText();
-		String telefone = txtTelefoneCliente.getText();
+		String produto = txtProduto.getText();
+		Integer quantidade = Integer.parseInt(txtQuantidade.getText());
+		Double preco = Double.parseDouble(txtPreco.getText()); 
+		String validade = txtValidade.getText();
+		String datafabricacao = txtDataFabricacao.getText();
+		
 
 		
 
-		Cliente cliente = new Cliente(nome, cpf, dataN, sexo, email, telefone);
+		Produto produto1 = new Produto(produto,quantidade,preco,validade,datafabricacao);
 		try {
-			Fachada.getInstance().cadastrarCliente(cliente);
+			Fachada.getInstance().cadastraProduto(produto1);
 
-		} catch (SQLException | ClassNotFoundException | ClienteJaCadastradoException e) {
+		} catch (ClassNotFoundException | ProdutoJáCadastradoException | NomeVazioException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -270,19 +295,11 @@ public class JFProduto extends JFrame {
 	private void limpar() {
 		// campos dados cliente
 
-		txtNomeCliente.setText(" ");
-		txtCpfCliente.setText(" ");
-		txtDataCliente.setText(" ");
-		txtEmailCliente.setText(" ");
-		txtTelefoneCliente.setText(" ");
-
-		// campos endereco
-
-		txtRua.setText("");
-		txtBairro.setText("");
-		txtCep.setText("");
-		txtNumero.setText("");
-		txtCidade.setText("");
-
+		txtProduto.setText("");
+		txtQuantidade.setText("");
+		txtPreco.setText("");
+		txtValidade.setText("");
+		txtDataFabricacao.setText("");
+		
 	}
 }
