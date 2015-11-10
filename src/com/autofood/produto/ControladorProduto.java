@@ -1,5 +1,7 @@
 package com.autofood.produto;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -8,16 +10,16 @@ public class ControladorProduto {
 
 	private IRepositorioProduto repositorioProduto;
 
-	public ControladorProduto() {
+	public ControladorProduto() throws ClassNotFoundException {
 
-		repositorioProduto = new RepositorioProdutoList();
+		//repositorioProduto = new RepositorioProdutoList();
 		//repositorioProduto = new RepositorioProdutoSet();
 		//repositorioProduto = new RepositorioProdutoMap();
-		//repositorioProduto = new RepositorioProdutoBd();
+		repositorioProduto = new RepositorioProdutoBd();
 
 	}
 
-	public void cadastra(Produto produto) throws ProdutoJáCadastradoException, NomeVazioException {
+	public void cadastra(Produto produto) throws ProdutoJáCadastradoException, NomeVazioException, SQLException {
 		
 		repositorioProduto.cadastra(produto);
 
