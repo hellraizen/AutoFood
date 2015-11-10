@@ -2,6 +2,8 @@ package com.autofood.clientes;
 
 import java.util.ArrayList;
 
+import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
+
 public class RepositorioCliente implements IRepositorioCliente {
 
 	ArrayList<Cliente> arrayListCliente;
@@ -12,7 +14,8 @@ public class RepositorioCliente implements IRepositorioCliente {
 		index = 1;
 	}
 
-	public void cadastrar(Cliente cliente) {
+	public void cadastrar(Cliente cliente) throws ClienteJaCadastradoException {
+		if(existe(cliente.getCpf())) throw new ClienteJaCadastradoException();
 		cliente.setCodigo(index);
 		arrayListCliente.add(cliente);
 		index++;
