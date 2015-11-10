@@ -52,16 +52,18 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 	public void atualizar(Cliente cliente) throws SQLException {
 
 		// Criando a String SQL
-		String sql = "update clientetest set nome = ? where codigo = ?";
+		String sql = "update clientetest set nome = ? where cpf = ?";
 		// Criar o PreparedStatement, objeto para executar a query
 		PreparedStatement preStatement;
 
 		preStatement = conn.prepareStatement(sql);
 
 		preStatement.setString(1, cliente.getNome());
-		preStatement.setInt(2, cliente.getCodigo());
+		preStatement.setString(2, cliente.getCpf());
 		// Executando o select
 		preStatement.executeUpdate();
+		
+		System.out.println("Atualizado Com Sucesso");
 
 	}
 
@@ -78,6 +80,8 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 
 		// Executando o select
 		preStatement.executeUpdate();
+		
+		System.out.println("REMOVIDO COM SUCESSO");
 
 	}
 
@@ -90,11 +94,22 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 
 		preStatement.setString(1, cpf);
 		ResultSet resultSet = preStatement.executeQuery();
+		while (resultSet.next()) {
+		int codigo = resultSet.getInt(1);
+		String nome = resultSet.getString(2);
+		String cpf1 = resultSet.getString(3);
+		String dataN = resultSet.getString(4);
+		String sexo = resultSet.getString(5);
+		String email = resultSet.getString(6);
+		String telefone = resultSet.getString(7);
 		
-		
-		Cliente cliente = new Cliente(resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
-		
+		Cliente cliente = new Cliente(nome, cpf1, dataN, sexo, codigo, email, telefone);
 		return cliente;
+		
+		}
+		
+		return null;
+		
 	}
 
 	@Override

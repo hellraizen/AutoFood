@@ -23,11 +23,15 @@ public class RepositorioCliente implements IRepositorioCliente {
 	}
 
 	public void atualizar(Cliente cliente) {
+		arrayListCliente.add(cliente.getCodigo(),cliente);
 
 	}
 
 	public void remover(String cpf) {
-
+		for (Cliente cliente : arrayListCliente) {
+			if(cliente.getCpf().equals(cpf)) arrayListCliente.remove(cliente);
+			
+		}
 	}
 
 	public Cliente procurar(String cpf) {
