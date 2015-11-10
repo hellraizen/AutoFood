@@ -1,27 +1,26 @@
 package com.autofood.telas;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.border.TitledBorder;
-import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import javax.swing.JLabel;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+
+import com.autofood.imagens.FundoDaTela;
 
 public class JFMenuInicial extends JFrame {
 
 	private JPanel contentPane;
+	private FundoDaTela desktop;
 
 	/**
 	 * Launch the application.
@@ -31,7 +30,9 @@ public class JFMenuInicial extends JFrame {
 			public void run() {
 				try {
 					JFMenuInicial frame = new JFMenuInicial();
+
 					frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,113 +44,83 @@ public class JFMenuInicial extends JFrame {
 	 * Create the frame.
 	 */
 	public JFMenuInicial() {
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(JFMenuInicial.class.getResource("/com/autofood/imagens/logoFundo.jpg")));
+		getContentPane().setLayout(new GridLayout());
+		desktop = new FundoDaTela("/com/autofood/imagens/logoFundo.jpg");
+		getContentPane().add(desktop);
+		desktop.setVisible(true);
+
 		setTitle("Autofood");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setExtendedState(MAXIMIZED_BOTH);
+
 		setBounds(100, 100, 621, 359);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
-		JMenu mnArquivo = new JMenu("Arquivo");
+
+		JMenu mnArquivo = new JMenu("Op\u00E7\u00F5es");
 		menuBar.add(mnArquivo);
-		
-		JMenu mnNewMenu = new JMenu("Menu");
-		mnArquivo.add(mnNewMenu);
-		
-		JMenuItem mntmAtendimento = new JMenuItem("Atendimento");
-		mnNewMenu.add(mntmAtendimento);
-		
-		JMenuItem mntmFuncionario = new JMenuItem("Funcion\u00E1rio");
-		mnNewMenu.add(mntmFuncionario);
-		
-		JMenuItem mntmAdministrador = new JMenuItem("Administrador");
-		mnNewMenu.add(mntmAdministrador);
-		
-		JMenuItem mntmLogoff = new JMenuItem("Logoff");
+
+		JMenuItem mntmLogoff = new JMenuItem("Cliente\r\n");
+		mntmLogoff.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFClienteListar clienteLista = new JFClienteListar();
+				clienteLista.setVisible(true);
+			}
+		});
 		mnArquivo.add(mntmLogoff);
-		
+
+		JMenuItem mntmFuncionrio = new JMenuItem("Funcion\u00E1rio");
+		mnArquivo.add(mntmFuncionrio);
+
+		JMenuItem mntmProduto = new JMenuItem("Produto");
+		mnArquivo.add(mntmProduto);
+
+		JMenuItem mntmCardapio = new JMenuItem("Card\u00E1pio");
+		mnArquivo.add(mntmCardapio);
+
+		JMenuItem mntmLogoff_1 = new JMenuItem("Logoff");
+		mnArquivo.add(mntmLogoff_1);
+
 		JMenuItem mntmSair = new JMenuItem("Sair");
+		mntmSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+
+			}
+		});
 		mnArquivo.add(mntmSair);
-		
-		JMenu mnHelp = new JMenu("Help");
+
+		JMenu mnHelp = new JMenu("Atendimento");
 		menuBar.add(mnHelp);
-		
+
 		JMenuItem mntmVerso = new JMenuItem("Vers\u00E3o");
 		mnHelp.add(mntmVerso);
+
+		JMenuItem menuItem_3 = new JMenuItem("Vers\u00E3o");
+		mnHelp.add(menuItem_3);
+
+		JMenuItem menuItem_2 = new JMenuItem("Vers\u00E3o");
+		mnHelp.add(menuItem_2);
+
+		JMenuItem menuItem_1 = new JMenuItem("Vers\u00E3o");
+		mnHelp.add(menuItem_1);
+
+		JMenu menu = new JMenu("Help");
+		menuBar.add(menu);
+
+		JMenuItem menuItem = new JMenuItem("Vers\u00E3o");
+		menu.add(menuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Menu", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		
-		JLabel lblNewLabel = new JLabel("Imagen LOgo");
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(124)
-					.addComponent(lblNewLabel)
-					.addContainerGap(139, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(39)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(138)
-							.addComponent(lblNewLabel)))
-					.addContainerGap(46, Short.MAX_VALUE))
-		);
-		
-		JButton btnAtendimento = new JButton("Atendimento");
-		btnAtendimento.setFont(new Font("Javanese Text", Font.PLAIN, 20));
-		btnAtendimento.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		JButton btnFuncionrio = new JButton("Funcion\u00E1rio");
-		btnFuncionrio.setFont(new Font("Javanese Text", Font.PLAIN, 20));
-		btnFuncionrio.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				JFFuncionario telaFuncinario = new JFFuncionario();
-				
-				telaFuncinario.setVisible(true);
-				
-			}
-		});
-		
-		JButton btnAdministrador = new JButton("Administrador");
-		btnAdministrador.setFont(new Font("Javanese Text", Font.PLAIN, 20));
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(27)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnAtendimento, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnFuncionrio, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnAdministrador, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(32, Short.MAX_VALUE))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(18)
-					.addComponent(btnAtendimento, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnFuncionrio, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnAdministrador, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(73, Short.MAX_VALUE))
-		);
-		panel.setLayout(gl_panel);
-		contentPane.setLayout(gl_contentPane);
+		contentPane.setLayout(null);
+
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(287, 0, 1238, 698);
+		lblNewLabel.setIcon(new ImageIcon(JFMenuInicial.class.getResource("/com/autofood/imagens/logoFundo.jpg")));
+		contentPane.add(lblNewLabel);
 	}
 }
