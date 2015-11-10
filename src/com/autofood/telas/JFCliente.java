@@ -105,52 +105,53 @@ public class JFCliente extends JFrame {
 			}
 		});
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		
+
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				atualizar();
+				limpar();
 				
+
 			}
 		});
 		btnAtualizar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(22)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
-					.addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(146, Short.MAX_VALUE)
-					.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-					.addGap(29))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(187)
-					.addComponent(lblNewLabel)
-					.addContainerGap(196, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(7)
-					.addComponent(lblNewLabel)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane
+				.setHorizontalGroup(
+						gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(
+										gl_contentPane.createSequentialGroup().addGap(22)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 501,
+																Short.MAX_VALUE)
+												.addComponent(panel, GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
+						.addContainerGap()).addGroup(
+								gl_contentPane.createSequentialGroup().addContainerGap(146, Short.MAX_VALUE)
+										.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 114,
+												GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+								.addGap(29))
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(187).addComponent(lblNewLabel)
+						.addContainerGap(196, Short.MAX_VALUE)));
+		gl_contentPane
+				.setVerticalGroup(
+						gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup().addGap(7).addComponent(lblNewLabel)
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addComponent(panel, GroupLayout.PREFERRED_SIZE, 165,
+												GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnCadastrar, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
 						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
+				.addContainerGap()));
 		panel_1.setLayout(null);
 
 		txtRua = new JTextField();
@@ -323,5 +324,36 @@ public class JFCliente extends JFrame {
 			sexo = "Masculino";
 
 		return sexo;
+	}
+
+	private void atualizar() {
+		// danos cliente
+		String nome = txtNomeCliente.getText();
+		String cpf = txtCpfCliente.getText();
+		String dataN = txtDataCliente.getText();
+		String sexo = selecaoSexo();
+		String email = txtEmailCliente.getText();
+		String telefone = txtTelefoneCliente.getText();
+
+		// Entrada de Endereço
+		String rua = txtRua.getText();
+		String bairro = txtBairro.getText();
+		String cep = txtCep.getText();
+		String numero = txtNumero.getText();
+		String cidade = txtCidade.getText();
+
+		Cliente cliente = new Cliente(nome, cpf, dataN, sexo, email, telefone);
+		
+		
+		try {
+			Fachada.getInstance().atualizarCliente(cliente);
+			
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 	}
 }

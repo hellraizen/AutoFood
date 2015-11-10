@@ -52,7 +52,7 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 	public void atualizar(Cliente cliente) throws SQLException {
 
 		// Criando a String SQL
-		String sql = "update clientetest set nome = ? where cpf = ?";
+		String sql = "update clientetest set nome= ?, cpf =?,datanascimento=?,sexo=?, email=?, telefone=? where cpf = ?";
 		// Criar o PreparedStatement, objeto para executar a query
 		PreparedStatement preStatement;
 
@@ -60,6 +60,12 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 
 		preStatement.setString(1, cliente.getNome());
 		preStatement.setString(2, cliente.getCpf());
+		preStatement.setString(3, cliente.getDataNascimento());
+		preStatement.setString(4, cliente.getSexo());
+		preStatement.setString(5, cliente.getEmail());
+		preStatement.setString(6, cliente.getTelefone());
+		
+		preStatement.setString(7, cliente.getCpf());
 		// Executando o select
 		preStatement.executeUpdate();
 		
