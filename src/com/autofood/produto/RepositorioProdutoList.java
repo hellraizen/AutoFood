@@ -17,8 +17,8 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 	}
 
 	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,NomeVazioException {
-		if (existi(produto.getIdProduto()))
-			throw new ProdutoJ·CadastradoException();
+		//if (existi(produto.getIdProduto()))
+			//throw new ProdutoJ·CadastradoException();
 		if (produto.getNomeProduto().equals(null))
 			throw new NomeVazioException();
 
