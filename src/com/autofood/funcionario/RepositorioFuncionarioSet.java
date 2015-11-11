@@ -1,42 +1,44 @@
-package com.autofood.endereco;
+package com.autofood.funcionario;
 
 import java.util.ArrayList;
 
-public class RepositorioEnderecoMap implements IRepositorioEndereco 
+import com.autofood.clientes.Cliente;
+
+public class RepositorioFuncionarioSet implements IRepositorioFuncionario 
 {
 
 	@Override
-	public void cadastrar(Endereco endereco) {
+	public void cadastrar(Funcionario funcionario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void atualizar(Endereco endereco) {
+	public void atualizar(Funcionario funcionario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean remover(Integer codigoEndereco) {
+	public boolean remover(String cpf) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Endereco procurar(Integer codigoEndereco) {
+	public Cliente procurar(String cpf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean existir(Integer codigoEndereco) {
+	public boolean existir(String cpf) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public ArrayList<Endereco> listar() {
+	public ArrayList<Funcionario> listar() {
 		// TODO Auto-generated method stub
 		return null;
 	}

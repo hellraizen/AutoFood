@@ -4,6 +4,8 @@ import com.autofood.clientes.Cliente;
 import com.autofood.fornecedor.Fornecedor;
 import com.autofood.funcionario.Funcionario;
 
+// CLASSE PRONTA !!
+
 public class Endereco {
 	
 	private Integer idEndereco;
