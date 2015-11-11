@@ -7,12 +7,12 @@ import javax.swing.JOptionPane;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
 import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 
-public class RepositorioCliente implements IRepositorioCliente {
+public class RepositorioClienteList implements IRepositorioCliente {
 
 	ArrayList<Cliente> arrayListCliente;
 	int index;
 
-	public RepositorioCliente() {
+	public RepositorioClienteList() {
 		arrayListCliente = new ArrayList<Cliente>();
 		index = 1;
 	}
