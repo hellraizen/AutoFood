@@ -29,6 +29,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class JFClienteListar extends JFrame {
 
@@ -79,7 +80,7 @@ public class JFClienteListar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Fachada.getInstance().removerCliente(cpfControle);
-				} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException e1) {
+				} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -94,7 +95,7 @@ public class JFClienteListar extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					listar();
-				} catch (ClassNotFoundException | SQLException e) {
+				} catch (ClassNotFoundException | SQLException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -128,7 +129,7 @@ public class JFClienteListar extends JFrame {
 					txtProcurar.setText("");
 					
 					
-				} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException e1) {
+				} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -227,7 +228,7 @@ public class JFClienteListar extends JFrame {
 
 	}
 
-	private void listar() throws ClassNotFoundException, SQLException {
+	private void listar() throws ClassNotFoundException, SQLException, IOException {
 		 this.limparTabelaCliente();
 		ArrayList<Cliente> clientes = Fachada.getInstance().listarCliente();
 		for (Cliente cliente : clientes) {
@@ -281,7 +282,7 @@ public class JFClienteListar extends JFrame {
 			
 			
 			
-		} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException e) {
+		} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException | IOException e) {
 			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}

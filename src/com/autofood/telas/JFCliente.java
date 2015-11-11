@@ -29,6 +29,7 @@ import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
 import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 import com.autofood.fachada.Fachada;
 import java.awt.event.ItemListener;
+import java.io.IOException;
 import java.awt.event.ItemEvent;
 
 public class JFCliente extends JFrame {
@@ -308,7 +309,7 @@ public class JFCliente extends JFrame {
 		try {
 			Fachada.getInstance().cadastrarCliente(cliente);
 
-		} catch (SQLException | ClassNotFoundException | ClienteJaCadastradoException e) {
+		} catch (SQLException | ClassNotFoundException | ClienteJaCadastradoException | IOException e) {
 			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
@@ -368,7 +369,7 @@ public class JFCliente extends JFrame {
 			Fachada.getInstance().atualizarCliente(cliente);
 			
 			
-		} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException e) {
+		} catch (ClassNotFoundException | SQLException | ClienteNaoEncontradoException | IOException e) {
 			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}

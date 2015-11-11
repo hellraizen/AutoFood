@@ -31,6 +31,7 @@ import com.autofood.fachada.Fachada;
 import com.autofood.produto.Produto;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 import javax.swing.SwingConstants;
@@ -199,6 +200,9 @@ public class JFProduto extends JFrame {
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		});
@@ -304,7 +308,7 @@ public class JFProduto extends JFrame {
 			txtidProduto.setText("");
 			
 		} catch (ClassNotFoundException | ProdutoNaoEncontradoException
-				| SQLException e) {
+				| SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -318,7 +322,7 @@ public class JFProduto extends JFrame {
 		try {
 			Fachada.getInstance().removerProduto(id);
 		} catch (NumberFormatException | ClassNotFoundException
-				| ProdutoNaoEncontradoException | SQLException e) {
+				| ProdutoNaoEncontradoException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -340,7 +344,7 @@ public class JFProduto extends JFrame {
 		
 	}
 	
-	private void listar() throws ClassNotFoundException, SQLException {
+	private void listar() throws ClassNotFoundException, SQLException, IOException {
 		 this.limparTabelaProduto();
 		ArrayList<Produto> produtos = Fachada.getInstance().listarProduto();
 		for (Produto produto : produtos ) {
@@ -374,7 +378,7 @@ public class JFProduto extends JFrame {
 		try {
 			Fachada.getInstance().cadastraProduto(produto1);
 
-		} catch (ClassNotFoundException | ProdutoJ·CadastradoException | NomeVazioException | SQLException e) {
+		} catch (ClassNotFoundException | ProdutoJ·CadastradoException | NomeVazioException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

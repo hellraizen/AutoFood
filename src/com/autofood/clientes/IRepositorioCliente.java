@@ -1,5 +1,6 @@
 package com.autofood.clientes;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 
 public interface IRepositorioCliente {
 
-	public void cadastrar(Cliente cliente) throws SQLException, ClienteJaCadastradoException;
+	public void cadastrar(Cliente cliente) throws SQLException, ClienteJaCadastradoException, IOException;
 
 	public void atualizar(Cliente cliente) throws SQLException, ClienteNaoEncontradoException;
 

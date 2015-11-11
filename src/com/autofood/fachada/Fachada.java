@@ -1,5 +1,6 @@
 package com.autofood.fachada;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import com.autofood.clientes.Cliente;
@@ -22,14 +23,14 @@ public class Fachada {
 	private ControladorProduto controladorProduto;
 	private ControladorEstoque controladorEstoque;
 
-	private Fachada() throws ClassNotFoundException {
+	private Fachada() throws ClassNotFoundException, IOException {
 		this.controladorCliente = new ControladorCliente();
 		this.controladorProduto = new ControladorProduto();
 		this.controladorEstoque = new ControladorEstoque();
 
 	}
 
-	public static Fachada getInstance() throws ClassNotFoundException {
+	public static Fachada getInstance() throws ClassNotFoundException, IOException {
 		if (Fachada.instance == null) {
 			Fachada.instance = new Fachada();
 		}
@@ -38,7 +39,7 @@ public class Fachada {
 
 	// -------------------------------------------------------------------CLIENTE------------------------------------------------------------------
 
-	public void cadastrarCliente(Cliente cliente) throws SQLException, ClienteJaCadastradoException {
+	public void cadastrarCliente(Cliente cliente) throws SQLException, ClienteJaCadastradoException, IOException {
 		controladorCliente.cadastrar(cliente);
 
 	}
