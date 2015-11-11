@@ -50,10 +50,10 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 		for (Produto produto : arraySetProduto) {
 			if (idProduto.equals(produto.getIdProduto())) {
 				arraySetProduto.remove(produto);
-			} else {
-				throw new ProdutoNaoEncontradoException();
-			}
-		}
+			} 
+				
+			
+		}throw new ProdutoNaoEncontradoException();
 	}
 
 	public Produto procurar(Integer idProduto)

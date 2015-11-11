@@ -20,8 +20,7 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	}
 
-	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,
-			NomeVazioException {
+	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException, NomeVazioException {
 
 		produto.setIdProduto(index);
 		if (existi(produto.getIdProduto()))
@@ -50,23 +49,20 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 	}
 
 	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
+
 		for (Produto produto : arrayListProduto) {
-			System.out.println(produto.getIdProduto());
-			System.out.println(idProduto);
+
 			if (produto.getIdProduto() == idProduto) {
 
 				arrayListProduto.remove(produto);
+				JOptionPane.showMessageDialog(null, "Cliente Removido com Sucesso");
 
 			}
-		System.out.println(produto.getIdProduto());
-		System.out.println(idProduto);
-
 		}
 		throw new ProdutoNaoEncontradoException();
 	}
 
-	public Produto procurar(Integer idProduto)
-			throws ProdutoNaoEncontradoException {
+	public Produto procurar(Integer idProduto) throws ProdutoNaoEncontradoException {
 
 		for (Produto produto : arrayListProduto) {
 			if (idProduto.equals(produto.getIdProduto())) {
