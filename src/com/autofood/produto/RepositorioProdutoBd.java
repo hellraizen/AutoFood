@@ -39,7 +39,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 		preStatement.setString(5, produto.getDataFabricacaoProduto());
 
 		preStatement.execute();
-
+		System.out.println("Cadastrado realizado com sucesso");
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 	}
 
@@ -80,9 +80,9 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 		// execulta o delete
 		preStatement.executeUpdate();
 
-		System.out.println("REMOVIDO COM SUCESSO");
+		System.out.println("Removido Com Sucesso");
 
-		JOptionPane.showMessageDialog(null, "REMOVIDO COM SUCESSO");
+		JOptionPane.showMessageDialog(null, "Removido Com Sucesso");
 
 	}
 

@@ -20,7 +20,9 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	}
 
-	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException, NomeVazioException {
+	// funcional
+	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,
+			NomeVazioException {
 
 		produto.setIdProduto(index);
 		if (existi(produto.getIdProduto()))
@@ -36,18 +38,18 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
 		for (Produto produto1 : arrayListProduto) {
-			if (produto.getIdProduto().equals(produto1.getIdProduto())) {
+			if (produto1.getIdProduto() == produto.getIdProduto()) {
 
 				arrayListProduto.add(produto);
 
-			} else {
-
-				throw new ProdutoNaoEncontradoException();
 			}
+
 		}
+		throw new ProdutoNaoEncontradoException();
 
 	}
 
+	// //funcional mas com erro 
 	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
 
 		for (Produto produto : arrayListProduto) {
@@ -55,32 +57,37 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 			if (produto.getIdProduto() == idProduto) {
 
 				arrayListProduto.remove(produto);
-				JOptionPane.showMessageDialog(null, "Cliente Removido com Sucesso");
+				JOptionPane.showMessageDialog(null,
+						"Cliente Removido com Sucesso");
 
 			}
 		}
 		throw new ProdutoNaoEncontradoException();
 	}
 
-	public Produto procurar(Integer idProduto) throws ProdutoNaoEncontradoException {
+	// funcional
+	public Produto procurar(Integer idProduto)
+			throws ProdutoNaoEncontradoException {
 
 		for (Produto produto : arrayListProduto) {
-			if (idProduto.equals(produto.getIdProduto())) {
+			if (produto.getIdProduto() == idProduto) {
 
 				return produto;
 
-			} else {
-
-				throw new ProdutoNaoEncontradoException();
 			}
+
 		}
-		return null;
+
+		throw new ProdutoNaoEncontradoException();
+
 	}
 
+	// funcional
 	public Boolean existi(Integer idProduto) {
 
 		for (Produto produto : arrayListProduto) {
-			if (idProduto.equals(produto.getIdProduto())) {
+
+			if (produto.getIdProduto() == idProduto) {
 
 				return true;
 
@@ -90,6 +97,7 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 		return false;
 	}
 
+	// funcional
 	public ArrayList<Produto> listar() {
 		for (Produto produto : arrayListProduto) {
 

@@ -12,9 +12,9 @@ public class ControladorProduto {
 
 	public ControladorProduto() throws ClassNotFoundException {
 
-		repositorioProduto = new RepositorioProdutoList();
+		//repositorioProduto = new RepositorioProdutoList();
 		//repositorioProduto = new RepositorioProdutoSet();
-		//repositorioProduto = new RepositorioProdutoMap();
+		repositorioProduto = new RepositorioProdutoMap();
 		//repositorioProduto = new RepositorioProdutoBd();
 
 	}
