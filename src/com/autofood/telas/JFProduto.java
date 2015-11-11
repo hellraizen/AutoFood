@@ -33,6 +33,12 @@ import com.autofood.produto.Produto;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import javax.swing.SwingConstants;
+
+import java.awt.Component;
+
+import javax.swing.JFormattedTextField;
+
 public class JFProduto extends JFrame {
 
 	private JPanel contentPane;
@@ -67,7 +73,7 @@ public class JFProduto extends JFrame {
 	public JFProduto() {
 		setTitle("Cadastro Produtos\r\n");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 583, 512);
+		setBounds(100, 100, 650, 512);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -212,32 +218,36 @@ public class JFProduto extends JFrame {
 			}
 		});
 
-		JButton button_1 = new JButton("New button");
+		JButton btnAtualizar = new JButton("Atualizar");
 
-		JButton button_2 = new JButton("New button");
+		JButton btnProcurar = new JButton("Procurar");
+		btnProcurar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				procurar();
+			}
+		});
+		
+		JButton btnEditar = new JButton("Editar");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(panelCadastroProduto, GroupLayout.PREFERRED_SIZE, 543, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(panelListaProdudos, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(btnListar)
-								.addGap(18)
-								.addComponent(btnNewButton_1)
-								.addGap(18)
-								.addComponent(btnRemover)
-								.addGap(18)
-								.addComponent(button_1)
-								.addGap(18)
-								.addComponent(button_2))))
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panelListaProdudos, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnEditar, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnRemover, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnProcurar, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnListar, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
+						.addComponent(panelCadastroProduto, GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -246,22 +256,27 @@ public class JFProduto extends JFrame {
 					.addComponent(panelCadastroProduto, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(panelListaProdudos, GroupLayout.PREFERRED_SIZE, 245, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnListar)
-						.addComponent(btnNewButton_1)
-						.addComponent(btnRemover)
-						.addComponent(button_1)
-						.addComponent(button_2)))
+						.addComponent(btnListar, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnProcurar, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnRemover, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnEditar, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)))
 		);
+		gl_contentPane.linkSize(SwingConstants.HORIZONTAL, new Component[] {btnListar, btnNewButton_1, btnRemover, btnAtualizar, btnProcurar, btnEditar});
 
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_panelListaProdudos = new GroupLayout(panelListaProdudos);
-		gl_panelListaProdudos.setHorizontalGroup(gl_panelListaProdudos.createParallelGroup(Alignment.LEADING)
-				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE));
-		gl_panelListaProdudos.setVerticalGroup(gl_panelListaProdudos.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panelListaProdudos.createSequentialGroup().addContainerGap()
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)));
+		gl_panelListaProdudos.setHorizontalGroup(
+			gl_panelListaProdudos.createParallelGroup(Alignment.LEADING)
+				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+		);
+		gl_panelListaProdudos.setVerticalGroup(
+			gl_panelListaProdudos.createParallelGroup(Alignment.TRAILING)
+				.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+		);
 		//new DefaultTableModel(new Object[][] { { null, null, null, null, null, null }, },
 				//)
 				
@@ -278,6 +293,24 @@ public class JFProduto extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 	
+	private void procurar(){
+		
+		Integer id = Integer.parseInt(txtidProduto.getText());
+		
+		try {
+			Produto produto = Fachada.getInstance().procurarProduto(id);
+			listar(produto);
+			
+			txtidProduto.setText("");
+			
+		} catch (ClassNotFoundException | ProdutoNaoEncontradoException
+				| SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	private void remover(){
 		
 		Integer id = Integer.parseInt( txtidProduto.getText());
@@ -289,6 +322,21 @@ public class JFProduto extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+	private void listar(Produto produto) throws ClassNotFoundException, SQLException {
+		 this.limparTabelaProduto();
+		
+		
+			Vector vector = new Vector();
+			vector.add(produto.getIdProduto());
+			vector.add(produto.getNomeProduto());
+			vector.add(produto.getQuantidadeProduto());
+			vector.add(produto.getPrecoProduto());
+			vector.add(produto.getValidadeProduto());
+			vector.add(produto.getDataFabricacaoProduto());
+			
+			defultTabelaProduto.addRow(vector);
 		
 	}
 	
@@ -334,7 +382,8 @@ public class JFProduto extends JFrame {
 
 	private void limpar() {
 		// campos dados cliente
-
+		
+		txtidProduto.setText("");
 		txtProduto.setText("");
 		txtQuantidade.setText("");
 		txtPreco.setText("");

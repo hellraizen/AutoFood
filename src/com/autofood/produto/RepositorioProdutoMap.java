@@ -2,6 +2,9 @@ package com.autofood.produto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.swing.JOptionPane;
+
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -20,15 +23,15 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 
 	public void cadastra(Produto produto) throws ProdutoJáCadastradoException,
 			NomeVazioException {
-
+		produto.setIdProduto(index);
 		if (existi(produto.getIdProduto()))
 			throw new ProdutoJáCadastradoException();
 		if (produto.getNomeProduto().equals(null))
 			throw new NomeVazioException();
 
-		produto.setIdProduto(index);
 		arrayMapProduto.put(index, produto);
 		index++;
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 
 	}
 
@@ -48,6 +51,7 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 			throw new ProdutoNaoEncontradoException();
 
 		arrayMapProduto.remove(i);
+		JOptionPane.showMessageDialog(null, "Cliente Removido com Sucesso");
 	}
 
 	public Produto procurar(Integer idProduto)
@@ -63,7 +67,7 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 	public Boolean existi(Integer idProduto) {
 		for (int i = 1; i < arrayMapProduto.size(); i++) {
 			Produto produto = arrayMapProduto.get(i);
-			if (idProduto.equals(produto.getIdProduto())) {
+			if (produto.getIdProduto() == idProduto) {
 				return true;
 			}
 		}
