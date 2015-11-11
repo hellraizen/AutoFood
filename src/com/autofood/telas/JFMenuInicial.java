@@ -76,6 +76,12 @@ public class JFMenuInicial extends JFrame {
 		mnArquivo.add(mntmFuncionrio);
 
 		JMenuItem mntmProduto = new JMenuItem("Produto");
+		mntmProduto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFProduto telaProduto = new JFProduto();
+				telaProduto.setVisible(true);
+			}
+		});
 		mnArquivo.add(mntmProduto);
 
 		JMenuItem mntmCardapio = new JMenuItem("Card\u00E1pio");
