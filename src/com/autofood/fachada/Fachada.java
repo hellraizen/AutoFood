@@ -64,7 +64,7 @@ public class Fachada {
 		return controladorCliente.existe(cpf);
 	}
 
-	public ArrayList<Cliente> listarCliente() throws SQLException {
+	public ArrayList<Cliente> listarCliente() throws SQLException, IOException {
 
 		return controladorCliente.listar();
 	}

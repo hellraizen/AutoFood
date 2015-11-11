@@ -42,7 +42,7 @@ public class ControladorCliente {
 		return repositorioCliente.existe(cpf);
 	}
 
-	public ArrayList<Cliente> listar() throws SQLException {
+	public ArrayList<Cliente> listar() throws SQLException, IOException {
 		
 		return repositorioCliente.listar();
 	}

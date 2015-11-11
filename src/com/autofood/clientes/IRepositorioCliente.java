@@ -19,6 +19,6 @@ public interface IRepositorioCliente {
 
 	public boolean existe(String cpf) throws SQLException;
 
-	public ArrayList<Cliente> listar() throws SQLException;
+	public ArrayList<Cliente> listar() throws SQLException, IOException;
 
 }
