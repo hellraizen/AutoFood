@@ -31,68 +31,70 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 		String sql = "insert into produtoteste (nome_produto, quantidade, preco, validade, data_fabricacao) values(?,?,?,?,?)";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
-		
-		preStatement.setString(1,produto.getNomeProduto());
-		preStatement.setInt(2,produto.getQuantidadeProduto());
-		preStatement.setDouble(3,produto.getPrecoProduto());
-		preStatement.setString(4,produto.getValidadeProduto());
-		preStatement.setString(5,produto.getDataFabricacaoProduto());
-		
+
+		preStatement.setString(1, produto.getNomeProduto());
+		preStatement.setInt(2, produto.getQuantidadeProduto());
+		preStatement.setDouble(3, produto.getPrecoProduto());
+		preStatement.setString(4, produto.getValidadeProduto());
+		preStatement.setString(5, produto.getDataFabricacaoProduto());
+
 		preStatement.execute();
-		
+
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 	}
 
-	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException, SQLException {
-		
+	public void atualizar(Produto produto)
+			throws ProdutoNaoEncontradoException, SQLException {
+
 		String sql = "update produtoteste set nome_produto= ?,quantidade= ?,preco=?,validade= ?,data_fabricacao= ? where idProduto = ?";
 
-		PreparedStatement preStatement; 
-		
+		PreparedStatement preStatement;
+
 		preStatement = conn.prepareStatement(sql);
-		
-		preStatement.setString(1,produto.getNomeProduto());
-		preStatement.setInt(2,produto.getQuantidadeProduto());
-		preStatement.setDouble(3,produto.getPrecoProduto());
-		preStatement.setString(4,produto.getValidadeProduto());
-		preStatement.setString(5,produto.getDataFabricacaoProduto());
-		
-		preStatement.setInt(6,produto.getIdProduto());
-		
+
+		preStatement.setString(1, produto.getNomeProduto());
+		preStatement.setInt(2, produto.getQuantidadeProduto());
+		preStatement.setDouble(3, produto.getPrecoProduto());
+		preStatement.setString(4, produto.getValidadeProduto());
+		preStatement.setString(5, produto.getDataFabricacaoProduto());
+
+		preStatement.setInt(6, produto.getIdProduto());
+
 		preStatement.executeUpdate(sql);
-		
+
 		System.out.println("Atualizado Com Sucesso");
 		JOptionPane.showMessageDialog(null, "Atualizado Com Sucesso");
 
 	}
 
-	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException {
+	public void remover(Integer idProduto)
+			throws ProdutoNaoEncontradoException, SQLException {
 		// criando sql para remover
 		String sql = "delete from produtoteste where idProduto =? ";
-		
+
 		PreparedStatement preStatement;
-		//preparanto conecção 
+		// preparanto conecção
 		preStatement = conn.prepareStatement(sql);
-		
-		preStatement.setInt(1,idProduto);
-		// execulta o delete 
+
+		preStatement.setInt(1, idProduto);
+		// execulta o delete
 		preStatement.executeUpdate();
-		
+
 		System.out.println("REMOVIDO COM SUCESSO");
-		
+
 		JOptionPane.showMessageDialog(null, "REMOVIDO COM SUCESSO");
-		
 
 	}
 
-	public Produto procurar(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException {
-		
+	public Produto procurar(Integer idProduto)
+			throws ProdutoNaoEncontradoException, SQLException {
+
 		String sql = "select * from produtoteste where idProduto = ? ";
-		
+
 		PreparedStatement preStatement;
-		
+
 		preStatement = conn.prepareStatement(sql);
-		
+
 		preStatement.setInt(1, idProduto);
 		ResultSet resultset = preStatement.executeQuery();
 		while (resultset.next()) {
@@ -102,32 +104,46 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 			Double preco = resultset.getDouble(4);
 			String validade = resultset.getString(5);
 			String datafrabicacao = resultset.getString(6);
-			
-			Produto produto1 = new Produto(codigo,produto,quantidade,preco,validade,datafrabicacao);
+
+			Produto produto1 = new Produto(codigo, produto, quantidade, preco,
+					validade, datafrabicacao);
 			return produto1;
-			
+
 		}
-		
 
 		return null;
 	}
 
 	public Boolean existi(Integer idPrdotudo) {
+		
+	
 
 		return null;
 	}
 
 	public ArrayList<Produto> listar() throws SQLException {
-		
+
 		ArrayList<Produto> arrayListProduto = new ArrayList<Produto>();
-		
+
 		String sql = "select * from produtoteste";
 
-			PreparedStatement preStatement;
-			preStatement = conn.prepareStatement(sql);
-			ResultSet resultSet = preStatement.executeQuery();
-			
-		return null;
-	}
+		PreparedStatement preStatement;
+		preStatement = conn.prepareStatement(sql);
+		ResultSet resultSet = preStatement.executeQuery();
 
+		while (resultSet.next()) {
+			
+			int codigo = resultSet.getInt(1);
+			String produto = resultSet.getString(2);
+			int quantidade = resultSet.getInt(3);
+			Double preco = resultSet.getDouble(4);
+			String validade = resultSet.getString(5);
+			String datafrabicacao = resultSet.getString(6);
+			
+			Produto produto1 = new Produto(codigo,produto,quantidade,preco,validade,datafrabicacao);
+			arrayListProduto.add(produto1);
+		}
+
+		return arrayListProduto;
+	}
 }
