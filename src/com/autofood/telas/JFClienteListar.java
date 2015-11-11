@@ -274,6 +274,7 @@ public class JFClienteListar extends JFrame {
 			telaC.txtDataCliente.setText(cliente.getDataNascimento());
 			telaC.txtEmailCliente.setText(cliente.getEmail());
 			telaC.txtTelefoneCliente.setText(cliente.getTelefone());
+			telaC.txtCodigo.setText(cliente.getCodigo().toString());
 			
 			
 			

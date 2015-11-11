@@ -28,9 +28,15 @@ public class RepositorioCliente implements IRepositorioCliente {
 	}
 
 	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException {
-		if (!(existe(cliente.getCpf())))
-			throw new ClienteNaoEncontradoException();
-		arrayListCliente.add(cliente.getCodigo(), cliente);
+	
+		
+			
+		Integer i = cliente.getCodigo();
+		if (i == -1)throw new ClienteNaoEncontradoException();
+		
+		arrayListCliente.add(i, cliente);
+		
+		
 		JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso");
 
 	}
