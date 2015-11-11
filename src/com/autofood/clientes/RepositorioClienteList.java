@@ -28,17 +28,15 @@ public class RepositorioClienteList implements IRepositorioCliente {
 	}
 
 	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException {
-	
-		
-			
-		Integer i = cliente.getCodigo();
-		if (i == -1)throw new ClienteNaoEncontradoException();
-		
-		arrayListCliente.add(i, cliente);
-		
-		
-		JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso");
+		int i = cliente.getCodigo();
 
+		for (Cliente clientes : arrayListCliente) {
+			if (i == clientes.getCodigo()) {
+				arrayListCliente.remove(clientes);
+			}
+		}
+		arrayListCliente.add(cliente);
+		JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso");
 	}
 
 	public void remover(String cpf) throws ClienteNaoEncontradoException {
@@ -47,8 +45,7 @@ public class RepositorioClienteList implements IRepositorioCliente {
 			if (cliente.getCpf().equals(cpf)) {
 				arrayListCliente.remove(cliente);
 				JOptionPane.showMessageDialog(null, "Cliente Removido com Sucesso");
-			} 
-				
+			}
 
 		}
 		throw new ClienteNaoEncontradoException();
@@ -56,13 +53,12 @@ public class RepositorioClienteList implements IRepositorioCliente {
 
 	public Cliente procurar(String cpf) throws ClienteNaoEncontradoException {
 		for (Cliente cliente : arrayListCliente) {
-		
-			
-			if (cpf.equals(cliente.getCpf())) {
 
+			if (cpf.equals(cliente.getCpf())) {
+				JOptionPane.showMessageDialog(null, "Cliente Encontrado com Sucesso");
 				return cliente;
-			} 
-			
+			}
+
 		}
 		throw new ClienteNaoEncontradoException();
 	}

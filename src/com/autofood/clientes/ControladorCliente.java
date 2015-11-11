@@ -12,6 +12,8 @@ public class ControladorCliente {
 	public ControladorCliente() throws ClassNotFoundException{
 		//repositorioCliente= new RepositorioClienteJdbc();
 		repositorioCliente= new RepositorioClienteList();
+		//repositorioCliente= new RepositorioClienteMap();
+		//repositorioCliente= new RepositorioClienteSet();
 	}
 
 	public void cadastrar(Cliente cliente) throws SQLException, ClienteJaCadastradoException {
