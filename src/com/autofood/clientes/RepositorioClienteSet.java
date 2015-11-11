@@ -2,6 +2,7 @@ package com.autofood.clientes;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.TreeSet;
 
 import javax.swing.JOptionPane;
@@ -11,12 +12,12 @@ import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 
 public class RepositorioClienteSet implements IRepositorioCliente {
 
-	TreeSet<Cliente> arrayClienteSet;
+	HashSet<Cliente> arrayClienteSet;
 	int index;
 
 	public RepositorioClienteSet() {
 
-		arrayClienteSet = new TreeSet<Cliente>();
+		arrayClienteSet = new HashSet<Cliente>();
 		index = 1;
 	}
 
