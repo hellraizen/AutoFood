@@ -84,9 +84,6 @@ public class JFMenuInicial extends JFrame {
 		});
 		mnArquivo.add(mntmProduto);
 
-		JMenuItem mntmCardapio = new JMenuItem("Card\u00E1pio");
-		mnArquivo.add(mntmCardapio);
-
 		JMenuItem mntmLogoff_1 = new JMenuItem("Logoff");
 		mnArquivo.add(mntmLogoff_1);
 
@@ -102,11 +99,11 @@ public class JFMenuInicial extends JFrame {
 		JMenu mnHelp = new JMenu("Atendimento");
 		menuBar.add(mnHelp);
 
-		JMenuItem mntmVerso = new JMenuItem("Vers\u00E3o");
+		JMenuItem mntmVerso = new JMenuItem("Cardapio");
 		mnHelp.add(mntmVerso);
 
-		JMenuItem menuItem_3 = new JMenuItem("Vers\u00E3o");
-		mnHelp.add(menuItem_3);
+		JMenuItem mntmCaixa = new JMenuItem("Caixa");
+		mnHelp.add(mntmCaixa);
 
 		JMenuItem menuItem_2 = new JMenuItem("Vers\u00E3o");
 		mnHelp.add(menuItem_2);
