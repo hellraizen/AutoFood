@@ -33,10 +33,11 @@ public class RepositorioClienteList implements IRepositorioCliente {
 		for (Cliente clientes : arrayListCliente) {
 			if (i == clientes.getCodigo()) {
 				arrayListCliente.remove(clientes);
+				arrayListCliente.add(cliente);
+				JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso");
 			}
 		}
-		arrayListCliente.add(cliente);
-		JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso");
+		
 	}
 
 	public void remover(String cpf) throws ClienteNaoEncontradoException {
