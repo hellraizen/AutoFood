@@ -50,7 +50,7 @@ public class JFCliente extends JFrame {
 	private ButtonGroup bg = new ButtonGroup();
 	public JTextField txtCodigo;
 	public JButton btnAtualizar;
-
+	public JButton btnCadastrar;
 	/**
 	 * Launch the application.
 	 */
@@ -94,7 +94,7 @@ public class JFCliente extends JFrame {
 				"Endere\u00E7o", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), null));
 		panel_1.setBackground(SystemColor.menu);
 
-		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cadastrar();

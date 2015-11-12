@@ -273,6 +273,7 @@ public class JFClienteListar extends JFrame {
 			
 			JFCliente telaC = new JFCliente();
 			telaC.btnAtualizar.setEnabled(true);
+			telaC.btnCadastrar.setEnabled(false);
 			telaC.setVisible(true);
 			
 			telaC.txtNomeCliente.setText(cliente.getNome());

@@ -100,6 +100,12 @@ public class JFMenuInicial extends JFrame {
 		menuBar.add(mnHelp);
 
 		JMenuItem mntmVerso = new JMenuItem("Cardapio");
+		mntmVerso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFPedidoComanda pedidos= new JFPedidoComanda();
+				pedidos.setVisible(true);
+			}
+		});
 		mnHelp.add(mntmVerso);
 
 		JMenuItem mntmCaixa = new JMenuItem("Caixa");

@@ -85,10 +85,8 @@ public class JFProduto extends JFrame {
 
 		JPanel panelCadastroProduto = new JPanel();
 		panelCadastroProduto.setToolTipText("");
-		panelCadastroProduto.setBorder(new TitledBorder(UIManager
-				.getBorder("TitledBorder.border"), "Cadastro Produtos",
-				TitledBorder.LEADING, TitledBorder.TOP, null,
-				new Color(0, 0, 0)));
+		panelCadastroProduto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Cadastro Produtos",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelCadastroProduto.setBackground(SystemColor.menu);
 
 		JLabel lblProduto = new JLabel("Produto");
@@ -120,223 +118,83 @@ public class JFProduto extends JFrame {
 		txtidProduto.setColumns(10);
 
 		JLabel lblCodigo = new JLabel("Codigo:");
-		GroupLayout gl_panelCadastroProduto = new GroupLayout(
-				panelCadastroProduto);
-		gl_panelCadastroProduto
-				.setHorizontalGroup(gl_panelCadastroProduto
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								gl_panelCadastroProduto
-										.createSequentialGroup()
-										.addGap(4)
-										.addGroup(
-												gl_panelCadastroProduto
-														.createParallelGroup(
-																Alignment.LEADING,
-																false)
-														.addGroup(
-																gl_panelCadastroProduto
-																		.createSequentialGroup()
-																		.addGroup(
-																				gl_panelCadastroProduto
-																						.createParallelGroup(
-																								Alignment.LEADING)
-																						.addComponent(
-																								txtQuantidade,
-																								GroupLayout.PREFERRED_SIZE,
-																								154,
-																								GroupLayout.PREFERRED_SIZE)
-																						.addComponent(
-																								lblQuantidade,
-																								GroupLayout.PREFERRED_SIZE,
-																								71,
-																								GroupLayout.PREFERRED_SIZE))
-																		.addGap(18)
-																		.addGroup(
-																				gl_panelCadastroProduto
-																						.createParallelGroup(
-																								Alignment.LEADING,
-																								false)
-																						.addComponent(
-																								lblPreo,
-																								GroupLayout.PREFERRED_SIZE,
-																								118,
-																								GroupLayout.PREFERRED_SIZE)
-																						.addComponent(
-																								txtPreco,
-																								GroupLayout.PREFERRED_SIZE,
-																								118,
-																								GroupLayout.PREFERRED_SIZE))
-																		.addGap(36)
-																		.addGroup(
-																				gl_panelCadastroProduto
-																						.createParallelGroup(
-																								Alignment.LEADING)
-																						.addComponent(
-																								lblValidade,
-																								GroupLayout.PREFERRED_SIZE,
-																								71,
-																								GroupLayout.PREFERRED_SIZE)
-																						.addComponent(
-																								txtValidade,
-																								GroupLayout.PREFERRED_SIZE,
-																								197,
-																								GroupLayout.PREFERRED_SIZE)))
-														.addGroup(
-																gl_panelCadastroProduto
-																		.createSequentialGroup()
-																		.addPreferredGap(
-																				ComponentPlacement.RELATED)
-																		.addGroup(
-																				gl_panelCadastroProduto
-																						.createParallelGroup(
-																								Alignment.LEADING)
-																						.addComponent(
-																								txtProduto,
-																								GroupLayout.PREFERRED_SIZE,
-																								335,
-																								GroupLayout.PREFERRED_SIZE)
-																						.addGroup(
-																								gl_panelCadastroProduto
-																										.createSequentialGroup()
-																										.addGroup(
-																												gl_panelCadastroProduto
-																														.createParallelGroup(
-																																Alignment.TRAILING)
-																														.addGroup(
-																																gl_panelCadastroProduto
-																																		.createSequentialGroup()
-																																		.addComponent(
-																																				lblProduto,
-																																				GroupLayout.PREFERRED_SIZE,
-																																				71,
-																																				GroupLayout.PREFERRED_SIZE)
-																																		.addGap(91))
-																														.addGroup(
-																																gl_panelCadastroProduto
-																																		.createSequentialGroup()
-																																		.addComponent(
-																																				lblCodigo)
-																																		.addPreferredGap(
-																																				ComponentPlacement.UNRELATED)))
-																										.addComponent(
-																												txtidProduto,
-																												GroupLayout.PREFERRED_SIZE,
-																												GroupLayout.DEFAULT_SIZE,
-																												GroupLayout.PREFERRED_SIZE)))
-																		.addPreferredGap(
-																				ComponentPlacement.UNRELATED)
-																		.addGroup(
-																				gl_panelCadastroProduto
-																						.createParallelGroup(
-																								Alignment.LEADING)
-																						.addComponent(
-																								txtDataFabricacao)
-																						.addComponent(
-																								lblDataFabricao,
-																								GroupLayout.PREFERRED_SIZE,
-																								136,
-																								GroupLayout.PREFERRED_SIZE))))
-										.addContainerGap(
-												GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)));
-		gl_panelCadastroProduto
-				.setVerticalGroup(gl_panelCadastroProduto
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								gl_panelCadastroProduto
-										.createSequentialGroup()
-										.addGroup(
-												gl_panelCadastroProduto
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addGroup(
-																gl_panelCadastroProduto
-																		.createSequentialGroup()
-																		.addGap(28)
-																		.addGroup(
-																				gl_panelCadastroProduto
-																						.createParallelGroup(
-																								Alignment.TRAILING)
-																						.addComponent(
-																								lblProduto)
-																						.addComponent(
-																								lblDataFabricao)))
-														.addGroup(
-																gl_panelCadastroProduto
-																		.createSequentialGroup()
-																		.addContainerGap()
-																		.addGroup(
-																				gl_panelCadastroProduto
-																						.createParallelGroup(
-																								Alignment.BASELINE)
-																						.addComponent(
-																								txtidProduto,
-																								GroupLayout.PREFERRED_SIZE,
-																								GroupLayout.DEFAULT_SIZE,
-																								GroupLayout.PREFERRED_SIZE)
-																						.addComponent(
-																								lblCodigo))))
-										.addPreferredGap(
-												ComponentPlacement.RELATED)
-										.addGroup(
-												gl_panelCadastroProduto
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																txtProduto,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																txtDataFabricacao,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addGap(18)
-										.addGroup(
-												gl_panelCadastroProduto
-														.createParallelGroup(
-																Alignment.TRAILING)
-														.addGroup(
-																gl_panelCadastroProduto
-																		.createSequentialGroup()
-																		.addComponent(
-																				lblQuantidade)
-																		.addPreferredGap(
-																				ComponentPlacement.RELATED)
-																		.addComponent(
-																				txtQuantidade,
-																				GroupLayout.PREFERRED_SIZE,
-																				GroupLayout.DEFAULT_SIZE,
-																				GroupLayout.PREFERRED_SIZE))
-														.addGroup(
-																gl_panelCadastroProduto
-																		.createSequentialGroup()
-																		.addGroup(
-																				gl_panelCadastroProduto
-																						.createParallelGroup(
-																								Alignment.BASELINE)
-																						.addComponent(
-																								lblPreo)
-																						.addComponent(
-																								lblValidade))
-																		.addGap(1)
-																		.addGroup(
-																				gl_panelCadastroProduto
-																						.createParallelGroup(
-																								Alignment.BASELINE)
-																						.addComponent(
-																								txtPreco,
-																								GroupLayout.PREFERRED_SIZE,
-																								GroupLayout.DEFAULT_SIZE,
-																								GroupLayout.PREFERRED_SIZE)
-																						.addComponent(
-																								txtValidade,
-																								GroupLayout.PREFERRED_SIZE,
-																								GroupLayout.DEFAULT_SIZE,
-																								GroupLayout.PREFERRED_SIZE))))
-										.addGap(83)));
+		GroupLayout gl_panelCadastroProduto = new GroupLayout(panelCadastroProduto);
+		gl_panelCadastroProduto.setHorizontalGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelCadastroProduto.createSequentialGroup().addGap(4).addGroup(gl_panelCadastroProduto
+						.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_panelCadastroProduto.createSequentialGroup()
+								.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.LEADING)
+										.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE, 154,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblQuantidade, GroupLayout.PREFERRED_SIZE, 71,
+												GroupLayout.PREFERRED_SIZE))
+								.addGap(18)
+								.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(lblPreo, GroupLayout.PREFERRED_SIZE, 118,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(txtPreco, GroupLayout.PREFERRED_SIZE, 118,
+												GroupLayout.PREFERRED_SIZE))
+								.addGap(36)
+								.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblValidade, GroupLayout.PREFERRED_SIZE, 71,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(txtValidade, GroupLayout.PREFERRED_SIZE, 197,
+												GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_panelCadastroProduto.createSequentialGroup()
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.LEADING)
+										.addComponent(txtProduto, GroupLayout.PREFERRED_SIZE, 335,
+												GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_panelCadastroProduto.createSequentialGroup()
+												.addGroup(gl_panelCadastroProduto
+														.createParallelGroup(Alignment.TRAILING)
+														.addGroup(gl_panelCadastroProduto.createSequentialGroup()
+																.addComponent(lblProduto, GroupLayout.PREFERRED_SIZE,
+																		71, GroupLayout.PREFERRED_SIZE)
+																.addGap(91))
+														.addGroup(gl_panelCadastroProduto.createSequentialGroup()
+																.addComponent(lblCodigo)
+																.addPreferredGap(ComponentPlacement.UNRELATED)))
+												.addComponent(txtidProduto, GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.LEADING)
+										.addComponent(txtDataFabricacao).addComponent(lblDataFabricao,
+												GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE))))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_panelCadastroProduto.setVerticalGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelCadastroProduto.createSequentialGroup()
+						.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelCadastroProduto.createSequentialGroup().addGap(28)
+										.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.TRAILING)
+												.addComponent(lblProduto).addComponent(lblDataFabricao)))
+						.addGroup(gl_panelCadastroProduto.createSequentialGroup().addContainerGap()
+								.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.BASELINE)
+										.addComponent(txtidProduto, GroupLayout.PREFERRED_SIZE,
+												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblCodigo))))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.BASELINE)
+								.addComponent(txtProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtDataFabricacao, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+						.addGap(18)
+						.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_panelCadastroProduto.createSequentialGroup().addComponent(lblQuantidade)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(txtQuantidade,
+												GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panelCadastroProduto.createSequentialGroup()
+										.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.BASELINE)
+												.addComponent(lblPreo).addComponent(lblValidade))
+										.addGap(1)
+										.addGroup(gl_panelCadastroProduto.createParallelGroup(Alignment.BASELINE)
+												.addComponent(txtPreco, GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(txtValidade, GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+						.addGap(83)));
 		panelCadastroProduto.setLayout(gl_panelCadastroProduto);
 
 		JPanel panelListaProdudos = new JPanel();
@@ -395,137 +253,57 @@ public class JFProduto extends JFrame {
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panelListaProdudos, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 546,
+										Short.MAX_VALUE)
+						.addGroup(Alignment.TRAILING,
+								gl_contentPane.createSequentialGroup()
+										.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 92,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 88,
+												GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnEditar, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnRemover, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnProcurar, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnListar, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
+						.addComponent(panelCadastroProduto, GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
+				.addContainerGap()));
 		gl_contentPane
-				.setHorizontalGroup(gl_contentPane
-						.createParallelGroup(Alignment.TRAILING)
-						.addGroup(
-								gl_contentPane
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												gl_contentPane
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addComponent(
-																panelListaProdudos,
-																Alignment.TRAILING,
-																GroupLayout.DEFAULT_SIZE,
-																546,
-																Short.MAX_VALUE)
-														.addGroup(
-																Alignment.TRAILING,
-																gl_contentPane
-																		.createSequentialGroup()
-																		.addComponent(
-																				btnNewButton_1,
-																				GroupLayout.PREFERRED_SIZE,
-																				92,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				btnAtualizar,
-																				GroupLayout.PREFERRED_SIZE,
-																				88,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				btnEditar,
-																				GroupLayout.PREFERRED_SIZE,
-																				80,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				ComponentPlacement.RELATED)
-																		.addComponent(
-																				btnRemover,
-																				GroupLayout.PREFERRED_SIZE,
-																				80,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				btnProcurar,
-																				GroupLayout.PREFERRED_SIZE,
-																				80,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				btnListar,
-																				GroupLayout.PREFERRED_SIZE,
-																				80,
-																				GroupLayout.PREFERRED_SIZE))
-														.addComponent(
-																panelCadastroProduto,
-																GroupLayout.DEFAULT_SIZE,
-																604,
-																Short.MAX_VALUE))
-										.addContainerGap()));
-		gl_contentPane
-				.setVerticalGroup(gl_contentPane
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								gl_contentPane
-										.createSequentialGroup()
-										.addComponent(panelCadastroProduto,
-												GroupLayout.PREFERRED_SIZE,
-												164, GroupLayout.PREFERRED_SIZE)
-										.addGap(18)
-										.addComponent(panelListaProdudos,
-												GroupLayout.PREFERRED_SIZE,
-												245, GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(
-												ComponentPlacement.RELATED, 16,
-												Short.MAX_VALUE)
-										.addGroup(
-												gl_contentPane
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																btnListar,
-																GroupLayout.PREFERRED_SIZE,
-																20,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																btnProcurar,
-																GroupLayout.PREFERRED_SIZE,
-																20,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																btnRemover,
-																GroupLayout.PREFERRED_SIZE,
-																20,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																btnEditar,
-																GroupLayout.PREFERRED_SIZE,
-																20,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																btnNewButton_1,
-																GroupLayout.PREFERRED_SIZE,
-																20,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																btnAtualizar,
-																GroupLayout.PREFERRED_SIZE,
-																20,
-																GroupLayout.PREFERRED_SIZE))));
-		gl_contentPane.linkSize(SwingConstants.HORIZONTAL, new Component[] {
-				btnListar, btnNewButton_1, btnRemover, btnAtualizar,
-				btnProcurar, btnEditar });
+				.setVerticalGroup(
+						gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(
+										gl_contentPane.createSequentialGroup()
+												.addComponent(panelCadastroProduto, GroupLayout.PREFERRED_SIZE, 164,
+														GroupLayout.PREFERRED_SIZE)
+												.addGap(18)
+												.addComponent(panelListaProdudos, GroupLayout.PREFERRED_SIZE, 245,
+														GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+										.addComponent(btnListar, GroupLayout.PREFERRED_SIZE, 20,
+												GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnProcurar, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnRemover, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnEditar, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 20,
+										GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))));
+		gl_contentPane.linkSize(SwingConstants.HORIZONTAL,
+				new Component[] { btnListar, btnNewButton_1, btnRemover, btnAtualizar, btnProcurar, btnEditar });
 
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_panelListaProdudos = new GroupLayout(panelListaProdudos);
-		gl_panelListaProdudos.setHorizontalGroup(gl_panelListaProdudos
-				.createParallelGroup(Alignment.LEADING).addComponent(
-						scrollPane, Alignment.TRAILING,
-						GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE));
-		gl_panelListaProdudos.setVerticalGroup(gl_panelListaProdudos
-				.createParallelGroup(Alignment.TRAILING).addComponent(
-						scrollPane, Alignment.LEADING,
-						GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE));
+		gl_panelListaProdudos.setHorizontalGroup(gl_panelListaProdudos.createParallelGroup(Alignment.LEADING)
+				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE));
+		gl_panelListaProdudos.setVerticalGroup(gl_panelListaProdudos.createParallelGroup(Alignment.TRAILING)
+				.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE));
 		// new DefaultTableModel(new Object[][] { { null, null, null, null,
 		// null, null }, },
 		// )
@@ -536,17 +314,15 @@ public class JFProduto extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				int linhaselecionada = tableProduto.getSelectedRow();
 
-				String ccodigoselecao = tableProduto.getValueAt(
-						linhaselecionada, 0).toString();
+				String ccodigoselecao = tableProduto.getValueAt(linhaselecionada, 0).toString();
 				codigoselecao = Integer.parseInt(ccodigoselecao);
-				System.out.println(codigoselecao);
+				
 
 			}
 		});
-		String colunasTabelaProduto[] = new String[] { "IdProduto", "Produto",
-				"Quantidade", "Preco", "Validade", "DataFabricacao" };
-		defultTabelaProduto = new DefaultTableModel(new Object[][] {},
-				colunasTabelaProduto) {
+		String colunasTabelaProduto[] = new String[] { "IdProduto", "Produto", "Quantidade", "Preco", "Validade",
+				"DataFabricacao" };
+		defultTabelaProduto = new DefaultTableModel(new Object[][] {}, colunasTabelaProduto) {
 			public boolean isCellEditable(int row, int col) {
 				return false;
 			}
@@ -567,8 +343,7 @@ public class JFProduto extends JFrame {
 
 			txtidProduto.setText("");
 
-		} catch (ClassNotFoundException | ProdutoNaoEncontradoException
-				| SQLException | IOException e) {
+		} catch (ClassNotFoundException | ProdutoNaoEncontradoException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -580,16 +355,15 @@ public class JFProduto extends JFrame {
 		try {
 			Fachada.getInstance().removerProduto(codigoselecao);
 
-		} catch (NumberFormatException | ClassNotFoundException
-				| ProdutoNaoEncontradoException | SQLException | IOException e) {
+		} catch (NumberFormatException | ClassNotFoundException | ProdutoNaoEncontradoException | SQLException
+				| IOException e) {
 
 			e.printStackTrace();
 		}
 
 	}
 
-	private void listar(Produto produto) throws ClassNotFoundException,
-			SQLException {
+	private void listar(Produto produto) throws ClassNotFoundException, SQLException {
 		this.limparTabelaProduto();
 
 		Vector vector = new Vector();
@@ -604,8 +378,7 @@ public class JFProduto extends JFrame {
 
 	}
 
-	private void listar() throws ClassNotFoundException, SQLException,
-			IOException {
+	private void listar() throws ClassNotFoundException, SQLException, IOException {
 		this.limparTabelaProduto();
 		ArrayList<Produto> produtos = Fachada.getInstance().listarProduto();
 		for (Produto produto : produtos) {
@@ -633,13 +406,12 @@ public class JFProduto extends JFrame {
 		String validade = txtValidade.getText();
 		String datafabricacao = txtDataFabricacao.getText();
 
-		Produto produto1 = new Produto(produto, quantidade, preco, validade,
-				datafabricacao);
+		Produto produto1 = new Produto(produto, quantidade, preco, validade, datafabricacao);
 		try {
 			Fachada.getInstance().cadastraProduto(produto1);
 
-		} catch (ClassNotFoundException | ProdutoJ·CadastradoException
-				| NomeVazioException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | ProdutoJ·CadastradoException | NomeVazioException | SQLException
+				| IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -648,8 +420,7 @@ public class JFProduto extends JFrame {
 	private void editar() {
 
 		try {
-			Produto produto = Fachada.getInstance().procurarProduto(
-					codigoselecao);
+			Produto produto = Fachada.getInstance().procurarProduto(codigoselecao);
 
 			Integer codigo = produto.getIdProduto();
 			String nome = produto.getNomeProduto();
@@ -657,45 +428,41 @@ public class JFProduto extends JFrame {
 			Double preco = produto.getPrecoProduto();
 			String validade = produto.getValidadeProduto();
 			String data = produto.getDataFabricacaoProduto();
-			
+
 			txtidProduto.setText(codigo.toString());
 			txtProduto.setText(nome);
 			txtQuantidade.setText(quantidade.toString());
 			txtPreco.setText(preco.toString());
 			txtValidade.setText(validade.toString());
 			txtDataFabricacao.setText(data.toString());
-			
 
-		} catch (ClassNotFoundException | ProdutoNaoEncontradoException
-				| SQLException | IOException e) {
+		} catch (ClassNotFoundException | ProdutoNaoEncontradoException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
-	
-	private void atualizar(){
-		
-		Integer codigo =Integer.parseInt(txtidProduto.getText());
+
+	private void atualizar() {
+
+		Integer codigo = Integer.parseInt(txtidProduto.getText());
 		String produto = txtProduto.getText();
 		Integer quantidade = Integer.parseInt(txtQuantidade.getText());
 		Double preco = Double.parseDouble(txtPreco.getText());
 		String validade = txtValidade.getText();
 		String datafabricacao = txtDataFabricacao.getText();
 
-		Produto produto1 = new Produto(codigo,produto, quantidade, preco, validade,
-				datafabricacao);
-		
+		Produto produto1 = new Produto(codigo, produto, quantidade, preco, validade, datafabricacao);
+
 		try {
 			Fachada.getInstance().atualizarProduto(produto1);
 			limpar();
-		} catch (ClassNotFoundException | ProdutoNaoEncontradoException
-				| SQLException | IOException e) {
+		} catch (ClassNotFoundException | ProdutoNaoEncontradoException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	} 
+
+	}
 
 	private void limpar() {
 		// campos dados cliente
