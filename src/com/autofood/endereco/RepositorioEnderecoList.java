@@ -52,28 +52,32 @@ public class RepositorioEnderecoList implements IRepositorioEndereco {
 
 	@Override
 	public Endereco procurar(Integer codigoEndereco) {
-		
-		for (Endereco endereco : arrayListEndereco)
-		{
-			if(endereco.getIdEndereco() == codigoEndereco)
-			{
+
+		for (Endereco endereco : arrayListEndereco) {
+			if (endereco.getIdEndereco() == codigoEndereco) {
 				return endereco;
 			}
 		}
-				
+
 		return null;
 	}
 
 	@Override
 	public boolean existir(Integer codigoEndereco) {
-		// TODO Auto-generated method stub
-		return false;
+
+		for (Endereco endereco : arrayListEndereco) {
+			if (endereco.getIdEndereco() == codigoEndereco) {
+
+				return arrayListEndereco.contains(endereco);
+			}
+		}return false;
+
 	}
 
 	@Override
 	public ArrayList<Endereco> listar() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return arrayListEndereco;
 	}
 
 }
