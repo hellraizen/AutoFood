@@ -42,8 +42,7 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 
 		for (int j = 1; j < index; j++) {
 			Produto produtos = arrayMapProduto.get(j);
-			if (i == produtos.getIdProduto())
-				;
+			if (i == produtos.getIdProduto());
 
 			arrayMapProduto.remove(i, produtos);
 			arrayMapProduto.put(i, produto);

@@ -1,5 +1,6 @@
 package com.autofood.estoque;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.autofood.exceçõesEstoque.NomeVazioException;
@@ -19,25 +20,25 @@ public class ControladorEstoque {
 		
 	}
 	
-	public void cadastra(Estoque estoque) throws NomeVazioException, ProdutoJaCadastradoEstoqueException {
+	public void cadastra(Estoque estoque) throws NomeVazioException, ProdutoJaCadastradoEstoqueException, SQLException {
 		
 		repositorioEstoque.cadastra(estoque);
 
 	}
 
-	public void atualizar(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException {
+	public void atualizar(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 		
 		repositorioEstoque.atualizar(estoque);
 		
 	}
 
-	public void remover(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException {
+	public void remover(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 		
 		repositorioEstoque.remover(idEstoqueProduto);
 		
 	}
 
-	public Estoque procurar(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException {
+	public Estoque procurar(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 
 		return repositorioEstoque.procurar(idEstoqueProduto);
 		
@@ -49,7 +50,7 @@ public class ControladorEstoque {
 		
 	}
 
-	public ArrayList<Estoque> listar() {
+	public ArrayList<Estoque> listar() throws SQLException {
 
 		return repositorioEstoque.listar();
 		

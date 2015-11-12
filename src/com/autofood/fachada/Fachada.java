@@ -118,25 +118,25 @@ public class Fachada {
 	// -------------------------------------------------------------------ESTOQUE------------------------------------------------------------------
 
 
-	public void cadastraEstoque(Estoque estoque) throws com.autofood.exceçõesEstoque.NomeVazioException, ProdutoJaCadastradoEstoqueException {
+	public void cadastraEstoque(Estoque estoque) throws com.autofood.exceçõesEstoque.NomeVazioException, ProdutoJaCadastradoEstoqueException, SQLException {
 		
 		controladorEstoque.cadastra(estoque);
 
 	}
 
-	public void atualizarEstoque(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException {
+	public void atualizarEstoque(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 		
 		controladorEstoque.atualizar(estoque);
 
 	}
 
-	public void removerEstoque(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException {
+	public void removerEstoque(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 		
 		controladorEstoque.remover(idEstoqueProduto);
 		
 	}
 
-	public Estoque procurarEstoque(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException {
+	public Estoque procurarEstoque(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 
 		return controladorEstoque.procurar(idEstoqueProduto);
 	}
@@ -146,11 +146,11 @@ public class Fachada {
 		return controladorEstoque.existi(idEstoqueProduto);
 	}
 
-	public ArrayList<Estoque> listarEstoque() {
+	public ArrayList<Estoque> listarEstoque() throws SQLException {
 
 		return controladorEstoque.listar();
 	}
-	//-------------------------------------------------------------Endereco----------------------------------------------
+	// -------------------------------------------------------------------ENDERECO------------------------------------------------------------------
 	
 	public void cadastrarEndereco(Endereco endereco) {
 		controladorEndereco.cadastrar(endereco);

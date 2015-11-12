@@ -19,3 +19,14 @@ validade varchar(10),
 data_fabricacao varchar(10),
 primary key (idproduto)
 );
+
+create table estoqueteste(
+
+idEstoqueProduto serial,
+produtoEstoque varchar (40),
+quantidade int,
+dataEntrada varchar (10),
+dataValidade varchar(10),
+precoCusto numeric(8,2),
+primary key(idEstoqueProduto)
+);

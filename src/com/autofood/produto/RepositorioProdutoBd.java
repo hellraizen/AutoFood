@@ -1,17 +1,11 @@
 package com.autofood.produto;
-
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.JOptionPane;
-
 import DAL.ConectaBd;
-
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -39,7 +33,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 		preStatement.setString(5, produto.getDataFabricacaoProduto());
 
 		preStatement.execute();
-		System.out.println("Cadastrado realizado com sucesso");
+		
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 	}
 
@@ -48,9 +42,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 		String sql = "update produtoteste set idProduto=? ,nome_produto= ?,quantidade= ?,preco=?,validade= ?,data_fabricacao= ? where idProduto = ?";
 
-		PreparedStatement preStatement;
-
-		preStatement = conn.prepareStatement(sql);
+		PreparedStatement preStatement = conn.prepareStatement(sql);
 
 		preStatement.setInt(1, produto.getIdProduto());
 		preStatement.setString(2, produto.getNomeProduto());
@@ -70,18 +62,14 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 	public void remover(Integer idProduto)
 			throws ProdutoNaoEncontradoException, SQLException {
-		// criando sql para remover
+	
 		String sql = "delete from produtoteste where idProduto =? ";
 
-		PreparedStatement preStatement;
-		// preparanto conecção
-		preStatement = conn.prepareStatement(sql);
+		PreparedStatement preStatement = conn.prepareStatement(sql);
 
 		preStatement.setInt(1, idProduto);
-		// execulta o delete
+	
 		preStatement.executeUpdate();
-
-		System.out.println("Removido Com Sucesso");
 
 		JOptionPane.showMessageDialog(null, "Removido Com Sucesso");
 
@@ -108,6 +96,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 			Produto produto1 = new Produto(codigo, produto, quantidade, preco,
 					validade, datafrabicacao);
+			
 			return produto1;
 
 		}
