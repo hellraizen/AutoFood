@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public interface IRepositorioCaixa {
 	
 
-	public boolean abrirCaixa(Double dinheiroCaixa);
+	public boolean abrirCaixa();
 
 	public boolean fecharCaixa();
 

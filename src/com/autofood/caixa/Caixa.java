@@ -5,7 +5,6 @@ import java.util.Date;
 public class Caixa {
 	private Double entrada;
 	private Double saida;
-	private Double inicial;
 	private Integer idComanda;
 	private Double totalCaixa;
 	private Integer idFuncionario;
@@ -16,7 +15,7 @@ public class Caixa {
 		setSaida(saida);
 		setIdComanda(idComanda);
 		setIdFuncionario(idFuncionario);
-		//setData(data);
+
 
 	}
 	public Caixa(Double entrada, Double saida, Integer idComanda, Integer idFuncionario, Date data) {
@@ -44,14 +43,6 @@ public class Caixa {
 		this.saida = saida;
 	}
 
-	public Double getInicial() {
-		return inicial;
-	}
-
-	public void setInicial(Double inicial) {
-		this.inicial = inicial;
-	}
-
 	public Integer getIdComanda() {
 		return idComanda;
 	}
@@ -68,11 +59,11 @@ public class Caixa {
 		this.idFuncionario = idFuncionario;
 	}
 
-	public Double getTotalPago() {
+	public Double getTotalCaixa() {
 		return totalCaixa;
 	}
 
-	public void setTotalPago(Double totalPago) {
+	public void setTotalCaixa(Double totalPago) {
 		this.totalCaixa = totalPago;
 	}
 
@@ -85,7 +76,7 @@ public class Caixa {
 	}
 	@Override
 	public String toString() {
-		return "Caixa [entrada=" + entrada + ", saida=" + saida + ", inicial=" + inicial + ", idComanda=" + idComanda
+		return "Caixa [entrada=" + entrada + ", saida=" + saida + ", idComanda=" + idComanda
 				+ ", totalCaixa=" + totalCaixa + ", idFuncionario=" + idFuncionario + ", data=" + data + "]";
 	}
 

@@ -4,34 +4,58 @@ import java.util.ArrayList;
 
 public class RepositorioCaixaList implements IRepositorioCaixa {
 
+	private ArrayList<Caixa> arrayCaixaList;
+	private Boolean caixa;
+
+	public RepositorioCaixaList() {
+		arrayCaixaList = new ArrayList<Caixa>();
+		caixa = false;
+	}
+
 	@Override
-	public boolean abrirCaixa(Double dinheiroCaixa) {
-		// TODO Auto-generated method stub
+	public boolean abrirCaixa() {
+		if (caixa == false) {
+			caixa = true;
+			
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean fecharCaixa() {
-		// TODO Auto-generated method stub
-		return false;
+		if (caixa) {
+			caixa = false;
+		}
+		return true;
+
 	}
 
 	@Override
 	public void entradaCaixa(Caixa entradaCaixa) {
-		// TODO Auto-generated method stub
-		
+		if (caixa) {
+			
+			double total = entradaCaixa.getTotalCaixa();
+			total += entradaCaixa.getEntrada();
+			entradaCaixa.setTotalCaixa(total);
+			arrayCaixaList.add(entradaCaixa);
+		}
+
 	}
 
 	@Override
 	public void saidaCaixa(Caixa saidaCaixa) {
-		// TODO Auto-generated method stub
-		
+		double total = saidaCaixa.getTotalCaixa();
+		total -= saidaCaixa.getSaida();
+		saidaCaixa.setTotalCaixa(total);
+		arrayCaixaList.add(saidaCaixa);
+
 	}
 
 	@Override
 	public ArrayList<Caixa> movimentoDiario() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return arrayCaixaList;
 	}
 
 }

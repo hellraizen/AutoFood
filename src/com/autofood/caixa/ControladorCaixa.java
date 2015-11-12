@@ -11,8 +11,8 @@ public class ControladorCaixa {
 		repositorioCaixa = new RepositorioCaixaList();
 	}
 
-	public boolean abrirCaixa(Double dinheiroCaixa) {
-		return repositorioCaixa.abrirCaixa(dinheiroCaixa);
+	public boolean abrirCaixa() {
+		return repositorioCaixa.abrirCaixa();
 	}
 
 	public boolean fecharCaixa() {
