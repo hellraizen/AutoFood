@@ -78,7 +78,7 @@ public class JFProduto extends JFrame {
 	public JFProduto() {
 		setTitle("Cadastro Produtos\r\n");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 650, 512);
+		setBounds(100, 100, 651, 512);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
