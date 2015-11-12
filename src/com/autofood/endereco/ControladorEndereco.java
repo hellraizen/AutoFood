@@ -2,6 +2,8 @@ package com.autofood.endereco;
 
 import java.util.ArrayList;
 
+import com.autofood.exceçõesEndereço.EnderecoJaCadastradoException;
+
 public class ControladorEndereco {
 	private IRepositorioEndereco repositorioEndereco;
 
@@ -14,7 +16,7 @@ public class ControladorEndereco {
 
 	}
 
-	public void cadastrar(Endereco endereco) {
+	public void cadastrar(Endereco endereco)  {
 		repositorioEndereco.cadastrar(endereco);
 
 	}
@@ -24,8 +26,8 @@ public class ControladorEndereco {
 
 	}
 
-	public boolean remover(Integer codigoEndereco) {
-		return repositorioEndereco.remover(codigoEndereco);
+	public void remover(Integer codigoEndereco) {
+		repositorioEndereco.remover(codigoEndereco);
 	}
 
 	public Endereco procurar(Integer codigoEndereco) {

@@ -18,9 +18,9 @@ public class RepositorioEnderecoMap implements IRepositorioEndereco
 	}
 
 	@Override
-	public boolean remover(Integer codigoEndereco) {
+	public void remover(Integer codigoEndereco) {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 	@Override

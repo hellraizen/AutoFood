@@ -2,7 +2,7 @@ package com.autofood.endereco;
 
 import java.util.ArrayList;
 
-import com.autofood.exceçõesEndereço.EnderecoJaCadastradoException;
+import javax.swing.JOptionPane;
 
 public class RepositorioEnderecoList implements IRepositorioEndereco {
 
@@ -16,26 +16,51 @@ public class RepositorioEnderecoList implements IRepositorioEndereco {
 	}
 
 	@Override
-	public void cadastrar(Endereco endereco) throws EnderecoJaCadastradoException {
-		if(existir(endereco.getIdEndereco())) throw new EnderecoJaCadastradoException();
-		{}
+	public void cadastrar(Endereco endereco) {
+		endereco.setIdEndereco(index);
+		arrayListEndereco.add(endereco);
+		index++;
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
 	}
 
 	@Override
 	public void atualizar(Endereco endereco) {
-		// TODO Auto-generated method stub
+		int i = endereco.getIdEndereco();
+
+		for (Endereco endereco1 : arrayListEndereco) {
+			if (i == endereco1.getIdEndereco()) {
+				arrayListEndereco.remove(endereco1);
+				arrayListEndereco.add(endereco);
+				JOptionPane.showMessageDialog(null, "Endereço Atualizado com Sucesso");
+			}
+		}
 
 	}
 
 	@Override
-	public boolean remover(Integer codigoEndereco) {
-		// TODO Auto-generated method stub
-		return false;
+	public void remover(Integer codigoEndereco) {
+
+		for (Endereco endereco1 : arrayListEndereco) {
+
+			if (endereco1.getIdEndereco() == codigoEndereco) {
+				arrayListEndereco.remove(endereco1);
+				JOptionPane.showMessageDialog(null, "Endereço Removido com Sucesso");
+			}
+
+		}
 	}
 
 	@Override
 	public Endereco procurar(Integer codigoEndereco) {
-		// TODO Auto-generated method stub
+		
+		for (Endereco endereco : arrayListEndereco)
+		{
+			if(endereco.getIdEndereco() == codigoEndereco)
+			{
+				return endereco;
+			}
+		}
+				
 		return null;
 	}
 

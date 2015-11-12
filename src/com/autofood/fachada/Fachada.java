@@ -12,6 +12,7 @@ import com.autofood.estoque.ControladorEstoque;
 import com.autofood.estoque.Estoque;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
 import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
+import com.autofood.exceçõesEndereço.EnderecoJaCadastradoException;
 import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 import com.autofood.exceçõesProduto.NomeVazioException;
@@ -161,9 +162,9 @@ public class Fachada {
 		
 	}
 
-	public boolean removerEndereco(Integer codigoEndereco) {
+	public void removerEndereco(Integer codigoEndereco) {
 		
-		return controladorEndereco.remover(codigoEndereco);
+		controladorEndereco.remover(codigoEndereco);
 	}
 
 	public Endereco procurarEndereco(Integer codigoEndereco) {

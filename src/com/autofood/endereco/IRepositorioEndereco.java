@@ -6,9 +6,9 @@ import com.autofood.exceçõesEndereço.EnderecoJaCadastradoException;
 
 public interface IRepositorioEndereco 
 {	
-	public void cadastrar(Endereco endereco) throws EnderecoJaCadastradoException; 
+	public void cadastrar(Endereco endereco); 
 	public void atualizar(Endereco endereco);
-	public boolean remover(Integer codigoEndereco);
+	public void remover(Integer codigoEndereco);
 	public Endereco procurar(Integer codigoEndereco);
 	public boolean existir(Integer codigoEndereco);
 	public ArrayList<Endereco> listar();
