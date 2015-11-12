@@ -2,40 +2,42 @@ package com.autofood.endereco;
 
 import java.util.ArrayList;
 
-public class ControladorEndereco 
-{
+public class ControladorEndereco {
 	private IRepositorioEndereco repositorioEndereco;
 
+	public ControladorEndereco() {
+
+		// this.repositorioEndereco = new RepositorioEnderecoBd();
+		this.repositorioEndereco = new RepositorioEnderecoList();
+		// this.repositorioEndereco = new RepositorioEnderecoSet();
+		// this.repositorioEndereco = new RepositorioEnderecoMap();
+
+	}
+
 	public void cadastrar(Endereco endereco) {
-		// TODO Auto-generated method stub
-		
+		repositorioEndereco.cadastrar(endereco);
+
 	}
 
 	public void atualizar(Endereco endereco) {
-		// TODO Auto-generated method stub
-		
+		repositorioEndereco.atualizar(endereco);
+
 	}
 
 	public boolean remover(Integer codigoEndereco) {
-		// TODO Auto-generated method stub
-		return false;
+		return repositorioEndereco.remover(codigoEndereco);
 	}
 
 	public Endereco procurar(Integer codigoEndereco) {
-		// TODO Auto-generated method stub
-		return null;
+		return repositorioEndereco.procurar(codigoEndereco);
 	}
 
 	public boolean existir(Integer codigoEndereco) {
-		// TODO Auto-generated method stub
-		return false;
+		return repositorioEndereco.existir(codigoEndereco);
 	}
 
 	public ArrayList<Endereco> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return repositorioEndereco.listar();
 	}
-	
-	
-	
+
 }

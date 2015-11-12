@@ -2,19 +2,29 @@ package com.autofood.endereco;
 
 import java.util.ArrayList;
 
-public class RepositorioEnderecoList implements IRepositorioEndereco 
-{
+import com.autofood.exceçõesEndereço.EnderecoJaCadastradoException;
+
+public class RepositorioEnderecoList implements IRepositorioEndereco {
+
+	ArrayList<Endereco> arrayListEndereco;
+	int index;
+
+	public RepositorioEnderecoList() {
+
+		this.arrayListEndereco = new ArrayList<Endereco>();
+		this.index = 1;
+	}
 
 	@Override
-	public void cadastrar(Endereco endereco) {
-		// TODO Auto-generated method stub
-		
+	public void cadastrar(Endereco endereco) throws EnderecoJaCadastradoException {
+		if(existir(endereco.getIdEndereco())) throw new EnderecoJaCadastradoException();
+		{}
 	}
 
 	@Override
 	public void atualizar(Endereco endereco) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -40,5 +50,5 @@ public class RepositorioEnderecoList implements IRepositorioEndereco
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }

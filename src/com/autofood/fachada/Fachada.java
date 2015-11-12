@@ -3,8 +3,11 @@ package com.autofood.fachada;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import com.autofood.clientes.Cliente;
 import com.autofood.clientes.ControladorCliente;
+import com.autofood.endereco.ControladorEndereco;
+import com.autofood.endereco.Endereco;
 import com.autofood.estoque.ControladorEstoque;
 import com.autofood.estoque.Estoque;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
@@ -22,11 +25,13 @@ public class Fachada {
 	private ControladorCliente controladorCliente;
 	private ControladorProduto controladorProduto;
 	private ControladorEstoque controladorEstoque;
+	private ControladorEndereco controladorEndereco;
 
 	private Fachada() throws ClassNotFoundException, IOException {
 		this.controladorCliente = new ControladorCliente();
 		this.controladorProduto = new ControladorProduto();
 		this.controladorEstoque = new ControladorEstoque();
+		this.controladorEndereco = new ControladorEndereco();
 
 	}
 
@@ -143,6 +148,37 @@ public class Fachada {
 	public ArrayList<Estoque> listarEstoque() {
 
 		return controladorEstoque.listar();
+	}
+	//-------------------------------------------------------------Endereco----------------------------------------------
+	
+	public void cadastrarEndereco(Endereco endereco) {
+		controladorEndereco.cadastrar(endereco);
+		
+	}
+
+	public void atualizarEndereco(Endereco endereco) {
+		controladorEndereco.atualizar(endereco);
+		
+	}
+
+	public boolean removerEndereco(Integer codigoEndereco) {
+		
+		return controladorEndereco.remover(codigoEndereco);
+	}
+
+	public Endereco procurarEndereco(Integer codigoEndereco) {
+	
+		return controladorEndereco.procurar(codigoEndereco);
+	}
+
+	public boolean existirEndereco(Integer codigoEndereco) {
+
+		return controladorEndereco.existir(codigoEndereco);
+	}
+
+	public ArrayList<Endereco> listarEndereco() {
+
+		return controladorEndereco.listar();
 	}
 	
 }
