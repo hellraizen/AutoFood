@@ -56,7 +56,7 @@ public class RepositorioClienteList implements IRepositorioCliente {
 		for (Cliente cliente : arrayListCliente) {
 
 			if (cpf.equals(cliente.getCpf())) {
-				JOptionPane.showMessageDialog(null, "Cliente Encontrado com Sucesso");
+				
 				return cliente;
 			}
 

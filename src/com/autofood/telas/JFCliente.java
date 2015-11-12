@@ -49,6 +49,7 @@ public class JFCliente extends JFrame {
 	private JRadioButton rdbtnMasculino;
 	private ButtonGroup bg = new ButtonGroup();
 	public JTextField txtCodigo;
+	public JButton btnAtualizar;
 
 	/**
 	 * Launch the application.
@@ -71,6 +72,7 @@ public class JFCliente extends JFrame {
 	 */
 
 	public JFCliente() {
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 559, 465);
 		contentPane = new JPanel();
@@ -110,7 +112,8 @@ public class JFCliente extends JFrame {
 		});
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 
-		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.setEnabled(false);
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				atualizar();
@@ -124,10 +127,11 @@ public class JFCliente extends JFrame {
 		JLabel lblCodigo = new JLabel("Codigo ");
 		
 		txtCodigo = new JTextField();
+		txtCodigo.setEditable(false);
 		txtCodigo.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(146, Short.MAX_VALUE)
 					.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
@@ -136,14 +140,14 @@ public class JFCliente extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
 					.addGap(29))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(187)
 					.addComponent(lblNewLabel)
 					.addGap(36)
 					.addComponent(lblCodigo)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(76, Short.MAX_VALUE))
+					.addComponent(txtCodigo, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+					.addGap(76))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(22)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)

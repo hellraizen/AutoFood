@@ -30,6 +30,7 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 
 public class JFClienteListar extends JFrame {
 
@@ -75,7 +76,8 @@ public class JFClienteListar extends JFrame {
 			}
 		});
 
-		JButton btnRemover = new JButton("-");
+		JButton btnRemover = new JButton("");
+		btnRemover.setIcon(new ImageIcon(JFClienteListar.class.getResource("/com/autofood/imagens/image004.gif")));
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -110,6 +112,7 @@ public class JFClienteListar extends JFrame {
 		JLabel lblPesquisar = new JLabel("Pesquisar");
 		
 		JButton btnCadastrar = new JButton("+");
+		btnCadastrar.setFont(new Font("TypoUpright BT", Font.PLAIN, 16));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFCliente telaCliente = new JFCliente();
@@ -118,6 +121,7 @@ public class JFClienteListar extends JFrame {
 		});
 		
 		JButton btnProcurar = new JButton("Procurar");
+		btnProcurar.setIcon(new ImageIcon(JFClienteListar.class.getResource("/com/autofood/imagens/image006.gif")));
 		btnProcurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String procura =txtProcurar.getText();
@@ -144,7 +148,7 @@ public class JFClienteListar extends JFrame {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 627, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(18, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(275, Short.MAX_VALUE)
+					.addContainerGap(271, Short.MAX_VALUE)
 					.addComponent(lblListaDeCliente)
 					.addGap(265))
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -154,8 +158,8 @@ public class JFClienteListar extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btnCadastrar)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(btnRemover))
 								.addComponent(txtProcurar, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -185,10 +189,10 @@ public class JFClienteListar extends JFrame {
 								.addComponent(btnProcurar))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnCadastrar)
-								.addComponent(btnRemover, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnRemover, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 
@@ -268,6 +272,7 @@ public class JFClienteListar extends JFrame {
 			Cliente cliente = Fachada.getInstance().procurarCliente(cpfControle);
 			
 			JFCliente telaC = new JFCliente();
+			telaC.btnAtualizar.setEnabled(true);
 			telaC.setVisible(true);
 			
 			telaC.txtNomeCliente.setText(cliente.getNome());
