@@ -18,8 +18,8 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 		index = 1;
 
 	}
-	
-	//funcional
+
+	// funcional
 	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,
 			NomeVazioException {
 		produto.setIdProduto(index);
@@ -32,23 +32,20 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 		index++;
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 	}
-	
-	//n„o funcional
+
+	//funcional
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
 		int i = produto.getIdProduto();
 		for (Produto produto2 : arraySetProduto) {
-			if (i == produto2.getIdProduto()) {
-				arraySetProduto.remove(produto2);
-			} else {
+			if (i == produto2.getIdProduto());
 
-				throw new ProdutoNaoEncontradoException();
-
-			}
+			arraySetProduto.remove(produto2);
+			arraySetProduto.add(produto);
 		}
-		arraySetProduto.add(produto);
 
 	}
-	//funcional mas com erro 
+
+	// funcional mas com erro
 	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
 		for (Produto produto : arraySetProduto) {
 			if (produto.getIdProduto() == idProduto) {
@@ -61,8 +58,8 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 		}
 		throw new ProdutoNaoEncontradoException();
 	}
-	
-	//funcional
+
+	// funcional
 	public Produto procurar(Integer idProduto)
 			throws ProdutoNaoEncontradoException {
 
@@ -77,7 +74,7 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 		throw new ProdutoNaoEncontradoException();
 	}
 
-	//n„o funcional
+	//funcional
 	public Boolean existi(Integer idPrdotudo) {
 
 		for (Produto produto : arraySetProduto) {
@@ -92,18 +89,18 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 
 		return false;
 	}
-	//funcional
+
+	// funcional
 	public ArrayList<Produto> listar() {
 
 		ArrayList<Produto> arrayListProduto = new ArrayList<Produto>();
-
-		for (Produto produto : arrayListProduto) {
-
+		
+		
+		for (Produto produto : arraySetProduto) {
+			
 			arrayListProduto.add(produto);
-			System.out.println(produto.toString());
-
+			
 		}
-
 		return arrayListProduto;
 	}
 

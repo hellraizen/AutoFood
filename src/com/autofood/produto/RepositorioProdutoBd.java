@@ -46,19 +46,20 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 	public void atualizar(Produto produto)
 			throws ProdutoNaoEncontradoException, SQLException {
 
-		String sql = "update produtoteste set nome_produto= ?,quantidade= ?,preco=?,validade= ?,data_fabricacao= ? where idProduto = ?";
+		String sql = "update produtoteste set idProduto=? ,nome_produto= ?,quantidade= ?,preco=?,validade= ?,data_fabricacao= ? where idProduto = ?";
 
 		PreparedStatement preStatement;
 
 		preStatement = conn.prepareStatement(sql);
 
-		preStatement.setString(1, produto.getNomeProduto());
-		preStatement.setInt(2, produto.getQuantidadeProduto());
-		preStatement.setDouble(3, produto.getPrecoProduto());
-		preStatement.setString(4, produto.getValidadeProduto());
-		preStatement.setString(5, produto.getDataFabricacaoProduto());
+		preStatement.setInt(1, produto.getIdProduto());
+		preStatement.setString(2, produto.getNomeProduto());
+		preStatement.setInt(3, produto.getQuantidadeProduto());
+		preStatement.setDouble(4, produto.getPrecoProduto());
+		preStatement.setString(5, produto.getValidadeProduto());
+		preStatement.setString(6, produto.getDataFabricacaoProduto());
 
-		preStatement.setInt(6, produto.getIdProduto());
+		preStatement.setInt(7, produto.getIdProduto());
 
 		preStatement.executeUpdate(sql);
 
@@ -115,8 +116,6 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 	}
 
 	public Boolean existi(Integer idPrdotudo) {
-		
-	
 
 		return null;
 	}
@@ -132,15 +131,16 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 		ResultSet resultSet = preStatement.executeQuery();
 
 		while (resultSet.next()) {
-			
+
 			int codigo = resultSet.getInt(1);
 			String produto = resultSet.getString(2);
 			int quantidade = resultSet.getInt(3);
 			Double preco = resultSet.getDouble(4);
 			String validade = resultSet.getString(5);
 			String datafrabicacao = resultSet.getString(6);
-			
-			Produto produto1 = new Produto(codigo,produto,quantidade,preco,validade,datafrabicacao);
+
+			Produto produto1 = new Produto(codigo, produto, quantidade, preco,
+					validade, datafrabicacao);
 			arrayListProduto.add(produto1);
 		}
 

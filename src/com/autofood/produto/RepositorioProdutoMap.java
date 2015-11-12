@@ -21,6 +21,7 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 
 	}
 
+	// funcional
 	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,
 			NomeVazioException {
 		produto.setIdProduto(index);
@@ -35,37 +36,64 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 
 	}
 
+	// funcional
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
+		int i = produto.getIdProduto();
 
-		int i = getId(produto.getIdProduto());
-		if (i == -1)
-			throw new ProdutoNaoEncontradoException();
+		for (int j = 1; j < index; j++) {
+			Produto produtos = arrayMapProduto.get(j);
+			if (i == produtos.getIdProduto())
+				;
 
-		arrayMapProduto.put(i, produto);
+			arrayMapProduto.remove(i, produtos);
+			arrayMapProduto.put(i, produto);
+			JOptionPane.showMessageDialog(null,
+					"Produto Atualizado com Sucesso");
+
+		}
 	}
 
+	// funcional
 	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
 
-		int i = getId(idProduto);
-		if (i == -1)
-			throw new ProdutoNaoEncontradoException();
+		int i = idProduto;
 
-		arrayMapProduto.remove(i);
-		JOptionPane.showMessageDialog(null, "Cliente Removido com Sucesso");
+		for (int j = 1; j < index; j++) {
+
+			Produto produto = arrayMapProduto.get(j);
+
+			if (i == produto.getIdProduto())
+				;
+
+			arrayMapProduto.remove(i);
+			JOptionPane.showMessageDialog(null, "Cliente Removido com Sucesso");
+
+		}
+
 	}
 
+	// funcional
 	public Produto procurar(Integer idProduto)
 			throws ProdutoNaoEncontradoException {
 
-		int i = getId(idProduto);
-		if (i == -1)
-			throw new ProdutoNaoEncontradoException();
+		int i = idProduto;
 
-		return arrayMapProduto.get(i);
+		for (int j = 1; j < index; j++) {
+
+			Produto produto = arrayMapProduto.get(j);
+
+			if (i == produto.getIdProduto())
+				;
+
+			return produto;
+		}
+
+		return null;
 	}
 
+	// funcional
 	public Boolean existi(Integer idProduto) {
-		for (int i = 1; i < arrayMapProduto.size(); i++) {
+		for (int i = 1; i < index; i++) {
 			Produto produto = arrayMapProduto.get(i);
 			if (produto.getIdProduto() == idProduto) {
 				return true;
@@ -73,12 +101,14 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 		}
 		return false;
 	}
-
+	//funcional
 	public ArrayList<Produto> listar() {
 
 		ArrayList<Produto> arrayListProduto = new ArrayList<Produto>();
 
-		for (Produto produto : arrayListProduto) {
+		for (int i = 1; i < index; i++) {
+
+			Produto produto = arrayMapProduto.get(i);
 
 			arrayListProduto.add(produto);
 
@@ -87,15 +117,4 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 		return arrayListProduto;
 	}
 
-	private int getId(Integer idProduto) {
-		int resposta = -1;
-		boolean achou = false;
-		for (int i = 0; !achou && (i < index); i = i + 1) {
-			if (arrayMapProduto.get(i).equals(idProduto)) {
-				resposta = i;
-				achou = true;
-			}
-		}
-		return resposta;
-	}
 }
