@@ -6,9 +6,11 @@ public interface IRepositorioComanda {
 
 	public void realizarPedido(Comanda comanda);
 
-	public void alterarPedido(Comanda idComanda);
+	public void alterarPedido(Comanda idProduto);
 
-	public Boolean cancelarPedido(Integer idComanda);
+	public void cancelarPedido(Integer idProduto);
+	
+	public void finalizarPedido();
 
 	public ArrayList<Comanda> listar();
 

@@ -2,32 +2,58 @@ package com.autofood.comanda;
 
 import java.util.ArrayList;
 
-public class RepositorioComandaList implements IRepositorioComanda{
+import javax.swing.JOptionPane;
+
+public class RepositorioComandaList implements IRepositorioComanda {
+
+	private ArrayList<Comanda> arrayComandaList;
 	private Integer indexComanda;
-	private Integer indexVenda;
-	ArrayList<Comanda> arrayComanda;
-	@Override
-	public void realizarPedido(com.autofood.comanda.Comanda comanda) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void alterarPedido(com.autofood.comanda.Comanda idComanda) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public Boolean cancelarPedido(Integer idComanda) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public RepositorioComandaList() {
+		arrayComandaList = new ArrayList<Comanda>();
+		indexComanda = 1;
 	}
 
 	@Override
-	public ArrayList<com.autofood.comanda.Comanda> listar() {
-		// TODO Auto-generated method stub
-		return null;
+	public void realizarPedido(Comanda comanda) {
+		comanda.setIdComanda(indexComanda);
+		arrayComandaList.add(comanda);
+
 	}
 
+	@Override
+	public void alterarPedido(Comanda idProduto) {
+		for (Comanda comanda : arrayComandaList) {
+			if (idProduto.getIdProduto() == comanda.getIdProduto()) {
+				arrayComandaList.remove(comanda);
+				arrayComandaList.add(idProduto);
+				JOptionPane.showMessageDialog(null, "Pedido Alterado com Sucesso");
 
+			}
+		}
+
+	}
+
+	@Override
+	public void cancelarPedido(Integer idProduto) {
+		for (Comanda comanda : arrayComandaList) {
+			if (idProduto == comanda.getIdProduto()) {
+				arrayComandaList.remove(comanda);
+				JOptionPane.showMessageDialog(null, "Pedido Removido com Sucesso");
+			}
+		}
+
+	}
+
+	@Override
+	public void finalizarPedido() {
+		indexComanda++;
+	}
+
+	@Override
+	public ArrayList<Comanda> listar() {
+
+		return arrayComandaList;
+	}
 
 }

@@ -14,18 +14,21 @@ public class ControladorComanda {
 
 	}
 
-	public void alterarPedido(Comanda idComanda) {
-		repositorioComanda.alterarPedido(idComanda);
+	public void alterarPedido(Comanda idProduto) {
+		repositorioComanda.alterarPedido(idProduto);
 
 	}
 
-	public Boolean cancelarPedido(Integer idComanda) {
+	public void cancelarPedido(Integer idProduto) {
 
-		return repositorioComanda.cancelarPedido(idComanda);
+		repositorioComanda.cancelarPedido(idProduto);
 	}
 
-	
-	public ArrayList<Comanda> listar(){
+	public void finalizarPedido() {
+		repositorioComanda.finalizarPedido();
+		
+	}
+	public ArrayList<Comanda> listar() {
 		return repositorioComanda.listar();
 	}
 }
