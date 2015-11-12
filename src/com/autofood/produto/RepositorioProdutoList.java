@@ -105,11 +105,7 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 	// funcional
 	public ArrayList<Produto> listar() {
-		for (Produto produto : arrayListProduto) {
-
-			System.out.println(produto.toString());
-		}
-
+		
 		return arrayListProduto;
 	}
 }

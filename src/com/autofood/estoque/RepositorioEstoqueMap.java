@@ -3,6 +3,9 @@ package com.autofood.estoque;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.autofood.exceçõesEstoque.NomeVazioException;
+import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
+
 public class RepositorioEstoqueMap implements IRepositorioEstoque {
 	
 	HashMap<Integer,Estoque> arrayMapEstoque;
@@ -15,11 +18,19 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 		
 	}
 
-	public void cadastra(Estoque estoque) {
+	public void cadastra(Estoque estoque) throws ProdutoJaCadastradoEstoqueException, NomeVazioException {
+		estoque.setIdEstoqueProduto(index);
+		if(existi(estoque.getIdEstoqueProduto()))throw new ProdutoJaCadastradoEstoqueException() ;
+		if(estoque.getNomeProdutoEstoque().equals(null))throw new  NomeVazioException();
+		
+		arrayMapEstoque.put(index,estoque);
+		index++;
 
 	}
 
 	public void atualizar(Estoque estoque) {
+		
+		
 
 	}
 
