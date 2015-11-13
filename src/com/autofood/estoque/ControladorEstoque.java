@@ -11,12 +11,12 @@ public class ControladorEstoque {
 	
 	private IRepositorioEstoque repositorioEstoque;
 	
-	public ControladorEstoque(){
+	public ControladorEstoque() throws ClassNotFoundException{
 		
 		//repositorioEstoque = new RepositorioEstoqueList();
-		repositorioEstoque = new RepositorioEstoqueSet();
+		//repositorioEstoque = new RepositorioEstoqueSet();
 		//repositorioEstoque = new RepositorioEstoqueMap();
-		//repositorioEstoque = new RepositorioEstoqueJdbc();
+		repositorioEstoque = new RepositorioEstoqueJdbc();
 		
 	}
 	

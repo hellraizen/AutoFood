@@ -1,13 +1,10 @@
 package com.autofood.estoque;
 
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
 import com.autofood.exceçõesEstoque.NomeVazioException;
 import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
-
 
 public class RepositorioEstoqueList implements IRepositorioEstoque {
 
@@ -21,8 +18,8 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 
 	}
 
-	public void cadastra(Estoque estoque) throws NomeVazioException,
-			ProdutoJaCadastradoEstoqueException {
+	public void cadastra(Estoque estoque) throws NomeVazioException,ProdutoJaCadastradoEstoqueException {
+		
 		estoque.setIdEstoqueProduto(index);
 
 		if (existi(estoque.getIdEstoqueProduto()))
@@ -79,16 +76,19 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 	}
 
 	public Boolean existi(Integer idEstoqueProduto) {
-		int i = idEstoqueProduto;
-
+	
 		for (Estoque estoque : arrayListEstoque) {
-			if (i == estoque.getIdEstoqueProduto());
 
-			return true;
+			if (estoque.getIdEstoqueProduto() == idEstoqueProduto) {
+
+				return true;
+
+			}
 		}
 
 		return false;
 	}
+	
 
 	public ArrayList<Estoque> listar() {
 

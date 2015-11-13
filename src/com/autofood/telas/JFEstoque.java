@@ -106,7 +106,7 @@ public class JFEstoque {
 
 		JLabel lblQuantidade = new JLabel("Quantidade\r\n");
 
-		JLabel lblPreco = new JLabel("Pre\u00E7o");
+		JLabel lblPreco = new JLabel("Pre\u00E7o Custo");
 
 		txtPreco = new JTextField();
 		txtPreco.setColumns(10);
@@ -129,7 +129,7 @@ public class JFEstoque {
 		txtDataEntrada = new JTextField();
 		txtDataEntrada.setColumns(10);
 
-		JLabel lblDataFabricacao = new JLabel("Data Fabrica\u00E7\u00E3o\r\n");
+		JLabel lblDataFabricacao = new JLabel("Data Entrada");
 		GroupLayout gl_panelDados = new GroupLayout(panelDados);
 		gl_panelDados
 				.setHorizontalGroup(gl_panelDados
@@ -402,7 +402,7 @@ public class JFEstoque {
 				cadastrar();
 			}
 		});
-		btnCadastrar.setBounds(10, 23, 89, 23);
+		btnCadastrar.setBounds(10, 23, 100, 23);
 		panelBotoes.add(btnCadastrar);
 
 		JButton btnAtualizar = new JButton("Atualizar");
@@ -411,7 +411,7 @@ public class JFEstoque {
 				atualizar();
 			}
 		});
-		btnAtualizar.setBounds(109, 23, 89, 23);
+		btnAtualizar.setBounds(120, 23, 89, 23);
 		panelBotoes.add(btnAtualizar);
 
 		JButton btnEditar = new JButton("Editar");
@@ -420,7 +420,7 @@ public class JFEstoque {
 				editar();
 			}
 		});
-		btnEditar.setBounds(208, 23, 89, 23);
+		btnEditar.setBounds(219, 23, 89, 23);
 		panelBotoes.add(btnEditar);
 
 		JButton btnRemover = new JButton("Remover");
@@ -429,7 +429,7 @@ public class JFEstoque {
 				remover();
 			}
 		});
-		btnRemover.setBounds(308, 23, 89, 23);
+		btnRemover.setBounds(318, 23, 89, 23);
 		panelBotoes.add(btnRemover);
 
 		JButton btnProcurar = new JButton("Procurar");
@@ -438,7 +438,7 @@ public class JFEstoque {
 				procurar();
 			}
 		});
-		btnProcurar.setBounds(406, 23, 89, 23);
+		btnProcurar.setBounds(417, 23, 89, 23);
 		panelBotoes.add(btnProcurar);
 
 		JButton btnListar = new JButton("Listar");
@@ -452,7 +452,7 @@ public class JFEstoque {
 				}
 			}
 		});
-		btnListar.setBounds(505, 23, 89, 23);
+		btnListar.setBounds(516, 23, 89, 23);
 		panelBotoes.add(btnListar);
 	}
 
@@ -464,7 +464,7 @@ public class JFEstoque {
 			Estoque estoque = Fachada.getInstance().procurarEstoque(id);
 			listar(estoque);
 
-			txtProduto.setText("");
+			txtCodigo.setText("");
 
 		} catch (ClassNotFoundException | SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
 			// TODO Auto-generated catch block
@@ -495,8 +495,9 @@ public class JFEstoque {
 		vector.add(estoque.getNomeProdutoEstoque());
 		vector.add(estoque.getQuantidadeProdutoEstoque());
 		vector.add(estoque.getPrecoCustoProdutoEstoque());
-		vector.add(estoque.getDataEntradaProdutoEstoque());
 		vector.add(estoque.getDataValidadeProdutoEstoque());
+		vector.add(estoque.getDataEntradaProdutoEstoque());
+		
 
 		defultTabelaEstoque.addRow(vector);
 
@@ -535,7 +536,6 @@ public class JFEstoque {
 		try {
 			Fachada.getInstance().cadastraEstoque(estoque);
 			limpar();
-			listar();
 		} catch (ClassNotFoundException | SQLException | IOException |ProdutoJaCadastradoEstoqueException | com.autofood.exceçõesEstoque.NomeVazioException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -558,8 +558,9 @@ public class JFEstoque {
 			txtProduto.setText(nome);
 			txtQuantidade.setText(quantidade.toString());
 			txtPreco.setText(preco.toString());
-			txtValidade.setText(validade.toString());
-			txtDataEntrada.setText(data.toString());
+			txtDataEntrada.setText(validade.toString());
+			txtValidade.setText(data.toString());
+			
 
 		} catch (ClassNotFoundException |SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
 			// TODO Auto-generated catch block

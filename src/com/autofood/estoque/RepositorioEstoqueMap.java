@@ -74,11 +74,9 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 	}
 
 	public Boolean existi(Integer idEstoqueProduto) {
-		int i = idEstoqueProduto;
-
 		for (int j = 1; j < index; j++) {
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (i == estoque.getIdEstoqueProduto());
+			if (idEstoqueProduto == estoque.getIdEstoqueProduto());
 			
 			return true;
 		}
