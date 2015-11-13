@@ -58,7 +58,7 @@ public class RepositorioEnderecoList implements IRepositorioEndereco {
 				return endereco;
 			}
 		}
-
+		JOptionPane.showInternalMessageDialog(null, "ENDEREÇO NÃO ENCONTRADO!");
 		return null;
 	}
 
@@ -68,8 +68,10 @@ public class RepositorioEnderecoList implements IRepositorioEndereco {
 		for (Endereco endereco : arrayListEndereco) {
 			if (endereco.getIdEndereco() == codigoEndereco) {
 
-				return arrayListEndereco.contains(endereco);
+				JOptionPane.showInternalMessageDialog(null, "Endereco existe!");
+				return true;
 			}
+			JOptionPane.showInternalMessageDialog(null, "Endereco não existe!!");
 		}return false;
 
 	}
