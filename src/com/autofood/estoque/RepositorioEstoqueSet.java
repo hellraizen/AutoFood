@@ -23,8 +23,8 @@ public class RepositorioEstoqueSet implements IRepositorioEstoque {
 	public void cadastra(Estoque estoque)
 			throws ProdutoJaCadastradoEstoqueException, NomeVazioException {
 		estoque.setIdEstoqueProduto(index);
-		if (existi(estoque.getIdEstoqueProduto()))
-			throw new ProdutoJaCadastradoEstoqueException();
+		//if (existi(estoque.getIdEstoqueProduto()))
+			//throw new ProdutoJaCadastradoEstoqueException();
 		if (estoque.getNomeProdutoEstoque().equals(null))
 			throw new NomeVazioException();
 

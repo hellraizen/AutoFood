@@ -13,8 +13,8 @@ public class ControladorEstoque {
 	
 	public ControladorEstoque(){
 		
-		repositorioEstoque = new RepositorioEstoqueList();
 		//repositorioEstoque = new RepositorioEstoqueList();
+		repositorioEstoque = new RepositorioEstoqueSet();
 		//repositorioEstoque = new RepositorioEstoqueMap();
 		//repositorioEstoque = new RepositorioEstoqueJdbc();
 		
