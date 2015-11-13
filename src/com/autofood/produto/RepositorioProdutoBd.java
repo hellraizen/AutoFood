@@ -55,7 +55,6 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 		preStatement.executeUpdate(sql);
 
-		System.out.println("Atualizado Com Sucesso");
 		JOptionPane.showMessageDialog(null, "Atualizado Com Sucesso");
 
 	}
