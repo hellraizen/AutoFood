@@ -12,6 +12,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
 
 import com.autofood.comanda.Comanda;
 import com.autofood.fachada.Fachada;
@@ -27,11 +28,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
+import javax.swing.SwingConstants;
 
 public class JFPedidoComanda extends JFrame {
 
@@ -48,6 +51,7 @@ public class JFPedidoComanda extends JFrame {
 	private Integer selecaoProdutoId;
 	private String selecaoProdutoNome;
 	private Double selecaoProdutoPreco;
+	private DecimalFormat decimalFormat;
 
 	
 	/**
@@ -70,6 +74,7 @@ public class JFPedidoComanda extends JFrame {
 	 * Create the frame.
 	 */
 	public JFPedidoComanda() {
+		
 		setTitle("Comanda\r\n");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 806, 452);
@@ -83,12 +88,19 @@ public class JFPedidoComanda extends JFrame {
 		panel_1.setBorder(new TitledBorder(null, "Pedidos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
 		txtTotal = new JTextField();
+		txtTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTotal.setBackground(new Color(240, 230, 140));
+		txtTotal.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtTotal.setForeground(Color.BLACK);
+		txtTotal.setEnabled(false);
 		txtTotal.setColumns(10);
 		
 		textField_1 = new JTextField();
+		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
+		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_2.setColumns(10);
 		
 		JLabel lblPagamento = new JLabel("Pagamento");
@@ -103,7 +115,7 @@ public class JFPedidoComanda extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				adicionarPedido();
 				listarComanda();
-				
+				somaPedido();
 				
 			}
 		});
@@ -112,9 +124,6 @@ public class JFPedidoComanda extends JFrame {
 		JButton button_1 = new JButton("");
 		button_1.setIcon(new ImageIcon(JFPedidoComanda.class.getResource("/com/autofood/imagens/image004.gif")));
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		
-		JButton btnAtualizar = new JButton("Atualizar");
-		btnAtualizar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.setForeground(Color.BLUE);
@@ -126,7 +135,7 @@ public class JFPedidoComanda extends JFrame {
 					.addContainerGap()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 377, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -134,20 +143,17 @@ public class JFPedidoComanda extends JFrame {
 								.addComponent(lblDesconto, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblPagamento, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
 							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 									.addComponent(textField_2)
 									.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
-								.addComponent(txtTotal, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(button)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(button_1))
-								.addComponent(btnAtualizar, 0, 0, Short.MAX_VALUE))
+								.addComponent(txtTotal, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(button)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(button_1)
 							.addGap(127)
-							.addComponent(btnFinalizar, GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
+							.addComponent(btnFinalizar, GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -171,13 +177,10 @@ public class JFPedidoComanda extends JFrame {
 								.addComponent(lblTotal))
 							.addGap(18)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnFinalizar, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-										.addComponent(button))
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnAtualizar, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(btnFinalizar, GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+									.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+									.addComponent(button))))
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 368, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
@@ -200,6 +203,7 @@ public class JFPedidoComanda extends JFrame {
 		btnListarProdutos.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		txtQuantidade = new JTextField();
+		txtQuantidade.setHorizontalAlignment(SwingConstants.CENTER);
 		txtQuantidade.setText("1");
 		txtQuantidade.setColumns(10);
 		
@@ -215,19 +219,19 @@ public class JFPedidoComanda extends JFrame {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
+						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
 							.addComponent(btnListarProdutos)
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel.createSequentialGroup()
 									.addGap(18)
-									.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE))
+									.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_panel.createSequentialGroup()
 									.addGap(29)
-									.addComponent(lblQuantidade, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(lblProcurar, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(lblQuantidade, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblProcurar, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE))
 							.addGap(15))
 						.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
 					.addContainerGap())
@@ -243,7 +247,7 @@ public class JFPedidoComanda extends JFrame {
 							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblQuantidade)
 								.addComponent(lblProcurar))
-							.addGap(3)
+							.addGap(5)
 							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
@@ -336,12 +340,6 @@ public class JFPedidoComanda extends JFrame {
 		int quantidade = Integer.parseInt(txtQuantidade.getText());
 		
 		double total= selecaoProdutoPreco * quantidade;
-		
-		double totalConta = 0;
-		
-		totalConta = totalConta + total;
-		
-		txtTotal.setText( String.valueOf(totalConta));
 	
 		
 		Comanda comanda = new Comanda(selecaoProdutoId, selecaoProdutoNome, selecaoProdutoPreco, quantidade, total);
@@ -376,6 +374,18 @@ public class JFPedidoComanda extends JFrame {
 		}
 		
 		
+	}
+	private void somaPedido(){
+        decimalFormat= new DecimalFormat("0.00");
+		double totalConta = 0;
+		for (int i = 0; i < tablePedidos.getRowCount(); i++) {
+			
+			totalConta += Double.parseDouble(defultTabelaComanda.getValueAt(i, 4).toString())  ;
+			
+		}
+		
+		
+		txtTotal.setText(decimalFormat.format(totalConta).replace(',', '.'));
 	}
 
 	
