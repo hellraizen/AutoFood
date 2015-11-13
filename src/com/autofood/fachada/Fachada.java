@@ -6,13 +6,14 @@ import java.util.ArrayList;
 
 import com.autofood.clientes.Cliente;
 import com.autofood.clientes.ControladorCliente;
+import com.autofood.comanda.Comanda;
+import com.autofood.comanda.ControladorComanda;
 import com.autofood.endereco.ControladorEndereco;
 import com.autofood.endereco.Endereco;
 import com.autofood.estoque.ControladorEstoque;
 import com.autofood.estoque.Estoque;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
 import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
-import com.autofood.exceçõesEndereço.EnderecoJaCadastradoException;
 import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 import com.autofood.exceçõesProduto.NomeVazioException;
@@ -27,12 +28,14 @@ public class Fachada {
 	private ControladorProduto controladorProduto;
 	private ControladorEstoque controladorEstoque;
 	private ControladorEndereco controladorEndereco;
+	private ControladorComanda controladorComanda;
 
 	private Fachada() throws ClassNotFoundException, IOException {
 		this.controladorCliente = new ControladorCliente();
 		this.controladorProduto = new ControladorProduto();
 		this.controladorEstoque = new ControladorEstoque();
 		this.controladorEndereco = new ControladorEndereco();
+		this.controladorComanda = new ControladorComanda();
 
 	}
 
@@ -182,4 +185,29 @@ public class Fachada {
 		return controladorEndereco.listar();
 	}
 	
+	// -------------------------------------------------------------------Comanda------------------------------------------------------------------
+	
+	public void adicionarComanda(Comanda comanda) {
+		controladorComanda.realizarPedido(comanda);
+		
+
+	}
+
+	public void alterarComanda(Comanda idProduto) {
+		controladorComanda.alterarPedido(idProduto);
+
+	}
+
+	public void cancelarPedidoComanda(Integer idProduto) {
+		controladorComanda.cancelarPedido(idProduto);
+	
+	}
+
+	public void finalizarPedidoComanda() {
+		controladorComanda.finalizarPedido();
+		
+	}
+	public ArrayList<Comanda> listarComanda() {
+		return controladorComanda.listar();
+	}
 }

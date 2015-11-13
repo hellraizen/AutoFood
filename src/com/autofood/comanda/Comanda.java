@@ -13,10 +13,22 @@ public class Comanda {
 	private Double total;
 	private Date data;
 
-	public Comanda(Integer idComanda,String nomeCliente,Integer idProduto,String produto,Double valor,Integer quantidade,Double total) {
+	public Comanda(String nomeCliente,Integer idProduto,String produto,Double valor,Integer quantidade,Double total) {
 
-		setIdComanda(idComanda);
+		
 		setNomeCliente(nomeCliente);
+		setIdProduto(idProduto);
+		setProduto(produto);
+		setValor(valor);
+		setQuantidade(quantidade);
+		setTotal(total);
+		
+
+	}
+public Comanda(Integer idProduto,String produto,Double valor,Integer quantidade,Double total) {
+
+		
+		
 		setIdProduto(idProduto);
 		setProduto(produto);
 		setValor(valor);

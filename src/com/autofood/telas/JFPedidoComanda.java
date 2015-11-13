@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import com.autofood.comanda.Comanda;
 import com.autofood.fachada.Fachada;
 import com.autofood.produto.Produto;
 
@@ -37,15 +38,17 @@ public class JFPedidoComanda extends JFrame {
 	private JPanel contentPane;
 	private JTable tablePedidos;
 	private JTable tableProdutos;
-	private JTextField textField;
+	private JTextField txtTotal;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private DefaultTableModel defultTabelaProduto;
+	private DefaultTableModel defultTabelaComanda;
 	private JTextField txtQuantidade;
 	private JTextField textField_3;
 	private Integer selecaoProdutoId;
 	private String selecaoProdutoNome;
 	private Double selecaoProdutoPreco;
+
 	
 	/**
 	 * Launch the application.
@@ -79,8 +82,8 @@ public class JFPedidoComanda extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "Pedidos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		txtTotal = new JTextField();
+		txtTotal.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
@@ -96,6 +99,14 @@ public class JFPedidoComanda extends JFrame {
 		lblTotal.setFont(new Font("Tahoma", Font.BOLD, 21));
 		
 		JButton button = new JButton("+");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				adicionarPedido();
+				listarComanda();
+				
+				
+			}
+		});
 		button.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		JButton button_1 = new JButton("");
@@ -127,7 +138,7 @@ public class JFPedidoComanda extends JFrame {
 								.addGroup(Alignment.TRAILING, gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 									.addComponent(textField_2)
 									.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
-								.addComponent(textField, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(txtTotal, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_contentPane.createSequentialGroup()
@@ -156,7 +167,7 @@ public class JFPedidoComanda extends JFrame {
 								.addComponent(lblDesconto))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtTotal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblTotal))
 							.addGap(18)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -189,6 +200,7 @@ public class JFPedidoComanda extends JFrame {
 		btnListarProdutos.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		txtQuantidade = new JTextField();
+		txtQuantidade.setText("1");
 		txtQuantidade.setColumns(10);
 		
 		JLabel lblQuantidade = new JLabel("Quantidade");
@@ -245,17 +257,12 @@ public class JFPedidoComanda extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				int linhaselecionada = tableProdutos.getSelectedRow();
 				String codigoselecao = tableProdutos.getValueAt(linhaselecionada, 0).toString();
-				//String 
+				String codigoselecaopreco = tableProdutos.getValueAt(linhaselecionada, 2).toString();
 				
 				selecaoProdutoId = Integer.parseInt(codigoselecao);
 				selecaoProdutoNome = tableProdutos.getValueAt(linhaselecionada, 1).toString();
-				
-				
-				
-				System.out.println(selecaoProdutoId);
-				System.out.println(selecaoProdutoNome);
-				System.out.println(selecaoProdutoPreco);
-				
+				selecaoProdutoPreco= Double.parseDouble(codigoselecaopreco);
+	
 			}
 		});
 		String colunasTabelaProduto[]= new String[] {"Codigo", "Descricao", "Valor"};
@@ -286,14 +293,21 @@ public class JFPedidoComanda extends JFrame {
 		);
 		
 		tablePedidos = new JTable();
-		tablePedidos.setToolTipText("");
-		tablePedidos.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Codigo", "Descricao", "Quantidade", "Valor", "Total"
+		tablePedidos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
 			}
-		));
+		});
+		tablePedidos.setToolTipText("");
+		String colunaTabelaPedido[] =new String[] {"Codigo", "Descricao", "Quantidade", "Valor", "Total"};
+		defultTabelaComanda = new DefaultTableModel(new Object[][] {},colunaTabelaPedido){
+			public boolean isCellEditable(int row, int col) {
+				return false;
+			}
+		};
+		
+		tablePedidos.setModel(defultTabelaComanda);
 		scrollPane.setViewportView(tablePedidos);
 		panel_1.setLayout(gl_panel_1);
 		contentPane.setLayout(gl_contentPane);
@@ -315,5 +329,54 @@ public class JFPedidoComanda extends JFrame {
 	private void limparTabelaProduto() {
 		defultTabelaProduto.setNumRows(0);
 	}
+	private void limparTabelaComanda() {
+		defultTabelaComanda.setNumRows(0);
+	}
+	private void adicionarPedido(){
+		int quantidade = Integer.parseInt(txtQuantidade.getText());
+		
+		double total= selecaoProdutoPreco * quantidade;
+		
+		double totalConta = 0;
+		
+		totalConta = totalConta + total;
+		
+		txtTotal.setText( String.valueOf(totalConta));
+	
+		
+		Comanda comanda = new Comanda(selecaoProdutoId, selecaoProdutoNome, selecaoProdutoPreco, quantidade, total);
+		
+		try {
+			Fachada.getInstance().adicionarComanda(comanda);
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	private void listarComanda(){
+		this.limparTabelaComanda();
+		ArrayList<Comanda> Comandas;
+		try {
+			Comandas = Fachada.getInstance().listarComanda();
+			for (Comanda Comanda : Comandas) {
+				Vector vector = new Vector();
+				vector.add(Comanda.getIdProduto());
+				vector.add(Comanda.getProduto());
+				vector.add(Comanda.getQuantidade());
+				vector.add(Comanda.getValor());
+				vector.add(Comanda.getTotal());
+				
 
+				defultTabelaComanda.addRow(vector);
+			}
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	
 }
