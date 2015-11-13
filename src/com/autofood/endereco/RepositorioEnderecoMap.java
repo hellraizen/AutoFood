@@ -34,8 +34,19 @@ public class RepositorioEnderecoMap implements IRepositorioEndereco
 	@Override
 	public void remover(Integer codigoEndereco) {
 		
+		for(int i = 1; i < index; i++)
+		{
+			Endereco endereco = arrayEnderecoMap.get(i);
+			
+			if(codigoEndereco == endereco.getIdEndereco())
+			{
+				arrayEnderecoMap.remove(endereco);
+				
+			}
+				
+		}
 		
-		
+		JOptionPane.showInternalMessageDialog(null, "Endereço removido com sucesso!!");
 	}
 
 	@Override
