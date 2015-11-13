@@ -22,8 +22,9 @@ public class RepositorioClienteMap implements IRepositorioCliente {
 
 	@Override
 	public void cadastrar(Cliente cliente) throws SQLException, ClienteJaCadastradoException {
-		if (existe(cliente.getCpf()))
-			throw new ClienteJaCadastradoException();
+	
+		if (existe(cliente.getCpf()))throw new ClienteJaCadastradoException();
+		
 		cliente.setCodigo(index);
 		arrayClienteMap.put(index, cliente);
 		index++;

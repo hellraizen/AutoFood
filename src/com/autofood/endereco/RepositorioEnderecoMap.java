@@ -1,25 +1,40 @@
 package com.autofood.endereco;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.swing.JOptionPane;
 
 public class RepositorioEnderecoMap implements IRepositorioEndereco 
 {
+	
+	HashMap<Integer, Endereco> arrayEnderecoMap;
+	Integer index;
 
 	@Override
-	public void cadastrar(Endereco endereco) {
-		// TODO Auto-generated method stub
-		
+	public void cadastrar(Endereco endereco) 
+	{
+		endereco.setIdEndereco(index);
+		arrayEnderecoMap.put(index, endereco);
+		index++;
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 	}
 
 	@Override
 	public void atualizar(Endereco endereco) {
-		// TODO Auto-generated method stub
+		
+		Integer i = endereco.getIdEndereco();
+		
+		arrayEnderecoMap.put(i, endereco);
+		
+		JOptionPane.showMessageDialog(null, "Atualizado com Sucesso");
 		
 	}
 
 	@Override
 	public void remover(Integer codigoEndereco) {
-		// TODO Auto-generated method stub
+		
+		
 		
 	}
 
