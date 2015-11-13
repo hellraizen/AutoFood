@@ -11,8 +11,8 @@ public class ControladorCliente {
 	private IRepositorioCliente repositorioCliente;
 	
 	public ControladorCliente() throws ClassNotFoundException, IOException{
-		//repositorioCliente= new RepositorioClienteJdbc();
-		repositorioCliente= new RepositorioClienteList();
+		repositorioCliente= new RepositorioClienteJdbc();
+		//repositorioCliente= new RepositorioClienteList();
 		//repositorioCliente= new RepositorioClienteMap();
 		//repositorioCliente= new RepositorioClienteSet();
 		//repositorioCliente= new RepositorioClienteIO();

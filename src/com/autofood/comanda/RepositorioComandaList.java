@@ -7,26 +7,33 @@ import javax.swing.JOptionPane;
 public class RepositorioComandaList implements IRepositorioComanda {
 
 	private ArrayList<Comanda> arrayComandaList;
+	private ArrayList<Comanda> arrayComandaListConstante;
 	private Integer indexComanda;
+	private int index;
 
 	public RepositorioComandaList() {
 		arrayComandaList = new ArrayList<Comanda>();
+		arrayComandaListConstante = new ArrayList<Comanda>();
 		indexComanda = 1;
+		index = 1;
 	}
 
 	@Override
 	public void realizarPedido(Comanda comanda) {
+		comanda.setNumeroVenda(index);
+		index++;
 		comanda.setIdComanda(indexComanda);
 		arrayComandaList.add(comanda);
+		arrayComandaListConstante.add(comanda);
 
 	}
 
 	@Override
-	public void alterarPedido(Comanda idProduto) {
+	public void alterarPedido(Comanda numeroVenda) {
 		for (Comanda comanda : arrayComandaList) {
-			if (idProduto.getIdProduto() == comanda.getIdProduto()) {
+			if (numeroVenda.getNumeroVenda() == comanda.getNumeroVenda()) {
 				arrayComandaList.remove(comanda);
-				arrayComandaList.add(idProduto);
+				arrayComandaList.add(numeroVenda);
 				JOptionPane.showMessageDialog(null, "Pedido Alterado com Sucesso");
 
 			}
@@ -35,10 +42,11 @@ public class RepositorioComandaList implements IRepositorioComanda {
 	}
 
 	@Override
-	public void cancelarPedido(Integer idProduto) {
+	public void cancelarPedido(Integer numeroVenda) {
 		for (Comanda comanda : arrayComandaList) {
-			if (idProduto == comanda.getIdProduto()) {
+			if (numeroVenda == comanda.getNumeroVenda()) {
 				arrayComandaList.remove(comanda);
+				arrayComandaListConstante.remove(comanda);
 				JOptionPane.showMessageDialog(null, "Pedido Removido com Sucesso");
 			}
 		}
@@ -47,6 +55,7 @@ public class RepositorioComandaList implements IRepositorioComanda {
 
 	@Override
 	public void finalizarPedido() {
+		arrayComandaList.clear();
 		indexComanda++;
 	}
 
@@ -54,6 +63,12 @@ public class RepositorioComandaList implements IRepositorioComanda {
 	public ArrayList<Comanda> listar() {
 
 		return arrayComandaList;
+	}
+
+	@Override
+	public ArrayList<Comanda> listarMontante() {
+
+		return arrayComandaListConstante;
 	}
 
 }

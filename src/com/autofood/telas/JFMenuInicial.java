@@ -82,9 +82,12 @@ public class JFMenuInicial extends JFrame {
 				telaProduto.setVisible(true);
 			}
 		});
+		
+		JMenuItem mntmEndereco = new JMenuItem("Endere\u00E7o");
+		mnArquivo.add(mntmEndereco);
 		mnArquivo.add(mntmProduto);
 
-		JMenuItem mntmLogoff_1 = new JMenuItem("Logoff");
+		JMenuItem mntmLogoff_1 = new JMenuItem("Estoque");
 		mnArquivo.add(mntmLogoff_1);
 
 		JMenuItem mntmSair = new JMenuItem("Sair");
@@ -106,6 +109,7 @@ public class JFMenuInicial extends JFrame {
 				pedidos.setVisible(true);
 			}
 		});
+		
 		mnHelp.add(mntmVerso);
 
 		JMenuItem mntmCaixa = new JMenuItem("Caixa");

@@ -6,6 +6,7 @@ public class Comanda {
 
 	private Integer idComanda;
 	private String nomeCliente;
+	private Integer numeroVenda;
 	private Integer idProduto;
 	private String produto;
 	private Double valor;
@@ -13,33 +14,31 @@ public class Comanda {
 	private Double total;
 	private Date data;
 
-	public Comanda(String nomeCliente,Integer idProduto,String produto,Double valor,Integer quantidade,Double total) {
+	public Comanda(String nomeCliente, Integer idProduto, String produto, Double valor, Integer quantidade,
+			Double total) {
 
-		
 		setNomeCliente(nomeCliente);
 		setIdProduto(idProduto);
 		setProduto(produto);
 		setValor(valor);
 		setQuantidade(quantidade);
 		setTotal(total);
-		
 
 	}
-public Comanda(Integer idProduto,String produto,Double valor,Integer quantidade,Double total) {
 
-		
-		
+	public Comanda(Integer idProduto, String produto, Double valor, Integer quantidade, Double total) {
+
 		setIdProduto(idProduto);
 		setProduto(produto);
 		setValor(valor);
 		setQuantidade(quantidade);
 		setTotal(total);
-		
 
 	}
 
-	public Comanda(Integer idComanda,String nomeCliente,Integer idProduto,String produto,Double valor,Integer quantidade,Double total,Date data) {
-		
+	public Comanda(Integer idComanda, String nomeCliente, Integer idProduto, String produto, Double valor,
+			Integer quantidade, Double total, Date data) {
+
 		setIdComanda(idComanda);
 		setNomeCliente(nomeCliente);
 		setIdProduto(idProduto);
@@ -51,12 +50,11 @@ public Comanda(Integer idProduto,String produto,Double valor,Integer quantidade,
 
 	}
 
-	
 	@Override
 	public String toString() {
-		return "Comanda [idComanda=" + idComanda + ", nomeCliente=" + nomeCliente + ", idProduto=" + idProduto
-				+ ", produto=" + produto + ", valor=" + valor + ", quantidade=" + quantidade + ", total=" + total
-				+ ", data=" + data + "]";
+		return "Comanda [idComanda=" + idComanda + ", nomeCliente=" + nomeCliente + ", numeroVenda=" + numeroVenda
+				+ ", idProduto=" + idProduto + ", produto=" + produto + ", valor=" + valor + ", quantidade="
+				+ quantidade + ", total=" + total + ", data=" + data + "]";
 	}
 
 	public Integer getIdProduto() {
@@ -66,7 +64,6 @@ public Comanda(Integer idProduto,String produto,Double valor,Integer quantidade,
 	public void setIdProduto(Integer idProduto) {
 		this.idProduto = idProduto;
 	}
-
 
 	public String getNomeCliente() {
 		return nomeCliente;
@@ -130,6 +127,14 @@ public Comanda(Integer idProduto,String produto,Double valor,Integer quantidade,
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public Integer getNumeroVenda() {
+		return numeroVenda;
+	}
+
+	public void setNumeroVenda(Integer numeroVenda) {
+		this.numeroVenda = numeroVenda;
 	}
 
 }

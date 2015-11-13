@@ -13,5 +13,6 @@ public interface IRepositorioComanda {
 	public void finalizarPedido();
 
 	public ArrayList<Comanda> listar();
+	public ArrayList<Comanda> listarMontante();
 
 }

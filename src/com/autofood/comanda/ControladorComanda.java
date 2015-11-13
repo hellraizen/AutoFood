@@ -31,4 +31,7 @@ public class ControladorComanda {
 	public ArrayList<Comanda> listar() {
 		return repositorioComanda.listar();
 	}
+	public ArrayList<Comanda> listarMontante() {
+		return repositorioComanda.listarMontante();
+	}
 }

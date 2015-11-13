@@ -210,4 +210,7 @@ public class Fachada {
 	public ArrayList<Comanda> listarComanda() {
 		return controladorComanda.listar();
 	}
+	public ArrayList<Comanda> listarComandaMontante() {
+		return controladorComanda.listarMontante();
+	}
 }
