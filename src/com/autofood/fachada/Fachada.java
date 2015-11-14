@@ -153,7 +153,7 @@ public class Fachada {
 
 		return controladorEstoque.listar();
 	}
-	// -------------------------------------------------------------------ENDERECO------------------------------------------------------------------
+	// -------------------------------------------------------------------ENDEREÇO------------------------------------------------------------------
 	
 	public void cadastrarEndereco(Endereco endereco) {
 		controladorEndereco.cadastrar(endereco);

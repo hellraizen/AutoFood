@@ -49,22 +49,60 @@ public class RepositorioEnderecoMap implements IRepositorioEndereco
 		JOptionPane.showInternalMessageDialog(null, "Endereço removido com sucesso!!");
 	}
 
+	
+	
+	
+	
+	
+	
 	@Override
 	public Endereco procurar(Integer codigoEndereco) {
-		// TODO Auto-generated method stub
+	
+		for(int i = 1; i < index; i++)
+		{
+			Endereco endereco = arrayEnderecoMap.get(i);
+			if(codigoEndereco == endereco.getIdEndereco())
+			{
+				return endereco;
+			}
+		}
 		return null;
 	}
 
+	
+	
+	
+	
 	@Override
 	public boolean existir(Integer codigoEndereco) {
-		// TODO Auto-generated method stub
+		
+		for(int i= 1; i < index; i++)
+		{
+			Endereco endereco = arrayEnderecoMap.get(i);
+			
+			if(codigoEndereco == endereco.getIdEndereco())
+			{
+				return true;
+			}
+		}		
 		return false;
 	}
 
+	
+	
+	
+	
 	@Override
 	public ArrayList<Endereco> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ArrayList<Endereco> aEndereco = new ArrayList<Endereco>();
+		
+		for(int i = 1; i < index; i++)
+		{
+			Endereco end = arrayEnderecoMap.get(i);
+			aEndereco.add(end);
+		}		
+		return aEndereco;
 	}
 	
 }
