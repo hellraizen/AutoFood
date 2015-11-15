@@ -10,9 +10,9 @@ public interface IRepositorioFuncionario
 	
 	public void atualizar(Funcionario funcionario);
 	
-	public boolean remover(String cpf);
+	public void remover(String cpf);
 	
-	public Cliente procurar(String cpf);
+	public Funcionario procurar(String cpf);
 	
 	public boolean existir(String cpf);
 	

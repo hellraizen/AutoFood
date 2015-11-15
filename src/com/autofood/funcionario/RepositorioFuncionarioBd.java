@@ -19,13 +19,12 @@ public class RepositorioFuncionarioBd implements IRepositorioFuncionario {
 	}
 
 	@Override
-	public boolean remover(String cpf) {
+	public void remover(String cpf) {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
-	public Cliente procurar(String cpf) {
+	public Funcionario procurar(String cpf) {
 		// TODO Auto-generated method stub
 		return null;
 	}

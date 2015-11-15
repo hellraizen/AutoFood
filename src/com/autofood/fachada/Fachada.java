@@ -19,6 +19,8 @@ import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
+import com.autofood.funcionario.ControladorFuncionario;
+import com.autofood.funcionario.Funcionario;
 import com.autofood.produto.ControladorProduto;
 import com.autofood.produto.Produto;
 
@@ -29,6 +31,7 @@ public class Fachada {
 	private ControladorEstoque controladorEstoque;
 	private ControladorEndereco controladorEndereco;
 	private ControladorComanda controladorComanda;
+	private ControladorFuncionario controladorFuncionario;
 
 	private Fachada() throws ClassNotFoundException, IOException {
 		this.controladorCliente = new ControladorCliente();
@@ -213,4 +216,51 @@ public class Fachada {
 	public ArrayList<Comanda> listarComandaMontante() {
 		return controladorComanda.listarMontante();
 	}
-}
+
+
+
+//------------------------------------------Funcionário-------------------------------------------------------------------------
+
+
+	public void cadastrar(Funcionario funcionario)
+	{
+		controladorFuncionario.cadastrar(funcionario);
+	} 
+
+	
+	
+	public void atualizar(Funcionario funcionario)
+	{
+		controladorFuncionario.atualizar(funcionario);
+	}
+
+	
+	
+	public void remover(String cpf)
+	{
+		controladorFuncionario.remover(cpf);
+	}
+
+	
+	
+	public Funcionario procurar(String cpf)
+	{
+		return controladorFuncionario.procurar(cpf);
+	}
+
+	
+	
+	public boolean existir(String cpf)
+	{
+		return controladorFuncionario.existir(cpf);
+	}
+
+	
+	
+	public ArrayList<Funcionario> listar()
+	{
+		 return controladorFuncionario.listar();
+	}
+ 
+	
+}	

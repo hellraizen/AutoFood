@@ -13,7 +13,7 @@ public class ControladorEndereco {
 		this.repositorioEndereco = new RepositorioEnderecoList();
 		// this.repositorioEndereco = new RepositorioEnderecoSet();
 		// this.repositorioEndereco = new RepositorioEnderecoMap();
-
+		//repositorioEndereco = new RepositorioEnderecoIO();
 	}
 
 	public void cadastrar(Endereco endereco)  {

@@ -3,7 +3,7 @@ package com.autofood.clientes;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.TreeSet;
+//import java.util.TreeSet;
 
 import javax.swing.JOptionPane;
 
