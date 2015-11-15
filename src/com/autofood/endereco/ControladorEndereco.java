@@ -2,7 +2,7 @@ package com.autofood.endereco;
 
 import java.util.ArrayList;
 
-import com.autofood.exceçõesEndereço.EnderecoJaCadastradoException;
+//import com.autofood.exceçõesEndereço.EnderecoJaCadastradoException;
 
 public class ControladorEndereco {
 	private IRepositorioEndereco repositorioEndereco;
