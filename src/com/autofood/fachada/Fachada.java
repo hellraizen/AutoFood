@@ -158,32 +158,32 @@ public class Fachada {
 	}
 	// -------------------------------------------------------------------ENDEREÇO------------------------------------------------------------------
 	
-	public void cadastrarEndereco(Endereco endereco) {
+	public void cadastrarEndereco(Endereco endereco) throws SQLException {
 		controladorEndereco.cadastrar(endereco);
 		
 	}
 
-	public void atualizarEndereco(Endereco endereco) {
+	public void atualizarEndereco(Endereco endereco) throws SQLException {
 		controladorEndereco.atualizar(endereco);
 		
 	}
 
-	public void removerEndereco(Integer codigoEndereco) {
+	public void removerEndereco(Integer codigoEndereco) throws SQLException {
 		
 		controladorEndereco.remover(codigoEndereco);
 	}
 
-	public Endereco procurarEndereco(Integer codigoEndereco) {
+	public Endereco procurarEndereco(Integer codigoEndereco) throws SQLException {
 	
 		return controladorEndereco.procurar(codigoEndereco);
 	}
 
-	public boolean existirEndereco(Integer codigoEndereco) {
+	public boolean existirEndereco(Integer codigoEndereco) throws SQLException {
 
 		return controladorEndereco.existir(codigoEndereco);
 	}
 
-	public ArrayList<Endereco> listarEndereco() {
+	public ArrayList<Endereco> listarEndereco() throws SQLException {
 
 		return controladorEndereco.listar();
 	}
@@ -222,42 +222,42 @@ public class Fachada {
 //------------------------------------------Funcionário-------------------------------------------------------------------------
 
 
-	public void cadastrar(Funcionario funcionario)
+	public void cadastrar(Funcionario funcionario) throws SQLException
 	{
 		controladorFuncionario.cadastrar(funcionario);
 	} 
 
 	
 	
-	public void atualizar(Funcionario funcionario)
+	public void atualizar(Funcionario funcionario) throws SQLException
 	{
 		controladorFuncionario.atualizar(funcionario);
 	}
 
 	
 	
-	public void remover(String cpf)
+	public void remover(String cpf) throws SQLException
 	{
 		controladorFuncionario.remover(cpf);
 	}
 
 	
 	
-	public Funcionario procurar(String cpf)
+	public Funcionario procurar(String cpf) throws SQLException
 	{
 		return controladorFuncionario.procurar(cpf);
 	}
 
 	
 	
-	public boolean existir(String cpf)
+	public boolean existir(String cpf) throws SQLException
 	{
 		return controladorFuncionario.existir(cpf);
 	}
 
 	
 	
-	public ArrayList<Funcionario> listar()
+	public ArrayList<Funcionario> listar() throws SQLException
 	{
 		 return controladorFuncionario.listar();
 	}

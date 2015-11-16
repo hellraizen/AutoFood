@@ -85,7 +85,7 @@ public class RepositorioFuncionarioBd implements IRepositorioFuncionario {
 		preStatement.setString(10, funcionario.getLogin());
 		preStatement.setString(11, funcionario.getSenha());
 	
-		// Executando o select
+		// Executando a atualização para os valores setados
 		preStatement.executeUpdate();
 		
 		System.out.println("Atualizado com sucesso!");

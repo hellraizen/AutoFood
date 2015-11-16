@@ -1,5 +1,6 @@
 package com.autofood.endereco;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 //import com.autofood.exceçõesEndereço.EnderecoJaCadastradoException;
@@ -16,29 +17,29 @@ public class ControladorEndereco {
 		//repositorioEndereco = new RepositorioEnderecoIO();
 	}
 
-	public void cadastrar(Endereco endereco)  {
+	public void cadastrar(Endereco endereco) throws SQLException  {
 		repositorioEndereco.cadastrar(endereco);
 
 	}
 
-	public void atualizar(Endereco endereco) {
+	public void atualizar(Endereco endereco) throws SQLException {
 		repositorioEndereco.atualizar(endereco);
 
 	}
 
-	public void remover(Integer codigoEndereco) {
+	public void remover(Integer codigoEndereco) throws SQLException {
 		repositorioEndereco.remover(codigoEndereco);
 	}
 
-	public Endereco procurar(Integer codigoEndereco) {
+	public Endereco procurar(Integer codigoEndereco) throws SQLException {
 		return repositorioEndereco.procurar(codigoEndereco);
 	}
 
-	public boolean existir(Integer codigoEndereco) {
+	public boolean existir(Integer codigoEndereco) throws SQLException {
 		return repositorioEndereco.existir(codigoEndereco);
 	}
 
-	public ArrayList<Endereco> listar() {
+	public ArrayList<Endereco> listar() throws SQLException {
 		return repositorioEndereco.listar();
 	}
 
