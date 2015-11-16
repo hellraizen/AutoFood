@@ -90,7 +90,7 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 		// Executando o select
 		preStatement.executeUpdate();
 		
-		System.out.println("REMOVIDO COM SUCESSO");
+		
 		JOptionPane.showMessageDialog(null, "REMOVIDO COM SUCESSO");
 		
 	}

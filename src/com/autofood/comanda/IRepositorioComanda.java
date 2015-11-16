@@ -8,11 +8,12 @@ public interface IRepositorioComanda {
 	public void realizarPedido(Comanda comanda) throws SQLException;
 
 
-	public void cancelarPedido(Integer idProduto);
+	public void cancelarPedido(Integer idProduto) throws SQLException;
 	
 	public void finalizarPedido();
 
 	public ArrayList<Comanda> listar();
-	public ArrayList<Comanda> listarMontante();
+	public ArrayList<Comanda> listarMontante() throws SQLException;
 
 }
+	

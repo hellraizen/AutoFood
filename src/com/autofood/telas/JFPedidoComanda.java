@@ -374,8 +374,9 @@ public class JFPedidoComanda extends JFrame {
 		int quantidade = Integer.parseInt(txtQuantidade.getText());
 
 		double total = selecaoProdutoPreco * quantidade;
-
-		Comanda comanda = new Comanda(selecaoProdutoId, selecaoProdutoNome, selecaoProdutoPreco, quantidade, total);
+		String cliente = cBClienteList.getSelectedItem().toString();
+		
+		Comanda comanda = new Comanda(cliente,selecaoProdutoId, selecaoProdutoNome, selecaoProdutoPreco, quantidade, total);
 
 		try {
 			Fachada.getInstance().adicionarComanda(comanda);
@@ -430,7 +431,7 @@ public class JFPedidoComanda extends JFrame {
 			
 
 			listarComanda();
-		} catch (ClassNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -2,6 +2,7 @@ package com.autofood.comanda;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class RepositorioComandaJdbc implements IRepositorioComanda {
 		comanda.setIdComanda(indexComanda);
 		arrayComanda.add(comanda);
 		
-		String sql = "insert into (comandaid,nomeCliente,descricao,quantidadeVendida,valor,totalvalor) values(?,?,?,?,?,?)";
+		String sql = "insert into comandateste(comandaid,nomeCliente,descricao,quantidadeVendida,valor,totalvalor) values(?,?,?,?,?,?)";
 		
 		PreparedStatement pst = conn.prepareStatement(sql);
 		
@@ -42,27 +43,66 @@ public class RepositorioComandaJdbc implements IRepositorioComanda {
 	}
 
 	@Override
-	public void cancelarPedido(Integer idProduto) {
-		// TODO Auto-generated method stub
+	public void cancelarPedido(Integer idProduto) throws SQLException {
+		for (Comanda comanda : arrayComanda) {
+			if (idProduto == comanda.getNumeroVenda()) {
+				arrayComanda.remove(comanda);
+			}
+		}
+		
+		String sql= "delete from comandateste where vendaID = ?";
+		
+		PreparedStatement pst = conn.prepareStatement(sql);
+		
+		pst.setInt(1, idProduto );
+		
+		pst.executeUpdate();
+		
+		JOptionPane.showMessageDialog(null, "REMOVIDO COM SUCESSO");
 
 	}
 
 	@Override
 	public void finalizarPedido() {
-		// TODO Auto-generated method stub
+	 arrayComanda.clear();
+	 indexComanda++;
+	 
 
 	}
 
 	@Override
 	public ArrayList<Comanda> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return arrayComanda;
 	}
 
 	@Override
-	public ArrayList<Comanda> listarMontante() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Comanda> listarMontante() throws SQLException {
+		
+		ArrayList<Comanda> array = new ArrayList<Comanda>();
+		
+		String sql= "select * from comandatest";
+		
+		PreparedStatement pst = conn.prepareStatement(sql); 
+		
+		ResultSet rs = pst.executeQuery();
+		
+		while(rs.next()){
+			
+			int idvenda = rs.getInt(1);
+			int idComanda = rs.getInt(2);
+			String nomeC = rs.getString(3);
+			String descricao = rs.getString(4);
+			int quantidade = rs.getInt(5);
+			double valorU = rs.getDouble(6);
+			double total = rs.getDouble(7);
+			
+			Comanda comanda = new Comanda(nomeC, idvenda, descricao, valorU, quantidade, total);
+			comanda.setIdComanda(idComanda);
+			
+			array.add(comanda);
+		}
+		return array;
 	}
 
 }

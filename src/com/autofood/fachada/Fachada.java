@@ -203,7 +203,7 @@ public class Fachada {
 	}
 
 	
-	public void cancelarPedidoComanda(Integer idProduto) {
+	public void cancelarPedidoComanda(Integer idProduto) throws SQLException {
 		controladorComanda.cancelarPedido(idProduto);
 	
 	}
@@ -215,7 +215,7 @@ public class Fachada {
 	public ArrayList<Comanda> listarComanda() {
 		return controladorComanda.listar();
 	}
-	public ArrayList<Comanda> listarComandaMontante() {
+	public ArrayList<Comanda> listarComandaMontante() throws SQLException {
 		return controladorComanda.listarMontante();
 	}
 

@@ -17,7 +17,7 @@ public class ControladorComanda {
 
 
 	
-	public void cancelarPedido(Integer idProduto) {
+	public void cancelarPedido(Integer idProduto) throws SQLException {
 
 		repositorioComanda.cancelarPedido(idProduto);
 	}
@@ -29,7 +29,7 @@ public class ControladorComanda {
 	public ArrayList<Comanda> listar() {
 		return repositorioComanda.listar();
 	}
-	public ArrayList<Comanda> listarMontante() {
+	public ArrayList<Comanda> listarMontante() throws SQLException {
 		return repositorioComanda.listarMontante();
 	}
 }
