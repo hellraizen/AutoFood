@@ -6,7 +6,6 @@ import java.awt.SystemColor;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
-
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -21,25 +20,16 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-
-import com.autofood.clientes.Cliente;
-import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
 import com.autofood.fachada.Fachada;
 import com.autofood.produto.Produto;
-
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
-
 import javax.swing.SwingConstants;
-
 import java.awt.Component;
-
-import javax.swing.JFormattedTextField;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
