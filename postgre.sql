@@ -30,3 +30,18 @@ dataValidade varchar(10),
 precoCusto numeric(8,2),
 primary key(idEstoqueProduto)
 );
+
+create table comandateste(
+vendaID serial,
+Comandaid int,
+NomeCliente varchar(50),
+descricao varchar(40),
+quantidadeVendida int,
+valor numeric(8,2),
+totalValor numeric(8,2),
+primary key (vendaid)
+);
+
+
+
+

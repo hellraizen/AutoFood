@@ -196,7 +196,7 @@ public class Fachada {
 	
 	// -------------------------------------------------------------------COMANDA------------------------------------------------------------------
 	
-	public void adicionarComanda(Comanda comanda) {
+	public void adicionarComanda(Comanda comanda) throws SQLException {
 		controladorComanda.realizarPedido(comanda);
 		
 
