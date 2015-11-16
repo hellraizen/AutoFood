@@ -3,7 +3,6 @@ package com.autofood.fachada;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import com.autofood.clientes.Cliente;
 import com.autofood.clientes.ControladorCliente;
 import com.autofood.comanda.Comanda;
@@ -12,6 +11,9 @@ import com.autofood.endereco.ControladorEndereco;
 import com.autofood.endereco.Endereco;
 import com.autofood.estoque.ControladorEstoque;
 import com.autofood.estoque.Estoque;
+import com.autofood.exceçoesFornecedor.FornecedorJaCadastradoException;
+import com.autofood.exceçoesFornecedor.FornecedorNaoEncontradoException;
+import com.autofood.exceçoesFornecedor.FornecedorNuloException;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
 import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
@@ -19,6 +21,8 @@ import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
+import com.autofood.fornecedor.ControladorFornecedor;
+import com.autofood.fornecedor.Fornecedor;
 import com.autofood.funcionario.ControladorFuncionario;
 import com.autofood.funcionario.Funcionario;
 import com.autofood.produto.ControladorProduto;
@@ -32,6 +36,7 @@ public class Fachada {
 	private ControladorEndereco controladorEndereco;
 	private ControladorComanda controladorComanda;
 	private ControladorFuncionario controladorFuncionario;
+	private ControladorFornecedor controladorFornecedor;
 
 	private Fachada() throws ClassNotFoundException, IOException {
 		this.controladorCliente = new ControladorCliente();
@@ -39,7 +44,8 @@ public class Fachada {
 		this.controladorEstoque = new ControladorEstoque();
 		this.controladorEndereco = new ControladorEndereco();
 		this.controladorComanda = new ControladorComanda();
-
+		this.controladorFuncionario = new ControladorFuncionario();
+		this.controladorFornecedor = new ControladorFornecedor();
 	}
 
 	public static Fachada getInstance() throws ClassNotFoundException, IOException {
@@ -188,7 +194,7 @@ public class Fachada {
 		return controladorEndereco.listar();
 	}
 	
-	// -------------------------------------------------------------------Comanda------------------------------------------------------------------
+	// -------------------------------------------------------------------COMANDA------------------------------------------------------------------
 	
 	public void adicionarComanda(Comanda comanda) {
 		controladorComanda.realizarPedido(comanda);
@@ -219,48 +225,89 @@ public class Fachada {
 
 
 
-//------------------------------------------Funcionário-------------------------------------------------------------------------
+//------------------------------------------FUNCIONARIO-------------------------------------------------------------------------
 
 
-	public void cadastrar(Funcionario funcionario) throws SQLException
+	public void cadastrarFuncionario(Funcionario funcionario) throws SQLException
 	{
 		controladorFuncionario.cadastrar(funcionario);
 	} 
 
 	
 	
-	public void atualizar(Funcionario funcionario) throws SQLException
+	public void atualizarFuncionario(Funcionario funcionario) throws SQLException
 	{
 		controladorFuncionario.atualizar(funcionario);
 	}
 
+
 	
 	
-	public void remover(String cpf) throws SQLException
+	public void removerFuncionario(String cpf) throws SQLException
 	{
 		controladorFuncionario.remover(cpf);
 	}
 
 	
 	
-	public Funcionario procurar(String cpf) throws SQLException
+	public Funcionario procurarFuncionario(String cpf) throws SQLException
 	{
 		return controladorFuncionario.procurar(cpf);
 	}
 
 	
 	
-	public boolean existir(String cpf) throws SQLException
+	public boolean existirFuncionario(String cpf) throws SQLException
 	{
 		return controladorFuncionario.existir(cpf);
 	}
 
 	
 	
-	public ArrayList<Funcionario> listar() throws SQLException
+	public ArrayList<Funcionario> listarFuncionario() throws SQLException
 	{
 		 return controladorFuncionario.listar();
 	}
+	
+	//------------------------------------------FORNECEDOR-------------------------------------------------------------------------
  
+	public void cadastraFornecedor(Fornecedor fornecedor)
+			throws FornecedorJaCadastradoException, FornecedorNuloException {
+
+		controladorFornecedor.cadastra(fornecedor);
+
+	}
+
+	public void atualizarFornecedor(Fornecedor fornecedor)
+			throws FornecedorNaoEncontradoException {
+
+		controladorFornecedor.atualizar(fornecedor);
+
+	}
+
+	public void removerFornecedor(String cnpjFornecedor)
+			throws FornecedorNaoEncontradoException {
+
+		controladorFornecedor.remover(cnpjFornecedor);
+
+	}
+
+	public Fornecedor procurarFornecedor(String cnpjFornecedor)
+			throws FornecedorNaoEncontradoException {
+
+		return controladorFornecedor.procurar(cnpjFornecedor);
+
+	}
+
+	public Boolean existiFornecedor(String cnpjFornecedor) {
+
+		return controladorFornecedor.existi(cnpjFornecedor);
+
+	}
+
+	public ArrayList<Fornecedor> listarFornecedor() throws SQLException {
+
+		return controladorFornecedor.listar();
+	}
 	
 }	
