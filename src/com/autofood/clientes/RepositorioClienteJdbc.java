@@ -67,8 +67,8 @@ public class RepositorioClienteJdbc implements IRepositorioCliente {
 		preStatement.setString(4, cliente.getSexo());
 		preStatement.setString(5, cliente.getEmail());
 		preStatement.setString(6, cliente.getTelefone());
-		
 		preStatement.setString(7, cliente.getCpf());
+
 		// Executando o select
 		preStatement.executeUpdate();
 		

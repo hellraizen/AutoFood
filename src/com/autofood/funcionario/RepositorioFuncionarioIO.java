@@ -2,8 +2,6 @@ package com.autofood.funcionario;
 
 import java.util.ArrayList;
 
-import com.autofood.clientes.Cliente;
-
 public class RepositorioFuncionarioIO implements IRepositorioFuncionario {
 
 	@Override
