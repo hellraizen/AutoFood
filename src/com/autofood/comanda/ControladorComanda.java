@@ -1,5 +1,6 @@
 package com.autofood.comanda;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ControladorComanda {
@@ -9,7 +10,7 @@ public class ControladorComanda {
 		repositorioComanda = new RepositorioComandaList();
 	}
 
-	public void realizarPedido(Comanda comanda) {
+	public void realizarPedido(Comanda comanda) throws SQLException {
 		repositorioComanda.realizarPedido(comanda);
 
 	}

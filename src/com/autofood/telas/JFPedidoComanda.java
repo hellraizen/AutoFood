@@ -379,7 +379,7 @@ public class JFPedidoComanda extends JFrame {
 
 		try {
 			Fachada.getInstance().adicionarComanda(comanda);
-		} catch (ClassNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

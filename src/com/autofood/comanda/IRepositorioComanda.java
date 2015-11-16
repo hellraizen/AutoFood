@@ -1,10 +1,11 @@
 package com.autofood.comanda;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface IRepositorioComanda {
 
-	public void realizarPedido(Comanda comanda);
+	public void realizarPedido(Comanda comanda) throws SQLException;
 
 
 	public void cancelarPedido(Integer idProduto);
