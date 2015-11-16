@@ -14,11 +14,8 @@ public class ControladorComanda {
 
 	}
 
-	public void alterarPedido(Comanda idProduto) {
-		repositorioComanda.alterarPedido(idProduto);
 
-	}
-
+	
 	public void cancelarPedido(Integer idProduto) {
 
 		repositorioComanda.cancelarPedido(idProduto);
