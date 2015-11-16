@@ -10,13 +10,13 @@ import com.autofood.exceçoesFornecedor.FornecedorNuloException;
 
 public interface IRepositorioFornecedor {
 
-	public void cadastra(Fornecedor fornecedor) throws FornecedorJaCadastradoException, FornecedorNuloException;
+	public void cadastra(Fornecedor fornecedor) throws FornecedorJaCadastradoException, FornecedorNuloException, SQLException;
 
-	public void atualizar(Fornecedor fornecedor) throws FornecedorNaoEncontradoException; 
+	public void atualizar(Fornecedor fornecedor) throws FornecedorNaoEncontradoException, SQLException; 
 
-	public void remover(String cnpjFornecedor) throws FornecedorNaoEncontradoException; 
+	public void remover(String cnpjFornecedor) throws FornecedorNaoEncontradoException, SQLException; 
 
-	public Fornecedor procurar(String cnpjFornecedor) throws FornecedorNaoEncontradoException; 
+	public Fornecedor procurar(String cnpjFornecedor) throws FornecedorNaoEncontradoException, SQLException; 
 
 	public Boolean existi(String cnpjFornecedor);
 
