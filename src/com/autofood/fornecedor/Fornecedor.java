@@ -8,13 +8,13 @@ public class Fornecedor {
 	private Integer idFornecedor;
 	private String nomeFornecedor;
 	private String cnpjFornecedor;
-	private Produto produtoFornecido;
+	private String produtoFornecido;
 	private String telefoneFornecedor;
 	private String emailFornecedor;
 	private Endereco enderecoFornecedor;
 
 	public Fornecedor(Integer idFornecedor, String nomeFornecedor,
-			String cnpjFornecedor, Produto produtoFornecido,
+			String cnpjFornecedor, String produtoFornecido,
 			String telefoneFornecedor, String emailFornecedor,
 			Endereco enderecoFornecedor) {
 		
@@ -30,7 +30,7 @@ public class Fornecedor {
 	}
 	
 	public Fornecedor(String nomeFornecedor,
-			String cnpjFornecedor, Produto produtoFornecido,
+			String cnpjFornecedor, String produtoFornecido,
 			String telefoneFornecedor, String emailFornecedor,
 			Endereco enderecoFornecedor) {
 		
@@ -41,6 +41,31 @@ public class Fornecedor {
 		setEmailFornecedor(emailFornecedor);
 		setEnderecoFornecedor(enderecoFornecedor);
 
+	}
+	
+	public Fornecedor(String nomeFornecedor,
+			String cnpjFornecedor, String produtoFornecido,
+			String telefoneFornecedor, String emailFornecedor) {
+		
+		setNomeFornecedor(nomeFornecedor);
+		setCnpjFornecedor(cnpjFornecedor);
+		setProdutoFornecido(produtoFornecido);
+		setTelefoneFornecedor(telefoneFornecedor);
+		setEmailFornecedor(emailFornecedor);
+		
+	}
+	
+	public Fornecedor(Integer idFornecedor,String nomeFornecedor,
+			String cnpjFornecedor, String produtoFornecido,
+			String telefoneFornecedor, String emailFornecedor) {
+		
+		setIdFornecedor(idFornecedor);
+		setNomeFornecedor(nomeFornecedor);
+		setCnpjFornecedor(cnpjFornecedor);
+		setProdutoFornecido(produtoFornecido);
+		setTelefoneFornecedor(telefoneFornecedor);
+		setEmailFornecedor(emailFornecedor);
+		
 	}
 	
 
@@ -68,11 +93,11 @@ public class Fornecedor {
 		this.cnpjFornecedor = cnpjFornecedor;
 	}
 
-	public Produto getProdutoFornecido() {
+	public String getProdutoFornecido() {
 		return produtoFornecido;
 	}
 
-	public void setProdutoFornecido(Produto produtoFornecido) {
+	public void setProdutoFornecido(String produtoFornecido) {
 		this.produtoFornecido = produtoFornecido;
 	}
 

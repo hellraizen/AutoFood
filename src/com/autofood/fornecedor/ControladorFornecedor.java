@@ -21,28 +21,28 @@ public class ControladorFornecedor {
 	}
 
 	public void cadastra(Fornecedor fornecedor)
-			throws FornecedorJaCadastradoException, FornecedorNuloException {
+			throws FornecedorJaCadastradoException, FornecedorNuloException, SQLException {
 
 		repositorioFornecedor.cadastra(fornecedor);
 
 	}
 
 	public void atualizar(Fornecedor fornecedor)
-			throws FornecedorNaoEncontradoException {
+			throws FornecedorNaoEncontradoException, SQLException {
 
 		repositorioFornecedor.atualizar(fornecedor);
 
 	}
 
 	public void remover(String cnpjFornecedor)
-			throws FornecedorNaoEncontradoException {
+			throws FornecedorNaoEncontradoException, SQLException {
 
 		repositorioFornecedor.remover(cnpjFornecedor);
 
 	}
 
 	public Fornecedor procurar(String cnpjFornecedor)
-			throws FornecedorNaoEncontradoException {
+			throws FornecedorNaoEncontradoException, SQLException {
 
 		return repositorioFornecedor.procurar(cnpjFornecedor);
 

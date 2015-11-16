@@ -268,28 +268,28 @@ public class Fachada {
 	//------------------------------------------FORNECEDOR-------------------------------------------------------------------------
  
 	public void cadastraFornecedor(Fornecedor fornecedor)
-			throws FornecedorJaCadastradoException, FornecedorNuloException {
+			throws FornecedorJaCadastradoException, FornecedorNuloException, SQLException {
 
 		controladorFornecedor.cadastra(fornecedor);
 
 	}
 
 	public void atualizarFornecedor(Fornecedor fornecedor)
-			throws FornecedorNaoEncontradoException {
+			throws FornecedorNaoEncontradoException, SQLException {
 
 		controladorFornecedor.atualizar(fornecedor);
 
 	}
 
 	public void removerFornecedor(String cnpjFornecedor)
-			throws FornecedorNaoEncontradoException {
+			throws FornecedorNaoEncontradoException, SQLException {
 
 		controladorFornecedor.remover(cnpjFornecedor);
 
 	}
 
 	public Fornecedor procurarFornecedor(String cnpjFornecedor)
-			throws FornecedorNaoEncontradoException {
+			throws FornecedorNaoEncontradoException, SQLException {
 
 		return controladorFornecedor.procurar(cnpjFornecedor);
 
