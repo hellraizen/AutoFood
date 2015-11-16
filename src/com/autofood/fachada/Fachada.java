@@ -202,11 +202,7 @@ public class Fachada {
 
 	}
 
-	public void alterarComanda(Comanda idProduto) {
-		controladorComanda.alterarPedido(idProduto);
-
-	}
-
+	
 	public void cancelarPedidoComanda(Integer idProduto) {
 		controladorComanda.cancelarPedido(idProduto);
 	

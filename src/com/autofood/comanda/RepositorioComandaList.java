@@ -28,18 +28,8 @@ public class RepositorioComandaList implements IRepositorioComanda {
 
 	}
 
-	@Override
-	public void alterarPedido(Comanda numeroVenda) {
-		for (Comanda comanda : arrayComandaList) {
-			if (numeroVenda.getNumeroVenda() == comanda.getNumeroVenda()) {
-				arrayComandaList.remove(comanda);
-				arrayComandaList.add(numeroVenda);
-				JOptionPane.showMessageDialog(null, "Pedido Alterado com Sucesso");
+	
 
-			}
-		}
-
-	}
 
 	@Override
 	public void cancelarPedido(Integer numeroVenda) {

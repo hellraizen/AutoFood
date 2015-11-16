@@ -130,6 +130,8 @@ public class JFPedidoComanda extends JFrame {
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				removerPedido();
+				listarComanda();
+				somaPedido();
 
 			}
 		});
@@ -412,7 +414,7 @@ public class JFPedidoComanda extends JFrame {
 		double totalConta = 0;
 		for (int i = 0; i < tablePedidos.getRowCount(); i++) {
 
-			totalConta += Double.parseDouble(defultTabelaComanda.getValueAt(i, 4).toString());
+			totalConta += Double.parseDouble(defultTabelaComanda.getValueAt(i, 5).toString());
 
 		}
 
@@ -423,9 +425,9 @@ public class JFPedidoComanda extends JFrame {
 
 	private void removerPedido() {
 		try {
-			System.out.println("REmovido Antes  : " + numeroPedido);
+		
 			Fachada.getInstance().cancelarPedidoComanda(numeroPedido);
-			System.out.println("REmovido DEpois : " + numeroPedido);
+			
 
 			listarComanda();
 		} catch (ClassNotFoundException | IOException e) {

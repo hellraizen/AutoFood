@@ -6,7 +6,6 @@ public interface IRepositorioComanda {
 
 	public void realizarPedido(Comanda comanda);
 
-	public void alterarPedido(Comanda idProduto);
 
 	public void cancelarPedido(Integer idProduto);
 	
