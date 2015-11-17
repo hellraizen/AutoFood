@@ -1,4 +1,4 @@
-package com.autofood.telas;
+	package com.autofood.telas;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -211,7 +211,6 @@ public class JFProduto extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cadastrar();
-				limpar();
 			}
 		});
 
@@ -344,6 +343,7 @@ public class JFProduto extends JFrame {
 
 		try {
 			Fachada.getInstance().removerProduto(codigoselecao);
+			listar();
 
 		} catch (NumberFormatException | ClassNotFoundException | ProdutoNaoEncontradoException | SQLException
 				| IOException e) {
@@ -399,7 +399,7 @@ public class JFProduto extends JFrame {
 		Produto produto1 = new Produto(produto, quantidade, preco, validade, datafabricacao);
 		try {
 			Fachada.getInstance().cadastraProduto(produto1);
-
+			limpar();
 		} catch (ClassNotFoundException | ProdutoJ·CadastradoException | NomeVazioException | SQLException
 				| IOException e) {
 			// TODO Auto-generated catch block
@@ -447,6 +447,7 @@ public class JFProduto extends JFrame {
 		try {
 			Fachada.getInstance().atualizarProduto(produto1);
 			limpar();
+			listar();
 		} catch (ClassNotFoundException | ProdutoNaoEncontradoException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -88,6 +88,12 @@ public class JFMenuInicial extends JFrame {
 		mnArquivo.add(mntmProduto);
 
 		JMenuItem mntmLogoff_1 = new JMenuItem("Estoque");
+		mntmLogoff_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFEstoque telaEstoque = new JFEstoque();
+				telaEstoque.setVisible(true);
+			}
+		});
 		mnArquivo.add(mntmLogoff_1);
 
 		JMenuItem mntmSair = new JMenuItem("Sair");
