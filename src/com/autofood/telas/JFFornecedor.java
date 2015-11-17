@@ -201,7 +201,7 @@ public class JFFornecedor extends JFrame {
 				cadastra();
 			}
 		});
-		btnCadastrar.setBounds(10, 22, 89, 23);
+		btnCadastrar.setBounds(10, 22, 95, 23);
 		panelBotoes.add(btnCadastrar);
 		
 		JButton bntAtualizar = new JButton("Atualizar");

@@ -221,7 +221,7 @@ public class JFEstoque extends JFrame {
 				limpar();
 			}
 		});
-		btnCadastrar.setBounds(11, 11, 89, 23);
+		btnCadastrar.setBounds(11, 11, 95, 23);
 		panelBotoes.add(btnCadastrar);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
