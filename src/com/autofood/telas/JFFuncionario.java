@@ -11,6 +11,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFFuncionario extends JFrame {
 
@@ -44,6 +46,10 @@ public class JFFuncionario extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnCadastros = new JButton("Cadastros");
+		btnCadastros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnCadastros.setFont(new Font("Javanese Text", Font.PLAIN, 20));
 		
 		JButton btnCaixa = new JButton("Caixa");

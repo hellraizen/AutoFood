@@ -224,7 +224,7 @@ public class Fachada {
 //------------------------------------------FUNCIONARIO-------------------------------------------------------------------------
 
 
-	public void cadastrarFuncionario(Funcionario funcionario) throws SQLException
+	public void cadastrarFuncionario(Funcionario funcionario) throws SQLException, IOException
 	{
 		controladorFuncionario.cadastrar(funcionario);
 	} 
