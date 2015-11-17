@@ -71,6 +71,27 @@ public class JFMenuInicial extends JFrame {
 			}
 		});
 		mnArquivo.add(mntmLogoff);
+		
+		JMenuItem mntmEndereco = new JMenuItem("Endere\u00E7o");
+		mnArquivo.add(mntmEndereco);
+		
+				JMenuItem mntmLogoff_1 = new JMenuItem("Estoque");
+				mntmLogoff_1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						JFEstoque telaEstoque = new JFEstoque();
+						telaEstoque.setVisible(true);
+					}
+				});
+				mnArquivo.add(mntmLogoff_1);
+		
+		JMenuItem mntmFornecedor = new JMenuItem("Fornecedor");
+		mntmFornecedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFFornecedor telaFornecedor = new JFFornecedor();
+				telaFornecedor.setVisible(true);
+			}
+		});
+		mnArquivo.add(mntmFornecedor);
 
 		JMenuItem mntmFuncionrio = new JMenuItem("Funcion\u00E1rio");
 		mnArquivo.add(mntmFuncionrio);
@@ -82,19 +103,7 @@ public class JFMenuInicial extends JFrame {
 				telaProduto.setVisible(true);
 			}
 		});
-		
-		JMenuItem mntmEndereco = new JMenuItem("Endere\u00E7o");
-		mnArquivo.add(mntmEndereco);
 		mnArquivo.add(mntmProduto);
-
-		JMenuItem mntmLogoff_1 = new JMenuItem("Estoque");
-		mntmLogoff_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFEstoque telaEstoque = new JFEstoque();
-				telaEstoque.setVisible(true);
-			}
-		});
-		mnArquivo.add(mntmLogoff_1);
 
 		JMenuItem mntmSair = new JMenuItem("Sair");
 		mntmSair.addActionListener(new ActionListener() {
