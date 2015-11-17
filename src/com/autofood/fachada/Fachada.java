@@ -62,22 +62,22 @@ public class Fachada {
 
 	}
 
-	public void atualizarCliente(Cliente cliente) throws SQLException, ClienteNaoEncontradoException {
+	public void atualizarCliente(Cliente cliente) throws SQLException, ClienteNaoEncontradoException, IOException {
 		controladorCliente.atualizar(cliente);
 
 	}
 
-	public void removerCliente(String cpf) throws SQLException, ClienteNaoEncontradoException {
+	public void removerCliente(String cpf) throws SQLException, ClienteNaoEncontradoException, IOException {
 		controladorCliente.remover(cpf);
 
 	}
 
-	public Cliente procurarCliente(String cpf) throws SQLException, ClienteNaoEncontradoException {
+	public Cliente procurarCliente(String cpf) throws SQLException, ClienteNaoEncontradoException, IOException {
 
 		return controladorCliente.procurar(cpf);
 	}
 
-	public boolean existeCliente(String cpf) throws SQLException {
+	public boolean existeCliente(String cpf) throws SQLException, IOException {
 
 		return controladorCliente.existe(cpf);
 	}

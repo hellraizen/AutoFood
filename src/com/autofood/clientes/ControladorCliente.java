@@ -11,33 +11,33 @@ public class ControladorCliente {
 	private IRepositorioCliente repositorioCliente;
 	
 	public ControladorCliente() throws ClassNotFoundException, IOException{
-		repositorioCliente= new RepositorioClienteJdbc();
+		//repositorioCliente= new RepositorioClienteJdbc();
 		//repositorioCliente= new RepositorioClienteList();
 		//repositorioCliente= new RepositorioClienteMap();
 		//repositorioCliente= new RepositorioClienteSet();
-		//repositorioCliente= new RepositorioClienteIO();
+		repositorioCliente= new RepositorioClienteIO();
 	}
 
 	public void cadastrar(Cliente cliente) throws SQLException, ClienteJaCadastradoException, IOException {
 		repositorioCliente.cadastrar(cliente);
 	}
 
-	public void atualizar(Cliente cliente) throws SQLException, ClienteNaoEncontradoException {
+	public void atualizar(Cliente cliente) throws SQLException, ClienteNaoEncontradoException, IOException {
 		repositorioCliente.atualizar(cliente);
 
 	}
 
-	public void remover(String cpf) throws SQLException, ClienteNaoEncontradoException {
+	public void remover(String cpf) throws SQLException, ClienteNaoEncontradoException, IOException {
 		repositorioCliente.remover(cpf);
 
 	}
 
-	public Cliente procurar(String cpf) throws SQLException, ClienteNaoEncontradoException {
+	public Cliente procurar(String cpf) throws SQLException, ClienteNaoEncontradoException, IOException {
   
 		return repositorioCliente.procurar(cpf);
 	}
 
-	public boolean existe(String cpf) throws SQLException {
+	public boolean existe(String cpf) throws SQLException, IOException {
 		
 		return repositorioCliente.existe(cpf);
 	}
