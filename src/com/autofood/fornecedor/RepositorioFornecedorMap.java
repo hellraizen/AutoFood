@@ -98,7 +98,7 @@ public class RepositorioFornecedorMap implements IRepositorioFornecedor {
 
 		for (int i = 1; i < index; i++) {
 
-			Fornecedor fornecedor = arrayListFornecedor.get(i);
+			Fornecedor fornecedor = arrayFornecedorMap.get(i);
 
 			arrayListFornecedor.add(fornecedor);
 

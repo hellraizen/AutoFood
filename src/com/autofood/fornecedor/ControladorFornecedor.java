@@ -12,9 +12,9 @@ public class ControladorFornecedor {
 
 	public ControladorFornecedor() {
 
-		repositorioFornecedor = new RepositorioFornecedorList();
+		//repositorioFornecedor = new RepositorioFornecedorList();
 		// repositorioFornecedor = new RepositorioFornecedorSet();
-		// repositorioFornecedor = new RepositorioFornecedorMap();
+		//repositorioFornecedor = new RepositorioFornecedorMap();
 		// repositorioFornecedor = new RepositorioFornecedorJDBC();
 		// repositorioFornecedor = new RepositorioFornecedorIO();
 

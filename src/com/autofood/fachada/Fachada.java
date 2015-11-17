@@ -90,38 +90,38 @@ public class Fachada {
 	// -------------------------------------------------------------------PRODUTO------------------------------------------------------------------
 
 	public void cadastraProduto(Produto produto) throws ProdutoJ·CadastradoException,
-			NomeVazioException, SQLException {
+			NomeVazioException, SQLException, IOException {
 
 		controladorProduto.cadastra(produto);
 
 	}
 
-	public void atualizarProduto(Produto produto) throws ProdutoNaoEncontradoException, SQLException {
+	public void atualizarProduto(Produto produto) throws ProdutoNaoEncontradoException, SQLException, IOException {
 
 		controladorProduto.atualizar(produto);
 
 	}
 
-	public void removerProduto(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException {
+	public void removerProduto(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
 
 		controladorProduto.remover(idProduto);
 
 	}
 
 	public Produto procurarProduto(Integer idProduto)
-			throws ProdutoNaoEncontradoException, SQLException {
+			throws ProdutoNaoEncontradoException, SQLException, IOException {
 
 		return controladorProduto.procurar(idProduto);
 
 	}
 
-	public Boolean existiProduto(Integer idPrdotudo) {
+	public Boolean existiProduto(Integer idPrdotudo) throws SQLException, IOException {
 
 		return controladorProduto.existi(idPrdotudo);
 
 	}
 
-	public ArrayList<Produto> listarProduto() throws SQLException {
+	public ArrayList<Produto> listarProduto() throws SQLException, IOException {
 
 		return controladorProduto.listar();
 

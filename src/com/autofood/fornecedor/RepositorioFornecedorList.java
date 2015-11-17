@@ -45,11 +45,12 @@ public class RepositorioFornecedorList implements IRepositorioFornecedor {
 				arrayFornecedorList.add(fornecedor);
 				JOptionPane.showMessageDialog(null,
 						"Fornecedor Atualizado com Sucesso");
+				
 			}
 
 		}
 		
-		throw new FornecedorNaoEncontradoException();
+		//throw new FornecedorNaoEncontradoException();
 
 	}
 

@@ -312,8 +312,8 @@ public class JFFornecedor extends JFrame {
 		
 		try {
 			Fachada.getInstance().atualizarFornecedor(fornecedor1);
-			limpar();
 			listar();
+			limpar();
 		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

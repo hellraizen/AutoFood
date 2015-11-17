@@ -51,7 +51,7 @@ public class RepositorioFornecedorSet implements IRepositorioFornecedor {
 
 			}
 		}
-		throw new FornecedorNaoEncontradoException();
+		//throw new FornecedorNaoEncontradoException();
 	}
 
 	public void remover(String cnpjFornecedor)
