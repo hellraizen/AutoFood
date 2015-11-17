@@ -72,7 +72,7 @@ public class JFEstoque extends JFrame {
 	 */
 	public JFEstoque() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 653, 558);
+		setBounds(100, 100, 655, 558);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -240,22 +240,13 @@ public class JFEstoque extends JFrame {
 		btnEditar.setBounds(211, 11, 89, 23);
 		panelBotoes.add(btnEditar);
 		
-		JButton btnProcurar = new JButton("Procurar");
-		btnProcurar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				procurar();
-			}
-		});
-		btnProcurar.setBounds(311, 11, 89, 23);
-		panelBotoes.add(btnProcurar);
-		
 		JButton btnRemover = new JButton("Remover");
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				remover();
 			}
 		});
-		btnRemover.setBounds(411, 11, 89, 23);
+		btnRemover.setBounds(310, 11, 89, 23);
 		panelBotoes.add(btnRemover);
 		
 		JButton btnListar = new JButton("Listar");
@@ -271,6 +262,10 @@ public class JFEstoque extends JFrame {
 		});
 		btnListar.setBounds(511, 11, 89, 23);
 		panelBotoes.add(btnListar);
+		
+		JButton button = new JButton("Procurar");
+		button.setBounds(412, 11, 89, 23);
+		panelBotoes.add(button);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_panelLista = new GroupLayout(panelLista);
@@ -309,22 +304,6 @@ public class JFEstoque extends JFrame {
 		scrollPane.setViewportView(table);
 		panelLista.setLayout(gl_panelLista);
 		contentPane.setLayout(gl_contentPane);
-	}
-	private void procurar() {
-
-		Integer id = Integer.parseInt(txtCodigo.getText());
-
-		try {
-			Estoque estoque = Fachada.getInstance().procurarEstoque(id);
-			listar(estoque);
-
-			txtCodigo.setText("");
-
-		} catch (ClassNotFoundException | SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 
 	private void remover() {
