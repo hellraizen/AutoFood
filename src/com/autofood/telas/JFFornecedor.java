@@ -19,6 +19,22 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import com.autofood.estoque.Estoque;
+import com.autofood.exceçoesFornecedor.FornecedorJaCadastradoException;
+import com.autofood.exceçoesFornecedor.FornecedorNaoEncontradoException;
+import com.autofood.exceçoesFornecedor.FornecedorNuloException;
+import com.autofood.fachada.Fachada;
+import com.autofood.fornecedor.Fornecedor;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class JFFornecedor extends JFrame {
 
@@ -29,6 +45,9 @@ public class JFFornecedor extends JFrame {
 	private JTextField txtFornecedor;
 	private JTextField txtCodigo;
 	private JTextField txtCnpj;
+	private JTable table;
+	private String cnpjselecao;
+	private DefaultTableModel defaultTableModel;
 
 	/**
 	 * Launch the application.
@@ -179,29 +198,232 @@ public class JFFornecedor extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cadastra();
 			}
 		});
 		btnCadastrar.setBounds(10, 22, 89, 23);
 		panelBotoes.add(btnCadastrar);
 		
 		JButton bntAtualizar = new JButton("Atualizar");
+		bntAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				atualizar();
+			}
+		});
 		bntAtualizar.setBounds(109, 22, 89, 23);
 		panelBotoes.add(bntAtualizar);
 		
 		JButton bntEditar = new JButton("Editar");
+		bntEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editar();
+			}
+		});
 		bntEditar.setBounds(211, 22, 89, 23);
 		panelBotoes.add(bntEditar);
 		
 		JButton bntRemover = new JButton("Remover");
+		bntRemover.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				remover();
+			}
+		});
 		bntRemover.setBounds(313, 22, 89, 23);
 		panelBotoes.add(bntRemover);
 		
 		JButton bntListar = new JButton("Listar");
+		bntListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listar();
+				} catch (ClassNotFoundException | SQLException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		bntListar.setBounds(511, 22, 89, 23);
 		panelBotoes.add(bntListar);
 		
 		JButton bntProcurar = new JButton("Procurar");
+		bntProcurar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				procurar();
+			}
+		});
 		bntProcurar.setBounds(412, 22, 89, 23);
 		panelBotoes.add(bntProcurar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 175, 619, 269);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				int linhaselecionada = table.getSelectedRow();
+
+				cnpjselecao = table.getValueAt(linhaselecionada, 2).toString();
+				
+		}
+		});
+		String colunasTabelaEstoque[] = new String[] {"Codigo", "Fornecedor", "CNPJ", "Produto", "Telefone", "Email"};
+		defaultTableModel = new DefaultTableModel(new Object[][]{},colunasTabelaEstoque){
+		public boolean isCellEditable(int row, int col) {
+			  return false;
+		}
+	};
+		table.setModel(defaultTableModel);
+		scrollPane.setViewportView(table);
+	}
+	
+	private void cadastra(){
+		
+		String fornecedor = txtFornecedor.getText();
+		String cnpj = txtCnpj.getText();
+		String produto = txtProduto.getText();
+		String telefone = txtTelefone.getText();
+		String email = txtEmail.getText();
+		
+		Fornecedor fornecedor1 = new Fornecedor(fornecedor,cnpj,produto,telefone,email);
+		
+		
+		try {
+			Fachada.getInstance().cadastraFornecedor(fornecedor1);
+			limpar();
+		} catch (ClassNotFoundException | FornecedorJaCadastradoException | FornecedorNuloException | SQLException
+				| IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void atualizar(){
+		
+		Integer codigo = Integer.parseInt(txtCodigo.getText());
+		String fornecedor = txtFornecedor.getText();
+		String cnpj = txtCnpj.getText();
+		String produto = txtProduto.getText();
+		String telefone = txtTelefone.getText();
+		String email = txtEmail.getText();
+		
+		Fornecedor fornecedor1 = new Fornecedor(codigo,fornecedor,cnpj,produto,telefone,email);
+		
+		try {
+			Fachada.getInstance().atualizarFornecedor(fornecedor1);
+			limpar();
+			listar();
+		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void remover(){
+		
+		try {
+			Fachada.getInstance().removerFornecedor(cnpjselecao);
+			listar();
+		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void limparTabelaEstoque() {
+		defaultTableModel.setNumRows(0);
+	}
+	
+	private void procurar(){
+		
+		String cnpj = txtCnpj.getText();
+		
+		try {
+			Fornecedor fornecedor = Fachada.getInstance().procurarFornecedor(cnpj);
+			listar(fornecedor);
+			
+			txtCnpj.setText("");
+		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+	private void listar(Fornecedor fornecedor) throws ClassNotFoundException,SQLException {
+		
+		this.limparTabelaEstoque();
+
+			Vector vector = new Vector();
+			vector.add(fornecedor.getIdFornecedor());
+			vector.add(fornecedor.getNomeFornecedor());
+			vector.add(fornecedor.getCnpjFornecedor());
+			vector.add(fornecedor.getProdutoFornecido());
+			vector.add(fornecedor.getTelefoneFornecedor());
+			vector.add(fornecedor.getEmailFornecedor());
+
+
+	defaultTableModel.addRow(vector);
+
+}
+
+	private void listar() throws ClassNotFoundException, SQLException,IOException {
+		
+		this.limparTabelaEstoque();
+		
+		ArrayList<Fornecedor> fornecedores = Fachada.getInstance().listarFornecedor();
+		
+	for (Fornecedor fornecedor : fornecedores) {
+			
+			Vector vector = new Vector();
+			vector.add(fornecedor.getIdFornecedor());
+			vector.add(fornecedor.getNomeFornecedor());
+			vector.add(fornecedor.getCnpjFornecedor());
+			vector.add(fornecedor.getProdutoFornecido());
+			vector.add(fornecedor.getTelefoneFornecedor());
+			vector.add(fornecedor.getEmailFornecedor());
+	
+
+			defaultTableModel.addRow(vector);
+  }
+ }
+	private void editar(){
+		
+		try {
+			Fornecedor fornecedor1 = Fachada.getInstance().procurarFornecedor(cnpjselecao);
+			
+			Integer codigo = fornecedor1.getIdFornecedor();
+			String fornecedor = fornecedor1.getNomeFornecedor();
+			String cnpj = fornecedor1.getCnpjFornecedor();
+			String produto = fornecedor1.getProdutoFornecido();
+			String telefone = fornecedor1.getTelefoneFornecedor();
+			String email = fornecedor1.getEmailFornecedor();
+			
+			txtCodigo.setText(codigo.toString());
+			txtFornecedor.setText(fornecedor);
+			txtCnpj.setText(cnpj);
+			txtProduto.setText(produto);
+			txtTelefone.setText(telefone);
+			txtEmail.setText(email);
+			
+		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	private void limpar() {
+		// campos dados cliente
+
+			txtCodigo.setText("");
+			txtFornecedor.setText("");
+			txtCnpj.setText("");
+			txtProduto.setText("");
+			txtTelefone.setText("");
+			txtEmail.setText("");
 	}
 }

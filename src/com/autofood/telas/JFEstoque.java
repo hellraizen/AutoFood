@@ -27,7 +27,9 @@ import javax.swing.JButton;
 import com.autofood.estoque.Estoque;
 import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
+import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
 import com.autofood.fachada.Fachada;
+import com.autofood.produto.Produto;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -264,6 +266,11 @@ public class JFEstoque extends JFrame {
 		panelBotoes.add(btnListar);
 		
 		JButton button = new JButton("Procurar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				procurar();
+			}
+		});
 		button.setBounds(412, 11, 89, 23);
 		panelBotoes.add(button);
 		
@@ -304,6 +311,22 @@ public class JFEstoque extends JFrame {
 		scrollPane.setViewportView(table);
 		panelLista.setLayout(gl_panelLista);
 		contentPane.setLayout(gl_contentPane);
+	}
+	private void procurar() {
+
+		Integer id = Integer.parseInt(txtCodigo.getText());
+
+		try {
+			Estoque estoque = Fachada.getInstance().procurarEstoque(id);
+			listar(estoque);
+
+			txtCodigo.setText("");
+
+		} catch (ClassNotFoundException | SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	private void remover() {
@@ -346,8 +369,9 @@ public class JFEstoque extends JFrame {
 			vector.add(estoque.getNomeProdutoEstoque());
 			vector.add(estoque.getQuantidadeProdutoEstoque());
 			vector.add(estoque.getPrecoCustoProdutoEstoque());
-			vector.add(estoque.getDataValidadeProdutoEstoque());
 			vector.add(estoque.getDataEntradaProdutoEstoque());
+			vector.add(estoque.getDataValidadeProdutoEstoque());
+			
 
 			defultTabelaEstoque.addRow(vector);
 		}
@@ -386,13 +410,15 @@ public class JFEstoque extends JFrame {
 			Double preco = estoque.getPrecoCustoProdutoEstoque();
 			String validade = estoque.getDataValidadeProdutoEstoque();
 			String data = estoque.getDataEntradaProdutoEstoque();
+			
+			
 
 			txtCodigo.setText(codigo.toString());
 			txtProduto.setText(nome);
 			txtQuantidade.setText(quantidade.toString());
 			txtPreco.setText(preco.toString());
-			txtDataEntrada.setText(validade.toString());
 			txtValidade.setText(data.toString());
+			txtDataEntrada.setText(validade.toString());
 			
 
 		} catch (ClassNotFoundException |SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
