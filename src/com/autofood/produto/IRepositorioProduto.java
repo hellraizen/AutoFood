@@ -13,11 +13,11 @@ public interface IRepositorioProduto {
 
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException, SQLException, IOException;
 
-	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException, IOException;
+	public void remover(String codigoProduto) throws ProdutoNaoEncontradoException, SQLException, IOException;
 
-	public Produto procurar(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException, IOException;
+	public Produto procurar(String codigoProduto) throws ProdutoNaoEncontradoException, SQLException, IOException;
 
-	public Boolean existi(Integer idPrdotudo) throws SQLException, IOException;
+	public Boolean existi(String codigoProduto) throws SQLException, IOException;
 
 	public ArrayList<Produto> listar() throws SQLException, IOException;
 

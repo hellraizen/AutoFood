@@ -1,10 +1,9 @@
 package com.autofood.produto;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import javax.swing.JOptionPane;
-
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -24,12 +23,13 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 	// funcional
 	public void cadastra(Produto produto) throws ProdutoJáCadastradoException,
 			NomeVazioException {
-		produto.setIdProduto(index);
-		if (existi(produto.getIdProduto()))
+		
+		if (existi(produto.getCodigoProduto()))
 			throw new ProdutoJáCadastradoException();
 		if (produto.getNomeProduto().equals(null))
 			throw new NomeVazioException();
 
+		produto.setIdProduto(index);
 		arrayMapProduto.put(index, produto);
 		index++;
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
@@ -38,14 +38,14 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 
 	// funcional
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
-		int i = produto.getIdProduto();
+		String i = produto.getCodigoProduto();
 
 		for (int j = 1; j < index; j++) {
 			Produto produtos = arrayMapProduto.get(j);
-			if (i == produtos.getIdProduto());
+			if (i.equals(produtos.getCodigoProduto()));
 
 			arrayMapProduto.remove(i, produtos);
-			arrayMapProduto.put(i, produto);
+			arrayMapProduto.put(j, produto);
 			JOptionPane.showMessageDialog(null,
 					"Produto Atualizado com Sucesso");
 
@@ -53,36 +53,34 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 	}
 
 	// funcional
-	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
+	public void remover(String codigoProduto) throws ProdutoNaoEncontradoException {
 
-		int i = idProduto;
+		String i = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 
 			Produto produto = arrayMapProduto.get(j);
 
-			if (i == produto.getIdProduto())
-				;
+			if (i.equals(produto.getCodigoProduto()));
 
-			arrayMapProduto.remove(i);
-			JOptionPane.showMessageDialog(null, "Cliente Removido com Sucesso");
+			arrayMapProduto.remove(j);
+			JOptionPane.showMessageDialog(null, "Produto Removido com Sucesso");
 
 		}
 
 	}
 
 	// funcional
-	public Produto procurar(Integer idProduto)
+	public Produto procurar(String codigoProduto)
 			throws ProdutoNaoEncontradoException {
 
-		int i = idProduto;
+		String i = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 
 			Produto produto = arrayMapProduto.get(j);
 
-			if (i == produto.getIdProduto())
-				;
+			if (i.equals(produto.getCodigoProduto()));
 
 			return produto;
 		}
@@ -91,10 +89,10 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 	}
 
 	// funcional
-	public Boolean existi(Integer idProduto) {
+	public Boolean existi(String codigoProduto) {
 		for (int i = 1; i < index; i++) {
 			Produto produto = arrayMapProduto.get(i);
-			if (produto.getIdProduto() == idProduto) {
+			if (produto.getCodigoProduto().equals(codigoProduto)) {
 				return true;
 			}
 		}

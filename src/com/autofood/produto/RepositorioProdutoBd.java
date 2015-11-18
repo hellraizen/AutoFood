@@ -22,15 +22,16 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,
 			NomeVazioException, SQLException {
 
-		String sql = "insert into produtoteste (nome_produto, quantidade, preco, validade, data_fabricacao) values(?,?,?,?,?)";
+		String sql = "insert into produtoteste (codigoProduto, nome_produto, quantidade, preco, validade, data_fabricacao) values(?,?,?,?,?,?)";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
-
-		preStatement.setString(1, produto.getNomeProduto());
-		preStatement.setInt(2, produto.getQuantidadeProduto());
-		preStatement.setDouble(3, produto.getPrecoProduto());
-		preStatement.setString(4, produto.getValidadeProduto());
-		preStatement.setString(5, produto.getDataFabricacaoProduto());
+		
+		preStatement.setString(1,produto.getCodigoProduto());
+		preStatement.setString(2, produto.getNomeProduto());
+		preStatement.setInt(3, produto.getQuantidadeProduto());
+		preStatement.setDouble(4, produto.getPrecoProduto());
+		preStatement.setString(5, produto.getValidadeProduto());
+		preStatement.setString(6, produto.getDataFabricacaoProduto());
 
 		preStatement.execute();
 		
@@ -40,18 +41,19 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 	public void atualizar(Produto produto)
 			throws ProdutoNaoEncontradoException, SQLException {
 
-		String sql = "update produtoteste set idProduto=? ,nome_produto= ?,quantidade= ?,preco=?,validade= ?,data_fabricacao= ? where idProduto = ?";
+		String sql = "update produtoteste set idProduto= ?,codigoProduto= ?,nome_produto= ?,quantidade= ?,preco=?,validade= ?,data_fabricacao= ? where idProduto = ?";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
 
 		preStatement.setInt(1, produto.getIdProduto());
-		preStatement.setString(2, produto.getNomeProduto());
-		preStatement.setInt(3, produto.getQuantidadeProduto());
-		preStatement.setDouble(4, produto.getPrecoProduto());
-		preStatement.setString(5, produto.getValidadeProduto());
-		preStatement.setString(6, produto.getDataFabricacaoProduto());
+		preStatement.setString(2,produto.getCodigoProduto());
+		preStatement.setString(3, produto.getNomeProduto());
+		preStatement.setInt(4, produto.getQuantidadeProduto());
+		preStatement.setDouble(5, produto.getPrecoProduto());
+		preStatement.setString(6, produto.getValidadeProduto());
+		preStatement.setString(7, produto.getDataFabricacaoProduto());
 
-		preStatement.setInt(7, produto.getIdProduto());
+		preStatement.setInt(8, produto.getIdProduto());
 
 		preStatement.executeUpdate(sql);
 
@@ -59,14 +61,14 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 	}
 
-	public void remover(Integer idProduto)
+	public void remover(String codigoProduto)
 			throws ProdutoNaoEncontradoException, SQLException {
 	
 		String sql = "delete from produtoteste where idProduto =? ";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
 
-		preStatement.setInt(1, idProduto);
+		preStatement.setString(1, codigoProduto);
 	
 		preStatement.executeUpdate();
 
@@ -74,7 +76,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 	}
 
-	public Produto procurar(Integer idProduto)
+	public Produto procurar(String codigoProduto)
 			throws ProdutoNaoEncontradoException, SQLException {
 
 		String sql = "select * from produtoteste where idProduto = ? ";
@@ -83,17 +85,19 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 		preStatement = conn.prepareStatement(sql);
 
-		preStatement.setInt(1, idProduto);
+		preStatement.setString(1, codigoProduto);
 		ResultSet resultset = preStatement.executeQuery();
 		while (resultset.next()) {
-			int codigo = resultset.getInt(1);
-			String produto = resultset.getString(2);
-			int quantidade = resultset.getInt(3);
-			Double preco = resultset.getDouble(4);
-			String validade = resultset.getString(5);
-			String datafrabicacao = resultset.getString(6);
+			
+			int id = resultset.getInt(1);
+			String codigo = resultset.getString(2);
+			String produto = resultset.getString(3);
+			int quantidade = resultset.getInt(4);
+			Double preco = resultset.getDouble(5);
+			String validade = resultset.getString(6);
+			String datafrabicacao = resultset.getString(7);
 
-			Produto produto1 = new Produto(codigo, produto, quantidade, preco,
+			Produto produto1 = new Produto(id,codigo, produto, quantidade, preco,
 					validade, datafrabicacao);
 			
 			return produto1;
@@ -103,7 +107,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 		return null;
 	}
 
-	public Boolean existi(Integer idPrdotudo) {
+	public Boolean existi(String codigoProduto) {
 
 		return null;
 	}
@@ -120,14 +124,15 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 		while (resultSet.next()) {
 
-			int codigo = resultSet.getInt(1);
-			String produto = resultSet.getString(2);
-			int quantidade = resultSet.getInt(3);
-			Double preco = resultSet.getDouble(4);
-			String validade = resultSet.getString(5);
-			String datafrabicacao = resultSet.getString(6);
+			int id = resultSet.getInt(1);
+			String codigo = resultSet.getString(2);
+			String produto = resultSet.getString(3);
+			int quantidade = resultSet.getInt(4);
+			Double preco = resultSet.getDouble(5);
+			String validade = resultSet.getString(6);
+			String datafrabicacao = resultSet.getString(7);
 
-			Produto produto1 = new Produto(codigo, produto, quantidade, preco,
+			Produto produto1 = new Produto(id,codigo, produto, quantidade, preco,
 					validade, datafrabicacao);
 			arrayListProduto.add(produto1);
 		}

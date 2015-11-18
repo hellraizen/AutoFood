@@ -35,14 +35,15 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 
 	public void cadastra(Produto produto)
 			throws ProdutoJ·CadastradoException, NomeVazioException, SQLException, IOException {
-		if (existi(produto.getIdProduto()))
+		
+		if (existi(produto.getCodigoProduto()))
 			throw new ProdutoJ·CadastradoException();
 		if (produto.getNomeProduto().equals(null))
 			throw new NomeVazioException();
 
 		try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8, StandardOpenOption.APPEND);) {
 
-			arquivar.write(produto.getIdProduto() + ";" + produto.getNomeProduto() + ";"
+			arquivar.write(produto.getIdProduto() + ";" + produto.getCodigoProduto() + ";" + produto.getNomeProduto() + ";"
 					+ produto.getQuantidadeProduto() + ";" + produto.getPrecoProduto() + ";"
 					+ produto.getDataFabricacaoProduto() + ";" + produto.getValidadeProduto() + "\n");
 
@@ -72,20 +73,20 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 
 			try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8, StandardOpenOption.APPEND);) {
 
-				arquivar.write(produto2.getIdProduto() + ";" + produto2.getNomeProduto() + ";"
-						+ produto2.getQuantidadeProduto() + ";" + produto2.getPrecoProduto() + ";"
-						+ produto2.getDataFabricacaoProduto() + ";" + produto2.getValidadeProduto() + "\n");
+				arquivar.write(produto.getIdProduto() + ";" + produto.getCodigoProduto() + ";" + produto.getNomeProduto() + ";"
+						+ produto.getQuantidadeProduto() + ";" + produto.getPrecoProduto() + ";"
+						+ produto.getDataFabricacaoProduto() + ";" + produto.getValidadeProduto() + "\n");
 
 			}
 		}
 	}
 
-	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
+	public void remover(String codigoProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
 
 		ArrayList<Produto> arrayArquivo = listar();
 
 		for (Produto produto : arrayArquivo) {
-			if (produto.getIdProduto() == (idProduto)) {
+			if (produto.getCodigoProduto().equals((codigoProduto))) {
 				arrayArquivo.remove(produto);
 				break;
 			}
@@ -98,9 +99,9 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 			for (Produto produto1 : arrayArquivo) {
 				try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8, StandardOpenOption.APPEND)) {
 
-					arquivar.write(produto1.getIdProduto() + ";" + produto1.getNomeProduto() + ";"
-							+ produto1.getQuantidadeProduto() + ";" + produto1.getPrecoProduto() + ";"
-							+ produto1.getDataFabricacaoProduto() + ";" + produto1.getValidadeProduto() + "\n");
+				arquivar.write(produto.getIdProduto() + ";" + produto.getCodigoProduto() + ";" + produto.getNomeProduto() + ";"
+						+ produto.getQuantidadeProduto() + ";" + produto.getPrecoProduto() + ";"
+						+ produto.getDataFabricacaoProduto() + ";" + produto.getValidadeProduto() + "\n");
 
 				}
 			}
@@ -108,12 +109,12 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 
 	}
 
-	public Produto procurar(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
+	public Produto procurar(String codigoProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
 
 		ArrayList<Produto> arrayArquivo = listar();
 
 		for (Produto produto : arrayArquivo) {
-			if (produto.getIdProduto() == idProduto) {
+			if (produto.getCodigoProduto().equals(codigoProduto)) {
 
 				return produto;
 			}
@@ -122,12 +123,12 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 		throw new ProdutoNaoEncontradoException();
 	}
 
-	public Boolean existi(Integer idPrdotudo) throws SQLException, IOException {
+	public Boolean existi(String codigoProduto) throws SQLException, IOException {
 
 		ArrayList<Produto> arrayArquivo = listar();
 		
 		for (Produto produto : arrayArquivo) {
-			if (produto.getIdProduto() == idPrdotudo) {
+			if (produto.getCodigoProduto().equals(codigoProduto)) {
 
 				return true;
 			}
@@ -149,7 +150,7 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 				
 				String[] lista = contandoLinhas.split(";");
 				
-				Produto produto = new Produto(index,lista[1],Integer.parseInt(lista[2]),Double.parseDouble(lista[3]),lista[4],lista[5]);
+				Produto produto = new Produto(index,lista[1],lista[2],Integer.parseInt(lista[3]),Double.parseDouble(lista[4]),lista[5],lista[6]);
 				index++;
 				arrayArquivo.add(produto);	
 				

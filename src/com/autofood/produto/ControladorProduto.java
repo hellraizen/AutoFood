@@ -15,9 +15,9 @@ public class ControladorProduto {
 
 		//repositorioProduto = new RepositorioProdutoList();
 		//repositorioProduto = new RepositorioProdutoSet();
-		//repositorioProduto = new RepositorioProdutoMap();
+		repositorioProduto = new RepositorioProdutoMap();
 		//repositorioProduto = new RepositorioProdutoBd();
-		repositorioProduto = new RepositorioProdutoIO();
+		//repositorioProduto = new RepositorioProdutoIO();
 
 	}
 
@@ -33,21 +33,21 @@ public class ControladorProduto {
 		
 	}
 
-	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
+	public void remover(String codigoProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
 		
-		repositorioProduto.remover(idProduto);
-		
-	}
-
-	public Produto procurar(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
-		
-		return repositorioProduto.procurar(idProduto);
+		repositorioProduto.remover(codigoProduto);
 		
 	}
 
-	public Boolean existi(Integer idPrdotudo) throws SQLException, IOException {
+	public Produto procurar(String codigoProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
 		
-		return repositorioProduto.existi(idPrdotudo);
+		return repositorioProduto.procurar(codigoProduto);
+		
+	}
+
+	public Boolean existi(String codigoProduto) throws SQLException, IOException {
+		
+		return repositorioProduto.existi(codigoProduto);
 		
 	}
 

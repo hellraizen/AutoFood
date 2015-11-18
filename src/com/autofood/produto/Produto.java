@@ -1,20 +1,21 @@
 package com.autofood.produto;
 
 
-
 public class Produto {
 
 	private Integer idProduto;
+	private String codigoProduto;
 	private String nomeProduto;
 	private Integer quantidadeProduto;
 	private Double precoProduto;
 	private String validadeProduto;
 	private String dataFabricacaoProduto;
 
-	public Produto(Integer idProduto, String produto,
+	public Produto(Integer idProduto,String codigoProduto, String produto,
 			Integer quantidadeProduto, Double precoProduto,
 			String validadeProduto, String dataFabricacaoProduto) {
 
+		setCodigoProduto(codigoProduto);
 		setIdProduto(idProduto);
 		setNomeProduto(produto);
 		setQuantidadeProduto(quantidadeProduto);
@@ -24,10 +25,11 @@ public class Produto {
 
 	}
 
-	public Produto(String nomeProduto, Integer quantidadeProduto,
+	public Produto(String codigoProduto,String nomeProduto, Integer quantidadeProduto,
 			Double precoProduto, String validadeProduto,
 			String dataFabricacaoProduto) {
 
+		setCodigoProduto(codigoProduto);
 		setNomeProduto(nomeProduto);
 		setQuantidadeProduto(quantidadeProduto);
 		setPrecoProduto(precoProduto);
@@ -36,19 +38,21 @@ public class Produto {
 
 	}
 
-	public Produto(Integer idProduto, String nomeProduto,
+	public Produto(Integer idProduto,String codigoProduto,String nomeProduto,
 			Integer quantidadeProduto, Double precoProduto) {
 
 		setIdProduto(idProduto);
+		setCodigoProduto(codigoProduto);
 		setNomeProduto(nomeProduto);
 		setQuantidadeProduto(quantidadeProduto);
 		setPrecoProduto(precoProduto);
 
 	}
 
-	public Produto(String nomeProduto, Integer quantidadeProduto,
+	public Produto(String codigoProduto ,String nomeProduto, Integer quantidadeProduto,
 			Double precoProduto) {
 
+		setCodigoProduto(codigoProduto);
 		setNomeProduto(nomeProduto);
 		setQuantidadeProduto(quantidadeProduto);
 		setPrecoProduto(precoProduto);
@@ -63,6 +67,17 @@ public class Produto {
 		this.idProduto = idProduto;
 	}
 
+	public String getCodigoProduto(){
+		
+		return codigoProduto;
+	}
+	
+	public void setCodigoProduto(String codigoProduto){
+		
+		this.codigoProduto = codigoProduto;
+		
+	}
+	
 	public String getNomeProduto() {
 		return nomeProduto;
 	}
@@ -103,12 +118,13 @@ public class Produto {
 		this.dataFabricacaoProduto = dataFabricacaoProduto;
 	}
 
+	@Override
 	public String toString() {
-
-		return "ID " + idProduto + " Produto " + nomeProduto + " Quantidade "
-				+ quantidadeProduto + " Preço " + precoProduto + " Validade "
-				+ validadeProduto + " Data Fabricação " + dataFabricacaoProduto;
-
+		return "Produto [idProduto=" + idProduto + ", codigoProduto="
+				+ codigoProduto + ", nomeProduto=" + nomeProduto
+				+ ", quantidadeProduto=" + quantidadeProduto
+				+ ", precoProduto=" + precoProduto + ", validadeProduto="
+				+ validadeProduto + ", dataFabricacaoProduto="
+				+ dataFabricacaoProduto + "]";
 	}
-
 }

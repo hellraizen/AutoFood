@@ -2,7 +2,9 @@ package com.autofood.produto;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+
 import javax.swing.JOptionPane;
+
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -20,14 +22,14 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 	}
 
 	// funcional
-	public void cadastra(Produto produto) throws ProdutoJáCadastradoException,
-			NomeVazioException {
-		produto.setIdProduto(index);
-		if (existi(produto.getIdProduto()))
+	public void cadastra(Produto produto) throws ProdutoJáCadastradoException,NomeVazioException {
+		
+		if (existi(produto.getCodigoProduto()))
 			throw new ProdutoJáCadastradoException();
 		if (produto.getNomeProduto().equals(null))
 			throw new NomeVazioException();
-
+		
+		produto.setIdProduto(index);
 		arraySetProduto.add(produto);
 		index++;
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
@@ -35,9 +37,9 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 
 	//funcional
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
-		int i = produto.getIdProduto();
+		String i = produto.getCodigoProduto();
 		for (Produto produto2 : arraySetProduto) {
-			if (i == produto2.getIdProduto());
+			if (i.equals(produto2.getCodigoProduto()));
 
 			arraySetProduto.remove(produto2);
 			arraySetProduto.add(produto);
@@ -45,26 +47,27 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 
 	}
 
-	// funcional mas com erro
-	public void remover(Integer idProduto) throws ProdutoNaoEncontradoException {
+	// funcional
+	public void remover(String codigoProduto) throws ProdutoNaoEncontradoException {
 		for (Produto produto : arraySetProduto) {
-			if (produto.getIdProduto() == idProduto) {
+			if (produto.getCodigoProduto().equals(codigoProduto)) {
 
 				arraySetProduto.remove(produto);
 				JOptionPane.showMessageDialog(null,
 						"Cliente Removido com Sucesso");
+				break;
 			}
-
+			throw new ProdutoNaoEncontradoException();
 		}
-		throw new ProdutoNaoEncontradoException();
+		
 	}
 
 	// funcional
-	public Produto procurar(Integer idProduto)
+	public Produto procurar(String codigoProduto)
 			throws ProdutoNaoEncontradoException {
 
 		for (Produto produto : arraySetProduto) {
-			if (produto.getIdProduto() == idProduto) {
+			if (produto.getCodigoProduto().equals(codigoProduto)) {
 
 				return produto;
 
@@ -75,11 +78,11 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 	}
 
 	//funcional
-	public Boolean existi(Integer idPrdotudo) {
+	public Boolean existi(String codigoProduto) {
 
 		for (Produto produto : arraySetProduto) {
 
-			if (produto.getIdProduto() == idPrdotudo) {
+			if (produto.getCodigoProduto().equals(codigoProduto)) {
 
 				return true;
 

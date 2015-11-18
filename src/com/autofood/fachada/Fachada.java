@@ -102,22 +102,22 @@ public class Fachada {
 
 	}
 
-	public void removerProduto(Integer idProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
+	public void removerProduto(String codigoProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
 
-		controladorProduto.remover(idProduto);
+		controladorProduto.remover(codigoProduto);
 
 	}
 
-	public Produto procurarProduto(Integer idProduto)
+	public Produto procurarProduto(String codigoProduto)
 			throws ProdutoNaoEncontradoException, SQLException, IOException {
 
-		return controladorProduto.procurar(idProduto);
+		return controladorProduto.procurar(codigoProduto);
 
 	}
 
-	public Boolean existiProduto(Integer idPrdotudo) throws SQLException, IOException {
+	public Boolean existiProduto(String codigoProduto) throws SQLException, IOException {
 
-		return controladorProduto.existi(idPrdotudo);
+		return controladorProduto.existi(codigoProduto);
 
 	}
 
