@@ -22,6 +22,7 @@ public class Endereco {
 	
 	public Endereco(Integer idEndereco,String rua,String bairro,String numero,String cep,String complemento,Cliente cliente,Funcionario funcionario,Fornecedor fornecedor)
 	{
+		setIdEndereco(idEndereco);
 		setRua(rua);
 		setBairro(bairro);
 		setNumero(numero);
@@ -34,6 +35,13 @@ public class Endereco {
 
 	
 	
+	public Endereco(Object object, Object object2, Object object3, Object object4, Object object5, Object object6,
+			Object object7, Object object8, Object object9) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public Integer getIdEndereco() {
 		return idEndereco;
 	}

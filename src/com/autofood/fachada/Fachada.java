@@ -164,32 +164,32 @@ public class Fachada {
 	}
 	// -------------------------------------------------------------------ENDEREÇO------------------------------------------------------------------
 	
-	public void cadastrarEndereco(Endereco endereco) throws SQLException {
+	public void cadastrarEndereco(Endereco endereco) throws SQLException, IOException {
 		controladorEndereco.cadastrar(endereco);
 		
 	}
 
-	public void atualizarEndereco(Endereco endereco) throws SQLException {
+	public void atualizarEndereco(Endereco endereco) throws SQLException, IOException {
 		controladorEndereco.atualizar(endereco);
 		
 	}
 
-	public void removerEndereco(Integer codigoEndereco) throws SQLException {
+	public void removerEndereco(Integer codigoEndereco) throws SQLException, IOException {
 		
 		controladorEndereco.remover(codigoEndereco);
 	}
 
-	public Endereco procurarEndereco(Integer codigoEndereco) throws SQLException {
+	public Endereco procurarEndereco(Integer codigoEndereco) throws Exception {
 	
 		return controladorEndereco.procurar(codigoEndereco);
 	}
 
-	public boolean existirEndereco(Integer codigoEndereco) throws SQLException {
+	public boolean existirEndereco(Integer codigoEndereco) throws SQLException, IOException {
 
 		return controladorEndereco.existir(codigoEndereco);
 	}
 
-	public ArrayList<Endereco> listarEndereco() throws SQLException {
+	public ArrayList<Endereco> listarEndereco() throws SQLException, IOException {
 
 		return controladorEndereco.listar();
 	}
