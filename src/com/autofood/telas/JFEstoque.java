@@ -50,9 +50,9 @@ public class JFEstoque extends JFrame {
 	private JTextField txtCodigoProduto;
 	private JTextField txtDataEntrada;
 	private JTable table;
-	private Integer codigoselecao;
+	private String codigoselecao;
 	private DefaultTableModel defultTabelaEstoque;
-	private JTextField textField;
+	private JTextField txtidProduto;
 
 	/**
 	 * Launch the application.
@@ -116,9 +116,9 @@ public class JFEstoque extends JFrame {
 		
 		JLabel lblDataEntrada = new JLabel("Data Entrada");
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setColumns(10);
+		txtidProduto = new JTextField();
+		txtidProduto.setEditable(false);
+		txtidProduto.setColumns(10);
 		
 		JLabel lblId = new JLabel("ID:");
 		GroupLayout gl_panelCadastro = new GroupLayout(panelCadastro);
@@ -159,7 +159,7 @@ public class JFEstoque extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(lblId)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addComponent(txtidProduto, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_panelCadastro.setVerticalGroup(
 			gl_panelCadastro.createParallelGroup(Alignment.LEADING)
@@ -196,7 +196,7 @@ public class JFEstoque extends JFrame {
 										.addComponent(txtPreco, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(txtValidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
 						.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(txtidProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addComponent(lblId)))
 					.addContainerGap(83, Short.MAX_VALUE))
 		);
@@ -309,24 +309,17 @@ public class JFEstoque extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				int linhaselecionada = table.getSelectedRow();
-
-				String codigoselecao = table.getValueAt(linhaselecionada, 1).toString();
+				codigoselecao = table.getValueAt(linhaselecionada, 1).toString();
 				
 		}
 		});
-		String colunasTabelaProduto[] = new String[] { "Codigo", "Produto", "Quantidade", "Preco", "Validade","DataEntrada" };
-		defultTabelaEstoque = new DefaultTableModel(new Object[][] {}, colunasTabelaProduto) {
+		String colunasTabelaEstoque[] = new String[] { "ID", "Codigo Produto", "Produto", "Quantidade", "Preco", "Validade","DataEntrada" };
+		defultTabelaEstoque = new DefaultTableModel(new Object[][] {}, colunasTabelaEstoque) {
 		public boolean isCellEditable(int row, int col) {
 		  return false;
 	}
 };
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"ID", "Codigo Produto", "Produto", "Quantidade", "Preco", "Validade", "DataEntrada"
-			}
-		));
+		table.setModel(defultTabelaEstoque);
 		scrollPane.setViewportView(table);
 		panelLista.setLayout(gl_panelLista);
 		contentPane.setLayout(gl_contentPane);
@@ -367,6 +360,7 @@ public class JFEstoque extends JFrame {
 
 		Vector vector = new Vector();
 		vector.add(estoque.getIdEstoqueProduto());
+		vector.add(estoque.getCodigoProduto());
 		vector.add(estoque.getNomeProdutoEstoque());
 		vector.add(estoque.getQuantidadeProdutoEstoque());
 		vector.add(estoque.getPrecoCustoProdutoEstoque());
@@ -384,7 +378,9 @@ public class JFEstoque extends JFrame {
 		ArrayList<Estoque> estoques = Fachada.getInstance().listarEstoque();
 		for (Estoque estoque : estoques) {
 			Vector vector = new Vector();
+			
 			vector.add(estoque.getIdEstoqueProduto());
+			vector.add(estoque.getCodigoProduto());
 			vector.add(estoque.getNomeProdutoEstoque());
 			vector.add(estoque.getQuantidadeProdutoEstoque());
 			vector.add(estoque.getPrecoCustoProdutoEstoque());
@@ -402,13 +398,14 @@ public class JFEstoque extends JFrame {
 
 	private void cadastrar() {
 		// Entrada de dados Pessoais
+		String codigo = txtCodigoProduto.getText();
 		String produto = txtProduto.getText();
 		Integer quantidade = Integer.parseInt(txtQuantidade.getText());
 		Double preco = Double.parseDouble(txtPreco.getText());
 		String validade = txtValidade.getText();
 		String datafabricacao = txtDataEntrada.getText();
 
-		Estoque estoque = new Estoque(produto,quantidade,validade,datafabricacao,preco);
+		Estoque estoque = new Estoque(codigo,produto,quantidade,validade,datafabricacao,preco);
 		try {
 			Fachada.getInstance().cadastraEstoque(estoque);
 			limpar();
@@ -423,7 +420,8 @@ public class JFEstoque extends JFrame {
 		try {
 			Estoque estoque = Fachada.getInstance().procurarEstoque(codigoselecao);
 
-			Integer codigo = estoque.getIdEstoqueProduto();
+			Integer id = estoque.getIdEstoqueProduto();
+			String codigo = estoque.getCodigoProduto();
 			String nome = estoque.getNomeProdutoEstoque();
 			Integer quantidade = estoque.getQuantidadeProdutoEstoque();
 			Double preco = estoque.getPrecoCustoProdutoEstoque();
@@ -431,8 +429,8 @@ public class JFEstoque extends JFrame {
 			String data = estoque.getDataEntradaProdutoEstoque();
 			
 			
-
-			txtCodigoProduto.setText(codigo.toString());
+			txtidProduto.setText(id.toString());
+			txtCodigoProduto.setText(codigo);
 			txtProduto.setText(nome);
 			txtQuantidade.setText(quantidade.toString());
 			txtPreco.setText(preco.toString());
@@ -448,15 +446,16 @@ public class JFEstoque extends JFrame {
 	}
 
 	private void atualizar() {
-
-		Integer codigo = Integer.parseInt(txtCodigoProduto.getText());
+		
+		Integer id = Integer.parseInt(txtidProduto.getText());
+		String codigo = txtCodigoProduto.getText();
 		String produto = txtProduto.getText();
 		Integer quantidade = Integer.parseInt(txtQuantidade.getText());
 		Double preco = Double.parseDouble(txtPreco.getText());
 		String validade = txtValidade.getText();
 		String dataEntrada = txtDataEntrada.getText();
 
-		Estoque estoque = new Estoque(codigo,produto,quantidade,dataEntrada,validade,preco);
+		Estoque estoque = new Estoque(id,codigo,produto,quantidade,dataEntrada,validade,preco);
 
 		try {
 			Fachada.getInstance().atualizarEstoque(estoque);
@@ -471,7 +470,8 @@ public class JFEstoque extends JFrame {
 
 	private void limpar() {
 		// campos dados cliente
-
+		
+		txtidProduto.setText(" ");
 		txtCodigoProduto.setText("");
 		txtProduto.setText("");
 		txtQuantidade.setText("");
