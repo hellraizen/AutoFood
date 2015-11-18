@@ -78,8 +78,7 @@ public class JFFornecedor extends JFrame {
 		
 		JPanel panelCadastro = new JPanel();
 		panelCadastro.setToolTipText("");
-		panelCadastro.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Cadastro Produtos",
-								TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelCadastro.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Cadastro Fornecedor", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelCadastro.setBackground(SystemColor.menu);
 		panelCadastro.setBounds(10, 11, 619, 164);
 		contentPane.add(panelCadastro);

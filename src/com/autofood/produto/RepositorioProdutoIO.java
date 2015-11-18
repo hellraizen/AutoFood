@@ -22,7 +22,9 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 
 	
 	// Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioprodutoio.txt");
-	Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioprodutoio.txt");
+	//Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioprodutoio.txt");
+	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioprodutoio.txt");
+
 	Charset utf8 = StandardCharsets.UTF_8;
 
 	public RepositorioProdutoIO() throws IOException {
@@ -147,7 +149,7 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 				
 				String[] lista = contandoLinhas.split(";");
 				
-				Produto produto = new Produto(index,lista[0],Integer.parseInt(lista[1]),Double.parseDouble(lista[2]),lista[3],lista[4]);
+				Produto produto = new Produto(index,lista[1],Integer.parseInt(lista[2]),Double.parseDouble(lista[3]),lista[4],lista[5]);
 				index++;
 				arrayArquivo.add(produto);	
 				
