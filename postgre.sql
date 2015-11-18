@@ -24,6 +24,7 @@ primary key (idproduto)
 create table estoqueteste(
 
 idEstoqueProduto serial,
+codigoProduto varchar(10),
 produtoEstoque varchar (40),
 quantidade int,
 dataEntrada varchar (10),

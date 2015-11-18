@@ -47,11 +47,12 @@ public class JFEstoque extends JFrame {
 	private JTextField txtPreco;
 	private JTextField txtValidade;
 	private JTextField txtProduto;
-	private JTextField txtCodigo;
+	private JTextField txtCodigoProduto;
 	private JTextField txtDataEntrada;
 	private JTable table;
-	private Integer codigoselecao;
+	private String codigoselecao;
 	private DefaultTableModel defultTabelaEstoque;
+	private JTextField txtidProduto;
 
 	/**
 	 * Launch the application.
@@ -105,19 +106,24 @@ public class JFEstoque extends JFrame {
 		
 		JLabel lblProduto = new JLabel("Produto");
 		
-		JLabel lblCodigo = new JLabel("Codigo:");
+		JLabel lblCodigoProduto = new JLabel("Codigo Produto:");
 		
-		txtCodigo = new JTextField();
-		txtCodigo.setColumns(10);
+		txtCodigoProduto = new JTextField();
+		txtCodigoProduto.setColumns(10);
 		
 		txtDataEntrada = new JTextField();
 		txtDataEntrada.setColumns(10);
 		
 		JLabel lblDataEntrada = new JLabel("Data Entrada");
+		
+		txtidProduto = new JTextField();
+		txtidProduto.setEditable(false);
+		txtidProduto.setColumns(10);
+		
+		JLabel lblId = new JLabel("ID:");
 		GroupLayout gl_panelCadastro = new GroupLayout(panelCadastro);
 		gl_panelCadastro.setHorizontalGroup(
 			gl_panelCadastro.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 605, Short.MAX_VALUE)
 				.addGroup(gl_panelCadastro.createSequentialGroup()
 					.addGap(4)
 					.addGroup(gl_panelCadastro.createParallelGroup(Alignment.LEADING, false)
@@ -143,49 +149,56 @@ public class JFEstoque extends JFrame {
 											.addComponent(lblProduto, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 											.addGap(91))
 										.addGroup(gl_panelCadastro.createSequentialGroup()
-											.addComponent(lblCodigo)
+											.addComponent(lblCodigoProduto)
 											.addPreferredGap(ComponentPlacement.UNRELATED)))
-									.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(txtCodigoProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.LEADING)
 								.addComponent(txtDataEntrada)
 								.addComponent(lblDataEntrada, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(66, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(lblId)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtidProduto, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_panelCadastro.setVerticalGroup(
 			gl_panelCadastro.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 164, Short.MAX_VALUE)
 				.addGroup(gl_panelCadastro.createSequentialGroup()
 					.addGroup(gl_panelCadastro.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panelCadastro.createSequentialGroup()
-							.addGap(28)
-							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblProduto)
-								.addComponent(lblDataEntrada)))
-						.addGroup(gl_panelCadastro.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
-								.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblCodigo))))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtDataEntrada, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_panelCadastro.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panelCadastro.createSequentialGroup()
-							.addComponent(lblQuantidade)
+							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelCadastro.createSequentialGroup()
+									.addGap(28)
+									.addGroup(gl_panelCadastro.createParallelGroup(Alignment.TRAILING)
+										.addComponent(lblProduto)
+										.addComponent(lblDataEntrada)))
+								.addGroup(gl_panelCadastro.createSequentialGroup()
+									.addContainerGap()
+									.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
+										.addComponent(txtCodigoProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblCodigoProduto))))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panelCadastro.createSequentialGroup()
 							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblPreco)
-								.addComponent(lblValidade))
-							.addGap(1)
-							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
-								.addComponent(txtPreco, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtValidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-					.addGap(83))
+								.addComponent(txtProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtDataEntrada, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_panelCadastro.createSequentialGroup()
+									.addComponent(lblQuantidade)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panelCadastro.createSequentialGroup()
+									.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblPreco)
+										.addComponent(lblValidade))
+									.addGap(1)
+									.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
+										.addComponent(txtPreco, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(txtValidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
+						.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
+							.addComponent(txtidProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblId)))
+					.addContainerGap(83, Short.MAX_VALUE))
 		);
 		panelCadastro.setLayout(gl_panelCadastro);
 		
@@ -280,14 +293,14 @@ public class JFEstoque extends JFrame {
 			gl_panelLista.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelLista.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		gl_panelLista.setVerticalGroup(
 			gl_panelLista.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelLista.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		
@@ -296,13 +309,12 @@ public class JFEstoque extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				int linhaselecionada = table.getSelectedRow();
-
-				String ccodigoselecao = table.getValueAt(linhaselecionada, 0).toString();
-				codigoselecao = Integer.parseInt(ccodigoselecao);
+				codigoselecao = table.getValueAt(linhaselecionada, 1).toString();
+				
 		}
 		});
-		String colunasTabelaProduto[] = new String[] { "Codigo", "Produto", "Quantidade", "Preco", "Validade","DataEntrada" };
-		defultTabelaEstoque = new DefaultTableModel(new Object[][] {}, colunasTabelaProduto) {
+		String colunasTabelaEstoque[] = new String[] { "ID", "Codigo Produto", "Produto", "Quantidade", "Preco", "Validade","DataEntrada" };
+		defultTabelaEstoque = new DefaultTableModel(new Object[][] {}, colunasTabelaEstoque) {
 		public boolean isCellEditable(int row, int col) {
 		  return false;
 	}
@@ -314,13 +326,13 @@ public class JFEstoque extends JFrame {
 	}
 	private void procurar() {
 
-		Integer id = Integer.parseInt(txtCodigo.getText());
+		String id = (txtCodigoProduto.getText());
 
 		try {
 			Estoque estoque = Fachada.getInstance().procurarEstoque(id);
 			listar(estoque);
 
-			txtCodigo.setText("");
+			txtCodigoProduto.setText("");
 
 		} catch (ClassNotFoundException | SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
 			// TODO Auto-generated catch block
@@ -348,6 +360,7 @@ public class JFEstoque extends JFrame {
 
 		Vector vector = new Vector();
 		vector.add(estoque.getIdEstoqueProduto());
+		vector.add(estoque.getCodigoProduto());
 		vector.add(estoque.getNomeProdutoEstoque());
 		vector.add(estoque.getQuantidadeProdutoEstoque());
 		vector.add(estoque.getPrecoCustoProdutoEstoque());
@@ -365,7 +378,9 @@ public class JFEstoque extends JFrame {
 		ArrayList<Estoque> estoques = Fachada.getInstance().listarEstoque();
 		for (Estoque estoque : estoques) {
 			Vector vector = new Vector();
+			
 			vector.add(estoque.getIdEstoqueProduto());
+			vector.add(estoque.getCodigoProduto());
 			vector.add(estoque.getNomeProdutoEstoque());
 			vector.add(estoque.getQuantidadeProdutoEstoque());
 			vector.add(estoque.getPrecoCustoProdutoEstoque());
@@ -383,13 +398,14 @@ public class JFEstoque extends JFrame {
 
 	private void cadastrar() {
 		// Entrada de dados Pessoais
+		String codigo = txtCodigoProduto.getText();
 		String produto = txtProduto.getText();
 		Integer quantidade = Integer.parseInt(txtQuantidade.getText());
 		Double preco = Double.parseDouble(txtPreco.getText());
 		String validade = txtValidade.getText();
 		String datafabricacao = txtDataEntrada.getText();
 
-		Estoque estoque = new Estoque(produto,quantidade,validade,datafabricacao,preco);
+		Estoque estoque = new Estoque(codigo,produto,quantidade,validade,datafabricacao,preco);
 		try {
 			Fachada.getInstance().cadastraEstoque(estoque);
 			limpar();
@@ -404,7 +420,8 @@ public class JFEstoque extends JFrame {
 		try {
 			Estoque estoque = Fachada.getInstance().procurarEstoque(codigoselecao);
 
-			Integer codigo = estoque.getIdEstoqueProduto();
+			Integer id = estoque.getIdEstoqueProduto();
+			String codigo = estoque.getCodigoProduto();
 			String nome = estoque.getNomeProdutoEstoque();
 			Integer quantidade = estoque.getQuantidadeProdutoEstoque();
 			Double preco = estoque.getPrecoCustoProdutoEstoque();
@@ -412,8 +429,8 @@ public class JFEstoque extends JFrame {
 			String data = estoque.getDataEntradaProdutoEstoque();
 			
 			
-
-			txtCodigo.setText(codigo.toString());
+			txtidProduto.setText(id.toString());
+			txtCodigoProduto.setText(codigo);
 			txtProduto.setText(nome);
 			txtQuantidade.setText(quantidade.toString());
 			txtPreco.setText(preco.toString());
@@ -429,15 +446,16 @@ public class JFEstoque extends JFrame {
 	}
 
 	private void atualizar() {
-
-		Integer codigo = Integer.parseInt(txtCodigo.getText());
+		
+		Integer id = Integer.parseInt(txtidProduto.getText());
+		String codigo = txtCodigoProduto.getText();
 		String produto = txtProduto.getText();
 		Integer quantidade = Integer.parseInt(txtQuantidade.getText());
 		Double preco = Double.parseDouble(txtPreco.getText());
 		String validade = txtValidade.getText();
 		String dataEntrada = txtDataEntrada.getText();
 
-		Estoque estoque = new Estoque(codigo,produto,quantidade,dataEntrada,validade,preco);
+		Estoque estoque = new Estoque(id,codigo,produto,quantidade,dataEntrada,validade,preco);
 
 		try {
 			Fachada.getInstance().atualizarEstoque(estoque);
@@ -452,8 +470,9 @@ public class JFEstoque extends JFrame {
 
 	private void limpar() {
 		// campos dados cliente
-
-		txtCodigo.setText("");
+		
+		txtidProduto.setText(" ");
+		txtCodigoProduto.setText("");
 		txtProduto.setText("");
 		txtQuantidade.setText("");
 		txtPreco.setText("");

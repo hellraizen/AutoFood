@@ -8,28 +8,24 @@ import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 
 public class RepositorioFornecedorIO implements IRepositorioEstoque {
 
-	public void cadastra(Estoque estoque) throws NomeVazioException,
-			ProdutoJaCadastradoEstoqueException, SQLException {
+	public void cadastra(Estoque estoque) throws NomeVazioException, ProdutoJaCadastradoEstoqueException, SQLException {
 
 	}
 
-	public void atualizar(Estoque estoque)
-			throws ProdutoEstoqueNaoEncontradoException, SQLException {
+	public void atualizar(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 
 	}
 
-	public void remover(Integer idEstoqueProduto)
-			throws ProdutoEstoqueNaoEncontradoException, SQLException {
+	public void remover(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 
 	}
 
-	public Estoque procurar(Integer idEstoqueProduto)
-			throws ProdutoEstoqueNaoEncontradoException, SQLException {
+	public Estoque procurar(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 
 		return null;
 	}
 
-	public Boolean existi(Integer idEstoqueProduto) {
+	public Boolean existi(String codigoProduto) {
 
 		return null;
 	}
@@ -38,5 +34,4 @@ public class RepositorioFornecedorIO implements IRepositorioEstoque {
 
 		return null;
 	}
-
 }

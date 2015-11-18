@@ -314,8 +314,6 @@ public class JFProduto extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				int linhaselecionada = tableProduto.getSelectedRow();
 				codigoselecao = tableProduto.getValueAt(linhaselecionada, 1).toString();
-				
-				
 
 			}
 		});

@@ -2,9 +2,7 @@ package com.autofood.estoque;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import javax.swing.JOptionPane;
-
 import com.autofood.exceçõesEstoque.NomeVazioException;
 import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 
@@ -21,14 +19,16 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 	}
 
 	public void cadastra(Estoque estoque) throws ProdutoJaCadastradoEstoqueException, NomeVazioException {
-		estoque.setIdEstoqueProduto(index);
-		if (existi(estoque.getIdEstoqueProduto()))
+		
+		if (existi(estoque.getCodigoProduto()))
 			throw new ProdutoJaCadastradoEstoqueException();
 		if (estoque.getNomeProdutoEstoque().equals(null))
 			throw new NomeVazioException();
-
+		
+		estoque.setIdEstoqueProduto(index);
 		arrayMapEstoque.put(index, estoque);
 		index++;
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 
 	}
 
@@ -46,25 +46,27 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 		}
 	}
 
-	public void remover(Integer idEstoqueProduto) {
-		int i = idEstoqueProduto;
+	public void remover(String codigoProduto) {
+		String i = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (i == estoque.getIdEstoqueProduto());
+			if (i.equals(estoque.getIdEstoqueProduto()));
 
 			arrayMapEstoque.remove(j, estoque);
 
 		}
+		
+		JOptionPane.showMessageDialog(null, "Produto removido do estoque com sucesso");
 
 	}
 
-	public Estoque procurar(Integer idEstoqueProduto) {
-		int i = idEstoqueProduto;
+	public Estoque procurar(String codigoProduto) {
+		String i = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (i == estoque.getIdEstoqueProduto());
+			if (i.equals(estoque.getIdEstoqueProduto()));
 
 			return estoque;
 		}
@@ -73,10 +75,10 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 
 	}
 
-	public Boolean existi(Integer idEstoqueProduto) {
-		for (int j = 1; j < index; j++) {
+	public Boolean existi(String codigoProduto) {
+		for (int j = 1; j < index;j++) {
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (idEstoqueProduto == estoque.getIdEstoqueProduto());
+			if (codigoProduto.equals(estoque.getCodigoProduto()));
 			
 			return true;
 		}
