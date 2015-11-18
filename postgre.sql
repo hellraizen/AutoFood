@@ -12,6 +12,7 @@ primary key (cpf)
 create table produtoteste(
 
 idProduto serial,
+codigoProduto varchar(10),
 nome_produto varchar(40),
 quantidade int,
 preco numeric(8,2),

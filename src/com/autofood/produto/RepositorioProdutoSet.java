@@ -2,9 +2,7 @@ package com.autofood.produto;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-
 import javax.swing.JOptionPane;
-
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -43,6 +41,8 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 
 			arraySetProduto.remove(produto2);
 			arraySetProduto.add(produto);
+			JOptionPane.showMessageDialog(null,
+					"Produto Atualizado com Sucesso");
 		}
 
 	}

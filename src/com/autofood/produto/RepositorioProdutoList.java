@@ -34,13 +34,14 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 
 	}
-	//funcional mais com uma gambiarra kkk
+	//funcional 
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
 		String i = produto.getCodigoProduto();
 
 		for (Produto produtos : arrayListProduto) {
 
 			if (i.equals(produtos.getCodigoProduto())) {
+			
 				arrayListProduto.remove(produtos);
 				arrayListProduto.add(produto);
 				JOptionPane.showMessageDialog(null,

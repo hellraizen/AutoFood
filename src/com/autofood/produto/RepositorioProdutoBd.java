@@ -41,19 +41,18 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 	public void atualizar(Produto produto)
 			throws ProdutoNaoEncontradoException, SQLException {
 
-		String sql = "update produtoteste set idProduto= ?,codigoProduto= ?,nome_produto= ?,quantidade= ?,preco=?,validade= ?,data_fabricacao= ? where idProduto = ?";
+		String sql = "update produtoteste set codigoProduto= ?,nome_produto= ?,quantidade= ?,preco=?,validade= ?,data_fabricacao= ? where codigoProduto = ?";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
 
-		preStatement.setInt(1, produto.getIdProduto());
-		preStatement.setString(2,produto.getCodigoProduto());
-		preStatement.setString(3, produto.getNomeProduto());
-		preStatement.setInt(4, produto.getQuantidadeProduto());
-		preStatement.setDouble(5, produto.getPrecoProduto());
-		preStatement.setString(6, produto.getValidadeProduto());
-		preStatement.setString(7, produto.getDataFabricacaoProduto());
+		preStatement.setString(1,produto.getCodigoProduto());
+		preStatement.setString(2, produto.getNomeProduto());
+		preStatement.setInt(3, produto.getQuantidadeProduto());
+		preStatement.setDouble(4, produto.getPrecoProduto());
+		preStatement.setString(5, produto.getValidadeProduto());
+		preStatement.setString(6, produto.getDataFabricacaoProduto());
 
-		preStatement.setInt(8, produto.getIdProduto());
+		preStatement.setString(7, produto.getCodigoProduto());
 
 		preStatement.executeUpdate(sql);
 
@@ -64,7 +63,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 	public void remover(String codigoProduto)
 			throws ProdutoNaoEncontradoException, SQLException {
 	
-		String sql = "delete from produtoteste where idProduto =? ";
+		String sql = "delete from produtoteste where codigoProduto =? ";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
 
@@ -79,7 +78,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 	public Produto procurar(String codigoProduto)
 			throws ProdutoNaoEncontradoException, SQLException {
 
-		String sql = "select * from produtoteste where idProduto = ? ";
+		String sql = "select * from produtoteste where codigoProduto = ? ";
 
 		PreparedStatement preStatement;
 

@@ -57,7 +57,7 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 		ArrayList<Produto> arrayArquivo = listar();
 
 		for (Produto produto1 : arrayArquivo) {
-			if (produto1.getIdProduto() == (produto.getIdProduto())) {
+			if (produto1.getCodigoProduto().equals(produto.getCodigoProduto())) {
 
 				arrayArquivo.remove(produto1);
 				arrayArquivo.add(produto);
@@ -73,21 +73,24 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 
 			try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8, StandardOpenOption.APPEND);) {
 
-				arquivar.write(produto.getIdProduto() + ";" + produto.getCodigoProduto() + ";" + produto.getNomeProduto() + ";"
-						+ produto.getQuantidadeProduto() + ";" + produto.getPrecoProduto() + ";"
-						+ produto.getDataFabricacaoProduto() + ";" + produto.getValidadeProduto() + "\n");
+				arquivar.write(produto2.getIdProduto() + ";" + produto2.getCodigoProduto() + ";" + produto2.getNomeProduto() + ";"
+						+ produto2.getQuantidadeProduto() + ";" + produto2.getPrecoProduto() + ";"
+						+ produto2.getDataFabricacaoProduto() + ";" + produto2.getValidadeProduto() + "\n");
+				
+				
 
 			}
 		}
+		JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
 	}
 
 	public void remover(String codigoProduto) throws ProdutoNaoEncontradoException, SQLException, IOException {
 
 		ArrayList<Produto> arrayArquivo = listar();
 
-		for (Produto produto : arrayArquivo) {
-			if (produto.getCodigoProduto().equals((codigoProduto))) {
-				arrayArquivo.remove(produto);
+		for (Produto produto2 : arrayArquivo) {
+			if (produto2.getCodigoProduto().equals((codigoProduto))) {
+				arrayArquivo.remove(produto2);
 				break;
 			}
 
@@ -96,15 +99,17 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 				apagar.write(" ");
 			}
 
-			for (Produto produto1 : arrayArquivo) {
+			for (Produto produto3 : arrayArquivo) {
 				try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8, StandardOpenOption.APPEND)) {
 
-				arquivar.write(produto.getIdProduto() + ";" + produto.getCodigoProduto() + ";" + produto.getNomeProduto() + ";"
-						+ produto.getQuantidadeProduto() + ";" + produto.getPrecoProduto() + ";"
-						+ produto.getDataFabricacaoProduto() + ";" + produto.getValidadeProduto() + "\n");
+				arquivar.write(produto3.getIdProduto() + ";" + produto3.getCodigoProduto() + ";" + produto3.getNomeProduto() + ";"
+						+ produto3.getQuantidadeProduto() + ";" + produto3.getPrecoProduto() + ";"
+						+ produto3.getDataFabricacaoProduto() + ";" + produto3.getValidadeProduto() + "\n");
+				
 
 				}
 			}
+			JOptionPane.showMessageDialog(null, "Removido com sucesso");
 		}
 
 	}
