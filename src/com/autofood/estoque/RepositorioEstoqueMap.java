@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import com.autofood.exceçõesEstoque.NomeVazioException;
+import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 
 public class RepositorioEstoqueMap implements IRepositorioEstoque {
@@ -19,12 +20,12 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 	}
 
 	public void cadastra(Estoque estoque) throws ProdutoJaCadastradoEstoqueException, NomeVazioException {
-		
+
 		if (existi(estoque.getCodigoProduto()))
 			throw new ProdutoJaCadastradoEstoqueException();
 		if (estoque.getNomeProdutoEstoque().equals(null))
 			throw new NomeVazioException();
-		
+
 		estoque.setIdEstoqueProduto(index);
 		arrayMapEstoque.put(index, estoque);
 		index++;
@@ -32,43 +33,47 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 
 	}
 
-	public void atualizar(Estoque estoque) {
+	public void atualizar(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException {
 		int i = estoque.getIdEstoqueProduto();
 
 		for (int j = 1; j < index; j++) {
 			Estoque estoque1 = arrayMapEstoque.get(j);
-			if (i == estoque1.getIdEstoqueProduto());
-			
-			arrayMapEstoque.remove(j, estoque1);
-			arrayMapEstoque.put(j, estoque);
+			if (i == estoque1.getIdEstoqueProduto()) {
 
-			JOptionPane.showMessageDialog(null, "Produto Atualizado com Sucesso");
+				arrayMapEstoque.remove(j, estoque1);
+				arrayMapEstoque.put(j, estoque);
+
+				JOptionPane.showMessageDialog(null, "Produto Atualizado com Sucesso");
+			}
+			throw new ProdutoEstoqueNaoEncontradoException();
 		}
 	}
 
-	public void remover(String codigoProduto) {
+	public void remover(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException {
 		String i = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (i.equals(estoque.getIdEstoqueProduto()));
+			if (i.equals(estoque.getIdEstoqueProduto())) {
 
-			arrayMapEstoque.remove(j, estoque);
+				arrayMapEstoque.remove(j, estoque);
+				JOptionPane.showMessageDialog(null, "Produto removido do estoque com sucesso");
+			}
 
+			throw new ProdutoEstoqueNaoEncontradoException();
 		}
-		
-		JOptionPane.showMessageDialog(null, "Produto removido do estoque com sucesso");
-
 	}
 
-	public Estoque procurar(String codigoProduto) {
+	public Estoque procurar(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException {
 		String i = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (i.equals(estoque.getIdEstoqueProduto()));
+			if (i.equals(estoque.getIdEstoqueProduto())) {
 
-			return estoque;
+				return estoque;
+			}
+			throw new ProdutoEstoqueNaoEncontradoException();
 		}
 
 		return null;
@@ -76,26 +81,28 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 	}
 
 	public Boolean existi(String codigoProduto) {
-		for (int j = 1; j < index;j++) {
+		for (int j = 1; j < index; j++) {
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (codigoProduto.equals(estoque.getCodigoProduto()));
-			
-			return true;
+			if (codigoProduto.equals(estoque.getCodigoProduto())) {
+
+				return true;
+			}
+
 		}
 
 		return false;
 	}
 
 	public ArrayList<Estoque> listar() {
-		
+
 		ArrayList<Estoque> arrayListEstoque = new ArrayList<Estoque>();
-		
+
 		for (int i = 1; i < index; i++) {
-			
+
 			Estoque estoque = arrayMapEstoque.get(i);
-			
+
 			arrayListEstoque.add(estoque);
-			
+
 		}
 
 		return arrayListEstoque;

@@ -63,7 +63,7 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 				arrayListProduto.remove(produto);
 				JOptionPane.showMessageDialog(null,
 						"Cliente Removido com Sucesso");
-				break;
+				
 			}
 			throw new ProdutoNaoEncontradoException();
 		}
@@ -79,10 +79,11 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 				return produto;
 
 			}
-
+			
+			throw new ProdutoNaoEncontradoException();
 		}
 
-		throw new ProdutoNaoEncontradoException();
+		return null;
 
 	}
 

@@ -37,12 +37,15 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 		int i = estoque.getIdEstoqueProduto();
 
 		for (Estoque estoques : arrayListEstoque) {
-			if (i == estoques.getIdEstoqueProduto());
+			if (i == estoques.getIdEstoqueProduto()){
 			arrayListEstoque.remove(estoques);
 			arrayListEstoque.add(estoque);
 
 			JOptionPane.showMessageDialog(null,
 					"Estoque Atualizado Com Sucesso");
+			}
+			
+			throw new ProdutoEstoqueNaoEncontradoException();
 		}
 
 	}
@@ -52,13 +55,14 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 		String i = codigoProduto;
 
 		for (Estoque estoque : arrayListEstoque) {
-			if (i.equals(estoque.getCodigoProduto()));
+			if (i.equals(estoque.getCodigoProduto())){
 			arrayListEstoque.remove(estoque);
 			
 			JOptionPane.showMessageDialog(null, "Cadastro Removido com Sucesso");
-
+			
 		}
-
+		throw new ProdutoEstoqueNaoEncontradoException();
+	  }
 	}
 
 	public Estoque procurar(String codigoProduto)
@@ -66,11 +70,12 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 		String i = codigoProduto;
 
 		for (Estoque estoque : arrayListEstoque) {
-			if (i.equals(estoque.getCodigoProduto()));
+			if (i.equals(estoque.getCodigoProduto())){
 
 			return estoque;
 		}
-
+			throw new ProdutoEstoqueNaoEncontradoException();
+	}
 		return null;
 	}
 

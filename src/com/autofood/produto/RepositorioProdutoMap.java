@@ -1,6 +1,5 @@
 package com.autofood.produto;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
@@ -21,9 +20,8 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 	}
 
 	// funcional
-	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,
-			NomeVazioException {
-		
+	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException, NomeVazioException {
+
 		if (existi(produto.getCodigoProduto()))
 			throw new ProdutoJ·CadastradoException();
 		if (produto.getNomeProduto().equals(null))
@@ -42,13 +40,13 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 
 		for (int j = 1; j < index; j++) {
 			Produto produtos = arrayMapProduto.get(j);
-			if (i.equals(produtos.getCodigoProduto()));
-			int id = produtos.getIdProduto();
-			arrayMapProduto.remove(produtos);
-			arrayMapProduto.put(id,produto);
-			JOptionPane.showMessageDialog(null,
-					"Produto Atualizado com Sucesso");
+			if (i.equals(produtos.getCodigoProduto())) {
 
+				arrayMapProduto.remove(produtos);
+				arrayMapProduto.put(j, produto);
+				JOptionPane.showMessageDialog(null, "Produto Atualizado com Sucesso");
+			}
+			throw new ProdutoNaoEncontradoException();
 		}
 	}
 
@@ -61,18 +59,19 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 
 			Produto produto = arrayMapProduto.get(j);
 
-			if (i.equals(produto.getCodigoProduto()));
-			int id = produto.getIdProduto();
-			arrayMapProduto.remove(id);
-			JOptionPane.showMessageDialog(null, "Produto Removido com Sucesso");
+			if (i.equals(produto.getCodigoProduto())) {
+				int id = produto.getIdProduto();
+				arrayMapProduto.remove(id);
+				JOptionPane.showMessageDialog(null, "Produto Removido com Sucesso");
 
+			}
+			throw new ProdutoNaoEncontradoException();
 		}
 
 	}
 
 	// funcional
-	public Produto procurar(String codigoProduto)
-			throws ProdutoNaoEncontradoException {
+	public Produto procurar(String codigoProduto) throws ProdutoNaoEncontradoException {
 
 		String i = codigoProduto;
 
@@ -80,11 +79,13 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 
 			Produto produto = arrayMapProduto.get(j);
 
-			if (i.equals(produto.getCodigoProduto()));
+			if (i.equals(produto.getCodigoProduto())) {
 
-			return produto;
+				return produto;
+			}
+
+			throw new ProdutoNaoEncontradoException();
 		}
-
 		return null;
 	}
 
@@ -98,7 +99,8 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 		}
 		return false;
 	}
-	//funcional
+
+	// funcional
 	public ArrayList<Produto> listar() {
 
 		ArrayList<Produto> arrayListProduto = new ArrayList<Produto>();

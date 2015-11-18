@@ -55,7 +55,7 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 				arraySetProduto.remove(produto);
 				JOptionPane.showMessageDialog(null,
 						"Cliente Removido com Sucesso");
-				break;
+			
 			}
 			throw new ProdutoNaoEncontradoException();
 		}
