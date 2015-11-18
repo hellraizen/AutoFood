@@ -50,11 +50,11 @@ public class RepositorioEstoqueSet implements IRepositorioEstoque {
 
 	}
 
-	public void remover(Integer idEstoqueProduto) {
-		int i = idEstoqueProduto;
+	public void remover(String codigoProduto) {
+		String i = codigoProduto;
 
 		for (Estoque estoque : arraySetEstoque) {
-			if (i == estoque.getIdEstoqueProduto());
+			if (i.equals(estoque.getCodigoProduto()));
 
 			arraySetEstoque.remove(estoque);
 			
@@ -63,11 +63,11 @@ public class RepositorioEstoqueSet implements IRepositorioEstoque {
 
 	}
 
-	public Estoque procurar(Integer idEstoqueProduto) {
-		int i = idEstoqueProduto;
+	public Estoque procurar(String codigoProduto) {
+		String i = codigoProduto;
 
 		for (Estoque estoque : arraySetEstoque) {
-			if (i == estoque.getIdEstoqueProduto());
+			if (i.equals(estoque.getIdEstoqueProduto()));
 
 			return estoque;
 		}
@@ -75,11 +75,11 @@ public class RepositorioEstoqueSet implements IRepositorioEstoque {
 		return null;
 	}
 
-	public Boolean existi(Integer idEstoqueProduto) {
-		int i = idEstoqueProduto;
+	public Boolean existi(String codigoProduto) {
+		String i = codigoProduto;
 
 		for (Estoque estoque : arraySetEstoque) {
-			if (i == estoque.getIdEstoqueProduto());
+			if (i.equals(estoque.getIdEstoqueProduto()));
 			
 			return true;
 		}

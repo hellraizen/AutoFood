@@ -20,15 +20,16 @@ public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
 
 	public void cadastra(Estoque estoque) throws SQLException {
 
-		String sql = "insert into estoqueteste (produtoEstoque,quantidade,dataEntrada,dataValidade,precoCusto)values(?,?,?,?,?)";
+		String sql = "insert into estoqueteste (codigoProduto,produtoEstoque,quantidade,dataEntrada,dataValidade,precoCusto)values(?,?,?,?,?,?)";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
-
-		preStatement.setString(1, estoque.getNomeProdutoEstoque());
-		preStatement.setInt(2, estoque.getQuantidadeProdutoEstoque());
-		preStatement.setString(3, estoque.getDataEntradaProdutoEstoque());
-		preStatement.setString(4, estoque.getDataValidadeProdutoEstoque());
-		preStatement.setDouble(5, estoque.getPrecoCustoProdutoEstoque());
+		
+		preStatement.setString(1,estoque.getCodigoProduto());
+		preStatement.setString(2, estoque.getNomeProdutoEstoque());
+		preStatement.setInt(3, estoque.getQuantidadeProdutoEstoque());
+		preStatement.setString(4, estoque.getDataEntradaProdutoEstoque());
+		preStatement.setString(5, estoque.getDataValidadeProdutoEstoque());
+		preStatement.setDouble(6, estoque.getPrecoCustoProdutoEstoque());
 
 		preStatement.execute();
 
@@ -56,13 +57,13 @@ public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
 		JOptionPane.showMessageDialog(null, "Atualizado Com Sucesso");
 	}
 
-	public void remover(Integer idEstoqueProduto) throws SQLException {
+	public void remover(String codigoProduto) throws SQLException {
 
-		String sql = "delete from estoqueteste where idEstoqueProduto= ? ";
+		String sql = "delete from estoqueteste where codigoProduto= ? ";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
 
-		preStatement.setInt(1, idEstoqueProduto);
+		preStatement.setString(1, codigoProduto);
 
 		preStatement.executeUpdate();
 
@@ -70,24 +71,25 @@ public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
 
 	}
 
-	public Estoque procurar(Integer idEstoqueProduto) throws SQLException {
+	public Estoque procurar(String codigoProduto) throws SQLException {
 
-		String sql = "select * from estoqueteste where idEstoqueProduto= ? ";
+		String sql = "select * from estoqueteste where codigoProduto= ? ";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
 
-		preStatement.setInt(1, idEstoqueProduto);
+		preStatement.setString(1, codigoProduto);
 		ResultSet resultSet = preStatement.executeQuery();
 		while (resultSet.next()) {
 
-			int codigo = resultSet.getInt(1);
-			String produto = resultSet.getString(2);
-			int quantidade = resultSet.getInt(3);
-			String dataEntrada = resultSet.getString(4);
-			String validade = resultSet.getString(5);
-			Double preco = resultSet.getDouble(6);
+			int id = resultSet.getInt(1);
+			String codigo = resultSet.getString(2);
+			String produto = resultSet.getString(3);
+			int quantidade = resultSet.getInt(4);
+			String dataEntrada = resultSet.getString(5);
+			String validade = resultSet.getString(6);
+			Double preco = resultSet.getDouble(7);
 
-			Estoque estoque = new Estoque(codigo, produto, quantidade, dataEntrada, validade, preco);
+			Estoque estoque = new Estoque(id,codigo, produto, quantidade, dataEntrada, validade, preco);
 
 			return estoque;
 
@@ -95,7 +97,7 @@ public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
 		return null;
 	}
 
-	public Boolean existi(Integer idEstoqueProduto) {
+	public Boolean existi(String codigoProduto) {
 
 		return null;
 	}
@@ -112,14 +114,15 @@ public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
 
 		while (resultSet.next()) {
 
-			int codigo = resultSet.getInt(1);
-			String produto = resultSet.getString(2);
-			int quantidade = resultSet.getInt(3);
-			String dataEntrada = resultSet.getString(4);
-			String validade = resultSet.getString(5);
-			Double preco = resultSet.getDouble(6);
+			int id = resultSet.getInt(1);
+			String codigo = resultSet.getString(2);
+			String produto = resultSet.getString(3);
+			int quantidade = resultSet.getInt(4);
+			String dataEntrada = resultSet.getString(5);
+			String validade = resultSet.getString(6);
+			Double preco = resultSet.getDouble(7);
 
-			Estoque estoque = new Estoque(codigo, produto, quantidade, dataEntrada, validade, preco);
+			Estoque estoque = new Estoque(id,codigo, produto, quantidade, dataEntrada, validade, preco);
 
 			arrayListEstoque.add(estoque);
 

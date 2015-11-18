@@ -142,20 +142,20 @@ public class Fachada {
 
 	}
 
-	public void removerEstoque(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
+	public void removerEstoque(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 		
-		controladorEstoque.remover(idEstoqueProduto);
+		controladorEstoque.remover(codigoProduto);
 		
 	}
 
-	public Estoque procurarEstoque(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
+	public Estoque procurarEstoque(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 
-		return controladorEstoque.procurar(idEstoqueProduto);
+		return controladorEstoque.procurar(codigoProduto);
 	}
 
-	public Boolean existiEstoque(Integer idEstoqueProduto) {
+	public Boolean existiEstoque(String codigoProduto) {
 
-		return controladorEstoque.existi(idEstoqueProduto);
+		return controladorEstoque.existi(codigoProduto);
 	}
 
 	public ArrayList<Estoque> listarEstoque() throws SQLException {

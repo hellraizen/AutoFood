@@ -13,11 +13,11 @@ public interface IRepositorioEstoque {
 
 	public void atualizar(Estoque estoque ) throws ProdutoEstoqueNaoEncontradoException, SQLException;
 
-	public void remover(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException;
+	public void remover(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException;
 
-	public Estoque procurar(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException;
+	public Estoque procurar(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException;
 
-	public Boolean existi(Integer idEstoqueProduto);
+	public Boolean existi(String codigoProduto);
 
 	public ArrayList<Estoque > listar() throws SQLException;
 

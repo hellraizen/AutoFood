@@ -3,16 +3,18 @@ package com.autofood.estoque;
 public class Estoque {
 
 	private Integer idEstoqueProduto;
+	private String codigoProduto;
 	private String nomeProdutoEstoque;
 	private Integer quantidadeProdutoEstoque;
 	private String dataEntradaProdutoEstoque;
 	private String dataValidadeProdutoEstoque;
 	private Double precoCustoProdutoEstoque;
 
-	public Estoque(Integer idEstoqueProduto, String nomeProdutoEstoque,
+	public Estoque(Integer idEstoqueProduto,String codigoProduto, String nomeProdutoEstoque,
 			Integer quantidadeProdutoEstoque, String dataEntradaProdutoEstoque,
 			String dataValidadeProdutoEstoque, Double precoCustoProdutoEstoque) {
-
+		
+		setCodigoProduto(codigoProduto);
 		setIdEstoqueProduto(idEstoqueProduto);
 		setNomeProdutoEstoque(nomeProdutoEstoque);
 		setQuantidadeProdutoEstoque(quantidadeProdutoEstoque);
@@ -22,10 +24,11 @@ public class Estoque {
 
 	}
 
-	public Estoque(String nomeProdutoEstoque, Integer quantidadeProdutoEstoque,
+	public Estoque(String codigoProduto,String nomeProdutoEstoque, Integer quantidadeProdutoEstoque,
 			String dataEntradaProdutoEstoque,
 			String dataValidadeProdutoEstoque, Double precoCustoProdutoEstoque) {
-
+		
+		setCodigoProduto(codigoProduto);
 		setNomeProdutoEstoque(nomeProdutoEstoque);
 		setQuantidadeProdutoEstoque(quantidadeProdutoEstoque);
 		setDataEntradaProdutoEstoque(dataEntradaProdutoEstoque);
@@ -39,6 +42,16 @@ public class Estoque {
 
 	public void setIdEstoqueProduto(Integer idEstoqueProduto) {
 		this.idEstoqueProduto = idEstoqueProduto;
+	}
+	
+	public String getCodigoProduto(){
+		
+		return codigoProduto;
+	}
+	
+	public void setCodigoProduto(String codigoProduto){
+		
+		this.codigoProduto = codigoProduto;
 	}
 
 	public String getNomeProdutoEstoque() {
@@ -82,12 +95,11 @@ public class Estoque {
 	}
 
 	public String toString() {
-		return "Estoque ID =" + idEstoqueProduto + ", Produto ="
-				+ nomeProdutoEstoque + ", quantidade ="
-				+ quantidadeProdutoEstoque + ", Data Entrada ="
-				+ dataEntradaProdutoEstoque + ", Validade ="
-				+ dataValidadeProdutoEstoque + ", Preço ="
-				+ precoCustoProdutoEstoque;
+		return "Estoque [idEstoqueProduto=" + idEstoqueProduto + ", codigoProduto=" + codigoProduto
+				+ ", nomeProdutoEstoque=" + nomeProdutoEstoque + ", quantidadeProdutoEstoque="
+				+ quantidadeProdutoEstoque + ", dataEntradaProdutoEstoque=" + dataEntradaProdutoEstoque
+				+ ", dataValidadeProdutoEstoque=" + dataValidadeProdutoEstoque + ", precoCustoProdutoEstoque="
+				+ precoCustoProdutoEstoque + "]";
 	}
 
 }

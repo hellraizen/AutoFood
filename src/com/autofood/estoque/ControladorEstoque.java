@@ -32,21 +32,21 @@ public class ControladorEstoque {
 		
 	}
 
-	public void remover(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
+	public void remover(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 		
-		repositorioEstoque.remover(idEstoqueProduto);
-		
-	}
-
-	public Estoque procurar(Integer idEstoqueProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
-
-		return repositorioEstoque.procurar(idEstoqueProduto);
+		repositorioEstoque.remover(codigoProduto);
 		
 	}
 
-	public Boolean existi(Integer idEstoqueProduto) {
+	public Estoque procurar(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
 
-		return repositorioEstoque.existi(idEstoqueProduto);
+		return repositorioEstoque.procurar(codigoProduto);
+		
+	}
+
+	public Boolean existi(String codigoProduto) {
+
+		return repositorioEstoque.existi(codigoProduto);
 		
 	}
 

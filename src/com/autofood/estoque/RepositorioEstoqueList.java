@@ -19,14 +19,13 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 	}
 
 	public void cadastra(Estoque estoque) throws NomeVazioException,ProdutoJaCadastradoEstoqueException {
-		
-		estoque.setIdEstoqueProduto(index);
 
-		if (existi(estoque.getIdEstoqueProduto()))
+		if (existi(estoque.getCodigoProduto()))
 			throw new ProdutoJaCadastradoEstoqueException();
 		if (estoque.getNomeProdutoEstoque().equals(null))
 			throw new NomeVazioException();
-
+		
+		estoque.setIdEstoqueProduto(index);
 		arrayListEstoque.add(estoque);
 		index++;
 		JOptionPane.showMessageDialog(null, "Cadastro Realizado Com Sucesso");
@@ -48,12 +47,12 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 
 	}
 
-	public void remover(Integer idEstoqueProduto)
+	public void remover(String codigoProduto)
 			throws ProdutoEstoqueNaoEncontradoException {
-		int i = idEstoqueProduto;
+		String i = codigoProduto;
 
 		for (Estoque estoque : arrayListEstoque) {
-			if (i == estoque.getIdEstoqueProduto());
+			if (i.equals(estoque.getCodigoProduto()));
 			arrayListEstoque.remove(estoque);
 			
 			JOptionPane.showMessageDialog(null, "Cadastro Removido com Sucesso");
@@ -62,12 +61,12 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 
 	}
 
-	public Estoque procurar(Integer idEstoqueProduto)
+	public Estoque procurar(String codigoProduto)
 			throws ProdutoEstoqueNaoEncontradoException {
-		int i = idEstoqueProduto;
+		String i = codigoProduto;
 
 		for (Estoque estoque : arrayListEstoque) {
-			if (i == estoque.getIdEstoqueProduto());
+			if (i.equals(estoque.getCodigoProduto()));
 
 			return estoque;
 		}
@@ -75,11 +74,11 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 		return null;
 	}
 
-	public Boolean existi(Integer idEstoqueProduto) {
+	public Boolean existi(String codigoProduto) {
 	
 		for (Estoque estoque : arrayListEstoque) {
 
-			if (estoque.getIdEstoqueProduto() == idEstoqueProduto) {
+			if (estoque.getCodigoProduto().equals(codigoProduto)) {
 
 				return true;
 
