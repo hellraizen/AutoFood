@@ -420,22 +420,22 @@ public class JFEstoque extends JFrame {
 		try {
 			Estoque estoque = Fachada.getInstance().procurarEstoque(codigoselecao);
 
-			Integer id = estoque.getIdEstoqueProduto();
-			String codigo = estoque.getCodigoProduto();
-			String nome = estoque.getNomeProdutoEstoque();
-			Integer quantidade = estoque.getQuantidadeProdutoEstoque();
-			Double preco = estoque.getPrecoCustoProdutoEstoque();
-			String validade = estoque.getDataValidadeProdutoEstoque();
-			String data = estoque.getDataEntradaProdutoEstoque();
+			//Integer id = estoque.getIdEstoqueProduto();
+			//String codigo = estoque.getCodigoProduto();
+			//String nome = estoque.getNomeProdutoEstoque();
+			//Integer quantidade = estoque.getQuantidadeProdutoEstoque();
+			//Double preco = estoque.getPrecoCustoProdutoEstoque();
+			//String validade = estoque.getDataValidadeProdutoEstoque();
+			//String data = estoque.getDataEntradaProdutoEstoque();
 			
 			
-			txtidProduto.setText(id.toString());
-			txtCodigoProduto.setText(codigo);
-			txtProduto.setText(nome);
-			txtQuantidade.setText(quantidade.toString());
-			txtPreco.setText(preco.toString());
-			txtValidade.setText(data.toString());
-			txtDataEntrada.setText(validade.toString());
+			txtidProduto.setText(estoque.getIdEstoqueProduto().toString());
+			txtCodigoProduto.setText(estoque.getCodigoProduto());
+			txtProduto.setText(estoque.getNomeProdutoEstoque());
+			txtQuantidade.setText(estoque.getQuantidadeProdutoEstoque().toString());
+			txtPreco.setText(estoque.getPrecoCustoProdutoEstoque().toString());
+			txtValidade.setText(estoque.getDataEntradaProdutoEstoque());
+			txtDataEntrada.setText(estoque.getDataValidadeProdutoEstoque());
 			
 
 		} catch (ClassNotFoundException |SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {

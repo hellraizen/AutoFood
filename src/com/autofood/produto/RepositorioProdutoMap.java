@@ -46,7 +46,7 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 				arrayMapProduto.put(j, produto);
 				JOptionPane.showMessageDialog(null, "Produto Atualizado com Sucesso");
 			}
-			throw new ProdutoNaoEncontradoException();
+			//throw new ProdutoNaoEncontradoException();
 		}
 	}
 
@@ -60,8 +60,8 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 			Produto produto = arrayMapProduto.get(j);
 
 			if (i.equals(produto.getCodigoProduto())) {
-				int id = produto.getIdProduto();
-				arrayMapProduto.remove(id);
+				//int id = produto.getIdProduto();
+				arrayMapProduto.remove(j);
 				JOptionPane.showMessageDialog(null, "Produto Removido com Sucesso");
 
 			}
@@ -73,13 +73,13 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 	// funcional
 	public Produto procurar(String codigoProduto) throws ProdutoNaoEncontradoException {
 
-		String i = codigoProduto;
+		String id = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 
 			Produto produto = arrayMapProduto.get(j);
 
-			if (i.equals(produto.getCodigoProduto())) {
+			if (id.equals(produto.getCodigoProduto())) {
 
 				return produto;
 			}

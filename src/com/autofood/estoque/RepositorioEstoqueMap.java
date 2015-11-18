@@ -2,7 +2,9 @@ package com.autofood.estoque;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import javax.swing.JOptionPane;
+
 import com.autofood.exceçõesEstoque.NomeVazioException;
 import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
@@ -39,13 +41,13 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 		for (int j = 1; j < index; j++) {
 			Estoque estoque1 = arrayMapEstoque.get(j);
 			if (i == estoque1.getIdEstoqueProduto()) {
-
-				arrayMapEstoque.remove(j, estoque1);
-				arrayMapEstoque.put(j, estoque);
+				//int id = estoque1.getIdEstoqueProduto();
+				arrayMapEstoque.remove(estoque1);
+				arrayMapEstoque.put(j,estoque);
 
 				JOptionPane.showMessageDialog(null, "Produto Atualizado com Sucesso");
 			}
-			throw new ProdutoEstoqueNaoEncontradoException();
+			//throw new ProdutoEstoqueNaoEncontradoException();
 		}
 	}
 
@@ -54,26 +56,29 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 
 		for (int j = 1; j < index; j++) {
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (i.equals(estoque.getIdEstoqueProduto())) {
+			if (i.equals(estoque.getCodigoProduto())) {
 
-				arrayMapEstoque.remove(j, estoque);
+				arrayMapEstoque.remove(j,estoque);
 				JOptionPane.showMessageDialog(null, "Produto removido do estoque com sucesso");
 			}
 
-			throw new ProdutoEstoqueNaoEncontradoException();
+			//throw new ProdutoEstoqueNaoEncontradoException();
 		}
 	}
 
 	public Estoque procurar(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException {
-		String i = codigoProduto;
+
+		String id = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
+			
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (i.equals(estoque.getIdEstoqueProduto())) {
+			
+			if (id.equals(estoque.getCodigoProduto())) {
 
 				return estoque;
 			}
-			throw new ProdutoEstoqueNaoEncontradoException();
+			//throw new ProdutoEstoqueNaoEncontradoException();
 		}
 
 		return null;
