@@ -3,6 +3,9 @@ package com.autofood.fachada;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import com.autofood.caixa.Caixa;
+import com.autofood.caixa.ControladorCaixa;
 import com.autofood.clientes.Cliente;
 import com.autofood.clientes.ControladorCliente;
 import com.autofood.comanda.Comanda;
@@ -37,6 +40,7 @@ public class Fachada {
 	private ControladorComanda controladorComanda;
 	private ControladorFuncionario controladorFuncionario;
 	private ControladorFornecedor controladorFornecedor;
+	private ControladorCaixa controladorCaixa;
 
 	private Fachada() throws ClassNotFoundException, IOException {
 		this.controladorCliente = new ControladorCliente();
@@ -46,6 +50,7 @@ public class Fachada {
 		this.controladorComanda = new ControladorComanda();
 		this.controladorFuncionario = new ControladorFuncionario();
 		this.controladorFornecedor = new ControladorFornecedor();
+		this.controladorCaixa = new ControladorCaixa();
 	}
 
 	public static Fachada getInstance() throws ClassNotFoundException, IOException {
@@ -305,5 +310,27 @@ public class Fachada {
 
 		return controladorFornecedor.listar();
 	}
+	//------------------------------------------Caixa-------------------------------------------------------------------------
+	public boolean abrirCaixa() {
+		return controladorCaixa.abrirCaixa();
+	}
+
+	public boolean fecharCaixa() {
+		return controladorCaixa.fecharCaixa();
+	}
+
+	public void entradaCaixa(Caixa entradaCaixa) {
+		controladorCaixa.entradaCaixa(entradaCaixa);
+	}
+
+	public void saidaCaixa(Caixa saidaCaixa) {
+		controladorCaixa.saidaCaixa(saidaCaixa);
+	}
+
+	public ArrayList<Caixa> movimentoDiarioCaixa() {
+		return controladorCaixa.movimentoDiario();
+	}
+	
+	
 	
 }	

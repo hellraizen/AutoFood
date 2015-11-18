@@ -127,6 +127,12 @@ public class JFMenuInicial extends JFrame {
 		mnHelp.add(mntmVerso);
 
 		JMenuItem mntmCaixa = new JMenuItem("Caixa");
+		mntmCaixa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFCaixa telaCaixa = new JFCaixa();
+				telaCaixa.setVisible(true);
+			}
+		});
 		mnHelp.add(mntmCaixa);
 
 		JMenuItem menuItem_2 = new JMenuItem("Vers\u00E3o");

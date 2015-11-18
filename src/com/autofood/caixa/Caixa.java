@@ -10,18 +10,23 @@ public class Caixa {
 	private Integer idFuncionario;
 	private Date data;
 
-	public Caixa(Double entrada, Double saida, Integer idComanda, Integer idFuncionario) {
+	public Caixa(Double entrada, Integer idComanda, Integer idFuncionario) {
 		setEntrada(entrada);
-		setSaida(saida);
 		setIdComanda(idComanda);
 		setIdFuncionario(idFuncionario);
 
 
 	}
-	public Caixa(Double entrada, Double saida, Integer idComanda, Integer idFuncionario, Date data) {
+	public Caixa(Double entrada,Integer idComanda, Integer idFuncionario, Date data) {
 		setEntrada(entrada);
-		setSaida(saida);
 		setIdComanda(idComanda);
+		setIdFuncionario(idFuncionario);
+		setData(data);
+
+	}
+	public Caixa( Double saida,Integer idFuncionario, Date data) {
+	
+		setSaida(saida);
 		setIdFuncionario(idFuncionario);
 		setData(data);
 

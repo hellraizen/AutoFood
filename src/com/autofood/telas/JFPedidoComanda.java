@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -32,6 +33,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.autofood.caixa.Caixa;
 import com.autofood.clientes.Cliente;
 import com.autofood.comanda.Comanda;
 import com.autofood.fachada.Fachada;
@@ -55,6 +57,8 @@ public class JFPedidoComanda extends JFrame {
 	private int numeroPedido;
 	private DecimalFormat decimalFormat;
 	private JComboBox<String> cBClienteList;
+	private JTextField txtFuncionarioId;
+	private JTextField txtNumeroComanda;
 
 	/**
 	 * Launch the application.
@@ -141,68 +145,113 @@ public class JFPedidoComanda extends JFrame {
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				pagamentoFinalizar();
+				envioCaixa();
 				dispose();
 			}
 		});
 		btnFinalizar.setForeground(Color.BLUE);
 		btnFinalizar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		JLabel lblFuncionario = new JLabel("Funcionario ");
+		
+		txtFuncionarioId = new JTextField();
+		txtFuncionarioId.setBackground(new Color(0, 0, 102));
+		txtFuncionarioId.setEnabled(false);
+		txtFuncionarioId.setText("02");
+		txtFuncionarioId.setHorizontalAlignment(SwingConstants.CENTER);
+		txtFuncionarioId.setColumns(10);
+		
+		JLabel lblComandaN = new JLabel("Comanda N\u00BA");
+		
+		txtNumeroComanda = new JTextField();
+		txtNumeroComanda.setBackground(new Color(0, 0, 102));
+		txtNumeroComanda.setEnabled(false);
+		txtNumeroComanda.setHorizontalAlignment(SwingConstants.CENTER);
+		txtNumeroComanda.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addComponent(panel, GroupLayout.PREFERRED_SIZE, 387,
-						GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
-						.createSequentialGroup()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-								.createSequentialGroup()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(lblTotal, GroupLayout.PREFERRED_SIZE, 59,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblDesconto, GroupLayout.PREFERRED_SIZE, 59,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblPagamento, GroupLayout.PREFERRED_SIZE, 59,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(18)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 387, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+										.addComponent(lblTotal, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblDesconto, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblPagamento, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
+									.addGap(18)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-												.addComponent(txtPagamento).addComponent(txtDesconto,
-														GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
-										.addComponent(txtTotal, GroupLayout.PREFERRED_SIZE, 193,
-												GroupLayout.PREFERRED_SIZE)))
-								.addGroup(gl_contentPane.createSequentialGroup().addComponent(button)
-										.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnRemover)
-										.addGap(127)
-										.addComponent(btnFinalizar, GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
-						.addContainerGap()).addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE))));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addContainerGap()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+											.addComponent(txtPagamento)
+											.addComponent(txtDesconto, GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
+										.addComponent(txtTotal, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+											.addGroup(gl_contentPane.createSequentialGroup()
+												.addGap(31)
+												.addComponent(lblComandaN, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))
+											.addGroup(gl_contentPane.createSequentialGroup()
+												.addGap(2)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+													.addComponent(txtFuncionarioId, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+													.addGroup(gl_contentPane.createSequentialGroup()
+														.addGap(17)
+														.addComponent(button)
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(btnRemover))))
+											.addComponent(txtNumeroComanda, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(30)
+											.addComponent(lblFuncionario, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)))
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(btnFinalizar, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))
+							.addContainerGap())
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 392, Short.MAX_VALUE)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(207)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(txtPagamento, GroupLayout.PREFERRED_SIZE,
-												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 439, Short.MAX_VALUE)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(207)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(txtPagamento, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblPagamento))
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(txtDesconto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblDesconto))
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(txtTotal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblTotal))
-								.addGap(18)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnFinalizar, GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-										.addComponent(btnRemover, GroupLayout.PREFERRED_SIZE, 29,
-												GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(txtDesconto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblDesconto))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(txtTotal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblTotal))
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnFinalizar, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnRemover, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 										.addComponent(button))
-								.addContainerGap()))));
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(lblFuncionario)
+									.addGap(4)
+									.addComponent(txtFuncionarioId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(11)
+									.addComponent(lblComandaN)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(txtNumeroComanda, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addContainerGap())))
+		);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
 
@@ -380,6 +429,7 @@ public class JFPedidoComanda extends JFrame {
 
 		try {
 			Fachada.getInstance().adicionarComanda(comanda);
+			txtNumeroComanda.setText(comanda.getIdComanda().toString());
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -499,6 +549,23 @@ public class JFPedidoComanda extends JFrame {
 			e.printStackTrace();
 		}
 	
+	}
+	private void envioCaixa(){
+		
+		double entrada = Double.parseDouble(txtTotal.getText());
+		int idComanda = Integer.parseInt(txtNumeroComanda.getText());
+		int idFuncionario = Integer.parseInt(txtFuncionarioId.getText());
+		Date data = new Date();
+
+		Caixa caixa = new Caixa(entrada, idComanda, idFuncionario,data);
+		
+		try {
+			Fachada.getInstance().entradaCaixa(caixa);
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

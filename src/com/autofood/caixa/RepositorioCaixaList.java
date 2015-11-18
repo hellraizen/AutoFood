@@ -2,6 +2,8 @@ package com.autofood.caixa;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class RepositorioCaixaList implements IRepositorioCaixa {
 
 	private ArrayList<Caixa> arrayCaixaList;
@@ -10,13 +12,14 @@ public class RepositorioCaixaList implements IRepositorioCaixa {
 	public RepositorioCaixaList() {
 		arrayCaixaList = new ArrayList<Caixa>();
 		caixa = false;
+		
 	}
 
 	@Override
 	public boolean abrirCaixa() {
 		if (caixa == false) {
 			caixa = true;
-			
+			JOptionPane.showMessageDialog(null, "Caixa aberto");
 			return true;
 		}
 		return false;
@@ -26,6 +29,7 @@ public class RepositorioCaixaList implements IRepositorioCaixa {
 	public boolean fecharCaixa() {
 		if (caixa) {
 			caixa = false;
+			JOptionPane.showMessageDialog(null, "Caixa Fechado");
 		}
 		return true;
 
@@ -35,20 +39,16 @@ public class RepositorioCaixaList implements IRepositorioCaixa {
 	public void entradaCaixa(Caixa entradaCaixa) {
 		if (caixa) {
 			
-			double total = entradaCaixa.getTotalCaixa();
-			total += entradaCaixa.getEntrada();
-			entradaCaixa.setTotalCaixa(total);
 			arrayCaixaList.add(entradaCaixa);
+			System.out.println("Enviado ao Caixa");
 		}
 
 	}
 
 	@Override
 	public void saidaCaixa(Caixa saidaCaixa) {
-		double total = saidaCaixa.getTotalCaixa();
-		total -= saidaCaixa.getSaida();
-		saidaCaixa.setTotalCaixa(total);
 		arrayCaixaList.add(saidaCaixa);
+		System.out.println("Removido ao Caixa");
 
 	}
 
