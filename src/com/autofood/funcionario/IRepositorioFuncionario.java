@@ -8,14 +8,14 @@ public interface IRepositorioFuncionario
 {
 	public void cadastrar(Funcionario funcionario) throws SQLException, IOException; 
 	
-	public void atualizar(Funcionario funcionario) throws SQLException;
+	public void atualizar(Funcionario funcionario) throws SQLException, IOException;
 	
-	public void remover(String cpf) throws SQLException;
+	public void remover(String cpf) throws SQLException, IOException;
 	
-	public Funcionario procurar(String cpf) throws SQLException;
+	public Funcionario procurar(String cpf) throws SQLException, IOException;
 	
-	public boolean existir(String cpf) throws SQLException;
+	public boolean existir(String cpf) throws SQLException, IOException;
 	
-	public ArrayList<Funcionario> listar() throws SQLException;
+	public ArrayList<Funcionario> listar() throws SQLException, IOException;
 
 }

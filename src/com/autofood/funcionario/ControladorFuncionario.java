@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.autofood.clientes.Cliente;
-
 public class ControladorFuncionario {
 
 	private IRepositorioFuncionario repositorioFuncionario;
@@ -26,31 +24,31 @@ public class ControladorFuncionario {
 	}
 
 	
-	public void atualizar(Funcionario funcionario) throws SQLException
+	public void atualizar(Funcionario funcionario) throws SQLException, IOException
 	{
 		repositorioFuncionario.atualizar(funcionario);
 	}
 
 	
-	public void remover(String cpf) throws SQLException 
+	public void remover(String cpf) throws SQLException, IOException 
 	{
 		repositorioFuncionario.remover(cpf);
 	}
 
 	
-	public Funcionario procurar(String cpf) throws SQLException 
+	public Funcionario procurar(String cpf) throws SQLException, IOException 
 	{
 		return repositorioFuncionario.procurar(cpf);
 	}
 
 	
-	public boolean existir(String cpf) throws SQLException 
+	public boolean existir(String cpf) throws SQLException, IOException 
 	{
 		return repositorioFuncionario.existir(cpf);
 	}
 
 	
-	public ArrayList<Funcionario> listar() throws SQLException 
+	public ArrayList<Funcionario> listar() throws SQLException, IOException 
 	{
 		return repositorioFuncionario.listar();
 	}

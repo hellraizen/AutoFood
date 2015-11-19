@@ -236,7 +236,7 @@ public class Fachada {
 
 	
 	
-	public void atualizarFuncionario(Funcionario funcionario) throws SQLException
+	public void atualizarFuncionario(Funcionario funcionario) throws SQLException, IOException
 	{
 		controladorFuncionario.atualizar(funcionario);
 	}
@@ -244,28 +244,29 @@ public class Fachada {
 
 	
 	
-	public void removerFuncionario(String cpf) throws SQLException
+	public void removerFuncionario(String cpf) throws SQLException, IOException
 	{
+		
 		controladorFuncionario.remover(cpf);
 	}
 
 	
 	
-	public Funcionario procurarFuncionario(String cpf) throws SQLException
+	public Funcionario procurarFuncionario(String cpf) throws SQLException, IOException
 	{
 		return controladorFuncionario.procurar(cpf);
 	}
 
 	
 	
-	public boolean existirFuncionario(String cpf) throws SQLException
+	public boolean existirFuncionario(String cpf) throws SQLException, IOException
 	{
 		return controladorFuncionario.existir(cpf);
 	}
 
 	
 	
-	public ArrayList<Funcionario> listarFuncionario() throws SQLException
+	public ArrayList<Funcionario> listarFuncionario() throws SQLException, IOException
 	{
 		 return controladorFuncionario.listar();
 	}
