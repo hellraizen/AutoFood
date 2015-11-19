@@ -15,8 +15,8 @@ public class ControladorEstoque {
 		
 		//repositorioEstoque = new RepositorioEstoqueList();
 		//repositorioEstoque = new RepositorioEstoqueSet();
-		repositorioEstoque = new RepositorioEstoqueMap();
-		//repositorioEstoque = new RepositorioEstoqueJdbc();
+		//repositorioEstoque = new RepositorioEstoqueMap();
+		repositorioEstoque = new RepositorioEstoqueJdbc();
 		//repositorioEstoque = new RepositorioFornecedorIO();
 		
 	}

@@ -420,14 +420,6 @@ public class JFEstoque extends JFrame {
 		try {
 			Estoque estoque = Fachada.getInstance().procurarEstoque(codigoselecao);
 
-			//Integer id = estoque.getIdEstoqueProduto();
-			//String codigo = estoque.getCodigoProduto();
-			//String nome = estoque.getNomeProdutoEstoque();
-			//Integer quantidade = estoque.getQuantidadeProdutoEstoque();
-			//Double preco = estoque.getPrecoCustoProdutoEstoque();
-			//String validade = estoque.getDataValidadeProdutoEstoque();
-			//String data = estoque.getDataEntradaProdutoEstoque();
-			
 			
 			txtidProduto.setText(estoque.getIdEstoqueProduto().toString());
 			txtCodigoProduto.setText(estoque.getCodigoProduto());

@@ -54,7 +54,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 		preStatement.setString(7, produto.getCodigoProduto());
 
-		preStatement.executeUpdate(sql);
+		preStatement.executeUpdate();
 
 		JOptionPane.showMessageDialog(null, "Atualizado Com Sucesso");
 

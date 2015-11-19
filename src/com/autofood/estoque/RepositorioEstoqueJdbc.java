@@ -39,21 +39,21 @@ public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
 
 	public void atualizar(Estoque estoque) throws SQLException {
 
-		String sql = "update estoqueteste set idEstoqueProduto= ?, produtoEstoque= ?,quantidade= ?,dataEntrada= ?,dataValidade= ?,precoCusto=? where idEstoqueProduto= ?";
-		PreparedStatement preStatement = conn.prepareStatement(sql);
-
-		preStatement.setInt(1, estoque.getIdEstoqueProduto());
+		String sql = "update estoqueteste set codigoProduto= ?, produtoEstoque= ?,quantidade= ?,dataEntrada= ?,dataValidade= ?,precoCusto= ? where codigoProduto= ?";
+		PreparedStatement preStatement;
+		preStatement = conn.prepareStatement(sql);
+		
+		preStatement.setString(1,estoque.getCodigoProduto());
 		preStatement.setString(2, estoque.getNomeProdutoEstoque());
 		preStatement.setInt(3, estoque.getQuantidadeProdutoEstoque());
 		preStatement.setString(4, estoque.getDataEntradaProdutoEstoque());
 		preStatement.setString(5, estoque.getDataValidadeProdutoEstoque());
 		preStatement.setDouble(6, estoque.getPrecoCustoProdutoEstoque());
+		preStatement.setString(7, estoque.getCodigoProduto());
 
-		preStatement.setInt(7, estoque.getIdEstoqueProduto());
+		preStatement.executeUpdate();
 
-		preStatement.executeUpdate(sql);
-
-		System.out.println("Atualizado Com Sucesso");
+		
 		JOptionPane.showMessageDialog(null, "Atualizado Com Sucesso");
 	}
 
