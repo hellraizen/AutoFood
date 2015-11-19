@@ -201,7 +201,7 @@ public class Fachada {
 	
 	// -------------------------------------------------------------------COMANDA------------------------------------------------------------------
 	
-	public void adicionarComanda(Comanda comanda) throws SQLException {
+	public void adicionarComanda(Comanda comanda) throws SQLException, IOException {
 		controladorComanda.realizarPedido(comanda);
 		
 
@@ -220,7 +220,7 @@ public class Fachada {
 	public ArrayList<Comanda> listarComanda() {
 		return controladorComanda.listar();
 	}
-	public ArrayList<Comanda> listarComandaMontante() throws SQLException {
+	public ArrayList<Comanda> listarComandaMontante() throws SQLException, IOException {
 		return controladorComanda.listarMontante();
 	}
 
@@ -320,15 +320,15 @@ public class Fachada {
 		return controladorCaixa.fecharCaixa();
 	}
 
-	public void entradaCaixa(Caixa entradaCaixa) {
+	public void entradaCaixa(Caixa entradaCaixa) throws SQLException {
 		controladorCaixa.entradaCaixa(entradaCaixa);
 	}
 
-	public void saidaCaixa(Caixa saidaCaixa) {
+	public void saidaCaixa(Caixa saidaCaixa) throws SQLException {
 		controladorCaixa.saidaCaixa(saidaCaixa);
 	}
 
-	public ArrayList<Caixa> movimentoDiarioCaixa() {
+	public ArrayList<Caixa> movimentoDiarioCaixa() throws SQLException {
 		return controladorCaixa.movimentoDiario();
 	}
 	
