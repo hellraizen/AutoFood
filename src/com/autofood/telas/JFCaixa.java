@@ -278,7 +278,7 @@ public class JFCaixa extends JFrame {
 			
 			
 			
-		} catch (ClassNotFoundException | IOException e) {
+		} catch (ClassNotFoundException | IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
