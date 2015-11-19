@@ -81,7 +81,7 @@ public class RepositorioComandaJdbc implements IRepositorioComanda {
 		
 		ArrayList<Comanda> array = new ArrayList<Comanda>();
 		
-		String sql= "select * from comandatest";
+		String sql= "select * from comandateste";
 		
 		PreparedStatement pst = conn.prepareStatement(sql); 
 		

@@ -52,7 +52,18 @@ produtoFornecido varchar(40),
 telefoneFornecedor varchar(14),
 emailFornecedor varchar(80),
 primary key(idFornecedor)
-)
+);
+
+
+create table caixateste(
+cod serial,
+entrada numeric(8,2),
+saida   numeric(8,2),
+Idcomanda int,
+idfuncionario int,
+
+primary key (cod)
+);
 
 
 

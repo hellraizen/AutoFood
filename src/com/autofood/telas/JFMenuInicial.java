@@ -136,8 +136,14 @@ public class JFMenuInicial extends JFrame {
 		});
 		mnHelp.add(mntmCaixa);
 
-		JMenuItem menuItem_2 = new JMenuItem("Vers\u00E3o");
-		mnHelp.add(menuItem_2);
+		JMenuItem mntmListaDeVendas = new JMenuItem("Lista de Vendas");
+		mntmListaDeVendas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFComandaMontante telaMontante = new JFComandaMontante();
+				telaMontante.setVisible(true);
+			}
+		});
+		mnHelp.add(mntmListaDeVendas);
 
 		JMenuItem menuItem_1 = new JMenuItem("Vers\u00E3o");
 		mnHelp.add(menuItem_1);
