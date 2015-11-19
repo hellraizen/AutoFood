@@ -44,6 +44,15 @@ totalValor numeric(8,2),
 primary key (vendaid)
 );
 
+create table fornecedorteste(
+idFornecedor serial,
+nomeFornecedor varchar(50),
+cnpjFornecedor varchar(18),
+produtoFornecido varchar(40),
+telefoneFornecedor varchar(14),
+emailFornecedor varchar(80),
+primary key(idFornecedor)
+)
 
 
 

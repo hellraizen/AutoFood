@@ -37,11 +37,10 @@ public class RepositorioFornecedorSet implements IRepositorioFornecedor {
 
 	}
 
-	public void atualizar(Fornecedor fornecedor)
-			throws FornecedorNaoEncontradoException {
-		int i = fornecedor.getIdFornecedor();
+	public void atualizar(Fornecedor fornecedor) throws FornecedorNaoEncontradoException {
+		
 		for (Fornecedor fornecedor2 : arrayFornecedorSet) {
-			if (i == fornecedor2.getIdFornecedor()) {
+			if (fornecedor.getIdFornecedor() == fornecedor2.getIdFornecedor()) {
 
 				arrayFornecedorSet.remove(fornecedor2);
 				arrayFornecedorSet.add(fornecedor);
@@ -54,8 +53,7 @@ public class RepositorioFornecedorSet implements IRepositorioFornecedor {
 		//throw new FornecedorNaoEncontradoException();
 	}
 
-	public void remover(String cnpjFornecedor)
-			throws FornecedorNaoEncontradoException {
+	public void remover(String cnpjFornecedor) throws FornecedorNaoEncontradoException {
 
 		for (Fornecedor fornecedor : arrayFornecedorSet) {
 			if (fornecedor.getCnpjFornecedor().equals(cnpjFornecedor)) {

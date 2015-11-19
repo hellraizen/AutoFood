@@ -103,9 +103,10 @@ public class JFFornecedor extends JFrame {
 		
 		JLabel lblFornecedor = new JLabel("Fornecedor");
 		
-		JLabel lblCodigo = new JLabel("Codigo");
+		JLabel lblCodigo = new JLabel("Codigo:");
 		
 		txtCodigo = new JTextField();
+		txtCodigo.setEnabled(false);
 		txtCodigo.setColumns(10);
 		
 		txtCnpj = new JTextField();
@@ -115,7 +116,6 @@ public class JFFornecedor extends JFrame {
 		GroupLayout gl_panelCadastro = new GroupLayout(panelCadastro);
 		gl_panelCadastro.setHorizontalGroup(
 			gl_panelCadastro.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 607, Short.MAX_VALUE)
 				.addGroup(gl_panelCadastro.createSequentialGroup()
 					.addGap(4)
 					.addGroup(gl_panelCadastro.createParallelGroup(Alignment.LEADING, false)
@@ -138,36 +138,34 @@ public class JFFornecedor extends JFrame {
 							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.LEADING)
 								.addComponent(txtFornecedor, GroupLayout.PREFERRED_SIZE, 335, GroupLayout.PREFERRED_SIZE)
 								.addGroup(gl_panelCadastro.createSequentialGroup()
-									.addGroup(gl_panelCadastro.createParallelGroup(Alignment.TRAILING)
-										.addGroup(gl_panelCadastro.createSequentialGroup()
-											.addComponent(lblFornecedor, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-											.addGap(91))
-										.addGroup(gl_panelCadastro.createSequentialGroup()
-											.addComponent(lblCodigo)
-											.addPreferredGap(ComponentPlacement.UNRELATED)))
-									.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(lblFornecedor, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+									.addGap(75)))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.LEADING)
-								.addComponent(txtCnpj)
-								.addComponent(lblCnpj, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE))))
+							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.TRAILING)
+								.addComponent(txtCnpj, Alignment.LEADING)
+								.addComponent(lblCnpj, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panelCadastro.createSequentialGroup()
+					.addContainerGap(527, Short.MAX_VALUE)
+					.addComponent(lblCodigo)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_panelCadastro.setVerticalGroup(
 			gl_panelCadastro.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 141, Short.MAX_VALUE)
 				.addGroup(gl_panelCadastro.createSequentialGroup()
 					.addGroup(gl_panelCadastro.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panelCadastro.createSequentialGroup()
-							.addGap(28)
+							.addContainerGap(14, Short.MAX_VALUE)
 							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.TRAILING)
 								.addComponent(lblFornecedor)
-								.addComponent(lblCnpj)))
+								.addComponent(lblCnpj))
+							.addPreferredGap(ComponentPlacement.RELATED))
 						.addGroup(gl_panelCadastro.createSequentialGroup()
-							.addContainerGap()
 							.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
 								.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblCodigo))))
-					.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(lblCodigo))
+							.addPreferredGap(ComponentPlacement.RELATED)))
 					.addGroup(gl_panelCadastro.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtFornecedor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtCnpj, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))

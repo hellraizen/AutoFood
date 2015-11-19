@@ -10,12 +10,12 @@ public class ControladorFornecedor {
 
 	IRepositorioFornecedor repositorioFornecedor;
 
-	public ControladorFornecedor() {
+	public ControladorFornecedor() throws ClassNotFoundException {
 
 		//repositorioFornecedor = new RepositorioFornecedorList();
-		// repositorioFornecedor = new RepositorioFornecedorSet();
+		//repositorioFornecedor = new RepositorioFornecedorSet();
 		//repositorioFornecedor = new RepositorioFornecedorMap();
-		// repositorioFornecedor = new RepositorioFornecedorJDBC();
+		repositorioFornecedor = new RepositorioFornecedorJDBC();
 		// repositorioFornecedor = new RepositorioFornecedorIO();
 
 	}

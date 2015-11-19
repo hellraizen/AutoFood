@@ -40,7 +40,7 @@ public class RepositorioFornecedorJDBC implements IRepositorioFornecedor {
 
 		preStatement.execute();
 
-		JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso");
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 
 	}
 
@@ -97,6 +97,7 @@ public class RepositorioFornecedorJDBC implements IRepositorioFornecedor {
 			String email = resultSet.getString(6);
 
 			Fornecedor fornecedor = new Fornecedor(codigo, nome, cnpj, produto, telefone, email);
+			
 			return fornecedor;
 
 		}

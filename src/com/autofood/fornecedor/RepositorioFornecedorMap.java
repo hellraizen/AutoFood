@@ -31,23 +31,19 @@ public class RepositorioFornecedorMap implements IRepositorioFornecedor {
 		arrayFornecedorMap.put(index, fornecedor);
 		index++;
 
-		JOptionPane
-				.showMessageDialog(null, "Fornecedor cadastrado com sucesso");
+		JOptionPane.showMessageDialog(null, "Fornecedor cadastrado com sucesso");
 	}
 
-	public void atualizar(Fornecedor fornecedor)
-			throws FornecedorNaoEncontradoException {
-		int i = fornecedor.getIdFornecedor();
-
+	public void atualizar(Fornecedor fornecedor) throws FornecedorNaoEncontradoException {
+	
 		for (int j = 1; j < index; j++) {
 			Fornecedor fornecedor2 = arrayFornecedorMap.get(j);
-			if (i == fornecedor2.getIdFornecedor()) {
+			if (fornecedor.getIdFornecedor() == fornecedor2.getIdFornecedor()) {
 
-				arrayFornecedorMap.remove(j, fornecedor2);
+				arrayFornecedorMap.remove(fornecedor2);
 				arrayFornecedorMap.put(j, fornecedor);
 
-				JOptionPane.showMessageDialog(null,
-						"Fornecedor Atualizado com Sucesso");
+				JOptionPane.showMessageDialog(null,"Fornecedor Atualizado com Sucesso");
 
 			}
 		}
@@ -59,10 +55,9 @@ public class RepositorioFornecedorMap implements IRepositorioFornecedor {
 			Fornecedor fornecedor = arrayFornecedorMap.get(i);
 			if (fornecedor.getCnpjFornecedor().equals(cnpjFornecedor)) {
 
-				arrayFornecedorMap.remove(i, fornecedor);
+				arrayFornecedorMap.remove(i);
 
-				JOptionPane.showMessageDialog(null,
-						"Fornecedor Removido com sucesso");
+				JOptionPane.showMessageDialog(null,"Fornecedor Removido com sucesso");
 
 			}
 		}
