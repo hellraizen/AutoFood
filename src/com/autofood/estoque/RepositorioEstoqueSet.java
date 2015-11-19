@@ -38,10 +38,9 @@ public class RepositorioEstoqueSet implements IRepositorioEstoque {
 
 	public void atualizar(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException {
 
-		int i = estoque.getIdEstoqueProduto();
 
 		for (Estoque estoque2 : arraySetEstoque) {
-			if (i == estoque2.getIdEstoqueProduto()){
+			if (estoque.getCodigoProduto().equals(estoque2.getCodigoProduto())){
 
 			arraySetEstoque.remove(estoque2);
 			arraySetEstoque.add(estoque);
@@ -50,53 +49,57 @@ public class RepositorioEstoqueSet implements IRepositorioEstoque {
 					"Estoque Atualizado Com Sucesso");
 			
 			}
-			throw new ProdutoEstoqueNaoEncontradoException();
+			
 		}
+		
+		//throw new ProdutoEstoqueNaoEncontradoException();
 
 	}
 
 	public void remover(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException {
-		String i = codigoProduto;
+		
 
 		for (Estoque estoque : arraySetEstoque) {
-			if (i.equals(estoque.getCodigoProduto())){
+			if (estoque.getCodigoProduto().equals(codigoProduto)){
 
 			arraySetEstoque.remove(estoque);
 			
 			JOptionPane.showMessageDialog(null, "Cadastro Removido com Sucesso");
 		
 		}
-		throw new ProdutoEstoqueNaoEncontradoException();
+			
 	  }
+		//throw new ProdutoEstoqueNaoEncontradoException();
 	}
 
 	public Estoque procurar(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException {
-		String i = codigoProduto;
+		
 
 		for (Estoque estoque : arraySetEstoque) {
-			if (i.equals(estoque.getIdEstoqueProduto())){
+			if (estoque.getCodigoProduto().equals(codigoProduto)){
 
 			return estoque;
 
 		}
 		
-			throw new ProdutoEstoqueNaoEncontradoException();
+			
 	}
 
-		return null;
+		throw new ProdutoEstoqueNaoEncontradoException();
 	}
 
 	public Boolean existi(String codigoProduto) {
-		String i = codigoProduto;
+	
 
 		for (Estoque estoque : arraySetEstoque) {
-			if (i.equals(estoque.getIdEstoqueProduto()));
+			if (estoque.getCodigoProduto().equals(codigoProduto)){
 			
 			return true;
 		}
+			
+	}
 		return false;
 	}
-
 	public ArrayList<Estoque> listar() {
 		ArrayList<Estoque> arrayListEstoque = new ArrayList<Estoque>();
 		

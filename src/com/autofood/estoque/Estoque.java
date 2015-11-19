@@ -14,8 +14,8 @@ public class Estoque {
 			Integer quantidadeProdutoEstoque, String dataEntradaProdutoEstoque,
 			String dataValidadeProdutoEstoque, Double precoCustoProdutoEstoque) {
 		
-		setCodigoProduto(codigoProduto);
 		setIdEstoqueProduto(idEstoqueProduto);
+		setCodigoProduto(codigoProduto);
 		setNomeProdutoEstoque(nomeProdutoEstoque);
 		setQuantidadeProdutoEstoque(quantidadeProdutoEstoque);
 		setDataEntradaProdutoEstoque(dataEntradaProdutoEstoque);

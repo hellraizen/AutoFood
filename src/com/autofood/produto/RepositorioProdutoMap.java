@@ -36,66 +36,67 @@ public class RepositorioProdutoMap implements IRepositorioProduto {
 
 	// funcional
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
-		String i = produto.getCodigoProduto();
-
+		
 		for (int j = 1; j < index; j++) {
 			Produto produtos = arrayMapProduto.get(j);
-			if (i.equals(produtos.getCodigoProduto())) {
+			if (produtos.getCodigoProduto().equals(produto.getCodigoProduto())) {
 
 				arrayMapProduto.remove(produtos);
 				arrayMapProduto.put(j, produto);
 				JOptionPane.showMessageDialog(null, "Produto Atualizado com Sucesso");
 			}
-			//throw new ProdutoNaoEncontradoException();
 		}
+		//throw new ProdutoNaoEncontradoException();
 	}
 
-	// funcional
+	// funcional com bug
 	public void remover(String codigoProduto) throws ProdutoNaoEncontradoException {
-
-		String i = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 
 			Produto produto = arrayMapProduto.get(j);
 
-			if (i.equals(produto.getCodigoProduto())) {
-				//int id = produto.getIdProduto();
-				arrayMapProduto.remove(j);
+			if (produto.getCodigoProduto().equals(codigoProduto)) {
+			
+				arrayMapProduto.remove(j,produto);
 				JOptionPane.showMessageDialog(null, "Produto Removido com Sucesso");
 
 			}
-			throw new ProdutoNaoEncontradoException();
+			
 		}
-
+		//throw new ProdutoNaoEncontradoException();
 	}
 
 	// funcional
 	public Produto procurar(String codigoProduto) throws ProdutoNaoEncontradoException {
 
-		String id = codigoProduto;
-
 		for (int j = 1; j < index; j++) {
 
 			Produto produto = arrayMapProduto.get(j);
 
-			if (id.equals(produto.getCodigoProduto())) {
+			if (produto.getCodigoProduto().equals(codigoProduto)) {
 
 				return produto;
 			}
 
-			throw new ProdutoNaoEncontradoException();
+			
 		}
-		return null;
+		throw new ProdutoNaoEncontradoException();
+		//return null;
 	}
 
 	// funcional
 	public Boolean existi(String codigoProduto) {
+		
 		for (int i = 1; i < index; i++) {
+			
 			Produto produto = arrayMapProduto.get(i);
+			
 			if (produto.getCodigoProduto().equals(codigoProduto)) {
+				
 				return true;
-			}
+		   }
+			
 		}
 		return false;
 	}

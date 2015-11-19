@@ -36,53 +36,48 @@ public class RepositorioEstoqueMap implements IRepositorioEstoque {
 	}
 
 	public void atualizar(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException {
-		int i = estoque.getIdEstoqueProduto();
-
+	
 		for (int j = 1; j < index; j++) {
 			Estoque estoque1 = arrayMapEstoque.get(j);
-			if (i == estoque1.getIdEstoqueProduto()) {
-				//int id = estoque1.getIdEstoqueProduto();
+			if (estoque1.getCodigoProduto().equals(estoque.getCodigoProduto())) {
+	
 				arrayMapEstoque.remove(estoque1);
 				arrayMapEstoque.put(j,estoque);
 
 				JOptionPane.showMessageDialog(null, "Produto Atualizado com Sucesso");
-			}
-			//throw new ProdutoEstoqueNaoEncontradoException();
+			}	
 		}
+		//throw new ProdutoEstoqueNaoEncontradoException();
 	}
 
 	public void remover(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException {
-		String i = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 			Estoque estoque = arrayMapEstoque.get(j);
-			if (i.equals(estoque.getCodigoProduto())) {
+			if (estoque.getCodigoProduto().equals(codigoProduto)) {
 
 				arrayMapEstoque.remove(j,estoque);
 				JOptionPane.showMessageDialog(null, "Produto removido do estoque com sucesso");
 			}
-
-			//throw new ProdutoEstoqueNaoEncontradoException();
 		}
+		//throw new ProdutoEstoqueNaoEncontradoException();
 	}
 
 	public Estoque procurar(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException {
-
-		String id = codigoProduto;
 
 		for (int j = 1; j < index; j++) {
 			
 			Estoque estoque = arrayMapEstoque.get(j);
 			
-			if (id.equals(estoque.getCodigoProduto())) {
+			if (estoque.getCodigoProduto().equals(codigoProduto)) {
 
 				return estoque;
 			}
-			//throw new ProdutoEstoqueNaoEncontradoException();
+		
 		}
 
-		return null;
-
+		throw new ProdutoEstoqueNaoEncontradoException();
+		//return null;
 	}
 
 	public Boolean existi(String codigoProduto) {

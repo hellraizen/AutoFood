@@ -20,46 +20,50 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 	}
 
 	// funcional
-	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,NomeVazioException {
-		
+	public void cadastra(Produto produto) throws ProdutoJ·CadastradoException,
+			NomeVazioException {
+
 		if (existi(produto.getCodigoProduto()))
 			throw new ProdutoJ·CadastradoException();
 		if (produto.getNomeProduto().equals(null))
 			throw new NomeVazioException();
-		
+
 		produto.setIdProduto(index);
 		arraySetProduto.add(produto);
 		index++;
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 	}
 
-	//funcional
+	// funcional
 	public void atualizar(Produto produto) throws ProdutoNaoEncontradoException {
-		String i = produto.getCodigoProduto();
-		for (Produto produto2 : arraySetProduto) {
-			if (i.equals(produto2.getCodigoProduto()));
 
-			arraySetProduto.remove(produto2);
-			arraySetProduto.add(produto);
-			JOptionPane.showMessageDialog(null,
-					"Produto Atualizado com Sucesso");
+		for (Produto produto2 : arraySetProduto) {
+			if (produto2.getCodigoProduto().equals(produto.getCodigoProduto())) {
+
+				arraySetProduto.remove(produto2);
+				arraySetProduto.add(produto);
+
+				JOptionPane.showMessageDialog(null,
+						"Produto Atualizado com Sucesso");
+			}
 		}
 
 	}
 
 	// funcional
-	public void remover(String codigoProduto) throws ProdutoNaoEncontradoException {
+	public void remover(String codigoProduto)
+			throws ProdutoNaoEncontradoException {
 		for (Produto produto : arraySetProduto) {
 			if (produto.getCodigoProduto().equals(codigoProduto)) {
 
 				arraySetProduto.remove(produto);
 				JOptionPane.showMessageDialog(null,
 						"Cliente Removido com Sucesso");
-			
+
 			}
-			throw new ProdutoNaoEncontradoException();
+			
 		}
-		
+		//throw new ProdutoNaoEncontradoException();
 	}
 
 	// funcional
@@ -77,7 +81,7 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 		throw new ProdutoNaoEncontradoException();
 	}
 
-	//funcional
+	// funcional
 	public Boolean existi(String codigoProduto) {
 
 		for (Produto produto : arraySetProduto) {
@@ -97,12 +101,11 @@ public class RepositorioProdutoSet implements IRepositorioProduto {
 	public ArrayList<Produto> listar() {
 
 		ArrayList<Produto> arrayListProduto = new ArrayList<Produto>();
-		
-		
+
 		for (Produto produto : arraySetProduto) {
-			
+
 			arrayListProduto.add(produto);
-			
+
 		}
 		return arrayListProduto;
 	}

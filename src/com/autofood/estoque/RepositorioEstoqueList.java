@@ -28,55 +28,57 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 		estoque.setIdEstoqueProduto(index);
 		arrayListEstoque.add(estoque);
 		index++;
+		
 		JOptionPane.showMessageDialog(null, "Cadastro Realizado Com Sucesso");
-
 	}
 
 	public void atualizar(Estoque estoque)
 			throws ProdutoEstoqueNaoEncontradoException {
-		int i = estoque.getIdEstoqueProduto();
 
-		for (Estoque estoques : arrayListEstoque) {
-			if (i == estoques.getIdEstoqueProduto()){
-			arrayListEstoque.remove(estoques);
+		for (Estoque estoque2 : arrayListEstoque) {
+			if (estoque.getCodigoProduto().equals(estoque2.getCodigoProduto())){
+				
+			arrayListEstoque.remove(estoque2);
 			arrayListEstoque.add(estoque);
 
 			JOptionPane.showMessageDialog(null,
 					"Estoque Atualizado Com Sucesso");
+			
 			}
 			
-			throw new ProdutoEstoqueNaoEncontradoException();
 		}
-
+	
+		//throw new ProdutoEstoqueNaoEncontradoException();
+		
 	}
 
-	public void remover(String codigoProduto)
-			throws ProdutoEstoqueNaoEncontradoException {
-		String i = codigoProduto;
+	public void remover(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException {
 
+		
 		for (Estoque estoque : arrayListEstoque) {
-			if (i.equals(estoque.getCodigoProduto())){
+			if (estoque.getCodigoProduto().equals(codigoProduto)){
+				
 			arrayListEstoque.remove(estoque);
 			
 			JOptionPane.showMessageDialog(null, "Cadastro Removido com Sucesso");
 			
 		}
-		throw new ProdutoEstoqueNaoEncontradoException();
+		
 	  }
+		//throw new ProdutoEstoqueNaoEncontradoException();
 	}
 
-	public Estoque procurar(String codigoProduto)
-			throws ProdutoEstoqueNaoEncontradoException {
-		String i = codigoProduto;
+	public Estoque procurar(String codigoProduto)throws ProdutoEstoqueNaoEncontradoException {
 
 		for (Estoque estoque : arrayListEstoque) {
-			if (i.equals(estoque.getCodigoProduto())){
+			if (estoque.getCodigoProduto().equals(codigoProduto)){
 
 			return estoque;
 		}
-			throw new ProdutoEstoqueNaoEncontradoException();
+			
 	}
-		return null;
+		throw new ProdutoEstoqueNaoEncontradoException();
+		
 	}
 
 	public Boolean existi(String codigoProduto) {

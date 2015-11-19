@@ -53,7 +53,7 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 	}
 
 
-	// //funcional
+	// //funciona com bug
 	public void remover(String codigoProduto) throws ProdutoNaoEncontradoException {
 
 		for (Produto produto : arrayListProduto) {
@@ -65,8 +65,8 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 						"Cliente Removido com Sucesso");
 				
 			}
-			throw new ProdutoNaoEncontradoException();
 		}
+		//throw new ProdutoNaoEncontradoException();
 	}
 
 	// funcional
@@ -80,10 +80,10 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 
 			}
 			
-			throw new ProdutoNaoEncontradoException();
+			
 		}
-
-		return null;
+		throw new ProdutoNaoEncontradoException();
+		//return null;
 
 	}
 

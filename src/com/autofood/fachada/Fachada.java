@@ -135,35 +135,35 @@ public class Fachada {
 	// -------------------------------------------------------------------ESTOQUE------------------------------------------------------------------
 
 
-	public void cadastraEstoque(Estoque estoque) throws com.autofood.exceçõesEstoque.NomeVazioException, ProdutoJaCadastradoEstoqueException, SQLException {
+	public void cadastraEstoque(Estoque estoque) throws com.autofood.exceçõesEstoque.NomeVazioException, ProdutoJaCadastradoEstoqueException, SQLException, IOException {
 		
 		controladorEstoque.cadastra(estoque);
 
 	}
 
-	public void atualizarEstoque(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException, SQLException {
+	public void atualizarEstoque(Estoque estoque) throws ProdutoEstoqueNaoEncontradoException, SQLException, IOException {
 		
 		controladorEstoque.atualizar(estoque);
 
 	}
 
-	public void removerEstoque(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
+	public void removerEstoque(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException, IOException {
 		
 		controladorEstoque.remover(codigoProduto);
 		
 	}
 
-	public Estoque procurarEstoque(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException {
+	public Estoque procurarEstoque(String codigoProduto) throws ProdutoEstoqueNaoEncontradoException, SQLException, IOException {
 
 		return controladorEstoque.procurar(codigoProduto);
 	}
 
-	public Boolean existiEstoque(String codigoProduto) {
+	public Boolean existiEstoque(String codigoProduto) throws SQLException, IOException {
 
 		return controladorEstoque.existi(codigoProduto);
 	}
 
-	public ArrayList<Estoque> listarEstoque() throws SQLException {
+	public ArrayList<Estoque> listarEstoque() throws SQLException, IOException {
 
 		return controladorEstoque.listar();
 	}
