@@ -19,8 +19,8 @@ import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
 public class RepositorioEstoqueIO implements IRepositorioEstoque {
 
 	// Path path = Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioestoqueio.txt");
-	Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioestoqueio.txt");
-	//Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioestoqueio.txt");
+	//Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioestoqueio.txt");
+	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioestoqueio.txt");
 
 	Charset utf8 = StandardCharsets.UTF_8;
 

@@ -17,7 +17,9 @@ import javax.swing.JOptionPane;
 
 public class RepositorioComandaIO implements IRepositorioComanda {
 
-	private Path path = Paths.get("C:/Users/Alternativo8/git/AutoFood/files/RepositorioIOComanda.txt");
+	//private Path path = Paths.get("C:/Users/Alternativo8/git/AutoFood/files/RepositorioIOComanda.txt");
+	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioio.txt");
+
 	private Charset utf8 = StandardCharsets.UTF_8;
 	private ArrayList<Comanda> arrayComandaList;
 	private Integer indexComanda;
