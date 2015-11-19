@@ -424,8 +424,9 @@ public class JFPedidoComanda extends JFrame {
 
 		double total = selecaoProdutoPreco * quantidade;
 		String cliente = cBClienteList.getSelectedItem().toString();
+		Date data = new Date();
 		
-		Comanda comanda = new Comanda(cliente,selecaoProdutoId, selecaoProdutoNome, selecaoProdutoPreco, quantidade, total);
+		Comanda comanda = new Comanda(cliente,selecaoProdutoId, selecaoProdutoNome, selecaoProdutoPreco, quantidade, total,data);
 
 		try {
 			Fachada.getInstance().adicionarComanda(comanda);

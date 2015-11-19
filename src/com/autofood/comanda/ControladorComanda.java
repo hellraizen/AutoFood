@@ -8,6 +8,10 @@ public class ControladorComanda {
 
 	public ControladorComanda() {
 		repositorioComanda = new RepositorioComandaList();
+		//repositorioComanda= new RepositorioComandaJdbc();
+		//repositorioComanda = new RepositorioComandaMap();
+		//repositorioComanda = new RepositorioComandaSet();
+		//repositorioComanda = new RepositorioComandaIO();
 	}
 
 	public void realizarPedido(Comanda comanda) throws SQLException {
