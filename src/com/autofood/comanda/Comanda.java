@@ -25,6 +25,18 @@ public class Comanda {
 		setTotal(total);
 
 	}
+	public Comanda(String nomeCliente, Integer idProduto, String produto, Double valor, Integer quantidade,
+			Double total,Date data) {
+
+		setNomeCliente(nomeCliente);
+		setIdProduto(idProduto);
+		setProduto(produto);
+		setValor(valor);
+		setQuantidade(quantidade);
+		setTotal(total);
+		setData(data);
+
+	}
 
 	public Comanda(Integer idProduto, String produto, Double valor, Integer quantidade, Double total) {
 
