@@ -50,7 +50,6 @@ public class JFPedidoComanda extends JFrame {
 	private DefaultTableModel defultTabelaProduto;
 	private DefaultTableModel defultTabelaComanda;
 	private JTextField txtQuantidade;
-	private JTextField textField_3;
 	private Integer selecaoProdutoId;
 	private String selecaoProdutoNome;
 	private Double selecaoProdutoPreco;
@@ -278,61 +277,49 @@ public class JFPedidoComanda extends JFrame {
 
 		JLabel lblQuantidade = new JLabel("Quantidade");
 
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-
-		JLabel lblProcurar = new JLabel("Procurar");
-
 		cBClienteList = new JComboBox();
 
 		JLabel lblCliente = new JLabel("Cliente");
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
-				.createSequentialGroup().addContainerGap()
-				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 353, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createSequentialGroup().addComponent(btnListarProdutos).addGroup(gl_panel
-								.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup().addGap(29)
-										.addComponent(lblQuantidade, GroupLayout.PREFERRED_SIZE, 59,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(18).addComponent(lblProcurar, GroupLayout.PREFERRED_SIZE, 59,
-												GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panel.createSequentialGroup().addGap(18)
-										.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-												.addComponent(cBClienteList, GroupLayout.PREFERRED_SIZE, 204,
-														GroupLayout.PREFERRED_SIZE)
-										.addGroup(gl_panel.createSequentialGroup()
-												.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE, 80,
-														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(textField_3,
-														GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE))
-										.addComponent(lblCliente, GroupLayout.PREFERRED_SIZE, 59,
-												GroupLayout.PREFERRED_SIZE))))))
-				.addGap(115)));
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(btnListarProdutos)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(29)
+									.addComponent(lblQuantidade, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(18)
+									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+										.addComponent(cBClienteList, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+										.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblCliente, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))))
+							.addGap(43)))
+					.addGap(115))
+		);
 		gl_panel.setVerticalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								gl_panel.createSequentialGroup().addGap(5)
-										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 279,
-												GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panel.createSequentialGroup()
-												.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-														.addComponent(lblQuantidade).addComponent(lblProcurar))
-										.addGap(5)
-										.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-												.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(textField_3, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-								.addComponent(btnListarProdutos, GroupLayout.PREFERRED_SIZE, 29,
-										GroupLayout.PREFERRED_SIZE))
-				.addGap(18)
-				.addComponent(lblCliente).addPreferredGap(ComponentPlacement.RELATED).addComponent(cBClienteList,
-						GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-				.addContainerGap(21, Short.MAX_VALUE)));
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(5)
+					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblQuantidade)
+							.addGap(5)
+							.addComponent(txtQuantidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnListarProdutos, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(lblCliente)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(cBClienteList, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(35, Short.MAX_VALUE))
+		);
 
 		tableProdutos = new JTable();
 		tableProdutos.addMouseListener(new MouseAdapter() {

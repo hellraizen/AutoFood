@@ -8,13 +8,13 @@ import javax.swing.JOptionPane;
 
 public class RepositorioComandaMap  implements IRepositorioComanda{
 	
-	HashMap<Integer, Comanda> arrayComandaMap;
+	ArrayList <Comanda> arrayComandaMap;
 	HashMap<Integer, Comanda> arrayComandaMapCon;
 	Integer indexComanda;
 	Integer index;
 	
 	public RepositorioComandaMap() {
-		arrayComandaMap = new HashMap<Integer,Comanda>();
+		arrayComandaMap = new ArrayList<Comanda>();
 		arrayComandaMapCon = new HashMap<Integer,Comanda>();
 		indexComanda=1;
 		index=1;
@@ -25,21 +25,25 @@ public class RepositorioComandaMap  implements IRepositorioComanda{
 		comanda.setNumeroVenda(index);
 		comanda.setIdComanda(indexComanda);
 		arrayComandaMapCon.put(index, comanda);
-		arrayComandaMap.put(index, comanda);
+		arrayComandaMap.add(comanda);
 		index++;
 		
 	}
 
 	@Override
 	public void cancelarPedido(Integer idProduto) {
+	
 		for(int i =1 ; i < index; i ++){
 			Comanda comanda = arrayComandaMap.get(i);
-			if(idProduto == comanda.getIdVenda()){
-				arrayComandaMap.remove(comanda.getIdVenda());
-				arrayComandaMapCon.remove(comanda.getIdVenda());
+			if(idProduto == comanda.getNumeroVenda()){
+				
+				arrayComandaMap.remove(i);
+				arrayComandaMapCon.remove(i);
 				JOptionPane.showMessageDialog(null, "Pedido Removido com Sucesso");
+				break;
 			}
 		}
+		
 		
 	}
 
@@ -53,13 +57,10 @@ public class RepositorioComandaMap  implements IRepositorioComanda{
 
 	@Override
 	public ArrayList<Comanda> listar() {
-		ArrayList<Comanda> array = new ArrayList<Comanda>();
-		for(int i =1 ; i < index ; i++){
-			Comanda comanda = arrayComandaMap.get(i);
-				array.add(comanda);
+	
 			
-		}
-		return array;
+		
+		return arrayComandaMap;
 	}
 
 	@Override
