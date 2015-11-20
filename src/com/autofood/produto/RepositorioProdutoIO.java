@@ -21,9 +21,9 @@ import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
 public class RepositorioProdutoIO implements IRepositorioProduto {
 
 	
-	// Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioprodutoio.txt");
-	//Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioprodutoio.txt");
-	Path path = Paths.get("/AutoFood/files/repositorioprodutoio.txt");
+	// Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioioProduto.txt");
+	//Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioioProduto.txt");
+	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood1/files/repositorioioProduto.txt");
 
 	Charset utf8 = StandardCharsets.UTF_8;
 

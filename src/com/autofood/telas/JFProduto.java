@@ -6,11 +6,13 @@ import java.awt.SystemColor;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,15 +22,19 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
 import com.autofood.fachada.Fachada;
 import com.autofood.produto.Produto;
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+
 import javax.swing.SwingConstants;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -341,6 +347,7 @@ public class JFProduto extends JFrame {
 
 		} catch (ClassNotFoundException | ProdutoNaoEncontradoException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 
@@ -355,6 +362,7 @@ public class JFProduto extends JFrame {
 		} catch (NumberFormatException | ClassNotFoundException | ProdutoNaoEncontradoException | SQLException
 				| IOException e) {
 
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 
@@ -413,8 +421,7 @@ public class JFProduto extends JFrame {
 			limpar();
 		} catch (ClassNotFoundException | ProdutoJáCadastradoException | NomeVazioException | SQLException
 				| IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -441,6 +448,7 @@ public class JFProduto extends JFrame {
 
 		} catch (ClassNotFoundException | ProdutoNaoEncontradoException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 
@@ -464,6 +472,7 @@ public class JFProduto extends JFrame {
 			listar();
 		} catch (ClassNotFoundException | ProdutoNaoEncontradoException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 

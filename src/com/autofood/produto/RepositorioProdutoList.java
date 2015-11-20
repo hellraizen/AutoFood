@@ -25,7 +25,7 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 		
 		if (existi(produto.getCodigoProduto()))
 			throw new ProdutoJ·CadastradoException();
-		if (produto.getNomeProduto().equals(null))
+		if (produto.getNomeProduto().equalsIgnoreCase(null))
 			throw new NomeVazioException();
 		
 		produto.setIdProduto(index);
@@ -66,7 +66,7 @@ public class RepositorioProdutoList implements IRepositorioProduto {
 				
 			}
 		}
-		//throw new ProdutoNaoEncontradoException();
+		throw new ProdutoNaoEncontradoException();
 	}
 
 	// funcional

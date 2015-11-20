@@ -4,12 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.SystemColor;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
+
 import java.awt.Color;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
@@ -17,12 +22,15 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import com.autofood.estoque.Estoque;
+import com.autofood.exceçoesFornecedor.CNPJFornecedorInvalido;
 import com.autofood.exceçoesFornecedor.FornecedorJaCadastradoException;
 import com.autofood.exceçoesFornecedor.FornecedorNaoEncontradoException;
 import com.autofood.exceçoesFornecedor.FornecedorNuloException;
@@ -290,8 +298,9 @@ public class JFFornecedor extends JFrame {
 			Fachada.getInstance().cadastraFornecedor(fornecedor1);
 			limpar();
 		} catch (ClassNotFoundException | FornecedorJaCadastradoException | FornecedorNuloException | SQLException
-				| IOException e) {
+				| IOException | CNPJFornecedorInvalido e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 	}
@@ -311,8 +320,9 @@ public class JFFornecedor extends JFrame {
 			Fachada.getInstance().atualizarFornecedor(fornecedor1);
 			listar();
 			limpar();
-		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException | CNPJFornecedorInvalido e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 	}
@@ -322,8 +332,9 @@ public class JFFornecedor extends JFrame {
 		try {
 			Fachada.getInstance().removerFornecedor(cnpjselecao);
 			listar();
-		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException | CNPJFornecedorInvalido e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 		
@@ -342,8 +353,9 @@ public class JFFornecedor extends JFrame {
 			listar(fornecedor);
 			
 			txtCnpj.setText("");
-		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException | CNPJFornecedorInvalido e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 		
@@ -407,8 +419,9 @@ public class JFFornecedor extends JFrame {
 			txtTelefone.setText(telefone);
 			txtEmail.setText(email);
 			
-		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | FornecedorNaoEncontradoException | SQLException | IOException | CNPJFornecedorInvalido e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 

@@ -14,6 +14,7 @@ import com.autofood.endereco.ControladorEndereco;
 import com.autofood.endereco.Endereco;
 import com.autofood.estoque.ControladorEstoque;
 import com.autofood.estoque.Estoque;
+import com.autofood.exceçoesFornecedor.CNPJFornecedorInvalido;
 import com.autofood.exceçoesFornecedor.FornecedorJaCadastradoException;
 import com.autofood.exceçoesFornecedor.FornecedorNaoEncontradoException;
 import com.autofood.exceçoesFornecedor.FornecedorNuloException;
@@ -275,40 +276,40 @@ public class Fachada {
 	//------------------------------------------FORNECEDOR-------------------------------------------------------------------------
  
 	public void cadastraFornecedor(Fornecedor fornecedor)
-			throws FornecedorJaCadastradoException, FornecedorNuloException, SQLException {
+			throws FornecedorJaCadastradoException, FornecedorNuloException, SQLException, CNPJFornecedorInvalido, IOException {
 
 		controladorFornecedor.cadastra(fornecedor);
 
 	}
 
 	public void atualizarFornecedor(Fornecedor fornecedor)
-			throws FornecedorNaoEncontradoException, SQLException {
+			throws FornecedorNaoEncontradoException, SQLException, CNPJFornecedorInvalido, IOException {
 
 		controladorFornecedor.atualizar(fornecedor);
 
 	}
 
 	public void removerFornecedor(String cnpjFornecedor)
-			throws FornecedorNaoEncontradoException, SQLException {
+			throws FornecedorNaoEncontradoException, SQLException, CNPJFornecedorInvalido, IOException {
 
 		controladorFornecedor.remover(cnpjFornecedor);
 
 	}
 
 	public Fornecedor procurarFornecedor(String cnpjFornecedor)
-			throws FornecedorNaoEncontradoException, SQLException {
+			throws FornecedorNaoEncontradoException, SQLException, CNPJFornecedorInvalido, IOException {
 
 		return controladorFornecedor.procurar(cnpjFornecedor);
 
 	}
 
-	public Boolean existiFornecedor(String cnpjFornecedor) {
+	public Boolean existiFornecedor(String cnpjFornecedor) throws SQLException, IOException {
 
 		return controladorFornecedor.existi(cnpjFornecedor);
 
 	}
 
-	public ArrayList<Fornecedor> listarFornecedor() throws SQLException {
+	public ArrayList<Fornecedor> listarFornecedor() throws SQLException, IOException {
 
 		return controladorFornecedor.listar();
 	}
