@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,8 +18,8 @@ import javax.swing.JOptionPane;
 
 public class RepositorioComandaIO implements IRepositorioComanda {
 
-	//private Path path = Paths.get("C:/Users/Alternativo8/git/AutoFood/files/RepositorioIOComanda.txt");
-	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioio.txt");
+	
+	Path path = Paths.get("/AutoFood/files/repositorioio.txt");
 
 	private Charset utf8 = StandardCharsets.UTF_8;
 	private ArrayList<Comanda> arrayComandaList;
@@ -40,7 +41,7 @@ public class RepositorioComandaIO implements IRepositorioComanda {
 		arrayComandaList.add(comanda);
 		index++;
 
-		try (BufferedWriter escrever = Files.newBufferedWriter(path, utf8)) {
+		try (BufferedWriter escrever = Files.newBufferedWriter(path, utf8,StandardOpenOption.APPEND)) {
 			escrever.write(comanda.getNomeCliente() + ";" + comanda.getProduto() + ";" + comanda.getIdComanda() + ";"
 					+ comanda.getIdProduto() + ";" + comanda.getIdVenda() + ";" + comanda.getNumeroVenda() + ";"
 					+ comanda.getQuantidade() + ";" + comanda.getTotal() + ";" + comanda.getValor() + ";"

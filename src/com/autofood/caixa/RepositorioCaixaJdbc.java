@@ -43,6 +43,7 @@ public class RepositorioCaixaJdbc implements IRepositorioCaixa {
 
 	@Override
 	public void entradaCaixa(Caixa entradaCaixa) throws SQLException {
+		if(caixa){
 		String sql = "insert into caixateste( entrada,idcomanda,idfuncionario)values(?,?,?)";
 
 		PreparedStatement pst = conn.prepareStatement(sql);
@@ -52,10 +53,12 @@ public class RepositorioCaixaJdbc implements IRepositorioCaixa {
 		pst.setInt(3, entradaCaixa.getIdFuncionario());
 
 		pst.execute();
+		}
 	}
 
 	@Override
 	public void saidaCaixa(Caixa saidaCaixa) throws SQLException {
+		if(caixa){
 		String sql = "insert into caixateste(saida,idcomanda,idfuncionario)values(?,?,?)";
 
 		PreparedStatement pst = conn.prepareStatement(sql);
@@ -65,6 +68,7 @@ public class RepositorioCaixaJdbc implements IRepositorioCaixa {
 		pst.setInt(3, saidaCaixa.getIdFuncionario());
 
 		pst.execute();
+		}
 	}
 
 	@Override

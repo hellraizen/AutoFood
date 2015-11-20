@@ -320,15 +320,15 @@ public class Fachada {
 		return controladorCaixa.fecharCaixa();
 	}
 
-	public void entradaCaixa(Caixa entradaCaixa) throws SQLException {
+	public void entradaCaixa(Caixa entradaCaixa) throws SQLException, IOException {
 		controladorCaixa.entradaCaixa(entradaCaixa);
 	}
 
-	public void saidaCaixa(Caixa saidaCaixa) throws SQLException {
+	public void saidaCaixa(Caixa saidaCaixa) throws SQLException, IOException {
 		controladorCaixa.saidaCaixa(saidaCaixa);
 	}
 
-	public ArrayList<Caixa> movimentoDiarioCaixa() throws SQLException {
+	public ArrayList<Caixa> movimentoDiarioCaixa() throws SQLException, IOException {
 		return controladorCaixa.movimentoDiario();
 	}
 	
