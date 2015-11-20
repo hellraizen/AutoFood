@@ -19,7 +19,7 @@ public class RepositorioEnderecoIO implements IRepositorioEndereco
 	
 	    //Path path = Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioio.txt");
 		//Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioio.txt");
-		Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioio.txt");
+		Path path = Paths.get("/AutoFood/files/repositorioio.txt");
 
 		Charset utf8 = StandardCharsets.UTF_8;
 		Integer index = 1;

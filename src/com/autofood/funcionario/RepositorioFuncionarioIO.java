@@ -17,7 +17,7 @@ public class RepositorioFuncionarioIO implements IRepositorioFuncionario {
 
 	
 	
-	Path path = Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioio.txt");
+	Path path = Paths.get("/AutoFood/files/repositorioio.txt");
 	Charset utf8 = StandardCharsets.UTF_8;
 	Integer index;
 
