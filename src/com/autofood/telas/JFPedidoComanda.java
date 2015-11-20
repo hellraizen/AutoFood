@@ -558,7 +558,7 @@ public class JFPedidoComanda extends JFrame {
 		int idFuncionario = Integer.parseInt(txtFuncionarioId.getText());
 		Date data = new Date();
 
-		Caixa caixa = new Caixa(entrada, idComanda, idFuncionario,data);
+		Caixa caixa = new Caixa(entrada,0.00, idComanda, idFuncionario,data);
 		
 		try {
 			Fachada.getInstance().entradaCaixa(caixa);

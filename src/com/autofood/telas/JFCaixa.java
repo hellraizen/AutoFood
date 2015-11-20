@@ -38,8 +38,10 @@ public class JFCaixa extends JFrame {
 	private JTable tableCaixa;
 	private DefaultTableModel defautTableModelCaixa;
 	private JTextField txtFuncionario;
-	private JTextField txtTotalCaixa;
+	private JTextField txtEntrada;
 	private DecimalFormat decimalFormat;
+	private JTextField txtSaida;
+	private JTextField txtTotalCaixa;
 	
 
 	/**
@@ -83,38 +85,72 @@ public class JFCaixa extends JFrame {
 		txtFuncionario.setText("02");
 		txtFuncionario.setColumns(10);
 		
-		JLabel lblTotalEmCaixa = new JLabel("Total Caixa");
+		JLabel lblTotalEmCaixa = new JLabel("Total Entrada");
 		lblTotalEmCaixa.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
+		txtEntrada = new JTextField();
+		txtEntrada.setText("0.00");
+		txtEntrada.setBackground(new Color(0, 0, 102));
+		txtEntrada.setEnabled(false);
+		txtEntrada.setForeground(Color.WHITE);
+		txtEntrada.setFont(new Font("Tahoma", Font.PLAIN, 39));
+		txtEntrada.setColumns(10);
+		
+		JLabel lblTotalSaida = new JLabel("Total Saida");
+		lblTotalSaida.setFont(new Font("Tahoma", Font.BOLD, 18));
+		
+		txtSaida = new JTextField();
+		txtSaida.setText("0.00");
+		txtSaida.setForeground(Color.WHITE);
+		txtSaida.setFont(new Font("Tahoma", Font.PLAIN, 39));
+		txtSaida.setEnabled(false);
+		txtSaida.setColumns(10);
+		txtSaida.setBackground(new Color(0, 0, 102));
+		
 		txtTotalCaixa = new JTextField();
-		txtTotalCaixa.setBackground(new Color(0, 0, 102));
-		txtTotalCaixa.setEnabled(false);
+		txtTotalCaixa.setText("0.00");
 		txtTotalCaixa.setForeground(Color.WHITE);
 		txtTotalCaixa.setFont(new Font("Tahoma", Font.PLAIN, 39));
+		txtTotalCaixa.setEnabled(false);
 		txtTotalCaixa.setColumns(10);
+		txtTotalCaixa.setBackground(new Color(0, 0, 102));
+		
+		JLabel label_1 = new JLabel("Total Caixa");
+		label_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(19)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+					.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
 					.addContainerGap())
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(232)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblTotalEmCaixa)
+						.addComponent(txtEntrada, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(txtTotalCaixa, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
+							.addGap(47)
+							.addComponent(lblTotalSaida, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+							.addGap(32))
 						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addGap(13)
-							.addComponent(lblTotalEmCaixa)
-							.addPreferredGap(ComponentPlacement.RELATED, 567, Short.MAX_VALUE)
-							.addComponent(lblFuncionario)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtFuncionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(43))))
+							.addGap(29)
+							.addComponent(txtSaida, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)))
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(18)
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtTotalCaixa, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+					.addComponent(lblFuncionario)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(txtFuncionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(43))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -126,13 +162,22 @@ public class JFCaixa extends JFrame {
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 338, GroupLayout.PREFERRED_SIZE))
 						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblFuncionario)
-						.addComponent(txtFuncionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblTotalEmCaixa))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtTotalCaixa, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(12, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblFuncionario)
+								.addComponent(txtFuncionario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblTotalSaida, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblTotalEmCaixa))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(txtEntrada, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtSaida, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addGap(8)
+							.addComponent(txtTotalCaixa, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -188,7 +233,9 @@ public class JFCaixa extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					listarCaixa();
-					somaCaixa();
+					somaEntrada();
+					somaSaida();
+					somaTotal();
 				} catch (ClassNotFoundException | SQLException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -271,7 +318,7 @@ public class JFCaixa extends JFrame {
 		
 		Date minhaDate = new Date();   
 		
-		Caixa caixa = new Caixa(valorRetirada,Integer.parseInt(txtFuncionario.getText()),minhaDate);
+		Caixa caixa = new Caixa(0.00,valorRetirada,Integer.parseInt(txtFuncionario.getText()),minhaDate);
 		
 		try {
 			Fachada.getInstance().saidaCaixa(caixa);
@@ -283,17 +330,43 @@ public class JFCaixa extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	public void somaCaixa() {
+	public void somaEntrada() {
 		decimalFormat = new DecimalFormat("0.00");
-		double totalConta = 0;
+		double totalPositivo = 0;
+		
 		for (int i = 0; i < tableCaixa.getRowCount(); i++) {
 
-			totalConta += Double.parseDouble(defautTableModelCaixa.getValueAt(i, 0).toString());
-
+			totalPositivo += Double.parseDouble(defautTableModelCaixa.getValueAt(i, 0).toString());
+			
 		}
-
-		txtTotalCaixa.setText(decimalFormat.format(totalConta).replace(',', '.'));
-
 		
+		
+		
+		txtEntrada.setText(decimalFormat.format(totalPositivo).replace(',', '.'));
+		
+		
+	}
+	public void somaSaida() {
+		decimalFormat = new DecimalFormat("0.00");
+		double totalNegativo = 0;
+		
+		for (int i = 0; i < tableCaixa.getRowCount(); i++) {
+
+			totalNegativo += Double.parseDouble(defautTableModelCaixa.getValueAt(i, 1).toString());
+			
+		}
+		
+	
+		
+		txtSaida.setText(decimalFormat.format(totalNegativo).replace(',', '.'));
+		
+		
+	}
+	public void somaTotal(){
+		double entrada = Double.parseDouble(txtEntrada.getText());
+		double saida = Double.parseDouble(txtSaida.getText());
+		double total = entrada - saida;
+		
+		txtTotalCaixa.setText(decimalFormat.format(total).replace(',', '.'));
 	}
 }

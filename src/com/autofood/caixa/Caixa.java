@@ -25,7 +25,22 @@ public class Caixa {
 
 	}
 	public Caixa( Double saida,Integer idFuncionario, Date data) {
-	
+		
+		setSaida(saida);
+		setIdFuncionario(idFuncionario);
+		setData(data);
+
+	}
+	public Caixa(Double entrada,Double saida, Integer idComanda, Integer idFuncionario,Date data) {
+		setEntrada(entrada);
+		setSaida(saida);
+		setIdComanda(idComanda);
+		setIdFuncionario(idFuncionario);
+		setData(data);
+
+	}
+	public Caixa( Double entrada,Double saida,Integer idFuncionario, Date data) {
+		setEntrada(entrada);
 		setSaida(saida);
 		setIdFuncionario(idFuncionario);
 		setData(data);
@@ -36,7 +51,7 @@ public class Caixa {
 		setSaida(saida);
 		setIdComanda(idComanda);
 		setIdFuncionario(idFuncionario);
-
+		
 
 	}
 
