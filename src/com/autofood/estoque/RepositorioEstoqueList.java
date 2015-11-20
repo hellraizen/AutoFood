@@ -63,7 +63,7 @@ public class RepositorioEstoqueList implements IRepositorioEstoque {
 			JOptionPane.showMessageDialog(null, "Cadastro Removido com Sucesso");
 			
 		}
-		
+		break;
 	  }
 		//throw new ProdutoEstoqueNaoEncontradoException();
 	}

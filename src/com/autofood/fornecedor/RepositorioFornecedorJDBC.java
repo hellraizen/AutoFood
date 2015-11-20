@@ -65,7 +65,7 @@ public class RepositorioFornecedorJDBC implements IRepositorioFornecedor {
 
 	public void remover(String cnpjFornecedor) throws FornecedorNaoEncontradoException, SQLException {
 
-		String sql = "delete from fronecedorteste where cnpjFornecedor =? ";
+		String sql = "delete from fornecedorteste where cnpjFornecedor = ?";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
 
@@ -79,7 +79,7 @@ public class RepositorioFornecedorJDBC implements IRepositorioFornecedor {
 
 	public Fornecedor procurar(String cnpjFornecedor) throws FornecedorNaoEncontradoException, SQLException {
 
-		String sql = "select * from fornecedorteste where cnpjFornecedor";
+		String sql = "select * from fornecedorteste where cnpjFornecedor= ?";
 
 		PreparedStatement preStatement = conn.prepareStatement(sql);
 

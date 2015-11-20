@@ -14,11 +14,11 @@ public class ControladorEstoque {
 	
 	public ControladorEstoque() throws ClassNotFoundException, IOException{
 		
-		//repositorioEstoque = new RepositorioEstoqueList();
+		repositorioEstoque = new RepositorioEstoqueList();
 		//repositorioEstoque = new RepositorioEstoqueSet();
 		//repositorioEstoque = new RepositorioEstoqueMap();
 		//repositorioEstoque = new RepositorioEstoqueJdbc();
-		repositorioEstoque = new RepositorioEstoqueIO();		
+		//repositorioEstoque = new RepositorioEstoqueIO();		
 	}
 	
 	public void cadastra(Estoque estoque) throws NomeVazioException, ProdutoJaCadastradoEstoqueException, SQLException, IOException {
