@@ -8,11 +8,11 @@ public class ControladorComanda {
 	private IRepositorioComanda repositorioComanda;
 
 	public ControladorComanda() throws ClassNotFoundException, IOException {
-		//repositorioComanda = new RepositorioComandaList();
+		repositorioComanda = new RepositorioComandaList();
 		//repositorioComanda= new RepositorioComandaJdbc();
 		//repositorioComanda = new RepositorioComandaMap();
 		//repositorioComanda = new RepositorioComandaSet();
-		repositorioComanda = new RepositorioComandaIO();
+		//repositorioComanda = new RepositorioComandaIO();
 	}
 
 	public void realizarPedido(Comanda comanda) throws SQLException, IOException {

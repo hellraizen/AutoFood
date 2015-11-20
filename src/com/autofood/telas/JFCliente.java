@@ -25,6 +25,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import com.autofood.clientes.Cliente;
+import com.autofood.exceçõesCliente.ClienteCpfInvalidoException;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
 import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 import com.autofood.fachada.Fachada;
@@ -313,7 +314,7 @@ public class JFCliente extends JFrame {
 		try {
 			Fachada.getInstance().cadastrarCliente(cliente);
 
-		} catch (SQLException | ClassNotFoundException | ClienteJaCadastradoException | IOException e) {
+		} catch (SQLException | ClassNotFoundException | ClienteJaCadastradoException | IOException | ClienteCpfInvalidoException e) {
 			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}

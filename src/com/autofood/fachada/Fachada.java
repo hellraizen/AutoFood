@@ -17,6 +17,7 @@ import com.autofood.estoque.Estoque;
 import com.autofood.exceçoesFornecedor.FornecedorJaCadastradoException;
 import com.autofood.exceçoesFornecedor.FornecedorNaoEncontradoException;
 import com.autofood.exceçoesFornecedor.FornecedorNuloException;
+import com.autofood.exceçõesCliente.ClienteCpfInvalidoException;
 import com.autofood.exceçõesCliente.ClienteJaCadastradoException;
 import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
@@ -62,7 +63,7 @@ public class Fachada {
 
 	// -------------------------------------------------------------------CLIENTE------------------------------------------------------------------
 
-	public void cadastrarCliente(Cliente cliente) throws SQLException, ClienteJaCadastradoException, IOException {
+	public void cadastrarCliente(Cliente cliente) throws SQLException, ClienteJaCadastradoException, IOException, ClienteCpfInvalidoException {
 		controladorCliente.cadastrar(cliente);
 
 	}

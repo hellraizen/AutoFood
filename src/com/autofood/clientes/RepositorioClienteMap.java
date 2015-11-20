@@ -46,7 +46,7 @@ public class RepositorioClienteMap implements IRepositorioCliente {
 		for (int i = 1; i < index; i++) {
 			Cliente cliente = arrayClienteMap.get(i);
 			if (cpf.equals(cliente.getCpf())) {
-				arrayClienteMap.remove(cliente);
+				arrayClienteMap.remove(i);
 				JOptionPane.showMessageDialog(null, "Cadastro Removido com sucesso");
 			}
 		}
