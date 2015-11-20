@@ -19,7 +19,7 @@ import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 
 public class RepositorioClienteIO implements IRepositorioCliente {
 	
-	Path path = Paths.get("/AutoFood/files/repositorioio.txt");
+	Path path = Paths.get("C:/Users/Alternativo8/git/AutoFood1/files/repositorioCliente.txt");
 	Charset utf8 = StandardCharsets.UTF_8;
 	
 
@@ -55,6 +55,7 @@ public class RepositorioClienteIO implements IRepositorioCliente {
 				
 				arrayLocal.remove(cliente1);
 				arrayLocal.add(cliente);
+				JOptionPane.showMessageDialog(null, " Atualizado com sucesso");
 				break;
 				}
 			
@@ -79,6 +80,7 @@ public class RepositorioClienteIO implements IRepositorioCliente {
 		for (Cliente cliente2 : arrayLocal) {
 			if(cliente2.getCpf().equals(cpf)){
 				arrayLocal.remove(cliente2);
+				JOptionPane.showMessageDialog(null, " Removido com sucesso");
 				break;
 		
 				}

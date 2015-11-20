@@ -17,8 +17,8 @@ public class ControladorCliente {
 		//repositorioCliente= new RepositorioClienteJdbc();
 		//repositorioCliente= new RepositorioClienteList();
 		//repositorioCliente= new RepositorioClienteMap();
-		repositorioCliente= new RepositorioClienteSet();
-		//repositorioCliente= new RepositorioClienteIO();
+		//repositorioCliente= new RepositorioClienteSet();
+		repositorioCliente= new RepositorioClienteIO();
 	}
 
 	public void cadastrar(Cliente cliente) throws SQLException, ClienteJaCadastradoException, IOException, ClienteCpfInvalidoException {
