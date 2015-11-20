@@ -10,9 +10,9 @@ public interface IRepositorioEndereco
 {	
 	public void cadastrar(Endereco endereco) throws SQLException, IOException; 
 	public void atualizar(Endereco endereco) throws SQLException, IOException;
-	public void remover(Integer codigoEndereco) throws SQLException, IOException;
-	public Endereco procurar(Integer codigoEndereco) throws SQLException, Exception;
-	public boolean existir(Integer codigoEndereco) throws SQLException, IOException;
+	public void remover(Integer idEndereco) throws SQLException, IOException;
+	public Endereco procurar(Integer idEndereco) throws SQLException, Exception;
+	public boolean existir(Integer idEndereco) throws SQLException, IOException;
 	public ArrayList<Endereco> listar() throws SQLException, IOException;
 	
 }

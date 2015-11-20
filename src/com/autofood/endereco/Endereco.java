@@ -42,6 +42,17 @@ public class Endereco {
 
 
 
+	public Endereco(String rua2, String bairro2, String numero2, String cep2, String complemento2) {
+		setIdEndereco(idEndereco);
+		setRua(rua);
+		setBairro(bairro);
+		setNumero(numero);
+		setCep(cep);
+		setComplemento(complemento);  
+	}
+
+
+
 	public Integer getIdEndereco() {
 		return idEndereco;
 	}

@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class ControladorEndereco {
 	private IRepositorioEndereco repositorioEndereco;
 
-	public ControladorEndereco() {
+	public ControladorEndereco() throws ClassNotFoundException {
 
-		// this.repositorioEndereco = new RepositorioEnderecoBd();
+		 //this.repositorioEndereco = new RepositorioEnderecoBd();
 		this.repositorioEndereco = new RepositorioEnderecoList();
 		// this.repositorioEndereco = new RepositorioEnderecoSet();
 		// this.repositorioEndereco = new RepositorioEnderecoMap();
