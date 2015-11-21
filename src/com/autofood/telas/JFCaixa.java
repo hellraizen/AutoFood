@@ -318,7 +318,7 @@ public class JFCaixa extends JFrame {
 		
 		Date minhaDate = new Date();   
 		
-		Caixa caixa = new Caixa(0.00,valorRetirada,Integer.parseInt(txtFuncionario.getText()),minhaDate);
+		Caixa caixa = new Caixa(0.00,valorRetirada,0,Integer.parseInt(txtFuncionario.getText()),minhaDate);
 		
 		try {
 			Fachada.getInstance().saidaCaixa(caixa);

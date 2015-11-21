@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 public class RepositorioFuncionarioIO implements IRepositorioFuncionario {
 
-	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioCliente.txt");
+	Path path = Paths.get("/AutoFood/files/repositorioCliente.txt");
 	
 	Charset utf8 = StandardCharsets.UTF_8;
 	Integer index;

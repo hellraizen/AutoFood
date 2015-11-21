@@ -9,8 +9,8 @@ public class ControladorComanda {
 
 	public ControladorComanda() throws ClassNotFoundException, IOException {
 		//repositorioComanda = new RepositorioComandaList();
-		//repositorioComanda= new RepositorioComandaJdbc();
-		repositorioComanda = new RepositorioComandaMap();
+		repositorioComanda= new RepositorioComandaJdbc();
+		//repositorioComanda = new RepositorioComandaMap();
 		//repositorioComanda = new RepositorioComandaSet();
 		//repositorioComanda = new RepositorioComandaIO();
 	}

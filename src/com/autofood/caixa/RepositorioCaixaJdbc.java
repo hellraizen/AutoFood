@@ -44,13 +44,14 @@ public class RepositorioCaixaJdbc implements IRepositorioCaixa {
 	@Override
 	public void entradaCaixa(Caixa entradaCaixa) throws SQLException {
 		if(caixa){
-		String sql = "insert into caixateste( entrada,idcomanda,idfuncionario)values(?,?,?)";
+		String sql = "insert into caixateste( entrada,saida,idcomanda,idfuncionario)values(?,?,?,?)";
 
 		PreparedStatement pst = conn.prepareStatement(sql);
 
 		pst.setDouble(1, entradaCaixa.getEntrada());
-		pst.setInt(2, entradaCaixa.getIdComanda());
-		pst.setInt(3, entradaCaixa.getIdFuncionario());
+		pst.setDouble(2, entradaCaixa.getSaida());
+		pst.setInt(3, entradaCaixa.getIdComanda());
+		pst.setInt(4, entradaCaixa.getIdFuncionario());
 
 		pst.execute();
 		}
@@ -59,13 +60,14 @@ public class RepositorioCaixaJdbc implements IRepositorioCaixa {
 	@Override
 	public void saidaCaixa(Caixa saidaCaixa) throws SQLException {
 		if(caixa){
-		String sql = "insert into caixateste(saida,idcomanda,idfuncionario)values(?,?,?)";
+		String sql = "insert into caixateste(entrada,saida,idcomanda,idfuncionario)values(?,?,?,?)";
 
 		PreparedStatement pst = conn.prepareStatement(sql);
-
-		pst.setDouble(1, saidaCaixa.getSaida());
-		pst.setInt(2, saidaCaixa.getIdComanda());
-		pst.setInt(3, saidaCaixa.getIdFuncionario());
+		
+		pst.setDouble(1, saidaCaixa.getEntrada());
+		pst.setDouble(2, saidaCaixa.getSaida());
+		pst.setInt(3, saidaCaixa.getIdComanda());
+		pst.setInt(4, saidaCaixa.getIdFuncionario());
 
 		pst.execute();
 		}
@@ -81,10 +83,10 @@ public class RepositorioCaixaJdbc implements IRepositorioCaixa {
 		ResultSet rs = pst.executeQuery();
 		
 		while(rs.next()){
-		double entrada = rs.getDouble(1);
-		double saida = rs.getDouble(2);
-		int idcomanda = rs.getInt(3);
-		int idfuncionario = rs.getInt(4);
+		double entrada = rs.getDouble(2);
+		double saida = rs.getDouble(3);
+		int idcomanda = rs.getInt(4);
+		int idfuncionario = rs.getInt(5);
 		
 		Caixa caixa = new Caixa(entrada,saida,idcomanda,idfuncionario);
 		array.add(caixa);

@@ -12,9 +12,9 @@ public class ControladorCaixa {
 	public ControladorCaixa() throws IOException, ClassNotFoundException {
 		//repositorioCaixa = new RepositorioCaixaList();
 		//repositorioCaixa = new RepositorioCaixaSet();
-		repositorioCaixa = new RepositoriCaixaMap();
+		//repositorioCaixa = new RepositoriCaixaMap();
 		//repositorioCaixa = new RepositorioCaixaIO();
-		//repositorioCaixa = new RepositorioCaixaJdbc();
+		repositorioCaixa = new RepositorioCaixaJdbc();
 	}
 
 	public boolean abrirCaixa() {

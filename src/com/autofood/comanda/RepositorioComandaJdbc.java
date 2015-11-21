@@ -11,12 +11,14 @@ import javax.swing.JOptionPane;
 import DAL.ConectaBd;
 
 public class RepositorioComandaJdbc implements IRepositorioComanda {
-	Integer indexComanda;
-	Connection conn;
-	ArrayList<Comanda> arrayComanda;
+	private Integer indexComanda;
+	private int index;
+	private Connection conn;
+	private ArrayList<Comanda> arrayComanda;
 
 	public RepositorioComandaJdbc() throws ClassNotFoundException {
 		indexComanda= 1;
+		index = 1;
 		arrayComanda = new ArrayList <Comanda>();
 		this.conn = ConectaBd.conectabd(); 
 	}
@@ -24,8 +26,10 @@ public class RepositorioComandaJdbc implements IRepositorioComanda {
 	@Override
 	public void realizarPedido(Comanda comanda) throws SQLException {
 		comanda.setIdComanda(indexComanda);
-		arrayComanda.add(comanda);
+		comanda.setNumeroVenda(index);
 		
+		arrayComanda.add(comanda);
+		index++;
 		String sql = "insert into comandateste(comandaid,nomeCliente,descricao,quantidadeVendida,valor,totalvalor) values(?,?,?,?,?,?)";
 		
 		PreparedStatement pst = conn.prepareStatement(sql);

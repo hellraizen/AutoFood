@@ -20,7 +20,7 @@ public class RepositorioEstoqueIO implements IRepositorioEstoque {
 
 	// Path path = Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioioEstoque.txt");
 	//Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioioEstoque.txt");
-	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioioEstoque.txt");
+	Path path = Paths.get("/AutoFood/files/repositorioioEstoque.txt");
 
 	Charset utf8 = StandardCharsets.UTF_8;
 

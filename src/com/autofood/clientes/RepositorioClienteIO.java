@@ -20,7 +20,7 @@ import com.autofood.exceçõesCliente.ClienteNaoEncontradoException;
 public class RepositorioClienteIO implements IRepositorioCliente {
 	
 	//Path path = Paths.get("C:/Users/Alternativo8/git/AutoFood1/files/repositorioCliente.txt");
-	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioCliente.txt");
+	Path path = Paths.get("/AutoFood/files/repositorioCliente.txt");
 	Charset utf8 = StandardCharsets.UTF_8;
 	
 
