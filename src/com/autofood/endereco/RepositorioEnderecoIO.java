@@ -161,9 +161,16 @@ public class RepositorioEnderecoIO implements IRepositorioEndereco{
 				
 				while ((linha = ler.readLine()) != null) {
 					
-					Object[] dados = linha.split(";");
-
-					Endereco endereco = new Endereco(dados[1], dados[2], dados[3], dados[4], dados[5],dados[6], dados[7], dados[8], dados[9]);
+					String[] dados = linha.split(";");
+					
+					int idEndereco = Integer.parseInt(dados[0]);
+					String rua = dados[1];
+					String bairro = dados[2];
+					String numero = dados[3];
+					String cep = dados[4];
+					String complemento = dados[5];
+					
+					Endereco endereco = new Endereco(idEndereco, rua, bairro, numero, cep, complemento);
 					index++;
 					arrayEndereco.add(endereco);
 				}

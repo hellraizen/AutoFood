@@ -35,14 +35,10 @@ public class Endereco {
 
 	
 	
-	public Endereco(Object object, Object object2, Object object3, Object object4, Object object5, Object object6,
-			Object object7, Object object8, Object object9) {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 
-
-	public Endereco(String rua2, String bairro2, String numero2, String cep2, String complemento2) {
+	public Endereco(Integer idEndereco, String rua, String bairro, String numero, String cep, String complemento) {
 		setIdEndereco(idEndereco);
 		setRua(rua);
 		setBairro(bairro);
@@ -50,6 +46,18 @@ public class Endereco {
 		setCep(cep);
 		setComplemento(complemento);  
 	}
+
+
+
+	public Endereco( String rua, String bairro, String numero, String cep, String complemento) {
+	
+		setRua(rua);
+		setBairro(bairro);
+		setNumero(numero);
+		setCep(cep);
+		setComplemento(complemento);  
+	}
+
 
 
 

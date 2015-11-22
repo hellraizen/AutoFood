@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.autofood.clientes.Cliente;
 import com.autofood.endereco.Endereco;
 import com.autofood.fachada.Fachada;
 
@@ -18,6 +19,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
@@ -37,6 +40,7 @@ public class JFEndereco extends JFrame {
 	private JTextField textCep;
 	private JTextField textComplemento;
 	private JTable table;
+	private DefaultTableModel defaultEndereco;
 
 	/**
 	 * Launch the application.
@@ -128,6 +132,16 @@ public class JFEndereco extends JFrame {
 		panel_1.add(btnExiste);
 		
 		JButton btnListar = new JButton("LISTAR");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					listar();
+				} catch (ClassNotFoundException | SQLException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		btnListar.setVerticalAlignment(SwingConstants.BOTTOM);
 		panel_1.add(btnListar);
 		
@@ -136,13 +150,14 @@ public class JFEndereco extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-					"RUA", "BAIRRO","N\u00DAMERO","CEP","COMPLEMENTO",    
+		String[] coluna = new String[] {"RUA", "BAIRRO","NUMERO","CEP","COMPLEMENTO",};
+		defaultEndereco =new DefaultTableModel(new Object[][] {},coluna){
+			public boolean isCellEditable(int row, int col) {
+				return false;
 			}
-		));
+		};
+		
+		table.setModel(defaultEndereco);
 		table.getColumnModel().getColumn(0).setPreferredWidth(95);
 		table.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane.setViewportView(table);
@@ -201,7 +216,7 @@ public class JFEndereco extends JFrame {
 		String cep = textCep.getText();
 		String complemento = textComplemento.getText();
 		
-		Endereco endereco = new Endereco(rua, bairro, numero, cep, complemento);
+		Endereco endereco = new Endereco( rua, bairro, numero, cep, complemento);
 		
 		try {
 			Fachada.getInstance().cadastrarEndereco(endereco);
@@ -243,4 +258,28 @@ public class JFEndereco extends JFrame {
 		textComplemento.setText(" ");
 		
 	}
+	
+	
+	private void listar() throws ClassNotFoundException, SQLException, IOException {
+		 this.limparTabelaEndereco();
+		ArrayList<Endereco> arrayEndereco = Fachada.getInstance().listarEndereco();
+		for (Endereco endereco : arrayEndereco) {
+			Vector vector = new Vector();
+			vector.add(endereco.getIdEndereco());
+			vector.add(endereco.getRua());
+			vector.add(endereco.getBairro());
+			vector.add(endereco.getCep());
+			vector.add(endereco.getComplemento());
+			
+			
+			defaultEndereco.addRow(vector);
+		}
+	}
+		
+		private void limparTabelaEndereco() {
+			defaultEndereco.setNumRows(0);;
+		}
+	
+	
+	
 }
