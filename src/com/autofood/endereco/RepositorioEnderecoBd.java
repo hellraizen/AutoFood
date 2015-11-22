@@ -24,7 +24,7 @@ public class RepositorioEnderecoBd implements IRepositorioEndereco {
 
 	@Override
 	public void cadastrar(Endereco endereco) throws SQLException {
-		String sql = "inset into testEndereco( rua, bairro, numero, cep, complemento) values(?,?,?,?,?) ";
+		String sql = "insert into testEndereco( rua, bairro, numero, cep, complemento) values(?,?,?,?,?) ";
 		PreparedStatement preStatement = conn.prepareStatement(sql);
 
 		preStatement.setString(1, endereco.getRua());

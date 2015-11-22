@@ -64,6 +64,17 @@ idfuncionario int,
 
 primary key (cod)
 );
+create table testEndereco(
+
+idEndereco serial,
+rua varchar(60),
+bairro varchar(50),
+numero varchar(6),
+cep varchar(12),
+complemento varchar(100),
+
+primary key (idendereco)
+);
 
 
 
