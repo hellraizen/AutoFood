@@ -30,6 +30,8 @@ import javax.swing.JTable;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class JFEndereco extends JFrame {
 
@@ -41,6 +43,7 @@ public class JFEndereco extends JFrame {
 	private JTextField textComplemento;
 	private JTable table;
 	private DefaultTableModel defaultEndereco;
+	private int codigoselecao;
 
 	/**
 	 * Launch the application.
@@ -150,6 +153,13 @@ public class JFEndereco extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				int linhaselecionada = table.getSelectedRow();
+				//codigoselecao = table.getValueAt(linhaselecionada, 1).toString();
+			}
+		});
 		String[] coluna = new String[] {"RUA", "BAIRRO","NUMERO","CEP","COMPLEMENTO",};
 		defaultEndereco =new DefaultTableModel(new Object[][] {},coluna){
 			public boolean isCellEditable(int row, int col) {
