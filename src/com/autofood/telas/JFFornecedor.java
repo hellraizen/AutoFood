@@ -77,6 +77,7 @@ public class JFFornecedor extends JFrame {
 	 * Create the frame.
 	 */
 	public JFFornecedor() {
+		setTitle("Fornecedor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 654, 558);
 		contentPane = new JPanel();

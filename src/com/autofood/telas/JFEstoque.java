@@ -74,6 +74,7 @@ public class JFEstoque extends JFrame {
 	 * Create the frame.
 	 */
 	public JFEstoque() {
+		setTitle("Estoque");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 655, 558);
 		contentPane = new JPanel();
