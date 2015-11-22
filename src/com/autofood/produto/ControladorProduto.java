@@ -13,11 +13,11 @@ public class ControladorProduto {
 
 	public ControladorProduto() throws ClassNotFoundException, IOException {
 
-		repositorioProduto = new RepositorioProdutoList();
+		//repositorioProduto = new RepositorioProdutoList();
 		//repositorioProduto = new RepositorioProdutoSet();
 		//repositorioProduto = new RepositorioProdutoMap();
 		//repositorioProduto = new RepositorioProdutoBd();
-		//repositorioProduto = new RepositorioProdutoIO();
+		repositorioProduto = new RepositorioProdutoIO();
 
 	}
 

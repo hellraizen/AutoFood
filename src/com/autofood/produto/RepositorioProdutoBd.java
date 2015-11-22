@@ -3,9 +3,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
 import DAL.ConectaBd;
+
 import com.autofood.exceçõesProduto.NomeVazioException;
 import com.autofood.exceçõesProduto.ProdutoJáCadastradoException;
 import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
@@ -24,7 +28,7 @@ public class RepositorioProdutoBd implements IRepositorioProduto {
 
 		String sql = "insert into produtoteste (codigoProduto, nome_produto, quantidade, preco, validade, data_fabricacao) values(?,?,?,?,?,?)";
 
-		PreparedStatement preStatement = conn.prepareStatement(sql);
+		PreparedStatement preStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		
 		preStatement.setString(1,produto.getCodigoProduto());
 		preStatement.setString(2, produto.getNomeProduto());

@@ -16,11 +16,11 @@ public class ControladorFornecedor {
 
 	public ControladorFornecedor() throws ClassNotFoundException, IOException {
 
-		//repositorioFornecedor = new RepositorioFornecedorList();
+		repositorioFornecedor = new RepositorioFornecedorList();
 		//repositorioFornecedor = new RepositorioFornecedorSet();
 		//repositorioFornecedor = new RepositorioFornecedorMap();
 		//repositorioFornecedor = new RepositorioFornecedorJDBC();
-		repositorioFornecedor = new RepositorioFornecedorIO();
+		//repositorioFornecedor = new RepositorioFornecedorIO();
 
 	}
 

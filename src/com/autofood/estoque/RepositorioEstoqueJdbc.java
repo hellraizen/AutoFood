@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
 import DAL.ConectaBd;
 
 public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
@@ -22,7 +25,7 @@ public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
 
 		String sql = "insert into estoqueteste (codigoProduto,produtoEstoque,quantidade,dataEntrada,dataValidade,precoCusto)values(?,?,?,?,?,?)";
 
-		PreparedStatement preStatement = conn.prepareStatement(sql);
+		PreparedStatement preStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		
 		preStatement.setString(1,estoque.getCodigoProduto());
 		preStatement.setString(2, estoque.getNomeProdutoEstoque());
