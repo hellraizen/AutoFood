@@ -1,2 +1,1 @@
- 1;RS Alimentos;42.150.241/0001-67;;;81-3744-0987;rs-alimentos@gmail.com
-null;mnm;73.142.075/0001-80;;1;1;1
+null;AS Alimentos;46.304.445/0001-66;Carnes;81-3725-5587;as_ali@gmail.com

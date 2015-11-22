@@ -21,9 +21,10 @@ import com.autofood.exceçõesProduto.ProdutoNaoEncontradoException;
 public class RepositorioProdutoIO implements IRepositorioProduto {
 
 	
-	// Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioioProduto.txt");
+	//Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioioProduto.txt");
 	//Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioioProduto.txt");
-	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioioProduto.txt");
+	Path path = Paths.get("C:/Users/danilo/git/AutoFood/files/repositorioioProduto.txt");
+	//Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioioProduto.txt");
 
 	Charset utf8 = StandardCharsets.UTF_8;
 
@@ -45,7 +46,7 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 
 			arquivar.write(produto.getIdProduto() + ";" + produto.getCodigoProduto() + ";" + produto.getNomeProduto() + ";"
 					+ produto.getQuantidadeProduto() + ";" + produto.getPrecoProduto() + ";"
-					+ produto.getDataFabricacaoProduto() + ";" + produto.getValidadeProduto() + "\n");
+					+ produto.getValidadeProduto() + ";" + produto.getDataFabricacaoProduto() + "\n");
 
 			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 		}

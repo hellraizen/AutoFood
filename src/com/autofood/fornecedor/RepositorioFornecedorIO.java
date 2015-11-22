@@ -18,7 +18,9 @@ import com.autofood.exceçoesFornecedor.FornecedorNuloException;
 
 public class RepositorioFornecedorIO implements IRepositorioFornecedor {
 
-	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioioFornecedor.txt");
+	Path path = Paths.get("C:/Users/danilo/git/AutoFood/files/repositorioioFornecedor.txt");
+	// Path path =
+	// Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioioFornecedor.txt");
 	Charset utf8 = StandardCharsets.UTF_8;
 
 	public RepositorioFornecedorIO() throws IOException {
@@ -28,34 +30,27 @@ public class RepositorioFornecedorIO implements IRepositorioFornecedor {
 	}
 
 	public void cadastra(Fornecedor fornecedor)
-			throws FornecedorJaCadastradoException, FornecedorNuloException,
-			IOException, SQLException {
+			throws FornecedorJaCadastradoException, FornecedorNuloException, IOException, SQLException {
 		if (existi(fornecedor.getCnpjFornecedor()))
 			throw new FornecedorJaCadastradoException();
 
-		try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8,
-				StandardOpenOption.APPEND);) {
+		try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8, StandardOpenOption.APPEND);) {
 
-			arquivar.write(fornecedor.getIdFornecedor() + ";"
-					+ fornecedor.getNomeFornecedor() + ";"
-					+ fornecedor.getCnpjFornecedor() + ";" + ";"
-					+ fornecedor.getProdutoFornecido() + ";"
-					+ fornecedor.getTelefoneFornecedor() + ";"
-					+ fornecedor.getEmailFornecedor() + "\n");
+			arquivar.write(fornecedor.getIdFornecedor() + ";" + fornecedor.getNomeFornecedor() + ";"
+					+ fornecedor.getCnpjFornecedor() + ";" + fornecedor.getProdutoFornecido() + ";"
+					+ fornecedor.getTelefoneFornecedor() + ";" + fornecedor.getEmailFornecedor() + "\n");
 
 			JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 
 		}
 	}
 
-	public void atualizar(Fornecedor fornecedor)
-			throws FornecedorNaoEncontradoException, SQLException, IOException {
+	public void atualizar(Fornecedor fornecedor) throws FornecedorNaoEncontradoException, SQLException, IOException {
 
 		ArrayList<Fornecedor> arrayLocal = listar();
 
 		for (Fornecedor fornecedor2 : arrayLocal) {
-			if (fornecedor2.getCnpjFornecedor().equals(
-					fornecedor.getCnpjFornecedor())) {
+			if (fornecedor2.getCnpjFornecedor().equals(fornecedor.getCnpjFornecedor())) {
 
 				arrayLocal.remove(fornecedor2);
 				arrayLocal.add(fornecedor);
@@ -71,27 +66,21 @@ public class RepositorioFornecedorIO implements IRepositorioFornecedor {
 
 		for (Fornecedor fornecedor3 : arrayLocal) {
 
-			try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8,
-					StandardOpenOption.APPEND);) {
+			try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8, StandardOpenOption.APPEND);) {
 
-				arquivar.write(fornecedor3.getIdFornecedor() + ";"
-						+ fornecedor3.getNomeFornecedor() + ";"
-						+ fornecedor3.getCnpjFornecedor() + ";" + ";"
-						+ fornecedor3.getProdutoFornecido() + ";"
-						+ fornecedor3.getTelefoneFornecedor() + ";"
-						+ fornecedor3.getEmailFornecedor() + "\n");
+				arquivar.write(fornecedor3.getIdFornecedor() + ";" + fornecedor3.getNomeFornecedor() + ";"
+						+ fornecedor3.getCnpjFornecedor() + ";" + fornecedor3.getProdutoFornecido() + ";"
+						+ fornecedor3.getTelefoneFornecedor() + ";" + fornecedor3.getEmailFornecedor() + "\n");
 
 			}
 
 		}
 
-		JOptionPane
-				.showMessageDialog(null, "Fornecedor atualizado com sucesso");
+		JOptionPane.showMessageDialog(null, "Fornecedor atualizado com sucesso");
 
 	}
 
-	public void remover(String cnpjFornecedor)
-			throws FornecedorNaoEncontradoException, SQLException, IOException {
+	public void remover(String cnpjFornecedor) throws FornecedorNaoEncontradoException, SQLException, IOException {
 
 		ArrayList<Fornecedor> arrayLocal = listar();
 
@@ -110,15 +99,11 @@ public class RepositorioFornecedorIO implements IRepositorioFornecedor {
 		}
 		for (Fornecedor fornecedor : arrayLocal) {
 
-			try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8,
-					StandardOpenOption.APPEND);) {
+			try (BufferedWriter arquivar = Files.newBufferedWriter(path, utf8, StandardOpenOption.APPEND);) {
 
-				arquivar.write(fornecedor.getIdFornecedor() + ";"
-						+ fornecedor.getNomeFornecedor() + ";"
-						+ fornecedor.getCnpjFornecedor() + ";" + ";"
-						+ fornecedor.getProdutoFornecido() + ";"
-						+ fornecedor.getTelefoneFornecedor() + ";"
-						+ fornecedor.getEmailFornecedor() + "\n");
+				arquivar.write(fornecedor.getIdFornecedor() + ";" + fornecedor.getNomeFornecedor() + ";"
+						+ fornecedor.getCnpjFornecedor() + ";" + fornecedor.getProdutoFornecido() + ";"
+						+ fornecedor.getTelefoneFornecedor() + ";" + fornecedor.getEmailFornecedor() + "\n");
 
 			}
 		}
@@ -141,10 +126,10 @@ public class RepositorioFornecedorIO implements IRepositorioFornecedor {
 
 	}
 
-	public Boolean existi(String cnpjFornecedor) throws SQLException,IOException {
+	public Boolean existi(String cnpjFornecedor) throws SQLException, IOException {
 
 		ArrayList<Fornecedor> arrayLocal = listar();
-		
+
 		for (Fornecedor fornecedor : arrayLocal) {
 			if (fornecedor.getCnpjFornecedor().equals(cnpjFornecedor)) {
 
@@ -169,7 +154,18 @@ public class RepositorioFornecedorIO implements IRepositorioFornecedor {
 			while ((contadorLinhas = ler.readLine()) != null) {
 
 				String[] dado = contadorLinhas.split(";");
-				Fornecedor fornecedor = new Fornecedor(index, dado[1],dado[2], dado[3], dado[4], dado[5]);
+
+				dado[0] = index.toString();
+
+				Integer idFornecedor = Integer.parseInt(dado[0]);
+				String nomeFornecedor = dado[1];
+				String cnpjFornecedor = dado[2];
+				String produtoFornecido = dado[3];
+				String telefoneFornecedor = dado[4];
+				String emailFornecedor = dado[5];
+
+				Fornecedor fornecedor = new Fornecedor(idFornecedor, nomeFornecedor, cnpjFornecedor, produtoFornecido,
+						telefoneFornecedor, emailFornecedor);
 				index++;
 				arrayLocal.add(fornecedor);
 			}
