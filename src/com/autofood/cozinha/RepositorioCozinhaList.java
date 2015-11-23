@@ -6,9 +6,9 @@ import com.autofood.comanda.Comanda;
 
 public class RepositorioCozinhaList implements IRepositorioCozinha {
 
-	private ArrayList<Comanda> arrayComandaList ;
-	private String pedido;
-	private Integer idPedido;
+	ArrayList<Comanda> arrayComandaList ;
+	String pedido;
+	Integer idPedido;
 
 	public RepositorioCozinhaList() {
 		arrayComandaList = new ArrayList<Comanda>();

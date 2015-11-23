@@ -2,6 +2,7 @@ package com.autofood.funcionario;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -102,10 +103,12 @@ public class RepositorioFuncionarioSet implements IRepositorioFuncionario
 	@Override
 	public ArrayList<Funcionario> listar() 
 	{
+		
 		ArrayList<Funcionario> aFuncionario = new ArrayList<Funcionario>();
 		
-		for (Funcionario funcionario : arrayFuncionarioSet) 
+		for (int i = 1; i < index; i++) 
 		{
+			Funcionario funcionario = ((List<Funcionario>) arrayFuncionarioSet).get(i);
 			aFuncionario.add(funcionario);
 		}
 		
@@ -113,3 +116,5 @@ public class RepositorioFuncionarioSet implements IRepositorioFuncionario
 	}
 	
 }
+
+
