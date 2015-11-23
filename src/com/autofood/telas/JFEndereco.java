@@ -44,6 +44,7 @@ public class JFEndereco extends JFrame {
 	private JTable table;
 	private DefaultTableModel defaultEndereco;
 	private int codigoselecao;
+	private JTextField textId;
 
 	/**
 	 * Launch the application.
@@ -83,7 +84,7 @@ public class JFEndereco extends JFrame {
 		contentPane.add(panel_1);
 		
 		JButton btnCadastrar = new JButton("CADASTRAR");
-		btnCadastrar.setBounds(0, 23, 113, 23);
+		btnCadastrar.setBounds(10, 22, 107, 23);
 		btnCadastrar.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnCadastrar.addActionListener(new ActionListener() {
 			
@@ -164,7 +165,7 @@ public class JFEndereco extends JFrame {
 		panel_1.add(btnEditar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(15, 87, 706, 248);
+		scrollPane.setBounds(15, 118, 706, 217);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -188,25 +189,25 @@ public class JFEndereco extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		textRua = new JTextField();
-		textRua.setBounds(50, 11, 227, 20);
+		textRua.setBounds(129, 11, 474, 20);
 		contentPane.add(textRua);
 		textRua.setColumns(10);
 		
 		JLabel lblRua = new JLabel("RUA");
-		lblRua.setBounds(15, 16, 46, 14);
+		lblRua.setBounds(86, 16, 33, 14);
 		contentPane.add(lblRua);
 		
 		textBairro = new JTextField();
-		textBairro.setBounds(362, 11, 227, 20);
+		textBairro.setBounds(376, 52, 321, 20);
 		contentPane.add(textBairro);
 		textBairro.setColumns(10);
 		
 		JLabel lblBairro = new JLabel("BAIRRO");
-		lblBairro.setBounds(306, 14, 46, 14);
+		lblBairro.setBounds(320, 55, 46, 14);
 		contentPane.add(lblBairro);
 		
 		JLabel lbNumero = new JLabel("N°");
-		lbNumero.setBounds(615, 14, 28, 14);
+		lbNumero.setBounds(625, 14, 28, 14);
 		contentPane.add(lbNumero);
 		
 		textNumero = new JTextField();
@@ -215,22 +216,32 @@ public class JFEndereco extends JFrame {
 		textNumero.setColumns(10);
 		
 		JLabel lblCep = new JLabel("CEP");
-		lblCep.setBounds(78, 49, 46, 14);
+		lblCep.setBounds(95, 55, 46, 14);
 		contentPane.add(lblCep);
 		
 		textCep = new JTextField();
-		textCep.setBounds(110, 46, 167, 20);
+		textCep.setBounds(127, 52, 167, 20);
 		contentPane.add(textCep);
 		textCep.setColumns(10);
 		
 		JLabel lblComplemento = new JLabel("COMPLEMENTO");
-		lblComplemento.setBounds(316, 49, 101, 14);
+		lblComplemento.setBounds(40, 93, 101, 14);
 		contentPane.add(lblComplemento);
 		
 		textComplemento = new JTextField();
-		textComplemento.setBounds(445, 46, 249, 20);
+		textComplemento.setBounds(127, 87, 581, 20);
 		contentPane.add(textComplemento);
 		textComplemento.setColumns(10);
+		
+		JLabel lblId = new JLabel("ID");
+		lblId.setBounds(5, 17, 28, 14);
+		contentPane.add(lblId);
+		
+		textId = new JTextField();
+		textId.setEditable(false);
+		textId.setBounds(25, 14, 33, 20);
+		contentPane.add(textId);
+		textId.setColumns(10);
 	}
 	
 	public void cadastrar()
@@ -316,11 +327,13 @@ public class JFEndereco extends JFrame {
 		try {
 			Endereco endereco =  Fachada.getInstance().procurarEndereco(codigoselecao);
 		
+			Integer idEndereco = endereco.getIdEndereco();
 			String rua = endereco.getRua();
 			String bairro = endereco.getBairro();
 			String numero = endereco.getNumero();
 			String cep = endereco.getCep();
 			String complemento = endereco.getComplemento();
+			
 			
 			textRua.setText(rua);
 			textBairro.setText(bairro);
@@ -332,5 +345,12 @@ public class JFEndereco extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}	
+	}
+	
+	
+	
+	public void procurar()
+	{
+		
+	}
 }
