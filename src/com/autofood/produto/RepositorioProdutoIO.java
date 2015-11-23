@@ -23,8 +23,8 @@ public class RepositorioProdutoIO implements IRepositorioProduto {
 	
 	//Paths.get("C:/Users/Alternativo8/git/AutoFood/files/repositorioioProduto.txt");
 	//Path path = Paths.get("C:/Users/Longtech/git/AutoFood/files/repositorioioProduto.txt");
-	Path path = Paths.get("AutoFood/files/repositorioioProduto.txt");
-	//Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioioProduto.txt");
+	//Path path = Paths.get("AutoFood/files/repositorioioProduto.txt");
+	Path path = Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioioProduto.txt");
 
 	Charset utf8 = StandardCharsets.UTF_8;
 

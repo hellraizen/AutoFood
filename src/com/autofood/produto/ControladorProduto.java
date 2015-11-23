@@ -16,8 +16,8 @@ public class ControladorProduto {
 		//repositorioProduto = new RepositorioProdutoList();
 		//repositorioProduto = new RepositorioProdutoSet();
 		//repositorioProduto = new RepositorioProdutoMap();
-		//repositorioProduto = new RepositorioProdutoBd();
-		repositorioProduto = new RepositorioProdutoIO();
+		repositorioProduto = new RepositorioProdutoBd();
+		//repositorioProduto = new RepositorioProdutoIO();
 
 	}
 

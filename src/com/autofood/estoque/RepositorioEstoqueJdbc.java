@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
+
 import DAL.ConectaBd;
 
 public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
@@ -74,7 +76,7 @@ public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
 
 	}
 
-	public Estoque procurar(String codigoProduto) throws SQLException {
+	public Estoque procurar(String codigoProduto) throws SQLException, ProdutoEstoqueNaoEncontradoException {
 
 		String sql = "select * from estoqueteste where codigoProduto= ? ";
 
@@ -95,9 +97,9 @@ public class RepositorioEstoqueJdbc implements IRepositorioEstoque {
 			Estoque estoque = new Estoque(id,codigo, produto, quantidade, dataEntrada, validade, preco);
 
 			return estoque;
-
+			
 		}
-		return null;
+		throw new ProdutoEstoqueNaoEncontradoException();
 	}
 
 	public Boolean existi(String codigoProduto) {

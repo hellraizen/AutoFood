@@ -16,6 +16,7 @@ import javax.swing.UIManager;
 
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -232,7 +233,6 @@ public class JFEstoque extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cadastrar();
-				limpar();
 			}
 		});
 		btnCadastrar.setBounds(11, 11, 95, 23);
@@ -337,6 +337,7 @@ public class JFEstoque extends JFrame {
 
 		} catch (ClassNotFoundException | SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 
@@ -349,7 +350,7 @@ public class JFEstoque extends JFrame {
 			listar();
 
 		} catch (NumberFormatException | ClassNotFoundException | SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
-
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 
@@ -412,6 +413,7 @@ public class JFEstoque extends JFrame {
 			limpar();
 		} catch (ClassNotFoundException | SQLException | IOException |ProdutoJaCadastradoEstoqueException | com.autofood.exceçõesEstoque.NomeVazioException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 	}
@@ -433,6 +435,7 @@ public class JFEstoque extends JFrame {
 
 		} catch (ClassNotFoundException |SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 
@@ -456,6 +459,7 @@ public class JFEstoque extends JFrame {
 			listar();
 		} catch (ClassNotFoundException | SQLException | IOException | ProdutoEstoqueNaoEncontradoException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog( null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 

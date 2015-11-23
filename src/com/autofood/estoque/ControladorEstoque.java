@@ -3,7 +3,6 @@ package com.autofood.estoque;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import com.autofood.exceçõesEstoque.NomeVazioException;
 import com.autofood.exceçõesEstoque.ProdutoEstoqueNaoEncontradoException;
 import com.autofood.exceçõesEstoque.ProdutoJaCadastradoEstoqueException;
@@ -14,10 +13,10 @@ public class ControladorEstoque {
 	
 	public ControladorEstoque() throws ClassNotFoundException, IOException{
 		
-		repositorioEstoque = new RepositorioEstoqueList();
+		//repositorioEstoque = new RepositorioEstoqueList();
 		//repositorioEstoque = new RepositorioEstoqueSet();
 		//repositorioEstoque = new RepositorioEstoqueMap();
-		//repositorioEstoque = new RepositorioEstoqueJdbc();
+		repositorioEstoque = new RepositorioEstoqueJdbc();
 		//repositorioEstoque = new RepositorioEstoqueIO();		
 	}
 	
