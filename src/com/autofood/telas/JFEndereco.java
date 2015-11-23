@@ -83,6 +83,7 @@ public class JFEndereco extends JFrame {
 		contentPane.add(panel_1);
 		
 		JButton btnCadastrar = new JButton("CADASTRAR");
+		btnCadastrar.setBounds(10, 11, 113, 23);
 		btnCadastrar.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnCadastrar.addActionListener(new ActionListener() {
 			
@@ -92,9 +93,11 @@ public class JFEndereco extends JFrame {
 				cadastrar();
 			}
 		});
+		panel_1.setLayout(null);
 		panel_1.add(btnCadastrar);
 		
 		JButton btnNewButton = new JButton("ATUALIZAR");
+		btnNewButton.setBounds(111, 36, 113, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			
@@ -105,20 +108,22 @@ public class JFEndereco extends JFrame {
 		});
 		panel_1.add(btnNewButton);
 		
-		JButton btnRemover = new JButton("REMOVER");
-		btnRemover.addActionListener(new ActionListener() {
+		JButton btnLimpar = new JButton("LIMPAR");
+		btnLimpar.setBounds(218, 11, 113, 23);
+		btnLimpar.addActionListener(new ActionListener() {
 			
 			
 			
 			public void actionPerformed(ActionEvent e)
 			{
-				remover();
+				limpar();
 			}
 		});
-		btnRemover.setVerticalAlignment(SwingConstants.BOTTOM);
-		panel_1.add(btnRemover);
+		btnLimpar.setVerticalAlignment(SwingConstants.BOTTOM);
+		panel_1.add(btnLimpar);
 		
 		JButton btnProcurar = new JButton("PROCURAR");
+		btnProcurar.setBounds(318, 35, 113, 23);
 		btnProcurar.addActionListener(new ActionListener() {
 			
 			
@@ -130,11 +135,19 @@ public class JFEndereco extends JFrame {
 		btnProcurar.setVerticalAlignment(SwingConstants.BOTTOM);
 		panel_1.add(btnProcurar);
 		
-		JButton btnExiste = new JButton("EXISTE");
-		btnExiste.setVerticalAlignment(SwingConstants.BOTTOM);
-		panel_1.add(btnExiste);
+		JButton btnEditar = new JButton("EDITAR");
+		btnEditar.setBounds(426, 11, 101, 23);
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				// EDITAR
+			}
+		});
+		btnEditar.setVerticalAlignment(SwingConstants.BOTTOM);
+		panel_1.add(btnEditar);
 		
 		JButton btnListar = new JButton("LISTAR");
+		btnListar.setBounds(522, 35, 95, 23);
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -148,6 +161,10 @@ public class JFEndereco extends JFrame {
 		btnListar.setVerticalAlignment(SwingConstants.BOTTOM);
 		panel_1.add(btnListar);
 		
+		JButton btnRemover = new JButton("REMOVER");
+		btnRemover.setBounds(600, 12, 101, 23);
+		panel_1.add(btnRemover);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(15, 87, 706, 248);
 		contentPane.add(scrollPane);
@@ -160,7 +177,7 @@ public class JFEndereco extends JFrame {
 				//codigoselecao = table.getValueAt(linhaselecionada, 1).toString();
 			}
 		});
-		String[] coluna = new String[] {"RUA", "BAIRRO","NUMERO","CEP","COMPLEMENTO",};
+		String[] coluna = new String[] {"ID","RUA", "BAIRRO","NUMERO","CEP","COMPLEMENTO",};
 		defaultEndereco =new DefaultTableModel(new Object[][] {},coluna){
 			public boolean isCellEditable(int row, int col) {
 				return false;
@@ -190,7 +207,7 @@ public class JFEndereco extends JFrame {
 		lblBairro.setBounds(306, 14, 46, 14);
 		contentPane.add(lblBairro);
 		
-		JLabel lbNumero = new JLabel("N\u00B0");
+		JLabel lbNumero = new JLabel("N°");
 		lbNumero.setBounds(615, 14, 28, 14);
 		contentPane.add(lbNumero);
 		
@@ -259,7 +276,7 @@ public class JFEndereco extends JFrame {
 	}
 	
 	
-	public void remover()
+	public void limpar()
 	{
 		textRua.setText(" ");
 		textBairro.setText(" ");
@@ -289,7 +306,4 @@ public class JFEndereco extends JFrame {
 		private void limparTabelaEndereco() {
 			defaultEndereco.setNumRows(0);;
 		}
-	
-	
-	
 }

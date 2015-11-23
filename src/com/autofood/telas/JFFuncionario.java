@@ -8,10 +8,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class JFFuncionario extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -41,7 +43,7 @@ public class JFFuncionario extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 648, 72);
+		panel.setBounds(10, 356, 648, 72);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -61,12 +63,21 @@ public class JFFuncionario extends JFrame {
 		btnRemover.setBounds(339, 25, 89, 23);
 		panel.add(btnRemover);
 		
-		JButton btnExiste = new JButton("EXISTE");
-		btnExiste.setBounds(442, 25, 89, 23);
-		panel.add(btnExiste);
+		JButton btnEditar = new JButton("EDITAR");
+		btnEditar.setBounds(442, 25, 89, 23);
+		panel.add(btnEditar);
 		
 		JButton btnListar = new JButton("LISTAR");
 		btnListar.setBounds(545, 25, 89, 23);
 		panel.add(btnListar);
+		
+		JLabel lblNome = new JLabel("NOME");
+		lblNome.setBounds(10, 11, 46, 14);
+		contentPane.add(lblNome);
+		
+		textField = new JTextField();
+		textField.setBounds(66, 8, 228, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
 	}
 }
