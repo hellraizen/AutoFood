@@ -11,33 +11,29 @@ public class ControladorCozinha
 	public ControladorCozinha() 
 	{
 		
-		this.repositorioCozinha = new RepositorioCozinhaBD();
+		//this.repositorioCozinha = new RepositorioCozinhaBD();
 		//this.repositorioCozinha = new RepositorioCozinhaIO();
-		//this.repositorioCozinha = new RepositorioCozinhaList();
+		this.repositorioCozinha = new RepositorioCozinhaList();
 		//this.repositorioCozinha = new RepositorioCozinhaMap();
 		//this.repositorioCozinha = new RepositorioCozinhaSet();
 		
 	}
 	
 	
-	public void receberPedido(Comanda comanda) 
+
+	public void finalizarPedido(Comanda comanda) 
 	{
-		
+		repositorioCozinha.finalizarPedido(comanda);
 	}
 
-	public void finalizarPedido(Comanda comanda) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void cancelarPedido(Comanda comanda) {
-		// TODO Auto-generated method stub
-
+	public void cancelarPedido(Comanda comanda) 
+	{
+		repositorioCozinha.editarPedido(comanda);
 	}
 	
-	public ArrayList<Comanda> listaPedidos() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Comanda> listaPedidos() 
+	{
+		return repositorioCozinha.listaPedidos();
 	}
 	
 }

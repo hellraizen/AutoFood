@@ -48,8 +48,7 @@ public class Comanda {
 
 	}
 
-	public Comanda(Integer idComanda, String nomeCliente, Integer idProduto, String produto, Double valor,
-			Integer quantidade, Double total, Date data) {
+	public Comanda() {
 
 		setIdComanda(idComanda);
 		setNomeCliente(nomeCliente);
