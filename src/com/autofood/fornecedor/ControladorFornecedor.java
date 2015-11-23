@@ -19,8 +19,8 @@ public class ControladorFornecedor {
 		//repositorioFornecedor = new RepositorioFornecedorList();
 		//repositorioFornecedor = new RepositorioFornecedorSet();
 		//repositorioFornecedor = new RepositorioFornecedorMap();
-		//repositorioFornecedor = new RepositorioFornecedorJDBC();
-		repositorioFornecedor = new RepositorioFornecedorIO();
+		repositorioFornecedor = new RepositorioFornecedorJDBC();
+		//repositorioFornecedor = new RepositorioFornecedorIO();
 
 	}
 
