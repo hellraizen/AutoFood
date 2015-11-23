@@ -25,10 +25,11 @@ public class RepositorioEnderecoList implements IRepositorioEndereco {
 
 	@Override
 	public void atualizar(Endereco endereco) {
-		int i = endereco.getIdEndereco();
 
 		for (Endereco endereco1 : arrayListEndereco) {
-			if (i == endereco1.getIdEndereco()) {
+			
+			if (endereco.getIdEndereco() == endereco1.getIdEndereco()) {
+				
 				arrayListEndereco.remove(endereco1);
 				arrayListEndereco.add(endereco);
 				JOptionPane.showMessageDialog(null, "Endereço Atualizado com Sucesso");

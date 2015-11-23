@@ -175,7 +175,7 @@ public class JFEndereco extends JFrame {
 				int linhaselecionada = table.getSelectedRow();
 				String selecao=table.getValueAt(linhaselecionada, 0).toString();
 				codigoselecao = Integer.parseInt(selecao);
-				System.out.println(codigoselecao);
+				
 				
 			
 			}
@@ -229,11 +229,11 @@ public class JFEndereco extends JFrame {
 		textCep.setColumns(10);
 		
 		JLabel lblComplemento = new JLabel("COMPLEMENTO");
-		lblComplemento.setBounds(40, 93, 101, 14);
+		lblComplemento.setBounds(40, 93, 87, 14);
 		contentPane.add(lblComplemento);
 		
 		textComplemento = new JTextField();
-		textComplemento.setBounds(127, 87, 581, 20);
+		textComplemento.setBounds(129, 87, 579, 20);
 		contentPane.add(textComplemento);
 		textComplemento.setColumns(10);
 		
@@ -269,17 +269,17 @@ public class JFEndereco extends JFrame {
 	
 	public void atualizar()
 	{
-		
+		int id = Integer.parseInt(textId.getText());
 		String rua = textRua.getText();
 		String bairro = textBairro.getText();
 		String numero = textNumero.getText();
 		String cep = textCep.getText();
 		String complemento = textComplemento.getText();
 		
-		Endereco endereco = new Endereco(rua, bairro, numero, cep, complemento);
+		Endereco endereco = new Endereco(id,rua, bairro, numero, cep, complemento);
 		
 		try {
-			Fachada.getInstance().cadastrarEndereco(endereco);
+			Fachada.getInstance().atualizarEndereco(endereco);;
 		} catch (ClassNotFoundException | SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -331,14 +331,14 @@ public class JFEndereco extends JFrame {
 		try {
 			Endereco endereco =  Fachada.getInstance().procurarEndereco(codigoselecao);
 		
-			Integer idEndereco = endereco.getIdEndereco();
+			String idEndereco = endereco.getIdEndereco().toString();
 			String rua = endereco.getRua();
 			String bairro = endereco.getBairro();
 			String numero = endereco.getNumero();
 			String cep = endereco.getCep();
 			String complemento = endereco.getComplemento();
 			
-			
+			textId.setText(idEndereco);
 			textRua.setText(rua);
 			textBairro.setText(bairro);
 			textNumero.setText(numero);
