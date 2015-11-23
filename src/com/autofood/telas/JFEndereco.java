@@ -83,7 +83,7 @@ public class JFEndereco extends JFrame {
 		contentPane.add(panel_1);
 		
 		JButton btnCadastrar = new JButton("CADASTRAR");
-		btnCadastrar.setBounds(10, 11, 113, 23);
+		btnCadastrar.setBounds(0, 23, 113, 23);
 		btnCadastrar.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnCadastrar.addActionListener(new ActionListener() {
 			
@@ -97,7 +97,7 @@ public class JFEndereco extends JFrame {
 		panel_1.add(btnCadastrar);
 		
 		JButton btnNewButton = new JButton("ATUALIZAR");
-		btnNewButton.setBounds(111, 36, 113, 23);
+		btnNewButton.setBounds(119, 23, 101, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			
@@ -109,7 +109,7 @@ public class JFEndereco extends JFrame {
 		panel_1.add(btnNewButton);
 		
 		JButton btnLimpar = new JButton("LIMPAR");
-		btnLimpar.setBounds(218, 11, 113, 23);
+		btnLimpar.setBounds(606, 23, 95, 23);
 		btnLimpar.addActionListener(new ActionListener() {
 			
 			
@@ -123,7 +123,7 @@ public class JFEndereco extends JFrame {
 		panel_1.add(btnLimpar);
 		
 		JButton btnProcurar = new JButton("PROCURAR");
-		btnProcurar.setBounds(318, 35, 113, 23);
+		btnProcurar.setBounds(224, 23, 101, 23);
 		btnProcurar.addActionListener(new ActionListener() {
 			
 			
@@ -135,19 +135,8 @@ public class JFEndereco extends JFrame {
 		btnProcurar.setVerticalAlignment(SwingConstants.BOTTOM);
 		panel_1.add(btnProcurar);
 		
-		JButton btnEditar = new JButton("EDITAR");
-		btnEditar.setBounds(426, 11, 101, 23);
-		btnEditar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				// EDITAR
-			}
-		});
-		btnEditar.setVerticalAlignment(SwingConstants.BOTTOM);
-		panel_1.add(btnEditar);
-		
 		JButton btnListar = new JButton("LISTAR");
-		btnListar.setBounds(522, 35, 95, 23);
+		btnListar.setBounds(327, 23, 83, 23);
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -162,8 +151,17 @@ public class JFEndereco extends JFrame {
 		panel_1.add(btnListar);
 		
 		JButton btnRemover = new JButton("REMOVER");
-		btnRemover.setBounds(600, 12, 101, 23);
+		btnRemover.setBounds(412, 23, 95, 23);
 		panel_1.add(btnRemover);
+		
+		JButton btnEditar = new JButton("EDITAR");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editar();				
+			}
+		});
+		btnEditar.setBounds(510, 23, 95, 23);
+		panel_1.add(btnEditar);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(15, 87, 706, 248);
@@ -256,6 +254,7 @@ public class JFEndereco extends JFrame {
 	
 	public void atualizar()
 	{
+		
 		String rua = textRua.getText();
 		String bairro = textBairro.getText();
 		String numero = textNumero.getText();
@@ -304,7 +303,34 @@ public class JFEndereco extends JFrame {
 		}
 	}
 		
-		private void limparTabelaEndereco() {
+		
+	
+	
+	private void limparTabelaEndereco() {
 			defaultEndereco.setNumRows(0);;
 		}
+		
+		
+	public void editar()
+	{
+		try {
+			Endereco endereco =  Fachada.getInstance().procurarEndereco(codigoselecao);
+		
+			String rua = endereco.getRua();
+			String bairro = endereco.getBairro();
+			String numero = endereco.getNumero();
+			String cep = endereco.getCep();
+			String complemento = endereco.getComplemento();
+			
+			textRua.setText(rua);
+			textBairro.setText(bairro);
+			textNumero.setText(numero);
+			textCep.setText(cep);
+			textComplemento.setText(complemento);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}	
 }

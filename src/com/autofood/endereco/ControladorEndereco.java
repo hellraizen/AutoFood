@@ -28,16 +28,16 @@ public class ControladorEndereco {
 
 	}
 
-	public void remover(Integer codigoEndereco) throws SQLException, IOException {
-		repositorioEndereco.remover(codigoEndereco);
+	public void remover(Integer idEndereco) throws SQLException, IOException {
+		repositorioEndereco.remover(idEndereco);
 	}
 
-	public Endereco procurar(Integer codigoEndereco) throws Exception {
-		return repositorioEndereco.procurar(codigoEndereco);
+	public Endereco procurar(Integer idEndereco) throws Exception {
+		return repositorioEndereco.procurar(idEndereco);
 	}
 
-	public boolean existir(Integer codigoEndereco) throws SQLException, IOException {
-		return repositorioEndereco.existir(codigoEndereco);
+	public boolean existir(Integer idEndereco) throws SQLException, IOException {
+		return repositorioEndereco.existir(idEndereco);
 	}
 
 	public ArrayList<Endereco> listar() throws SQLException, IOException {

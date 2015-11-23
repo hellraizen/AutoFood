@@ -74,15 +74,15 @@ public class RepositorioEnderecoBd implements IRepositorioEndereco {
 	}
 
 	@Override
-	public Endereco procurar(Integer codigoEndereco) throws SQLException {
+	public Endereco procurar(Integer idEndereco) throws SQLException {
 		String sql = "select * from testEndereco where codigoEndereco = ?";
 		PreparedStatement preStatement = conn.prepareStatement(sql);
-		preStatement.setInt(1, codigoEndereco);
+		preStatement.setInt(1, idEndereco);
 
 		ResultSet resultSet = preStatement.executeQuery();
 
 		while (resultSet.next()) {
-			Integer idEndereco = resultSet.getInt(1);
+			
 			String rua = resultSet.getString(2);
 			String bairro = resultSet.getString(3);
 			String numero = resultSet.getString(4);

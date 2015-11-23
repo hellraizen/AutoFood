@@ -1,4 +1,4 @@
-	package com.autofood.telas;
+package com.autofood.telas;
 
 import java.awt.Color;
 import java.awt.EventQueue;
