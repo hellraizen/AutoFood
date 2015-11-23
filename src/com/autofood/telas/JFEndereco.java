@@ -173,7 +173,11 @@ public class JFEndereco extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				int linhaselecionada = table.getSelectedRow();
-				//codigoselecao = table.getValueAt(linhaselecionada, 1).toString();
+				String selecao=table.getValueAt(linhaselecionada, 0).toString();
+				codigoselecao = Integer.parseInt(selecao);
+				System.out.println(codigoselecao);
+				
+			
 			}
 		});
 		String[] coluna = new String[] {"ID","RUA", "BAIRRO","NUMERO","CEP","COMPLEMENTO",};

@@ -52,13 +52,15 @@ public class RepositorioEnderecoList implements IRepositorioEndereco {
 
 	@Override
 	public Endereco procurar(Integer codigoEndereco) {
-
+		
 		for (Endereco endereco : arrayListEndereco) {
+			
 			if (endereco.getIdEndereco() == codigoEndereco) {
+				
 				return endereco;
 			}
 		}
-		JOptionPane.showInternalMessageDialog(null, "ENDEREÇO NÃO ENCONTRADO!");
+
 		return null;
 	}
 
