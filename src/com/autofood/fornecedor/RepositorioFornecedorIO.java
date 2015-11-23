@@ -18,7 +18,7 @@ import com.autofood.exceçoesFornecedor.FornecedorNuloException;
 
 public class RepositorioFornecedorIO implements IRepositorioFornecedor {
 
-	Path path = Paths.get("C:/Users/danilo/git/AutoFood/files/repositorioioFornecedor.txt");
+	Path path = Paths.get("AutoFood/files/repositorioioFornecedor.txt");
 	// Path path =
 	// Paths.get("C:/Users/Vinicius/git/AutoFood/files/repositorioioFornecedor.txt");
 	Charset utf8 = StandardCharsets.UTF_8;
