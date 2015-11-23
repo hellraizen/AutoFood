@@ -10,8 +10,8 @@ public class ControladorFuncionario {
 	
 	public ControladorFuncionario() throws ClassNotFoundException 
 	{
-		repositorioFuncionario = new RepositorioFuncionarioBd();
-		//repositorioFuncionario = new RepositorioFuncionarioList();
+		//repositorioFuncionario = new RepositorioFuncionarioBd();
+		repositorioFuncionario = new RepositorioFuncionarioList();
 		//repositorioFuncionario = new RepositorioFuncionarioMap();
 		//repositorioFuncionario = new RepositorioFuncionarioSet();
 		//repositorioFuncionario = new RepositorioFuncionarioIO();

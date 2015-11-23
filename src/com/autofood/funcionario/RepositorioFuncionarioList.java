@@ -22,7 +22,7 @@ public class RepositorioFuncionarioList implements IRepositorioFuncionario
 	@Override
 	public void cadastrar(Funcionario funcionario) 
 	{
-		if(existir(funcionario.getCpfFuncionario()))
+		if(!existir(funcionario.getCpfFuncionario()))
 		{
 			funcionario.setIdFuncionario(index);
 			arrayListFuncionario.add(funcionario);
@@ -94,7 +94,6 @@ public class RepositorioFuncionarioList implements IRepositorioFuncionario
 				return true;
 			}
 		}
-		JOptionPane.showMessageDialog(null, "Funcionário Não Existe!!    :(");
 		return false;
 	}
 

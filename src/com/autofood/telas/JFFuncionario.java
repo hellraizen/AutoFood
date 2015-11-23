@@ -2,31 +2,52 @@ package com.autofood.telas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.autofood.clientes.Cliente;
+import com.autofood.fachada.Fachada;
+import com.autofood.funcionario.Funcionario;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.table.DefaultTableModel;
 
 public class JFFuncionario extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField txtNome;
+	private JTextField txtCpf;
+	private JTextField txtEmail;
+	private JTextField txtTelefone;
+	private JTextField txtLogin;
+	private JTextField txtSenha;
+	private JTextField txtData;
+	private JTextField txtCargo;
 	private JTable tableFuncionario;
+	private ButtonGroup groupSexo = new ButtonGroup();
+	private JRadioButton rBMasc;
+	private JRadioButton rBFemi;
+	private DefaultTableModel defaultFuncionario;
+	
 
 	/**
 	 * Launch the application.
@@ -61,6 +82,11 @@ public class JFFuncionario extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnCadastrar = new JButton("CADASTRAR");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cadastrar();
+			}
+		});
 		btnCadastrar.setBounds(14, 25, 105, 23);
 		panel.add(btnCadastrar);
 		
@@ -81,6 +107,16 @@ public class JFFuncionario extends JFrame {
 		panel.add(btnEditar);
 		
 		JButton btnListar = new JButton("LISTAR");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listar();
+				} catch (ClassNotFoundException | SQLException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnListar.setBounds(545, 25, 89, 23);
 		panel.add(btnListar);
 		
@@ -88,91 +124,107 @@ public class JFFuncionario extends JFrame {
 		lblNome.setBounds(10, 11, 46, 14);
 		contentPane.add(lblNome);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 28, 228, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setBounds(10, 28, 228, 20);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
 		
 		JLabel lblCpf = new JLabel("CPF");
 		lblCpf.setBounds(248, 11, 46, 14);
 		contentPane.add(lblCpf);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(248, 28, 220, 20);
-		contentPane.add(textField_1);
+		txtCpf = new JTextField();
+		txtCpf.setColumns(10);
+		txtCpf.setBounds(248, 28, 220, 20);
+		contentPane.add(txtCpf);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setBounds(10, 59, 46, 14);
 		contentPane.add(lblEmail);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(10, 76, 228, 20);
-		contentPane.add(textField_2);
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
+		txtEmail.setBounds(10, 76, 228, 20);
+		contentPane.add(txtEmail);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
 		lblTelefone.setBounds(505, 11, 46, 14);
 		contentPane.add(lblTelefone);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(505, 28, 228, 20);
-		contentPane.add(textField_3);
+		txtTelefone = new JTextField();
+		txtTelefone.setColumns(10);
+		txtTelefone.setBounds(505, 28, 228, 20);
+		contentPane.add(txtTelefone);
 		
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setBounds(248, 59, 46, 14);
 		contentPane.add(lblLogin);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(248, 76, 220, 20);
-		contentPane.add(textField_4);
+		txtLogin = new JTextField();
+		txtLogin.setColumns(10);
+		txtLogin.setBounds(248, 76, 220, 20);
+		contentPane.add(txtLogin);
 		
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setBounds(505, 59, 228, 14);
 		contentPane.add(lblSenha);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(505, 76, 228, 20);
-		contentPane.add(textField_5);
+		txtSenha = new JTextField();
+		txtSenha.setColumns(10);
+		txtSenha.setBounds(505, 76, 228, 20);
+		contentPane.add(txtSenha);
 		
 		JLabel lblDataNascimento = new JLabel("Data Nascimento");
 		lblDataNascimento.setBounds(10, 104, 117, 14);
 		contentPane.add(lblDataNascimento);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(10, 121, 228, 20);
-		contentPane.add(textField_6);
+		txtData = new JTextField();
+		txtData.setColumns(10);
+		txtData.setBounds(10, 121, 228, 20);
+		contentPane.add(txtData);
 		
 		JLabel lblCargo = new JLabel("Cargo");
 		lblCargo.setBounds(248, 104, 46, 14);
 		contentPane.add(lblCargo);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(248, 121, 220, 20);
-		contentPane.add(textField_7);
+		txtCargo = new JTextField();
+		txtCargo.setColumns(10);
+		txtCargo.setBounds(248, 121, 220, 20);
+		contentPane.add(txtCargo);
 		
 		JLabel label = new JLabel("Sexo");
 		label.setBounds(596, 104, 46, 14);
 		contentPane.add(label);
 		
-		JRadioButton radioButton = new JRadioButton("Masculino");
-		radioButton.setBounds(533, 118, 83, 23);
-		contentPane.add(radioButton);
+		 rBMasc = new JRadioButton("Masculino");
+		 groupSexo.add(rBMasc);
+		 
+		rBMasc.setBounds(533, 118, 83, 23);
+
+		contentPane.add(rBMasc);
 		
-		JRadioButton radioButton_1 = new JRadioButton("Feminino");
-		radioButton_1.setBounds(618, 118, 81, 23);
-		contentPane.add(radioButton_1);
+		
+		 rBFemi = new JRadioButton("Feminino");
+		 groupSexo.add(rBFemi);
+		 
+		rBFemi.setBounds(618, 118, 81, 23);
+		contentPane.add(rBFemi);
+		
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(20, 155, 697, 219);
 		contentPane.add(panel_1);
 		
+		
+		
+		
+		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			}
+		});
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -190,7 +242,70 @@ public class JFFuncionario extends JFrame {
 		);
 		
 		tableFuncionario = new JTable();
+		String[] colunas = new String[] { "id","nome", "cpf", "data Nascimanto", "sexo", "telefone", "email", "cargo", "login", "senha"};
+		defaultFuncionario = new DefaultTableModel(new Object[][] {},colunas){
+			public boolean isCellEditable(int row, int col) {
+				return false;
+			}
+		};
+		
+		tableFuncionario.setModel(defaultFuncionario);
 		scrollPane.setViewportView(tableFuncionario);
 		panel_1.setLayout(gl_panel_1);
+	}
+	private void cadastrar() {
+		
+		String nome = txtNome.getText();
+		String cpf = txtCpf.getText();
+		String dataN = txtData.getText();
+		String sexo = selecaoSexo();
+		String email = txtEmail.getText();
+		String telefone = txtTelefone.getText();
+		String login = txtLogin.getText();
+		String senha = txtSenha.getText();
+		String cargo = txtCargo.getText();
+		
+		Funcionario funcionario = new Funcionario( nome, cpf, dataN, sexo, telefone, email, cargo, login, senha);
+		
+		try {
+			Fachada.getInstance().cadastrarFuncionario(funcionario);
+			
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	private String selecaoSexo() {
+		String sexo = "";
+		if (rBFemi.isSelected())
+			sexo = "Feminino";
+		if (rBMasc.isSelected())
+			sexo = "Masculino";
+
+		return sexo;
+	}
+	private void listar() throws ClassNotFoundException, SQLException, IOException {
+		 this.limparTabelaFuncionario();
+		ArrayList<Funcionario> funcionarios = Fachada.getInstance().listarFuncionario();
+		for (Funcionario funcionario : funcionarios) {
+			Vector vector = new Vector();
+			vector.add(funcionario.getIdFuncionario());
+			vector.add(funcionario.getNomeFuncionario());
+			vector.add(funcionario.getCpfFuncionario());
+			vector.add(funcionario.getDataNascimentoFuncionario());
+			vector.add(funcionario.getTelefoneFuncionario());
+			vector.add(funcionario.getSexoFuncionario());
+			vector.add(funcionario.getEmailFuncionario());
+			vector.add(funcionario.getTipoFuncionario());
+			vector.add(funcionario.getLogin());
+			vector.add(funcionario.getSenha());
+
+			defaultFuncionario.addRow(vector);
+		}
+	}
+	private void limparTabelaFuncionario() {
+		defaultFuncionario.setNumRows(0);;
 	}
 }
