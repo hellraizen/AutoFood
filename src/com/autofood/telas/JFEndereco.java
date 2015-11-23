@@ -295,6 +295,7 @@ public class JFEndereco extends JFrame {
 			vector.add(endereco.getIdEndereco());
 			vector.add(endereco.getRua());
 			vector.add(endereco.getBairro());
+			vector.add(endereco.getNumero());
 			vector.add(endereco.getCep());
 			vector.add(endereco.getComplemento());
 			
