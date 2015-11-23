@@ -47,6 +47,7 @@ public class JFFuncionario extends JFrame {
 	private JRadioButton rBMasc;
 	private JRadioButton rBFemi;
 	private DefaultTableModel defaultFuncionario;
+	private String cpfControle;
 	
 
 	/**
@@ -99,6 +100,16 @@ public class JFFuncionario extends JFrame {
 		panel.add(btnProcurar);
 		
 		JButton btnRemover = new JButton("REMOVER");
+		btnRemover.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Fachada.getInstance().removerFuncionario(cpfControle);
+				} catch (ClassNotFoundException | SQLException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnRemover.setBounds(339, 25, 89, 23);
 		panel.add(btnRemover);
 		
@@ -223,6 +234,7 @@ public class JFFuncionario extends JFrame {
 		scrollPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				
 			}
 		});
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
@@ -242,6 +254,13 @@ public class JFFuncionario extends JFrame {
 		);
 		
 		tableFuncionario = new JTable();
+		tableFuncionario.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int linhaSelecao = tableFuncionario.getSelectedRow();
+				cpfControle= tableFuncionario.getValueAt(linhaSelecao, 2).toString();
+			}
+		});
 		String[] colunas = new String[] { "id","nome", "cpf", "data Nascimanto", "sexo", "telefone", "email", "cargo", "login", "senha"};
 		defaultFuncionario = new DefaultTableModel(new Object[][] {},colunas){
 			public boolean isCellEditable(int row, int col) {
