@@ -6,12 +6,12 @@ import com.autofood.comanda.Comanda;
 
 public class RepositorioCozinhaList implements IRepositorioCozinha {
 
-	private ArrayList<Comanda> arrayComanda ;
+	private ArrayList<Comanda> arrayComandaList ;
 	private String pedido;
 	private Integer idPedido;
 
 	public RepositorioCozinhaList() {
-		arrayComanda = new ArrayList<Comanda>();
+		arrayComandaList = new ArrayList<Comanda>();
 		this.idPedido = 1;
 	}
 
@@ -57,8 +57,8 @@ public class RepositorioCozinhaList implements IRepositorioCozinha {
 						comparaComanda.remove(comanda2);
 						comparaComanda.add(comanda);
 						
-						System.out.println( pedido + "\nPEDIDO CANCELADO!");
-						JOptionPane.showInternalMessageDialog(null, "PEDIDO CANCELADO!");
+						System.out.println( pedido + "\nPEDIDO ATUALIZADO!");
+						JOptionPane.showInternalMessageDialog(null, "PEDIDO ATUALIZADO!");
 					}
 
 				}
@@ -74,7 +74,7 @@ public class RepositorioCozinhaList implements IRepositorioCozinha {
 	@Override
 	public ArrayList<Comanda> listaPedidos() 
 	{
-			return arrayComanda;
+			return arrayComandaList;
 	}
 
 }
