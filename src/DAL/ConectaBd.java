@@ -21,9 +21,6 @@ public class ConectaBd {
             JOptionPane.showMessageDialog(null, erro);
             
             return null;
-        }    
-        
-    
-}
-
+   }       
+ }
 }
