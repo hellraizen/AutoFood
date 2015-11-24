@@ -44,6 +44,22 @@ public class Funcionario
 		setLogin(login);
 		setSenha(senha);
 	}
+	
+	
+	
+	
+	public Funcionario(Integer idFuncionario, String nomeFuncionario, String cpfFuncionario,String dataNascimentoFuncionario, String telefoneFuncionario, String emailFuncionario, String login,String senha) 
+	{
+		setIdFuncionario(idFuncionario);
+		setNomeFuncionario(nomeFuncionario);
+		setCpfFuncionario(cpfFuncionario);
+		setDataNascimentoFuncionario(dataNascimentoFuncionario);
+		setSexoFuncionario(sexoFuncionario);
+		setTelefoneFuncionario(telefoneFuncionario);
+		setEmailFuncionario(emailFuncionario);
+		setLogin(login);
+		setSenha(senha);
+	}
 
 	public Integer getIdFuncionario() {
 		return idFuncionario;

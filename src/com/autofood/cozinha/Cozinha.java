@@ -1,35 +1,34 @@
 package com.autofood.cozinha;
 
 import com.autofood.comanda.Comanda;
-import com.autofood.produto.Produto;
 
 public class Cozinha 
 {
-	private Comanda idComanda;
-	private Produto produto;
+	private Comanda comanda;
+	private Integer index;
 	private String data;
 	
-	public Cozinha(Comanda idComanda, Produto produto, String data) {
-		super();
-		this.idComanda = idComanda;
-		this.produto = produto;
-		this.data = data;
+	public Cozinha(Comanda comanda, Integer index, String data) {
+		
+		setComanda(comanda);
+		setIndex(index);
+		setData(data);
 	}
 
-	public Comanda getIdComanda() {
-		return idComanda;
+	public Comanda getComanda() {
+		return comanda;
 	}
 
-	public void setIdComanda(Comanda idComanda) {
-		this.idComanda = idComanda;
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
 	}
 
-	public Produto getProduto() {
-		return produto;
+	public Integer getIndex() {
+		return index;
 	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setIndex(Integer index) {
+		this.index = index;
 	}
 
 	public String getData() {
@@ -42,8 +41,10 @@ public class Cozinha
 
 	@Override
 	public String toString() {
-		return "Cozinha [idComanda=" + idComanda + ", produto=" + produto + ", data=" + data + "]";
+		return "Cozinha [comanda=" + comanda + ", index=" + index + ", data=" + data + "]";
 	}
+
+
 	
 	
 	

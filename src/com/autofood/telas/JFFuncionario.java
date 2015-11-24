@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.autofood.clientes.Cliente;
+import com.autofood.endereco.Endereco;
 import com.autofood.fachada.Fachada;
 import com.autofood.funcionario.Funcionario;
 
@@ -48,6 +49,7 @@ public class JFFuncionario extends JFrame {
 	private JRadioButton rBFemi;
 	private DefaultTableModel defaultFuncionario;
 	private String cpfControle;
+	private JTextField txtId;
 	
 
 	/**
@@ -71,14 +73,14 @@ public class JFFuncionario extends JFrame {
 	 */
 	public JFFuncionario() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 759, 519);
+		setBounds(100, 100, 769, 519);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(40, 397, 648, 72);
+		panel.setBounds(40, 397, 677, 72);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -86,17 +88,54 @@ public class JFFuncionario extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cadastrar();
+				limparTabela();
+			}
+
+			public void limparTabela() 
+			{
+				txtId.setText(" ");
+				txtNome.setText(" ");
+				txtCpf.setText(" ");
+				txtData.setText(" ");
+				txtTelefone.setText(" ");
+				txtEmail.setText(" ");
+				txtLogin.setText(" ");
+				txtSenha.setText(" ");
+				txtCargo.setText(" ");
+				
 			}
 		});
-		btnCadastrar.setBounds(14, 25, 105, 23);
+		btnCadastrar.setBounds(10, 23, 105, 23);
 		panel.add(btnCadastrar);
 		
 		JButton btnAtualizar = new JButton("ATUALIZAR");
-		btnAtualizar.setBounds(133, 25, 89, 23);
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				atualizar();
+			}
+		});
+		btnAtualizar.setBounds(125, 23, 105, 23);
 		panel.add(btnAtualizar);
 		
 		JButton btnProcurar = new JButton("PROCURAR");
-		btnProcurar.setBounds(236, 25, 89, 23);
+		btnProcurar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try {
+					Fachada.getInstance().procurarFuncionario(cpfControle);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnProcurar.setBounds(249, 23, 105, 23);
 		panel.add(btnProcurar);
 		
 		JButton btnRemover = new JButton("REMOVER");
@@ -110,11 +149,17 @@ public class JFFuncionario extends JFrame {
 				}
 			}
 		});
-		btnRemover.setBounds(339, 25, 89, 23);
+		btnRemover.setBounds(364, 23, 105, 23);
 		panel.add(btnRemover);
 		
 		JButton btnEditar = new JButton("EDITAR");
-		btnEditar.setBounds(442, 25, 89, 23);
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0)
+			{
+				editar();
+			}
+		});
+		btnEditar.setBounds(479, 23, 89, 23);
 		panel.add(btnEditar);
 		
 		JButton btnListar = new JButton("LISTAR");
@@ -128,7 +173,7 @@ public class JFFuncionario extends JFrame {
 				}
 			}
 		});
-		btnListar.setBounds(545, 25, 89, 23);
+		btnListar.setBounds(578, 23, 89, 23);
 		panel.add(btnListar);
 		
 		JLabel lblNome = new JLabel("Nome");
@@ -261,7 +306,7 @@ public class JFFuncionario extends JFrame {
 				cpfControle= tableFuncionario.getValueAt(linhaSelecao, 2).toString();
 			}
 		});
-		String[] colunas = new String[] { "id","nome", "cpf", "data Nascimanto", "sexo", "telefone", "email", "cargo", "login", "senha"};
+		String[] colunas = new String[] { "id","nome", "cpf","data Nascimanto", "telefone", "sexo", "email", "cargo",  "login", "senha",   };
 		defaultFuncionario = new DefaultTableModel(new Object[][] {},colunas){
 			public boolean isCellEditable(int row, int col) {
 				return false;
@@ -271,7 +316,18 @@ public class JFFuncionario extends JFrame {
 		tableFuncionario.setModel(defaultFuncionario);
 		scrollPane.setViewportView(tableFuncionario);
 		panel_1.setLayout(gl_panel_1);
+		
+		JLabel lblId = new JLabel("ID");
+		lblId.setBounds(701, 124, 16, 14);
+		contentPane.add(lblId);
+		
+		txtId = new JTextField();
+		txtId.setEditable(false);
+		txtId.setBounds(715, 121, 18, 20);
+		contentPane.add(txtId);
+		txtId.setColumns(10);
 	}
+	
 	private void cadastrar() {
 		
 		String nome = txtNome.getText();
@@ -305,6 +361,8 @@ public class JFFuncionario extends JFrame {
 
 		return sexo;
 	}
+	
+	
 	private void listar() throws ClassNotFoundException, SQLException, IOException {
 		 this.limparTabelaFuncionario();
 		ArrayList<Funcionario> funcionarios = Fachada.getInstance().listarFuncionario();
@@ -320,11 +378,90 @@ public class JFFuncionario extends JFrame {
 			vector.add(funcionario.getTipoFuncionario());
 			vector.add(funcionario.getLogin());
 			vector.add(funcionario.getSenha());
+		
 
 			defaultFuncionario.addRow(vector);
 		}
 	}
+	
+	
 	private void limparTabelaFuncionario() {
 		defaultFuncionario.setNumRows(0);;
 	}
+	
+	
+	public void editar()
+	{
+		try {
+			Funcionario funcionario = Fachada.getInstance().procurarFuncionario(cpfControle);
+		
+			Integer idFuncionario = funcionario.getIdFuncionario();
+			String nomeFuncionario = funcionario.getNomeFuncionario();
+			String cpfFuncionario = funcionario.getCpfFuncionario();
+			String dataNascimentoFuncionario = funcionario.getDataNascimentoFuncionario();
+			String telefoneFuncionario = funcionario.getTelefoneFuncionario();
+			String emailFuncionario = funcionario.getEmailFuncionario();
+			String login = funcionario.getLogin();
+			String senha = funcionario.getSenha();
+			
+			
+			txtId.setText(idFuncionario.toString());
+			txtNome.setText(nomeFuncionario);
+			txtCpf.setText(cpfFuncionario);
+			txtData.setText(dataNascimentoFuncionario);
+			txtTelefone.setText(telefoneFuncionario);
+			txtEmail.setText(emailFuncionario);
+			txtLogin.setText(login);
+			txtSenha.setText(senha);
+			
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+			
+	}
+	
+	
+	public void atualizar()
+	{
+		 
+		Integer idFuncionario = Integer.parseInt(txtId.getText());
+		String nomeFuncionario = txtNome.getText();
+		String cpfFuncionario = txtCpf.getText();
+		String dataNascimentoFuncionario = txtData.getText();
+		String telefoneFuncionario = txtTelefone.getText();
+		String emailFuncionario = txtEmail.getText();
+		String login = txtLogin.getText();
+		String senha = txtSenha.getText();
+		
+		Funcionario funcionario = new Funcionario(idFuncionario, nomeFuncionario, cpfFuncionario, dataNascimentoFuncionario, telefoneFuncionario, emailFuncionario, login, senha);
+		
+		try {
+			Fachada.getInstance().atualizarFuncionario(funcionario);
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -152,6 +152,10 @@ public class JFEndereco extends JFrame {
 		panel_1.add(btnListar);
 		
 		JButton btnRemover = new JButton("REMOVER");
+		btnRemover.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnRemover.setBounds(412, 23, 95, 23);
 		panel_1.add(btnRemover);
 		
