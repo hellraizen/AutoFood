@@ -76,5 +76,18 @@ complemento varchar(100),
 primary key (idendereco)
 );
 
-
+create table funcionariotest(
+idFuncionario serial,
+nomeFuncionario varchar(50),
+cpfFuncionario varchar(14),
+enderecoFuncionario varchar(50),
+dataNascimentoFuncionario varchar(11),
+sexoFuncionario varchar(10),
+telefoneFuncionario varchar(15),
+emailFuncionario varchar(50),
+tipoFuncionario varchar(20),
+login varchar(10),
+senha varchar(10),
+primary key(idFuncionario)
+);
 
