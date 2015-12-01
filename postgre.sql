@@ -92,14 +92,15 @@ primary key(idFuncionario)
 );
 
 create table log(
+cod serial,
+data date,
+autor varchar(20),
+alteracao varchar(30),
 
-         cod serial primary key,
+primary key (cod)
+);     
 
-         data date,
-
-         autor varchar(20),
-
-        create function gera_log() returns trigger as
+create function gera_log() returns trigger as
 
 $$
 
@@ -111,10 +112,14 @@ Begin
 
 end;
 
-$$ language 'plpgsql';
+$$
+language 'plpgsql';
 
-
-);
+Create trigger gerarLog
+AFTER insert
+ON clientetest
+FOR EACH ROW
+execute PROCEDURE gera_log();
 
 
 
