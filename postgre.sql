@@ -91,3 +91,30 @@ senha varchar(10),
 primary key(idFuncionario)
 );
 
+create table log(
+
+         cod serial primary key,
+
+         data date,
+
+         autor varchar(20),
+
+        create function gera_log() returns trigger as
+
+$$
+
+Begin
+
+         insert into log (data, autor, alteracao) values (now(), user, TG_OP);
+
+         return new;
+
+end;
+
+$$ language 'plpgsql';
+
+
+);
+
+
+
